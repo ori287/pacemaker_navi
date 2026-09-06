@@ -1,5 +1,5 @@
 {
- "v": 39,
+ "v": 42,
  "updated": "2026-09-05",
  "gloss": [
   {
@@ -429,8 +429,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "導体を覆う高抵抗の被膜（シリコーンやポリウレタン等）。損傷すると電流が漏れてインピーダンスが低下し、オーバーセンシングや捕捉不全を招く。損傷時は極性を双極から単極へ変更して一時的にしのぐことがある。",
-   "tags": "Lead / PM / ICD / CRT / General / insulation / noise / oversensing / lead trouble / threshold / capture"
+   "short": "導線を覆う高抵抗の被膜。**素材はシリコン、ポリウレタン、両者の長所を融合した Optim の3系統**が使われる。損傷すると電流が漏れてインピーダンスが低下し、オーバーセンシングや捕捉不全を招く。損傷時は極性を双極から単極へ変更して一時的にしのぐことがある。**リード不具合の原因としては絶縁体のトラブルが最大**で、絶縁不良が全体の56％を占めたという報告がある（Kleeman ほか、Circulation 2007）。",
+   "tags": "Lead / PM / ICD / CRT / General / insulation / noise / oversensing / lead trouble / threshold / capture シリコン ポリウレタン Optim 絶縁素材 56% Kleeman 2007"
   },
   {
    "term": "絶対不応期",
@@ -479,8 +479,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "tipとringの2電極間でセンシング/刺激するリード。局所信号を得やすくEMI/筋電位の影響を受けにくい。現在の標準構成で、心電図上のスパイクは小さい。",
-   "tags": "Lead / PM / ICD / CRT / General / bipolar / lead / threshold / capture バイポーラ bipolar"
+   "short": "tip と ring の2電極間でセンシング／刺激するリード。**利点は EMI（電磁干渉）の影響を受けにくいこと、双極・単極を切り替えられるプログラミングの柔軟性。欠点はリード径が太くなること、心電図上のスパイクが小さく確認しづらいこと。**現在の標準構成。",
+   "tags": "Lead / PM / ICD / CRT / General / bipolar / lead / threshold / capture バイポーラ bipolar EMI 電磁干渉 プログラミングの柔軟性 切り替え リード径 スパイク"
   },
   {
    "term": "脱分極",
@@ -499,8 +499,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "リードtipとデバイス缶など広い電極間で刺激/センシングする構成。感知波高は大きいが、本体付近の筋肉刺激を起こしやすい。",
-   "tags": "Lead / PM / ICD / CRT / General / unipolar / lead / threshold / capture ユニポーラ unipolar"
+   "short": "リード tip とデバイス缶の間で刺激／センシングする構成。**利点は構造が単純で（コイルが1本）耐久性に優れること、リード径が細いこと、スパイクが大きく確認しやすいこと。欠点は Twitching（本体付近の筋刺激）を起こす可能性があることと、ノイズを拾いやすいこと。**",
+   "tags": "Lead / PM / ICD / CRT / General / unipolar / lead / threshold / capture ユニポーラ unipolar 構造が単純 コイル1本 耐久性 細い スパイク Twitching ノイズ"
   },
   {
    "term": "チタン",
@@ -939,8 +939,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "リードを筋膜へ縫着固定し、血管入口部での移動や屈曲を抑える部材。締めすぎると絶縁体を傷めるため、適度な固定にとどめる。",
-   "tags": "Lead / PM / ICD / CRT / General / suture / sleeve / threshold / capture"
+   "short": "リードを筋膜へ縫着固定し、血管入口部での移動や屈曲を抑える部材。**素材はシリコン。**締めすぎると絶縁体を傷めるため、適度な固定にとどめる。",
+   "tags": "Lead / PM / ICD / CRT / General / suture / sleeve / threshold / capture シリコン Suture Sleeve"
   },
   {
    "term": "URL",
@@ -1299,8 +1299,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "Abbott AVEIRの心房用リードレスペースメーカ（LSP201A）。全長32.2mm・外径6.5mm、デュアルヘリックス設計（アウターヘリックス1.63mmで固定、インナーヘリックスが固定性・安定性を高めると同時に先端電極として機能）。推奨留置部位は右心耳基部。単独では AAI(R)、心室用 AVEIR VR と組み合わせると AAI(R)＋VVI または DDD(R) で使える。第2世代の AVEIR AR2（LSP203A）が後継。植込み3か月後の有効性エンドポイント（閾値≦3.0V@0.4ms かつ P波高値≧1mV）の達成率は90.2％、波高値を0.5mV以上とした場合は95.2％。",
-   "tags": "Leadless / Abbott / Aveir / AR LSP201A AR2 LSP203A アヴェイル LP AAI AAI+VVI DDD 32.2mm 6.5mm デュアルヘリックス 1.63mm 右心耳基部 90.2% 95.2% 3.0V 1mV 0.5mV"
+   "short": "Abbott AVEIRの心房用リードレスペースメーカ（LSP201A）。全長32.2mm・外径6.5mm、デュアルヘリックス設計（アウターヘリックス1.63mmで固定、インナーヘリックスが固定性・安定性を高めると同時に先端電極として機能）。推奨留置部位は右心耳基部。単独では AAI(R)、心室用 AVEIR VR と組み合わせると AAI(R)＋VVI または DDD(R) で使える。第2世代の AVEIR AR2（LSP203A）が後継。植込み3か月後の有効性エンドポイント（閾値≦3.0V@0.4ms かつ P波高値≧1mV）の達成率は90.2％、波高値を0.5mV以上とした場合は95.2％。留置部位は右心耳基部が推奨で、IDE 試験では植込み全体の61.1％がここだった。深部右心耳は脱落率が高く（4.4％ 対 0.9％）、組織が薄くパーフォレーションのリスクがあり、i2i 通信の距離も延びる。植込み時に心房の閾値が大幅に上昇することは珍しくない。",
+   "tags": "Leadless / Abbott / Aveir / AR LSP201A AR2 LSP203A アヴェイル LP AAI AAI+VVI DDD 32.2mm 6.5mm デュアルヘリックス 1.63mm 右心耳基部 90.2% 95.2% 3.0V 1mV 0.5mV 61.1% 4.4% 0.9% 深部右心耳 脱落 閾値上昇 分界稜"
   },
   {
    "term": "Aveir DR",
@@ -1309,8 +1309,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "AVEIR ARとVRを組み合わせ、i2i通信でbeat-to-beatのデュアルチャンバー同期を行うシステム。リードレスでDDD様の動作を可能にした。AAI(R)＋VVI モードを選べば、心房ペーシング主体で心室はバックアップとなり、両デバイスの寿命延長が期待できる。AVEIR DR i2i スタディでは、デュアルチャンバの手術成功率98.3％、複数の姿勢と歩行で観察された平均房室同期97.3％、安全性達成率90.3％、心房用LPの有効性エンドポイント90.2％が報告されている（NEJM 2023）。デュアルチャンバのアルゴリズムとして AMS（心内心電図を最大4つ保存）・VIP・ヒステリシス・A Pace on PMT を持つ。",
-   "tags": "Leadless / Abbott / Aveir / DR / threshold / capture AAI+VVI DDD(R) i2i 4/4 寿命延長 バックアップ 98.3% 手術成功率 97.3% AV同期 90.3% 安全性 90.2% 有効性 NEJM 2023 Knops アップグレーダブル ペアリング AMS VIP A Pace on PMT"
+   "short": "AVEIR ARとVRを組み合わせ、i2i通信でbeat-to-beatのデュアルチャンバー同期を行うシステム。リードレスでDDD様の動作を可能にした。AAI(R)＋VVI モードを選べば、心房ペーシング主体で心室はバックアップとなり、両デバイスの寿命延長が期待できる。AVEIR DR i2i スタディでは、デュアルチャンバの手術成功率98.3％、複数の姿勢と歩行で観察された平均房室同期97.3％、安全性達成率90.3％、心房用LPの有効性エンドポイント90.2％が報告されている（NEJM 2023）。デュアルチャンバのアルゴリズムとして AMS（心内心電図を最大4つ保存）・VIP・ヒステリシス・A Pace on PMT を持つ。植込みは「検査室・患者の準備」と「静脈アクセス」（各1回）に続き、各デバイス共通の6ステップ（①カテーテルとデバイスの準備 ②血管への挿入 ③目標位置までの操作 ④マッピングと固定 ⑤テザーとテスト ⑥リリース・取外し・プログラミング）を、心室用LP → 心房用LP の順に繰り返す。",
+   "tags": "Leadless / Abbott / Aveir / DR / threshold / capture AAI+VVI DDD(R) i2i 4/7 i2i設定レベル1〜7 寿命延長 バックアップ 98.3% 手術成功率 97.3% AV同期 90.3% 安全性 90.2% 有効性 NEJM 2023 Knops アップグレーダブル ペアリング AMS VIP A Pace on PMT 6ステップ 植込み手順 心室先行"
   },
   {
    "term": "i2i communication",
@@ -1319,8 +1319,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "AVEIRの心房・心室デバイス間で、低エネルギーの導電性通信を用いて毎拍イベントを共有する技術。無線に比べ消費電力が少ないのが利点。データパルスは各ペーシングイベントまたはセンシングイベントと同時に送信されるため、ペーシングやセンシングそのものには影響しない。さまざまな姿勢で観察された平均房室（AV）同期率は95％以上とされる。設定は画面上「i2i＝4/4」のように表示されるが、電池寿命表の条件として引用されるのみで、定義は資料に記載がない。",
-   "tags": "Leadless / Abbott / Implant-to-Implant / communication i2i 4/4 導電性通信 房室同期 DDD 毎心拍 データパルス 同時送信 95% AV同期率 beat-to-beat synchrony"
+   "short": "AVEIRの心房・心室デバイス間で、低エネルギーの導電性通信を用いて毎拍イベントを共有する技術。無線に比べ消費電力が少ないのが利点。データパルスは各ペーシングイベントまたはセンシングイベントと同時に送信されるため、ペーシングやセンシングそのものには影響しない。さまざまな姿勢で観察された平均房室（AV）同期率は95％以上とされる。通信出力は［i2i 設定レベル］1〜7 で設定し、植込み時にプログラマの［i2i 設定管理］で方向別（RV→RA／RA→RV）のスループット（％）と強度を自動評価して推奨レベルが提示される。レベル7にすると電池寿命が短くなる旨の警告が画面に出る。電池寿命表の条件「i2i＝4/7」はこのレベル4を指す。スループットは主に2デバイス間の距離と角度で決まり、RAO 30° でのボタン間距離 70mm 以下・相対角度 40° 以下が理想とされる。",
+   "tags": "Leadless / Abbott / Implant-to-Implant / communication i2i 4/7 i2i設定レベル 1〜7 スループット 強度 70mm 40度 V2A A2V 導電性通信 房室同期 DDD 毎心拍 データパルス 同時送信 95% AV同期率 beat-to-beat synchrony"
   },
   {
    "term": "Pre-mapping",
@@ -1859,8 +1859,8 @@
    "cat": "リード",
    "device": "PM",
    "maker": "General",
-   "short": "IS-1普及前の単極・双極コネクタ（6mm、5mm、Cordis型、Medtronic型等）。本体交換時は規格一致の確認が必要。変換アダプタの要否を事前に確認する。",
-   "tags": "6mm 5mm Cordis 旧規格 コネクタ"
+   "short": "IS-1 普及前の単極・双極コネクタの総称。メーカー資料（2012/2013 DATA BOOK）のペースメーカリード コネクタ形式一覧では、**双極が IS-1/VS-1（ショートピン）／3.2mm ロープロファイル（メドトロニックタイプ）／3.2mm コーディスタイプ／5mm 二股／6mm 双極同軸／6mm 双極インライン／3.2mm ロープロファイル（ショートピン）**、**単極が IS-1/VS-1（ショートピン）／3.2mm 単極ロープロファイル（ロングピン）／3.2mm 単極ロングピン（コーディスタイプ）／5mm 単極ロングピン／6mm 単極ショートピン（コーディスタイプ）**の12形式に分類されている。本体交換時は規格一致の確認と変換アダプタの要否を事前に確認する。",
+   "tags": "6mm 5mm Cordis 旧規格 コネクタ 12形式 二股 双極同軸 双極インライン ロープロファイル メドトロニックタイプ コーディスタイプ ショートピン ロングピン DATA BOOK 2012 2013"
   },
   {
    "term": "Shared Bipolar（LV tip–RV ring）",
@@ -2909,8 +2909,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "双極リード内部構造の一つ。中心の陰極コンダクタをコイル状に配し、被覆・陽極コンダクタ・被覆を同心円状に重ねる。細く作れるが、内外の導体が擦れると絶縁不良の原因になる。",
-   "tags": "同軸構造  Coaxial construction coaxial 同軸 同軸リード coaxial lead"
+   "short": "双極リード内部構造の一つ。中心の**インナーコイル（Inner Coil＝カソード／陰極）**を配し、その外側に絶縁被膜・**アウターコイル（Outer Coil＝アノード／陽極）**・外側絶縁被膜を同心円状に重ねる。**導線は1本の針金ではなく3〜4本の線をより合わせたコイル**になっている。細く作れるが、内外の導体が擦れると絶縁不良（MIO）の原因になる。",
+   "tags": "同軸構造  Coaxial construction coaxial 同軸 同軸リード coaxial lead Outer Coil Anode Inner Coil Cathode アウターコイル インナーコイル 3〜4本 多条コイル 内側絶縁 外側絶縁"
   },
   {
    "term": "平行巻構造",
@@ -2939,8 +2939,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "電極に使われる化学的に安定な合金。長期にわたり電気的性能を保てることが求められる。",
-   "tags": "プラチナ-イリジウム合金 PtIr Platinum-iridium alloy platinum iridium"
+   "short": "電極に使われる化学的に安定な合金。長期にわたり電気的性能を保てることが求められる。**ペーシングリードでは先端電極（Distal Tip Electrode）とリング電極（Proximal Ring Electrode）の両方にこの合金が使われる。**",
+   "tags": "プラチナ-イリジウム合金 PtIr Platinum-iridium alloy platinum iridium 先端電極 リング電極 Distal Tip Proximal Ring"
   },
   {
    "term": "心内電位",
@@ -3148,9 +3148,9 @@
    "abbr": "WARAD",
    "cat": "モード",
    "device": "PM / ICD / CRT",
-   "maker": "General",
-   "short": "マイクロポート（Sorin）のモードスイッチ関連の窓。この中で心房:心室がn:1となる拍をサスピションフェーズとして数える。n:1の関係になる拍を心房頻拍の候補として数える。",
-   "tags": "WARAD WARAD Window of Atrial Rate Acceleration Detection MicroPort Sorin"
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM（旧 Sorin）の心房イベント検出窓。**心房センスの「早期性」を見て、不整脈としての心房波（AF・AFL・AT）と洞性P波を区別するアルゴリズム。**各心房イベント（心房センス／心房ペース／WARAD・PVARP内センス）でウインドウがトリガされ、**ウインドウ長は先行するP-P（AP/AS を含む）の75％（レート80未満では62.5％）。Arセンスから始まるウインドウは先行WARADと同じ長さで、後続は最大500msに制限される。WARAD内で感知された心房イベントはすべて不応期マーカー「Ar」として表示される。**この中で心房:心室がn:1となる心室周期をサスピションフェーズとして数え、Fallback Mode Switch の判定に使う。",
+   "tags": "WARAD Window of Atrial Rate Acceleration Detection MicroPort Sorin 早期性 75% 62.5% 500ms Ar 不応期マーカー サスピション P-P Avg8P-P モードスイッチ"
   },
   {
    "term": "サスピションフェーズ",
@@ -3158,9 +3158,9 @@
    "abbr": "",
    "cat": "モード",
    "device": "PM / ICD / CRT",
-   "maker": "General",
-   "short": "マイクロポートのモードスイッチ判定の中間段階。WARAD内で心房頻拍を疑う拍を計数する。条件を満たすとモードスイッチへ移行する。",
-   "tags": "サスピションフェーズ  Suspicion phase MicroPort suspicion"
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM のモードスイッチ判定の中間段階。**WARAD 内で心房波／心室イベントが n:1 になった心室周期を数える**（心房波の数ではなく心室周期の数で数える）。**32心周期中28周期以上（87.5％）で第1基準、32心周期中18周期以上（56％）が2ブロック連続で第2基準**を満たし、Fallback Mode Switch により DDI(R) へ移行する。",
+   "tags": "サスピションフェーズ Suspicion phase MicroPort suspicion n:1 心室周期 32心周期 28周期 18周期 87.5% 56% 第1基準 第2基準 FMS"
   },
   {
    "term": "自己房室伝導優先機能",
@@ -3789,8 +3789,8 @@
    "cat": "植込み・手技",
    "device": "",
    "maker": "General",
-   "short": "右心房でSVCとIVC開口部の右側を連ねる隆起。自由壁と中隔面を隔てる目印になる。心房リードの留置位置を考える際の目印になる。",
-   "tags": "分界稜  Crista terminalis crista terminalis 分界稜"
+   "short": "右心房でSVCとIVC開口部の右側を連ねる隆起。自由壁と中隔面を隔てる目印になる。心房リードの留置位置を考える際の目印になる。リードレス心房デバイスでは、分界稜より前方（側壁）には櫛状筋があり、後方（後壁）には櫛状筋がないため、留置部位を考えるうえでの境目になる。",
+   "tags": "分界稜  Crista terminalis crista terminalis 分界稜 リードレス 心房用LP 側壁 後壁 櫛状筋 AVEIR AR"
   },
   {
    "term": "櫛状筋",
@@ -3799,8 +3799,8 @@
    "cat": "植込み・手技",
    "device": "",
    "maker": "General",
-   "short": "右心房自由壁を走る櫛状の筋束。右心耳に連なる。タインド型リードはこの筋束に絡めて固定する。",
-   "tags": "櫛状筋  Pectinate muscle pectinate muscle 櫛状筋"
+   "short": "右心房自由壁を走る櫛状の筋束。右心耳に連なる。タインド型リードはこの筋束に絡めて固定する。心房用リードレスペースメーカ（AVEIR AR／AR2）の推奨留置部位である右心耳基部は、この筋束が密で安定性と安全性が得られる部位とされる。",
+   "tags": "櫛状筋  Pectinate muscle pectinate muscle 櫛状筋 リードレス 右心耳基部 AVEIR AR AR2 緻密"
   },
   {
    "term": "卵円窩",
@@ -5319,8 +5319,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "ESC(物理的ストレス)/MIO(銀イオン化学反応)による被覆損傷。リーク発生。極性変更で一時的にしのぎ、最終的には交換・追加を検討する。",
-   "tags": "リード絶縁体不良 Lead insulation failure ESC MIO 絶縁体 被覆 リーク インピーダンス低下 極性変更 insulation failure 絶縁不良 絶縁破損"
+   "short": "**ESC（Environmental Stress Cracking＝環境ストレスクラッキング）**と**MIO（Metal Ion Oxidation＝金属イオン酸化）**による被覆損傷。いずれもポリウレタン絶縁で問題になる劣化機序で、**ESC は体内組織の影響で主にリードの外側からひび割れ、MIO は導線コイルと接触することでリードの内側から劣化する。**リークが生じるとインピーダンスが低下し、ノイズやオーバーセンシングの原因になる。極性変更で一時的にしのぎ、最終的には交換・追加を検討する。**シリコン絶縁ではアブレージョン（摩耗）と裂傷が主な損傷機序になる。**",
+   "tags": "リード絶縁体不良 Lead insulation failure ESC MIO Environmental Stress Cracking Metal Ion Oxidation 環境ストレスクラッキング 金属イオン酸化 内側 外側 ポリウレタン シリコン アブレージョン 裂傷 絶縁体 被覆 リーク インピーダンス低下 極性変更 insulation failure 絶縁不良 絶縁破損"
   },
   {
    "term": "血栓・塞栓症",
@@ -6209,7 +6209,7 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "先端スクリューで心筋に固定するタイプのリード。留置部位の自由度が高く、慢性期の抜去も比較的行いやすい。近年広く使われるリードの一つ。留置部位を選べ、ICDの心室リードでは第一選択となることが多い。固定直後は障害電流を確認して接地を判断する。",
+   "short": "先端スクリューで心筋に固定するタイプのリード。留置部位の自由度が高く、慢性期の抜去も比較的行いやすい。近年広く使われるリードの一つ。留置部位を選べ、ICDの心室リードでは第一選択となることが多い。固定直後は傷害電流を確認して接地を判断する。",
    "tags": "Lead / PM / ICD / CRT / General / active / fixation / lead / threshold / capture ねじ込み式リード screw-in lead 心内膜ねじ込み式リード endocardial screw-in lead 能動的固定 active fixation 能動的固定リード"
   },
   {
@@ -6229,8 +6229,8 @@
    "cat": "リード",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "リード絶縁被覆の破損。電流漏れ、低インピーダンス、ノイズ等の原因となる。ESC（物理的ストレス）とMIO（銀イオンによる化学劣化）が主因。",
-   "tags": "Trouble / PM / ICD / CRT / General / insulation / fracture / noise / oversensing / lead trouble 被覆損傷 insulation breach ESC MIO リードリーク 漏電 インピーダンス低下 insulation breach insulation failure 絶縁破綻 絶縁体亀裂"
+   "short": "リード絶縁被覆の破損。電流漏れ、低インピーダンス、ノイズ等の原因となる。ポリウレタンでは **ESC（環境ストレスクラッキング＝体内組織の影響で外側からひび割れる）** と **MIO（金属イオン酸化＝導線コイルとの接触で内側から劣化する）**、シリコンでは**アブレージョン（摩耗）と裂傷**が主な機序。",
+   "tags": "Trouble / PM / ICD / CRT / General / insulation / fracture / noise / oversensing / lead trouble 被覆損傷 insulation breach ESC MIO Environmental Stress Cracking Metal Ion Oxidation 環境ストレスクラッキング 金属イオン酸化 アブレージョン 摩耗 裂傷 リードリーク 漏電 インピーダンス低下 insulation breach insulation failure 絶縁破綻 絶縁体亀裂"
   },
   {
    "term": "テレメトリー",
@@ -7119,8 +7119,8 @@
    "cat": "ペーシング管理",
    "device": "PM",
    "maker": "MicroPort CRM",
-   "short": "MicroPort CRMのAVディレイ延長型の心室ペーシング抑制機能。自己房室伝導を探して不要な右室ペーシングを避ける。モード変換型のSafeRとは方式が異なる。",
-   "tags": "Manufacturer / PM / MicroPort CRM / D Plus AVD延長 心室ペーシング抑制 SafeR"
+   "short": "MicroPort CRM の AVディレイ延長型の心室ペーシング抑制機能。**心室ペーシングを100サイクル行うと、次の5サイクル連続して AVD を50ms 延長する。**延長中に心室センシングが起こるとさらに次のサイクルの AVD を50ms 延長し、**8サイクル連続して心室センシングが起こると Pseudo AAI へスイッチ**する。房室ブロック発生時は自己房室伝導時間から算出した AVD を自動適用し、伝導能が回復すると Pseudo AAI で動作する。モード変換型の SafeR とは方式が異なる。",
+   "tags": "Manufacturer / PM / MicroPort CRM / D Plus D-Plus AVD延長 50ms 100サイクル 5サイクル 8サイクル Pseudo AAI 心室ペーシング抑制 SafeR"
   },
   {
    "term": "IRSPlus",
@@ -9829,8 +9829,8 @@
    "cat": "植込み・手技",
    "device": "PM / CRT",
    "maker": "Abbott",
-   "short": "中隔内へリードを進めるために、トルクを溜めないようリード本体を時計回りに回転させながら挿入する操作。深部へ進むとV1誘導にRBBB様波形（R波が陽性となり qR 群または rSR' 群）が現れる。ペーシングによる障害電流（COI）とインピーダンスを同時にモニターする。",
-   "tags": "リード本体 回転 トルク RBBB波形 qR rSR V1 COI インピーダンス 中隔 LBBAP Abbott"
+   "short": "中隔内へリードを進めるために、トルクを溜めないようリード本体を時計回りに回転させながら挿入する操作。深部へ進むとV1誘導にRBBB様波形（R波が陽性となり qR 群または rSR' 群）が現れる。ペーシングによる傷害電流（COI）とインピーダンスを同時にモニターする。",
+   "tags": "リード本体 回転 トルク RBBB波形 qR rSR V1 COI インピーダンス 中隔 LBBAP Abbott 障害電流"
   },
   {
    "term": "単極ペーシング インピーダンス（LBBAP）",
@@ -9849,8 +9849,8 @@
    "cat": "植込み・手技",
    "device": "PM / CRT",
    "maker": "Abbott",
-   "short": "リードが中隔を貫通してLV内腔に達した状態。障害電流（COI）の大幅な変化や消失、インピーダンスの大幅な低下が手がかりになる。先端ユニポーラのCOIが陰性の場合、またはリングのCOIが先端のCOIより大きい場合は穿孔を疑う。",
-   "tags": "中隔穿孔 septal perforation COI 消失 陰性 リング 先端 インピーダンス低下 LBBAP Abbott"
+   "short": "リードが中隔を貫通してLV内腔に達した状態。傷害電流（COI）の大幅な変化や消失、インピーダンスの大幅な低下が手がかりになる。先端ユニポーラのCOIが陰性の場合、またはリングのCOIが先端のCOIより大きい場合は穿孔を疑う。",
+   "tags": "中隔穿孔 septal perforation COI 消失 陰性 リング 先端 インピーダンス低下 LBBAP Abbott 障害電流"
   },
   {
    "term": "LBBAP の測定目標値",
@@ -9859,8 +9859,8 @@
    "cat": "植込み・手技",
    "device": "PM / CRT",
    "maker": "Abbott",
-   "short": "ペーシング閾値は0.5msで1.5V未満、バイポーラセンシングは4mV超が良いとされる。顕著な障害電流があると最初は閾値が高く出ることがあるため、数分後に再テストする。",
-   "tags": "LBBAP 閾値 1.5V 0.5ms センシング 4mV 再テスト COI PSA測定 Abbott"
+   "short": "ペーシング閾値は0.5msで1.5V未満、バイポーラセンシングは4mV超が良いとされる。顕著な傷害電流があると最初は閾値が高く出ることがあるため、数分後に再テストする。",
+   "tags": "LBBAP 閾値 1.5V 0.5ms センシング 4mV 再テスト COI PSA測定 Abbott 障害電流"
   },
   {
    "term": "閾値テストによるLBB捕捉の判定",
@@ -10039,8 +10039,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "リードレス本体を固定したあと、テザーでつないだまま電気的パラメータを評価する状態。この状態でディフレクションテストを行い、傷害電流・ペーシング閾値・センシング・インピーダンスを再測定する。テザーモードではドッキングキャップとドッキングボタンの位置を揃える。",
-   "tags": "テザーモード tether mode 固定後 電気的パラメータ ディフレクションテスト ドッキングキャップ AVEIR リードレス Abbott"
+   "short": "リードレス本体を固定したあと、テザーでつないだまま電気的パラメータを評価する状態。この状態でディフレクションテストを行い、傷害電流・ペーシング閾値・センシング・インピーダンスを再測定する。テザーモードではドッキングキャップとドッキングボタンの位置を揃える。テザーの長さは切り替えられ、デバイスのローディング時と心室用LPのテスト時は**ショートテザー**、心房用LPの固定後は**ロングテザー（33mm）**にしてテンションテストを行う。",
+   "tags": "テザーモード tether mode 固定後 電気的パラメータ ディフレクションテスト ドッキングキャップ AVEIR リードレス Abbott ショートテザー ロングテザー 33mm テンションテスト"
   },
   {
    "term": "ディフレクション テスト",
@@ -10109,8 +10109,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "リードレス本体上のX線マーカ。スクリューイン前にシネで位置を確認し、LPコントロールノブを1秒に1クリックの速度でゆっくり回転させ、シェブロンマーカが1.5回転したら固定完了とする。",
-   "tags": "シェブロンマーカ chevron marker X線 シネ 1.5回転 1秒1クリック LPコントロールノブ 固定 AVEIR リードレス Abbott"
+   "short": "リードレス本体上のX線マーカ。スクリューイン前にシネで位置を確認し、LPコントロールノブを1秒に1クリックの速度でゆっくり回転させ、シェブロンマーカが1.5回転したら固定完了とする。心房用LPでも同じで、固定前にシネで開始位置を撮影し、1回転したところでいったん止めてから1.5回転まで回す。",
+   "tags": "シェブロンマーカ chevron marker X線 シネ 1.5回転 1秒1クリック LPコントロールノブ 固定 AVEIR リードレス Abbott 心房用LP 1回転 一時停止 開始位置 シネ"
   },
   {
    "term": "デュアル ヘリックス設計",
@@ -10149,8 +10149,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "心房用リードレスペースメーカ（AVEIR AR／AR2）の推奨留置部位。デュアルヘリックス設計により右心房内での固定性・安定性を確保する。",
-   "tags": "右心耳基部 right atrial appendage RAA 推奨留置部位 心房用LP AVEIR AR AR2 リードレス Abbott"
+   "short": "心房用リードレスペースメーカ（AVEIR AR／AR2）の推奨留置部位。デュアルヘリックス設計により右心房内での固定性・安定性を確保する。櫛状組織が緻密で安定性と安全性が得られること、右心室デバイスとの距離が近く i2i 通信に有利であることが理由で、IDE 試験では植込み全体の61.1％がこの部位だった。",
+   "tags": "右心耳基部 right atrial appendage RAA 推奨留置部位 心房用LP AVEIR AR AR2 リードレス Abbott 61.1% IDE i2i 距離 櫛状組織 緻密"
   },
   {
    "term": "低位中隔",
@@ -10189,8 +10189,8 @@
    "cat": "リードレス",
    "device": "Leadless",
    "maker": "Abbott",
-   "short": "AVEIR LPのデリバリー／リトリーバルカテーテル共用のイントロデューサ。外径27Fr／内径25Fr。長さは30cmと50cmの2種類（LSN25301／LSN25501）。止血弁を備えるため、カテーテル側のバルブバイパスツールを併用するとスムーズに挿入・操作できる。挿入前に血管または組織の拡張を行う。充填量は約30cc。",
-   "tags": "アヴェイルイントロデューサ Aveir Introducer 27Fr 25Fr 30cm 50cm LSN25301 LSN25501 止血弁 バルブバイパスツール 30cc AVEIR リードレス Abbott"
+   "short": "AVEIR LPのデリバリー／リトリーバルカテーテル共用のイントロデューサ。外径27Fr／内径25Fr。長さは30cmと50cmの2種類（LSN25301／LSN25501）。止血弁を備えるため、カテーテル側のバルブバイパスツールを併用するとスムーズに挿入・操作できる。挿入前に血管または組織の拡張を行う。充填量は約30cc。心房用LPの植込みでは、カテーテルの柔軟性を最大限に活かすため、シースを RA/IVC ジャンクションよりも低い位置にしておく。",
+   "tags": "アヴェイルイントロデューサ Aveir Introducer 27Fr 25Fr 30cm 50cm LSN25301 LSN25501 止血弁 バルブバイパスツール 30cc AVEIR リードレス Abbott RA/IVCジャンクション 低い位置 心房用LP"
   },
   {
    "term": "リードレスの推定電池寿命（実測ベース）",
@@ -10201,6 +10201,586 @@
    "maker": "Abbott",
    "short": "12か月フォローアップ時点の残存寿命に基づく推定電池寿命（中央値）。デュアルチャンバ（i2i通信On）では心房6.4年［5.9, 6.8］（N=263）・心室11.3年［10.6, 11.9］（N=265）、シングルチャンバモードに変更された患者では心房9.8年［7.7, 12.0］（N=44）・心室19.1年［17.0, 21.3］（N=48）。（R. Knops ほか、HRS 2024、2024年5月18日、ボストン）。カタログの予測寿命とは算出の前提が異なる。",
    "tags": "リードレス 推定電池寿命 実測 6.4年 11.3年 9.8年 19.1年 中央値 95%CI Knops HRS2024 i2i通信On シングルチャンバ AVEIR DR Abbott"
+  },
+  {
+   "term": "i2i 設定レベル",
+   "en": "i2i setting level",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR DR の i2i 通信の出力設定。**1〜7 の範囲**で設定し、プログラマの［i2i 設定管理］画面で −／＋ により増減する。レベルを上げると通信は通りやすくなるが電池を消費し、画面には「i2i 設定レベルを7にすると、バッテリーの寿命が短くなります」という注意書きが出る。電池寿命表の条件「i2i＝4/7」はレベル4を指す。ノミナルは資料に明記がない。",
+   "tags": "i2i設定レベル i2i setting level 1〜7 4/7 4/4 電池寿命 警告 i2i設定管理 AVEIR DR Abbott リードレス"
+  },
+  {
+   "term": "i2i スループット",
+   "en": "i2i throughput",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "i2i 通信がどれだけ届いているかを示す指標（％）。**RV → RA（V2A）と RA → RV（A2V）の方向別**に表示され、自動評価または手動調整で確認する。植込み時の当面の目標は両方向で通信が成立していることの確認で、細かい調整は後から行える。許容下限は資料に示されていない。",
+   "tags": "i2iスループット throughput V2A A2V RV→RA RA→RV 方向別 % 自動評価 AVEIR DR Abbott リードレス"
+  },
+  {
+   "term": "i2i 強度",
+   "en": "i2i strength",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "i2i 設定管理画面でスループットと並べて表示される通信強度の指標。★の数で示され、自動評価では方向別のテストごとに測定される。",
+   "tags": "i2i強度 i2i strength ★ 自動評価 方向別 AVEIR DR Abbott リードレス"
+  },
+  {
+   "term": "i2i 通信の距離と角度",
+   "en": "Inter-device distance and angle",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "i2i 通信のスループットを決める主因子。**RAO 30° で測った2デバイスのボタン間距離は 70mm 以下が理想**（70mm は心室用デバイス約2つ分の長さ）、**デバイスの相対角度は 40° 以下が理想**とされる。距離のほうが角度より制御しやすい。実測例では距離66mm・角度3° で V2A 99％／A2V 99％、距離135mm・角度84° では V2A 39％／A2V 68％まで低下した。",
+   "tags": "i2i 距離 角度 70mm 40度 RAO30 ボタン間 V2A A2V 66 135 84 スループット AVEIR DR Abbott リードレス"
+  },
+  {
+   "term": "ロング テザー／ショート テザー",
+   "en": "Long tether / Short tether",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR のデリバリーカテーテルでテザーの繰り出し長さを切り替えるモード。**ローディング時と心室用LPのテスト時はショートテザー**、**心房用LPの固定後はロングテザー（33mm）**にしてテンションテストを行う。ショートテザーへの切り替えは、LPコントロールノブのボタンを押し込みながらハンドルの白い部分を動かして行う。",
+   "tags": "ロングテザー ショートテザー long tether short tether 33mm ローディング テンションテスト LPコントロールノブ AVEIR Abbott リードレス"
+  },
+  {
+   "term": "テンション テスト",
+   "en": "Tension test",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "心房用LPの固定後に行う安定性の確認。ロングテザーにしたうえで、**テザーのたるみがなくなり、ドッキングボタンの動きが2〜3拍の間で抑えられるまでカテーテルをゆっくり引き戻す**。心室用LPではショートテザーモードでのディフレクションテスト（ドッキングボタンが30〜45°動くことの確認）にあたる。",
+   "tags": "テンションテスト tension test たるみ ドッキングボタン 2〜3拍 心房用LP ロングテザー 30〜45度 AVEIR Abbott リードレス"
+  },
+  {
+   "term": "右心房の植込み位置の考慮事項（リードレス）",
+   "en": "RA implant site considerations",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "心房用リードレスペースメーカの留置部位ごとの利害。**側壁（分界稜より前方）**は櫛状筋があるが、下方ほど強いディフレクションが必要になり固定時の安定性が落ちる。**右心耳深部**は脱落率が高く（4.4％ 対 0.9％）、組織が薄くパーフォレーションのリスクがあり、i2i 通信の距離も延びる。**中隔**はターゲットが小さく組織が薄い（左心房に入りうる）うえ到達が難しく、将来の経中隔手技の妨げになりうる（卵円窩は固定に適さない）。**後壁（分界稜より後方）**には櫛状筋がない。以上から推奨は右心耳基部。",
+   "tags": "右心房 植込み位置 側壁 右心耳深部 中隔 後壁 分界稜 櫛状筋 卵円窩 経中隔 4.4% 0.9% パーフォレーション AVEIR AR Abbott リードレス"
+  },
+  {
+   "term": "心房用LPのマッピング目標値",
+   "en": "Mapping targets (atrial LP)",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "心房用リードレスペースメーカのマッピングで目標とする値。**P波 > 1.0mV、閾値 ≦ 3.0V/0.4ms**。心房は組織が薄くインピーダンスが低く信号振幅も低いため、CEGM ではベースラインより上のS波とST上昇（＝組織の生存性と接触状態を示す波形変化）に注意する。マッピングはディフレクションとブレーキを解除した状態で行う。",
+   "tags": "マッピング 目標値 P波 1.0mV 閾値 3.0V 0.4ms CEGM S波 ST上昇 接触 生存性 ディフレクション解除 心房用LP AVEIR AR Abbott リードレス"
+  },
+  {
+   "term": "右心耳の同定（時計位置）",
+   "en": "RAA identification by clock position",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "リードレス心房デバイスの植込みで用いる目安。ピッグテール（またはデリバリーカテーテル）の本体が下大静脈内で時計の6時の位置にある状態を基準にすると、**RAO 30° では右心耳は通常1時の方向、LAO 30° では理想的な位置は通常10時〜11時の方向**にある。",
+   "tags": "右心耳 同定 時計 6時 1時 10時 11時 RAO30 LAO30 ピッグテール 下大静脈 AVEIR AR Abbott リードレス"
+  },
+  {
+   "term": "ピッグテール造影（リードレス植込み）",
+   "en": "Pigtail angiography",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR DR の植込みで、初期段階としてピッグテールカテーテルで右心房／右心室を造影しておく手順。以後のディフレクションと留置のロードマップとして使う（強く推奨）。心室単独の植込みでも、RV造影をロードマップにする。",
+   "tags": "ピッグテール 造影 ロードマップ 右心房 右心室 RV造影 初期段階 AVEIR Abbott リードレス"
+  },
+  {
+   "term": "ジグリング",
+   "en": "Jiggling",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "リリース操作でデバイスがすぐに外れないときに、LPコントロールノブをわずかにスライドさせるなどして揺さぶる操作。",
+   "tags": "ジグリング jiggling リリース LPコントロールノブ スライド AVEIR Abbott リードレス"
+  },
+  {
+   "term": "LP コントロール ノブ",
+   "en": "LP control knob",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "デリバリーカテーテル手元側のノブ。引くとカテーテルにデバイスをドッキングでき、時計方向にゆっくり回すとヘリックスがねじ込まれる（1秒に1クリック以上、1回転で一時停止し1.5回転まで）。ボタンを押し込みながらハンドルを動かすとテザーモードが切り替わる。",
+   "tags": "LPコントロールノブ LP control knob ドッキング 回転 1.5回転 1秒1クリック テザーモード リリースボタン AVEIR Abbott リードレス"
+  },
+  {
+   "term": "LP リリース ノブ",
+   "en": "LP release knob",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "デリバリーカテーテル手元側のノブ。LPコントロールノブを保持したうえで、リリースノブを引いて手前（反時計方向）に回すとテザーがずれてデバイスがリリースされる。外れないときはジグリングを行う。",
+   "tags": "LPリリースノブ LP release knob 反時計 リリース テザー ジグリング AVEIR Abbott リードレス"
+  },
+  {
+   "term": "ディフレクション ブレーキ",
+   "en": "Deflection brake",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "デリバリー／リトリーバルカテーテルのディフレクション角度を保持する機構。右心室に入ったら前進を止めてブレーキをかけ、マッピングの際にはディフレクションとブレーキを解除する。テザーモードではドッキングキャップとドッキングボタンの同軸位置をブレーキで維持する。",
+   "tags": "ディフレクションブレーキ deflection brake 保持 解除 マッピング 同軸 AVEIR Abbott リードレス"
+  },
+  {
+   "term": "ガイドカテーテル ハブロック",
+   "en": "Guide catheter hub lock",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "保護スリーブの位置を固定するロック。保護スリーブでLPを完全に覆ったうえでハブロックで固定し、マッピングの前にロックを解除して保護スリーブを完全に引き戻す。",
+   "tags": "ハブロック hub lock 保護スリーブ 固定 解除 引き戻し AVEIR Abbott リードレス"
+  },
+  {
+   "term": "マーカバンド（デリバリーカテーテル）",
+   "en": "Marker band",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "デリバリーカテーテルのシャフト上にある目印。イントロデューサ（30cm／50cm）内をどこまで進めたかの目安に使う。",
+   "tags": "マーカバンド marker band シャフト 30cm 50cm イントロデューサ 目安 AVEIR Abbott リードレス"
+  },
+  {
+   "term": "フラッシュ ライン（リードレス植込み）",
+   "en": "Flush lines",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR の植込みで用意するヘパリン加生理食塩水の点滴ライン。**4本を1滴／1秒で流す**。イントロデューサ側とデリバリーカテーテル側に重力滴下2本、加圧バッグ2本を割り当てる。IFU は血栓形成の可能性を低減するため適切な抗凝固療法を考慮すべきとしている。",
+   "tags": "フラッシュライン 4本 1滴1秒 ヘパリン加生理食塩水 重力滴下 加圧バッグ 抗凝固 IFU AVEIR Abbott リードレス"
+  },
+  {
+   "term": "全面ジェルタイプ電極",
+   "en": "Full-gel surface electrode",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR の伝導テレメトリで用いる体表面電極。5つの電極（RA・LA・LL・RL・C）を貼り、アーチファクトの可能性を排除するために全面がジェルのタイプが推奨される。",
+   "tags": "全面ジェル ゲル電極 体表面電極 5つ RA LA LL RL C アーチファクト 伝導テレメトリ AVEIR Abbott リードレス"
+  },
+  {
+   "term": "植込み時の心房閾値上昇（リードレス）",
+   "en": "Acute atrial threshold rise",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "心房用リードレスペースメーカでは、植込み手技中に心房の閾値が大幅に上昇することは珍しくないとされる（メーカー資料の記載）。マッピングの目標は 3.0V/0.4ms 以下だが、固定直後の値だけで判断しないという趣旨。",
+   "tags": "心房閾値 上昇 急性期 3.0V 0.4ms 固定直後 珍しくない AVEIR AR Abbott リードレス"
+  },
+  {
+   "term": "デュアルチャンバ リードレスの植込みステップ",
+   "en": "Implant workflow (dual-chamber LP)",
+   "abbr": "",
+   "cat": "リードレス",
+   "device": "Leadless",
+   "maker": "Abbott",
+   "short": "AVEIR DR の植込み手順。1回だけ行う A.検査室での準備と患者に対する準備／B.静脈アクセス に続き、各デバイスについて共通の6ステップ（①カテーテルとデバイスの準備 ②血管への挿入 ③目標位置までの操作 ④マッピングと固定 ⑤テザーとテスト ⑥リリース・取外し・プログラミング）を、心室用LP → 心房用LP の順に繰り返す。心室用LPはリリース後に目的の設定へプログラムし、心房用LPの植込み中はその設定で独立して動作を続ける。",
+   "tags": "植込みステップ 6ステップ ワークフロー 心室先行 心房後 A B 静脈アクセス 準備 マッピング 固定 テザー リリース プログラミング AVEIR DR Abbott リードレス"
+  },
+  {
+   "term": "ポリウレタン（リード絶縁材）",
+   "en": "Polyurethane",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "リード絶縁材の一つ。**物理的強度が強く（引き裂きや切り傷に強い）、摩擦係数が低いため血液中で滑りやすく操作性がよい。リードを細く作れる。**一方で硬く、生体安定性の点では **ESC（環境ストレスクラッキング）と MIO（金属イオン酸化）が発生しやすい**という弱点がある。",
+   "tags": "ポリウレタン polyurethane PU 絶縁材 強度 潤滑性 摩擦係数 細い 硬い ESC MIO 生体安定性 リード"
+  },
+  {
+   "term": "シリコン（リード絶縁材）",
+   "en": "Silicone",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "リード絶縁材の一つ。**生体安定性に優れ柔軟だが、物理的強度はポリウレタンに劣り（もろく）操作中に損傷を受けやすい。摩擦係数が高いため操作しづらく、リードは太くなる。**損傷機序はアブレージョン（摩耗）と裂傷。縫合スリーブにも用いられる。",
+   "tags": "シリコン シリコーン silicone 絶縁材 生体安定性 柔らかい 強度 もろい 摩擦係数 太い アブレージョン 裂傷 リード"
+  },
+  {
+   "term": "Optim（オプティム）",
+   "en": "Optim insulation",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "Abbott",
+   "short": "**ポリウレタンをベースにして作られたリード用の絶縁体で、シリコンとポリウレタンの長所を融合したハイブリッド素材。**ポリウレタン側からは強度と潤滑性、シリコン側からは生体内安定性とフレキシビリティを受け継ぐとされる。製品タブでは `insul` が「Optim/Si」「Optim」と表記されているリードが該当する。",
+   "tags": "Optim オプティム Optim Insulation ハイブリッド ポリウレタンベース 強度 潤滑性 生体内安定性 フレキシビリティ Abbott St. Jude Medical Tendril Isoflex 絶縁材"
+  },
+  {
+   "term": "ESC（環境ストレスクラッキング）",
+   "en": "Environmental Stress Cracking",
+   "abbr": "ESC",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "ポリウレタン絶縁の劣化機序の一つ。**体内組織の影響で劣化し、主にリードの外側からひび割れる。**顕微鏡像では表面が亀甲状に割れて見える。",
+   "tags": "ESC 環境ストレスクラッキング Environmental Stress Cracking ポリウレタン 外側 ひび割れ 体内組織 劣化 絶縁体不良"
+  },
+  {
+   "term": "MIO（金属イオン酸化）",
+   "en": "Metal Ion Oxidation",
+   "abbr": "MIO",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "ポリウレタン絶縁の劣化機序の一つ。**導線コイルと接触することによって、リードの内側から劣化する。**同軸構造では内側絶縁がアウターコイルと接するため、内側絶縁の劣化として現れることがある。**「銀イオンによる化学反応」ではなく Metal Ion Oxidation（金属イオン酸化）が正しい**（追補45でメーカー資料により訂正）。",
+   "tags": "MIO 金属イオン酸化 Metal Ion Oxidation ポリウレタン 内側 導線コイル 同軸 内側絶縁 劣化 絶縁体不良 訂正"
+  },
+  {
+   "term": "アブレージョン（摩耗）",
+   "en": "Abrasion",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "こすれによってリード絶縁が削られる損傷。**シリコン絶縁の主な損傷機序で、裂傷とあわせて問題になる。**メーカー資料の解析写真では、内側絶縁がコイルまで摩耗した例（コネクタ先端から約1〜2cm、約18cmの位置）が示されている。リード同士やリードと鎖骨・第1肋骨の接触部位で起こりやすい。",
+   "tags": "アブレージョン abrasion 摩耗 裂傷 シリコン 内側絶縁 コイル 接触 こすれ 絶縁体損傷 リード"
+  },
+  {
+   "term": "リード不具合の原因の内訳",
+   "en": "Causes of lead failure",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "植込み後年数ごとの原因別リード故障の報告（Kleeman ほか、Circulation 2007）。**絶縁不良が最大の原因で全体の56％**を占め、植込み後0〜3年で27/57、4〜6年で23/42、6年超で33/47。ほかは インピーダンス不良 4/57・7/42・3/47、Exit block 10/57・5/42・2/47、断線 8/57・3/42・7/47、センシング不良 8/57・4/42・2/47。**年数が経つほど絶縁不良の比率が上がる。**",
+   "tags": "リード不具合 原因 Kleeman Circulation 2007 56% 絶縁不良 insulation defect impedance failure exit block fracture sensing failure 0-3年 4-6年 6年超 エビデンス"
+  },
+  {
+   "term": "多条コイル導線",
+   "en": "Multifilar coil conductor",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "リードの導線は1本の針金ではなく、**3〜4本の線をより合わせてコイル状に巻いた構造**になっている。屈曲に対する耐久性を確保し、1本が折れても直ちに断線とならないための設計。中心にスタイレットを通す管腔（ルーメン）も確保できる。",
+   "tags": "多条コイル multifilar 3〜4本 コイル 導線 撚り 屈曲 耐久性 スタイレット ルーメン リード"
+  },
+  {
+   "term": "Twitching（局所筋刺激）",
+   "en": "Twitching",
+   "abbr": "",
+   "cat": "トラブル",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "ペーシング出力によって本体近傍の筋肉が刺激され、ぴくつきとして自覚される現象。**単極リードの欠点として挙げられる**（電流経路が本体缶まで広がるため）。双極へ切り替える、出力を下げるなどで対処する。横隔膜刺激とは部位が異なる。",
+   "tags": "Twitching ぴくつき 筋刺激 局所 単極 ユニポーラ ポケット 本体缶 双極へ切替 出力低下 横隔膜刺激 トラブル"
+  },
+  {
+   "term": "コネクタピン",
+   "en": "Connector pin",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "リード近位端の、本体のコネクタブロックに挿入する金属ピン。IS-1 ではピン径1.6mm・コネクタ径3.2mm。ショートピンとロングピンの別があり、旧規格では長さの違いが互換性の落とし穴になる。挿入後はセットスクリューで固定し、ピンがシールリングを越えて完全に入っていることを確認する。",
+   "tags": "コネクタピン connector pin 近位端 1.6mm 3.2mm ショートピン ロングピン セットスクリュー シールリング ルーズピン リード"
+  },
+  {
+   "term": "リードボディ",
+   "en": "Lead body",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "リードの本体部分。導線コイルとそれを覆う絶縁被膜からなる。太さは Fr（フレンチ）またはmmで表され、絶縁材や導線構造（同軸か平行か）で決まる。",
+   "tags": "リードボディ lead body 導線 絶縁被膜 Fr フレンチ 太さ 同軸 平行 リード"
+  },
+  {
+   "term": "Passive Lead／Active Lead",
+   "en": "Passive lead / Active lead",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "固定方式による経静脈リードの2分類。**Passive Lead（受動的固定）はタインドタイプ**で、心室用・心房用がある。**Active Lead（能動的固定）はスクリュータイプ**で、心房・心室の両用として使える製品が多い。",
+   "tags": "Passive Lead Active Lead 受動的固定 能動的固定 タインド スクリュー 心房用 心室用 両用 経静脈リード 分類"
+  },
+  {
+   "term": "ロープロファイル コネクタ（3.2mm）",
+   "en": "Low profile connector (3.2mm)",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM",
+   "maker": "General",
+   "short": "IS-1 以前の3.2mm系コネクタのうち、外径を抑えた形式。**メドトロニックタイプとコーディスタイプがあり、ショートピンとロングピンの別もある。**単極用は3.2mm 単極ロープロファイル（ロングピン）として区別される。IS-1 と形が似ていても互換とは限らないため、本体交換時に必ず確認する。",
+   "tags": "ロープロファイル low profile 3.2mm メドトロニックタイプ コーディスタイプ ショートピン ロングピン 単極 IS-1 互換 コネクタ"
+  },
+  {
+   "term": "二股コネクタ（5mm）",
+   "en": "Bifurcated connector (5mm)",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM",
+   "maker": "General",
+   "short": "双極リードの近位端が2本に分かれ、本体の2つのポートにそれぞれ差し込む旧規格のコネクタ。製品タブでは `connector` が「5mm二股」と表記されている。極性を取り違えないよう、どちらがチップ（陰極）側かを確認して接続する。",
+   "tags": "二股 5mm bifurcated コネクタ 旧規格 双極 チップ 陰極 リング 陽極 接続 コネクタ"
+  },
+  {
+   "term": "インライン コネクタ（6mm）",
+   "en": "In-line connector (6mm)",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM",
+   "maker": "General",
+   "short": "1本のピンに陰極と陽極を直列に並べた旧規格の双極コネクタ（6mm 双極インライン）。同じ6mmでも**双極同軸**タイプが別にあり、形式が違えば互換性はない。IS-1 はこのインライン方式を標準化したもの。",
+   "tags": "インライン in-line 6mm 双極同軸 コネクタ 旧規格 直列 陰極 陽極 IS-1 互換"
+  },
+  {
+   "term": "Fallback Mode Switch（FMS）",
+   "en": "Fallback Mode Switch",
+   "abbr": "FMS",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM のモードスイッチの正式名称。**洞調律時には房室同期を保ち、頻拍性心房不整脈の発生時には房室非同期モード（DDI(R)）へ移行して、ペースメーカ起因性頻拍の発生を回避するアルゴリズム。**DDD(R)／SafeR(R) ⇔ DDI(R) を行き来する。全機種（ペースメーカ・ICD）に搭載。",
+   "tags": "Fallback Mode Switch FMS フォールバック モードスイッチ DDI(R) DDD(R) SafeR MicroPort CRM 房室非同期 PMT回避"
+  },
+  {
+   "term": "FMS 第1基準／第2基準",
+   "en": "FMS first / second criterion",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "Fallback Mode Switch が DDI(R) へ移行する2つの基準。**第1基準＝32心周期のうち28周期以上（87.5％）がサスピション。第2基準＝32心周期のうち18周期以上（56％）がサスピションという状態が2ブロック（32＋32心周期）連続したとき。**第2基準は心房細動のアンダーセンシング（突然の心房波高の減少）でも取りこぼさないために設けられている。",
+   "tags": "FMS 第1基準 第2基準 32心周期 28周期 18周期 87.5% 56% サスピション アンダーセンシング 心房細動 モードスイッチ MicroPort"
+  },
+  {
+   "term": "フォールバック時のエスケープインターバル延長",
+   "en": "Escape interval extension on fallback",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "DDI(R) へスイッチした直後の動作。**センサレートまたは基本レートに達するまで、12サイクルごとに心室エスケープインターバルを30ms ずつ延長する。**心室レートを急に落とさず、階段状になだらかに下げる。",
+   "tags": "エスケープインターバル 延長 12サイクル 30ms フォールバック DDI(R) センサレート 基本レート MicroPort"
+  },
+  {
+   "term": "心房頻拍の終了判定（FMS）",
+   "en": "Termination of atrial tachycardia (FMS)",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "DDI(R) から DDD(R) へ戻る条件。**24サイクルで Ap-Vp が発生し、かつ最新の12サイクルで PAC がないと DDD に切り替わる。**",
+   "tags": "終了判定 復帰 24サイクル Ap-Vp 12サイクル PAC DDD 復帰条件 FMS MicroPort"
+  },
+  {
+   "term": "Ar マーカ",
+   "en": "Ar marker",
+   "abbr": "Ar",
+   "cat": "心電図",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM のマーカ表記で、**不応期内（WARAD 内・PVARP 内）に感知された心房イベント**を示す。**WARAD 内で感知された心房イベントはすべて Ar になる。**Ar が並ぶこと自体はモードスイッチを意味しない。**Ar-Vp の AVD が 31ms の間は DDD モードで動作している。**",
+   "tags": "Ar マーカ 不応期 心房センス WARAD PVARP As Ap Vp 31ms DDD MicroPort マーカー"
+  },
+  {
+   "term": "SafeR",
+   "en": "SafeR",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM の心室ペーシング抑制モード。**心室収縮を常に監視しながら AAI(R) で動作し、不要な心室ペーシングを抑制して、必要なときだけ DDD(R) へ移行する**（連続房室伝導モニタリング）。AAI→DDD は4つの房室ブロック基準、DDD→AAI は2つのスイッチバック基準で決まる。**電池寿命にも効き、メーカー資料では Eno DR が DDDR 8.9年に対し SafeR ON で 12.1年とされている。**",
+   "tags": "SafeR Safe-R AAI DDD 心室ペーシング抑制 モード変換型 連続房室伝導モニタリング 8.9年 12.1年 MicroPort CRM ENO KORA"
+  },
+  {
+   "term": "SafeR の房室ブロック基準",
+   "en": "AV block criteria (SafeR)",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "AAI(R) から DDD(R) へ移行する4条件。**Ⅲ度AVB基準＝2連続のR波欠如。Ⅱ度AVB基準＝連続する最新の12サイクル中3サイクルで心室波が欠如。Ⅰ度AVB基準＝設定したPR間隔以上が6連続。ポーズ基準＝設定した時間に達する心室ポーズの発生。**どの基準で移行したかは AIDA の［AV conduct.］で確認できる。",
+   "tags": "SafeR AVB基準 Ⅲ度 2連続 Ⅱ度 12サイクル 3サイクル Ⅰ度 6連続 PR間隔 ポーズ基準 AAI DDD MicroPort"
+  },
+  {
+   "term": "SafeR のポーズ基準の動作",
+   "en": "Pause criterion behaviour (SafeR)",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "ポーズ基準を満たしたときの出方。**ポーズ基準終了タイミングから500ms以内にP波がなければ、その時点でAペース＋AVディレイ後にVペースを行う。500ms以内にP波が出現してもAAI動作中なのでVペースは追従しない。**ポーズ基準終了タイミングからAVDぶん遡った期間内にP波が出た場合は、Aセンス＋AVディレイ後にVペースとなる。",
+   "tags": "ポーズ基準 500ms P波 Aペース AVディレイ Vペース 追従しない AAI動作中 3秒 SafeR MicroPort"
+  },
+  {
+   "term": "SafeR のスイッチバック基準",
+   "en": "Switch-back criteria (SafeR)",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "DDD(R) から AAI(R) へ戻る条件。**基準1＝DDDモードで動作中、12サイクル連続して心室波をAVD内でセンシング。基準2＝DDDモードで100サイクル動作。**加えて毎朝8時の房室伝導テストでも確認する。",
+   "tags": "スイッチバック 基準1 基準2 12サイクル AVD内センシング 100サイクル 毎朝8時 房室伝導テスト SafeR MicroPort"
+  },
+  {
+   "term": "AAI スイッチバックの安全機構",
+   "en": "Safety mechanism against AAI switch-back",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "房室ブロックが頻繁な症例で AAI に戻りすぎないための仕組み。次のいずれかで**翌朝8:00までDDDモードに留まる**。①最新の1時間で50％以上のAVBイベント、②最新の24時間で45回のAVBイベントの発生、③24時間以内に15回のAVBイベントからなるAVBエピソード3回が3日連続。",
+   "tags": "安全機構 AAIスイッチバック 翌朝8時 1時間50% 24時間45回 15回 3回 3日連続 AVBイベント SafeR MicroPort"
+  },
+  {
+   "term": "Long PR max／min",
+   "en": "Long PR max / min",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "SafeR のⅠ度房室ブロック基準に使う PR 間隔のしきい値。**レート依存で、基本レートまでは Long PR max、最大レートに向かって直線的に Long PR min まで短くなる。**プログラマ画面の例では max 350ms／min 250ms、AVB I switch は Rest+Exer、Max pause は 3s。",
+   "tags": "Long PR max min 350ms 250ms レート依存 基本レート 最大レート AVB I switch Rest+Exer Max pause 3s SafeR MicroPort"
+  },
+  {
+   "term": "Pseudo AAI",
+   "en": "Pseudo AAI",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "D-Plus で房室伝導が確認できているときの動作状態。**DDD のまま AVD を延長して自己房室伝導を待つため、見かけ上は AAI と同じで心室スパイクが出ない。**8サイクル連続の心室センシングでこの状態へスイッチする。",
+   "tags": "Pseudo AAI 疑似AAI D-Plus AVD延長 8サイクル 心室センシング 自己房室伝導 MicroPort"
+  },
+  {
+   "term": "AIDA",
+   "en": "AIDA",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM の診断機能。プログラマの［Diagnos. AIDA］から開き、**［Summary］［PM］［Arrhythmias］［AV conduct.］**のタブで解析期間（画面例 6 months）ぶんのデータを提示する。所見文（例：「The PM switches to DDD mainly on Pause and AVB II criteria.」）と、Autosensing／Statistics／Lead Measurements／AutoThreshold Curve／Battery curve などのグラフを選んで表示できる。",
+   "tags": "AIDA 診断機能 Diagnos Summary PM Arrhythmias AV conduct 6 months 所見 Battery curve AutoThreshold Autosensing MicroPort"
+  },
+  {
+   "term": "AVB エピソードテーブル",
+   "en": "AVB episode table",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / CRT",
+   "maker": "MicroPort CRM",
+   "short": "AIDA の［AV conduct.］タブにある集計表。**Pause・AVB Ⅰ・AVB Ⅱ・AVB Ⅲ の各行を Day in exer（日中労作時）／Day at rest（日中安静時）／Night distr.（夜間）／Total に分けて表示する。**表の下に「フォロー期間中のスイッチ総数」が出るが、**1つのAVBエピソードが複数のDDDスイッチにつながることがある**と注記されており、エピソード数とスイッチ回数は一致しない。",
+   "tags": "AVBエピソードテーブル AV conduct Day in exer Day at rest Night distr Total Pause AVB I II III スイッチ回数 AIDA SafeR MicroPort"
+  },
+  {
+   "term": "Twin Trace",
+   "en": "Twin Trace",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM",
+   "maker": "MicroPort CRM",
+   "short": "KORA 250／ENO のレートレスポンス。**G センサ（加速度）と MV センサ（分時換気量）を組み合わせたデュアルセンサレスポンス。**電池寿命の算出条件にも「Sensor G ON」「MV+Gセンサ ON」として現れる。",
+   "tags": "Twin Trace デュアルセンサ Gセンサ 加速度 MVセンサ 分時換気量 レートレスポンス KORA250 ENO MicroPort"
+  },
+  {
+   "term": "SAM（睡眠呼吸障害のスクリーニング）",
+   "en": "Sleep Apnea Monitoring",
+   "abbr": "SAM",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM の睡眠呼吸障害スクリーニング機能。分時換気量センサから得た呼吸のデータをもとに、睡眠時無呼吸の指標を記録する。KORA 250／ENO に搭載。",
+   "tags": "SAM Sleep Apnea Monitoring 睡眠呼吸障害 スクリーニング 分時換気量 MVセンサ KORA250 ENO MicroPort 無呼吸"
+  },
+  {
+   "term": "B.O.S.／R.R.T./E.O.S.",
+   "en": "Beginning of Service / Recommended Replacement Time / End of Service",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM が使う電池ステータスの呼称。**B.O.S.（Beginning Of Service）＝一般に言う BOL、R.R.T.（Recommended Replacement Time）＝ERI にあたる推奨交換時期、E.O.S.（End Of Service）＝EOL。**プログラマのバッテリーステータス欄には B.O.S.＝96 min⁻¹、R.R.T.＝80 min⁻¹ のようにマグネットレートで表示される。",
+   "tags": "B.O.S. R.R.T. E.O.S. BOL ERI EOL Beginning of Service Recommended Replacement Time End of Service 96 80 マグネットレート MicroPort 電池"
+  },
+  {
+   "term": "電池内部抵抗による交換指標",
+   "en": "Battery impedance as replacement indicator",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM のペースメーカは**電池抵抗（内部抵抗）の増加を交換までの指標にしている。**内部抵抗が上がるとマグネットレートが下がり、RRT に近づく。**BOL＜3kΩ で96 min⁻¹、10kΩ で80 min⁻¹＝RRT、14kΩ超で70 min⁻¹＝EOS。電池抵抗が3kΩを超えると電池の減りが速くなる。**電池評価は毎日行われる。",
+   "tags": "電池内部抵抗 電池抵抗 kΩ マグネットレート 96 80 70 3kΩ 10kΩ 14kΩ BOL RRT EOS 毎日測定 MicroPort"
+  },
+  {
+   "term": "マグネットレートと電池抵抗の対応（MicroPort）",
+   "en": "Magnet rate vs battery impedance",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "資料の対応表。マグネットレート（min⁻¹）／電池内部抵抗（kΩ）＝ 96／＜3、95／3、94／4、93／5、91／6、90／7、89／7.5、88／8、86／8.5、83／9、82／9.5、**80／10（RRT）**、78／11、75／12、73／13、**70／14以上（EOS）**。",
+   "tags": "マグネットレート 電池内部抵抗 対応表 96 95 94 93 91 90 89 88 86 83 82 80 78 75 73 70 3 10 14 kΩ RRT EOS MicroPort"
+  },
+  {
+   "term": "Time to RRT",
+   "en": "Time to RRT",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "交換指標（RRT）までの予想残存年数の表示。**括弧内の Min は最短計算寿命で、バッテリ特性の変動に対応するために表示され、3年未満のときに出る。**寿命計算には 電池抵抗・リード抵抗・統計解析（ペーシング率）・プログラム設定を使う。**「Time to RRT = N/A」と出るのは、解析が5分に満たない場合（植込み時の最初のテレメトリ、デバイスのリセットなど）と、測定されたリード抵抗値が範囲外（200〜3,000Ω）の場合。**",
+   "tags": "Time to RRT 残存年数 Min 最短計算寿命 3年未満 N/A 5分 リセット リード抵抗 200 3000Ω 電池抵抗 ペーシング率 MicroPort"
+  },
+  {
+   "term": "RRT表示の背景色",
+   "en": "Colour coding of Time to RRT",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "バッテリーステータスのメッセージ背景色。**灰色＝RRT最小期間が12ヵ月を超える、黄色＝12ヵ月以下、オレンジ＝3ヵ月未満、赤＝RRT到達後（RRT has been reached）。**",
+   "tags": "背景色 灰色 黄色 オレンジ 赤 12ヵ月 3ヵ月 RRT has been reached バッテリーステータス MicroPort"
+  },
+  {
+   "term": "RRT後の設定復帰（24時間）",
+   "en": "Reversion to RRT settings after 24 hours",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "MicroPort CRM",
+   "short": "RRT に達すると **VVI・70 min⁻¹ に設定される（出力・感度・極性は変更しない）。RRT後にプログラム変更を行っても、24時間後には再び RRT 設定に戻る。**",
+   "tags": "RRT後 VVI 70ppm 出力 感度 極性 変更なし 24時間 復帰 再プログラム MicroPort 電池"
+  },
+  {
+   "term": "KORA 250／ENO",
+   "en": "KORA 250 / ENO",
+   "abbr": "",
+   "cat": "デバイス構造",
+   "device": "PM",
+   "maker": "MicroPort CRM",
+   "short": "MicroPort CRM のペースメーカ。**寸法 41.2×41.5×6.1mm。**Safe-R（AAI⇔DDD）・D Plus（AVディレイ自動調節）・Twin Trace（GセンサとMVセンサのデュアルセンサレスポンス）・SAM（睡眠呼吸障害のスクリーニング）・AIDA（診断機能）を搭載し、**条件付き1.5T&3T全身MRIスキャンに対応。**予測寿命は SR 10.7年／DR 11.6年（KORA250 の条件）、ENO DR は DDDR 100％ペーシングで8.9年・SafeR ON で12.1年。販売名は「コーラ 250」（承認番号 22800BZI00002000）。",
+   "tags": "KORA 250 KORA250 ENO Eno コーラ250 41.2 41.5 6.1mm SafeR D Plus Twin Trace SAM AIDA MRI 3T フルボディ 10.7年 11.6年 8.9年 12.1年 8cc TPM010J TPM013J TPM014J TPM015J MicroPort"
   }
  ],
  "feats": [
