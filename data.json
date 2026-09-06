@@ -1,5 +1,5 @@
 {
- "v": 47,
+ "v": 48,
  "updated": "2026-09-06",
  "gloss": [
   {
@@ -11309,8 +11309,8 @@
    "cat": "モード",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**モードスイッチ終了後のベーシックレートを、設定された時間だけ一時的に上昇させる機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Post ModeSw rate＝+10ppm（Off、+5〜+50ppm）5拍刻み、Post ModeSw duration＝1min（1〜30min）1分刻み。****ModeSw 終了後には設定されたモード・AV ディレイで作動するため、Post ModeSw 中は設定されたレートのみが変化する。****Post ModeSw rate／Post ModeSw duration は Amvia Sky から搭載された。**心房細動が止まった直後の再発を抑える趣旨で、Medtronic の PMOP（Post Mode Switch Overdrive Pacing）と近い位置づけ。",
-   "tags": "Post ModeSw rate duration +10ppm Off +5 +50ppm 1min 1-30min Amvia Skyから搭載 PMOP 再発抑制 BIOTRONIK"
+   "short": "**モードスイッチ終了後のベーシックレートを、設定された時間だけ一時的に上昇させる機能**（追補49・追補51）。**Post ModeSw rate＝+10bpm（+5〜+50bpm、5bpm刻み）、Post ModeSw duration＝+1min（1〜30min、1分刻み）** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**ModeSw 終了後には設定されたモード・AV ディレイで作動するため、Post ModeSw 中は設定されたレートのみが変化する。****Post ModeSw rate／duration は Amvia Sky から搭載された。****狙いは ERAF（早期の心房細動再発）の予防で、Amvia Sky には Atrial overdrive が非搭載のためこの機能が代役を務める。**資料は**「心房細動の予防を考えると過去の報告で 70ppm では十分ではないという報告もあるため、予防効果を高めるためには 80ppm に設定することも検討する」**と注記している。Medtronic の PMOP（Post Mode Switch Overdrive Pacing）と近い位置づけ。",
+   "tags": "Post ModeSw rate duration +10bpm +5 +50bpm 5bpm刻み +1min 1-30min ERAF 早期再発 80ppm Atrial overdrive非搭載 Amvia Skyから搭載 PMOP BIOTRONIK"
   },
   {
    "term": "Rate stabilization during mode switching",
@@ -11629,8 +11629,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "Amvia Sky に搭載された心房抗頻拍ペーシング治療（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**流れは ①心房頻脈検出 → ②リード位置チェック → ③心調律安定性チェック → ④ATP治療 → ⑤繰返しインターバル／リズム変化時の繰返し → ⑥心房頻脈治療終了 →（治療待機時間）→ ① という循環。****ATP は［1st ATP］［2nd ATP］の2段構え。**画面例は 1st ATP＝10*Ramp／2nd ATP＝10*Ramp、Repetition interval [h]＝2、Repetition through rhythm change＝ON、Therapy delay＝OFF。**ATP 中は Backup stimulation として VVI・70bpm が働く。****AT/AF の治療可能な頻拍のレートは 300bpm 未満。**",
-   "tags": "Atrial ATP Therapy 心房ATP aATP Amvia Sky 1st ATP 2nd ATP Ramp Repetition interval Repetition through rhythm change Therapy delay Backup stimulation VVI 70bpm 300bpm未満 リード位置チェック 心調律安定性チェック BIOTRONIK"
+   "short": "Amvia Sky シリーズ（DR-T／HF-T QP／HF-T BP）に搭載された心房抗頻拍ペーシング治療（追補50・追補51）。**フローチャートは4段階。①心房性頻脈の検出（AT/AF detection［36 out of 48］／Therapy delay）→ ②Atrial ATP 治療前（リズム安定性チェック／リード位置チェック）→ ③Atrial ATP 治療（Burst/Ramp 治療／繰返しインターバル治療／リズム変化時繰返し治療）→ ④エピソード終了（AT/AF termination［20 out of 24］）** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**治療前には【リード位置チェック】と【心房調律安定性チェック】が必ず行われる。****チェックは「毎日行う Daily checks」と「治療直前の Last minute checks」の二重構造。****心房ATP出力は 6.0V／1.5ms 固定。****ATP 中は Backup stimulation（画面例 VVI・70bpm）が働く。****AT/AF の治療可能な頻拍のレートは 300bpm 未満。****対象は true AF ではなく “周期が安定している AF（organized AF）”。**",
+   "tags": "Atrial ATP Therapy 心房ATP aATP Amvia Sky DR-T HF-T QP HF-T BP 4段階 フローチャート 36 out of 48 20 out of 24 Daily checks Last minute checks リード位置チェック 心房調律安定性チェック 6.0V 1.5ms Backup stimulation 300bpm未満 organized AF BIOTRONIK"
   },
   {
    "term": "AT/AF detection",
@@ -11639,8 +11639,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**心房頻拍・心房細動を検出するためのレート設定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。プログラマの Tachycardia タブに置かれ、**画面例は Rate＝170bpm。****AT/AF の治療可能な頻拍のレートは 300bpm 未満**で、それより速いものは治療の対象にならない。検出したあと、実際に ATP を出すかどうかは心調律安定性チェックと HVR detection の条件で決まる。",
-   "tags": "AT/AF detection 170bpm 300bpm未満 Tachycardiaタブ 心房頻拍検出 Amvia Sky BIOTRONIK"
+   "short": "**心房頻拍・心房細動を検出するためのレート設定**（追補50・追補51）。プログラマの Tachycardia タブに置かれ、**画面例は Rate＝170bpm と 200bpm の2例**（Interval [ms] 表示では 300ms）。**検出の基準は［36 out of 48］、終了の基準（AT/AF termination）は［20 out of 24］** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**AT/AF の治療可能な頻拍のレートは 300bpm 未満**で、それより速いものは治療の対象にならない。設定画面の「HAR limit」には 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm と ms を切り替えられる（ms と読むと 250〜100bpm の10bpm刻みに一致するが、資料に範囲の明記はない）。**AT/AF 検出は Ars マーカでは行われない。**検出したあと実際に ATP を出すかどうかは、リズム安定性チェック・リード位置チェック・HVR detection の条件で決まる。",
+   "tags": "AT/AF detection 170bpm 200bpm 300ms 36 out of 48 20 out of 24 HAR limit 300bpm未満 Arsマーカでは検出されない Tachycardiaタブ 心房頻拍検出 Amvia Sky BIOTRONIK"
   },
   {
    "term": "HVR detection",
@@ -11649,8 +11649,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**心室レートが速いときに心房ATPを抑止するための安全側の判定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は Rate＝200bpm、Detection counter＝8。****HVR detection は心室レートでのみ評価を行っているため、1:1AT などの上室性頻脈であっても、設定レートを超える心室レートが検出されると治療は行われない。**「心房頻拍なのに ATP が出ていない」ときは、まず心室レートを確認する。",
-   "tags": "HVR detection High Ventricular Rate 200bpm Detection counter 8 心室レート 1:1AT 上室性頻脈 治療抑止 Amvia Sky BIOTRONIK"
+   "short": "**心室レートが速いときに心房ATPを抑止するための安全側の判定**（追補50・追補51）。**画面例は Rate＝200bpm、Detection counter＝8。****HVR の設定を超える心室イベントが確認されると治療は行わない。****タイミングによって結果が違う点が要点で、治療直前の高心室レート検出は “Inhibit（抑制）”、治療後の高心室レート検出は “Blocked（停止）” になる** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。抑制の場合は『Repetition through rhythm change』が設定されていて調律の変化が確認され、心室レートが HVR 未満であれば治療が再開する。**Atrial ATP を設定するときは HVR が “ON” になる。****心室レートでのみ評価するため、1:1AT などの上室性頻脈でも設定レートを超える心室レートが検出されると治療は行われない。**「心房頻拍なのに ATP が出ていない」ときは、まず心室レートを確認する。",
+   "tags": "HVR detection High Ventricular Rate 200bpm Detection counter 8 Inhibit Blocked 治療直前 治療後 心室レート 1:1AT 上室性頻脈 治療抑止 Amvia Sky BIOTRONIK"
   },
   {
    "term": "Therapy delay",
@@ -11659,8 +11659,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "心房頻拍を検出してから ATP を開始するまでの待機時間（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**ノミナルは OFF。**資料は理由を**「Atrial ATP Therapy は安定しているイベントのみ治療を行うため」**と説明している。治療の前段に**リード位置チェックと心調律安定性チェック**が入る設計になっているため、待機時間を別に設ける必要がない、という考え方。",
-   "tags": "Therapy delay OFF ノミナル 待機時間 安定しているイベント 心調律安定性チェック リード位置チェック Amvia Sky BIOTRONIK"
+   "short": "心房頻拍を検出してから ATP を開始するまでの待機時間（治療待機時間）（追補50・追補51）。**ノミナルは OFF。****設定範囲は OFF／1〜10min（1分刻み）／15・20・25・30・35・40・45・50・55min（5分刻み）／1〜24h（1時間刻み）** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料は OFF がノミナルである理由を**「Atrial ATP Therapy は安定しているイベントのみ治療を行うため」**と説明する一方、**「心房性不整脈が自然停止する可能性を考慮して、心房ATP送出までの治療待機時間を設定できます」**とも注記している。治療の前段に**リード位置チェックと心調律安定性チェック**が必ず入る設計なので、待機時間を別に設ける必要が薄い。",
+   "tags": "Therapy delay 治療待機時間 OFF ノミナル 1-10min 15-55min 1-24h 自然停止 安定しているイベント Amvia Sky BIOTRONIK"
   },
   {
    "term": "Repetition interval／Repetition through rhythm change",
@@ -11669,8 +11669,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "心房ATPを繰り返す条件の設定（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**Repetition interval [h]＝ATP治療を繰り返す間隔を時間単位で決める（画面例は 2）。****Repetition through rhythm change＝ON にすると、リズムが変化したときにも繰り返しを行う（画面例は ON）。**資料の循環図では「繰返しインターバル」「リズム変化時の繰返し」として ATP治療 と 心房頻脈治療終了 のあいだに置かれている。",
-   "tags": "Repetition interval Repetition through rhythm change 2時間 ON リズム変化 繰返し 循環図 Amvia Sky BIOTRONIK"
+   "short": "心房ATPを繰り返す条件の設定（追補50・追補51）。**Repetition interval [h]＝OFF, 2, 4, 7, 12, 24, 36。プログラムされた一定時間が経過すると、あらためて心房ATPを送出する** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。起点は**「最後の Atrial ATP therapy、もしくは最後に抑制された治療」**で、次の AT/AF Detection のあとにリズム安定性チェックとリード位置チェックを経て 1st ATP が出る。**Repetition through rhythm change＝OFF／ON。リズムチェンジの定義には治療前の8つのインターバルの中央値を使用する。****エピソードが持続している場合には10分毎に治療直前の中央値を再計算し、治療抑制されたイベントが継続している場合に、再計算された中央値と保存された中央値に 50ms 以上の解離があり、かつエピソードが安定化していれば “rhythm change” と判断する**（資料の例：280ms → 340ms）。**比較の相手は、エピソードの最初の検出時（治療・抑制に関わらず）に保存されたインターバルである。**資料は**「Repetition interval は停止せず継続しているエピソードの治療回数を増加させる可能性があります」**とも注記している。",
+   "tags": "Repetition interval OFF 2 4 7 12 24 36 h Repetition through rhythm change ON OFF 中央値 8インターバル 10分毎 50ms 280ms 340ms 繰返し Amvia Sky BIOTRONIK"
   },
   {
    "term": "1st ATP／2nd ATP（Amvia Sky）",
@@ -11679,8 +11679,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "Amvia Sky の心房ATPの詳細設定画面（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**項目は Attempts（試行回数）／ATP type／Number S1／Add S1／P-S1 interval [%]／S1 decrement [ms]／Scan decrement [ms] の7つで、1st ATP と 2nd ATP に別々の値を持てる。**画面例は Attempts 10／10、ATP type Ramp／Ramp、Number S1 13／13、Add S1 ON／ON、**P-S1 interval 90%／80%**、S1 decrement 10ms／10ms、Scan decrement OFF／OFF。**同じ画面に Backup stimulation（70bpm・VVI）が並ぶ。**",
-   "tags": "1st ATP 2nd ATP Attempts ATP type Number S1 Add S1 P-S1 interval S1 decrement Scan decrement Ramp 10 13 90% 80% 10ms OFF Backup stimulation 70bpm VVI Amvia Sky BIOTRONIK"
+   "short": "Amvia Sky の心房ATPの詳細設定画面（追補50・追補51）。**［1st ATP］［2nd ATP］の2つのモジュールに、それぞれ別の値を持てる。****項目と設定範囲は Attempts＝OFF, 1〜10／ATP type＝Burst／Ramp／Number S1＝1〜15／Add S1＝OFF・ON／P-S1 interval [%]＝70, 75, 80, 85, 88, 90, 95／S1 decrement [ms]＝5〜40（5ms刻み）／Scan decrement [ms]＝OFF, 5〜40（5ms刻み）** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**同じ画面の下段に Backup stimulation [bpm]＝70／90 と Mode＝OFF／VVI が並ぶ。****心房ATP出力は 6.0V／1.5ms 固定（設定変更不可）。****Atrial Therapy Sequence 図では、1st Atrial ATP モジュールの後に「確認時間：30s」、2nd Atrial ATP モジュールの後に「確認時間：90s」が置かれている。**画面例は Attempts 10／10、ATP type Ramp／Ramp、Number S1 13／13、Add S1 ON／ON、P-S1 interval 90／80、S1 decrement 10／10、Scan decrement OFF／OFF。",
+   "tags": "1st ATP 2nd ATP Attempts ATP type Burst Ramp Number S1 Add S1 P-S1 interval S1 decrement Scan decrement 設定範囲 確認時間 30s 90s 6.0V 1.5ms Backup stimulation 70 90 VVI Amvia Sky BIOTRONIK"
   },
   {
    "term": "Backup stimulation（Atrial ATP）",
@@ -11689,8 +11689,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "心房ATPを行っているあいだに働くバックアップペーシング（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は 70bpm・Mode VVI。**心房へ高頻度の刺激を出すあいだ心室が保護されるようにするための設定で、［1st and 2nd ATP］画面の下段に置かれている。徐脈時のバックアップモード（ERI 到達時などに自動で切り替わる安全動作）とは別項目なので混同しない。",
-   "tags": "Backup stimulation 70bpm VVI 心房ATP中 心室保護 バックアップモードとは別 Amvia Sky BIOTRONIK"
+   "short": "心房ATPを行っているあいだに働くバックアップペーシング（追補50・追補51）。**設定範囲は 70／90 bpm、Mode は OFF／VVI**（画面例は 70bpm・VVI） （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。心房へ高頻度の刺激を出すあいだ心室が保護されるようにするための設定で、［1st and 2nd ATP］画面の下段に置かれている。**資料は「Backup ペーシングの設定は、治療中ならびに治療前後でのペーシングの有無を十分検討してください」と注記している。**徐脈時のバックアップモード（ERI 到達時などに自動で切り替わる安全動作）とは別項目なので混同しない。",
+   "tags": "Backup stimulation 70 90 bpm VVI OFF 心房ATP中 治療前後 心室保護 バックアップモードとは別 Amvia Sky BIOTRONIK"
   },
   {
    "term": "P-S1 interval",
@@ -11699,8 +11699,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "心房ATPの**最初の刺激（S1）を、直前のP波からどのタイミングで出すかを頻拍周期に対する％で決める設定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。他社でいう連結期（カップリングインターバル）にあたる。**画面例は 1st ATP＝90%、2nd ATP＝80%** で、2回目のほうが短く（頻拍周期に食い込む向きに）設定されている。**S1 decrement [ms]** はシーケンスごとに間隔を短縮する量（画面例 10ms）、**Scan decrement [ms]** はスキャンによる短縮量（画面例 OFF）。",
-   "tags": "P-S1 interval 90% 80% 連結期 カップリングインターバル S1 decrement 10ms Scan decrement OFF Ramp Amvia Sky BIOTRONIK"
+   "short": "心房ATPの**最初の刺激（S1）を、直前のP波からどのタイミングで出すかを頻拍周期に対する％で決める設定**（追補50・追補51）。他社でいう連結期（カップリングインターバル）にあたる。**設定範囲は 70／75／80／85／88／90／95 [%]** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**画面例は 1st ATP＝90%、2nd ATP＝80%** で、2回目のほうが短く（頻拍周期に食い込む向きに）設定されている。値が小さいほど深く食い込むため捕捉しやすいが、心房細動へ移行させるリスクも上がる。",
+   "tags": "P-S1 interval 70 75 80 85 88 90 95 % 90% 80% 連結期 カップリングインターバル 設定範囲 Ramp Amvia Sky BIOTRONIK"
   },
   {
    "term": "Number S1／Add S1",
@@ -11709,8 +11709,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "心房ATPの**1シーケンスあたりの刺激発数（Number S1）と、追加の S1 を出すかどうか（Add S1）**の設定（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は Number S1＝13、Add S1＝ON**（1st・2nd とも）。発数が多いほど頻拍を捕捉しやすい一方、心房細動へ移行させるリスクも増える。参考として資料が併記する MINERVA 試験の設定でも Initial #1 Pulses は 13 とされている。",
-   "tags": "Number S1 Add S1 13 ON 発数 シーケンス MINERVA Initial #1 Pulses Amvia Sky BIOTRONIK"
+   "short": "心房ATPの**1シーケンスあたりの刺激発数（Number S1）と、追加の S1 を出すかどうか（Add S1）**の設定（追補50・追補51）。**Number S1 の設定範囲は 1〜15（S1 は1〜15発まで設定可能）、Add S1 は OFF／ON** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**画面例は Number S1＝13、Add S1＝ON**（1st・2nd とも）。発数が多いほど頻拍を捕捉しやすい一方、心房細動へ移行させるリスクも増える。参考として資料が併記する MINERVA 試験の設定でも Initial #1 Pulses は 13 とされている。",
+   "tags": "Number S1 Add S1 1-15 13 ON OFF 発数 シーケンス 設定範囲 MINERVA Initial #1 Pulses Amvia Sky BIOTRONIK"
   },
   {
    "term": "MINERVA試験（参考設定）",
@@ -11719,8 +11719,278 @@
    "cat": "エビデンス",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "追補50の資料が**「参考）MINERVA試験で使用された設定」**として併記している表（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**Rx1＝Ramp／Rx2＝Burst+／Rx3＝Ramp、Initial #1 Pulses＝13（3つとも）、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2 のみ81%、S2-S3 interval＝Rx2 のみ20ms、Interval Decrement＝Rx2 のみ10ms、# Sequences＝10（3つとも）、Rhythm Change＝On、Time Interval＝Every 7hr。****ただしこの表の項目名（Therapy Type／A-S1 Interval／# Sequences）は Amvia Sky のプログラマ画面の項目名（ATP type／P-S1 interval／Attempts）と違い、Rx が3本ある点も画面（1st／2nd の2本）と合わない。****Amvia Sky の設定そのものではなく、あくまで参考として併記されたものと読むのが妥当**（どの機種で行われた試験かは資料に記載がない。未確定）。",
-   "tags": "MINERVA 参考設定 Rx1 Rx2 Rx3 Ramp Burst+ 13 91% 84% 81% 20ms 10ms 10シーケンス Rhythm Change Every 7hr 項目名が違う 未確定 BIOTRONIK"
+   "short": "資料が**「参考）MINERVA試験で使用された設定」**として併記している表（追補50・追補51）。**Rx1＝Ramp／Rx2＝Burst+／Rx3＝Ramp、Initial #1 Pulses＝13（3つとも）、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2 のみ81%、S2-S3 interval＝Rx2 のみ20ms、Interval Decrement＝Rx2 のみ10ms、# Sequences＝10（3つとも）、Rhythm Change＝On、Time Interval＝Every 7hr。****この表の項目名（Therapy Type／A-S1 Interval／# Sequences）は Amvia Sky のプログラマ画面の項目名（ATP type／P-S1 interval／Attempts）と違い、Rx が3本ある点も画面（1st／2nd の2本）と合わない。****追補51で Amvia Sky の ATP type が Burst／Ramp の2択と確定したため、Burst+ を含むこの表は Amvia Sky の設定そのものではないとほぼ確定した** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料も本表を「推奨ではなく参考」として扱っている。",
+   "tags": "MINERVA 参考設定 Rx1 Rx2 Rx3 Ramp Burst+ 13 91% 84% 81% 20ms 10ms 10シーケンス Rhythm Change Every 7hr 推奨ではなく参考 Amvia Skyの設定ではない BIOTRONIK"
+  },
+  {
+   "term": "AT/AF termination［20 out of 24］",
+   "en": "AT/AF termination",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky の心房ATPで、AT/AF エピソードの終了を判定する基準** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**24拍中20拍が検出レート未満になればエピソード終了と判定する。**検出側の［36 out of 48］と対になる。フローチャートの4段階目「エピソード終了」に置かれている。**なおこれはエピソードの終了判定であって、治療成功の判定ではない。**治療成功（Atr. therapy successful）は「心房ATP送出後30秒以内の終了」という別の定義で決まる。",
+   "tags": "AT/AF termination 20 out of 24 エピソード終了 36 out of 48 検出レート未満 治療成功とは別 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Stability check（心房調律安定性チェック）",
+   "en": "Stability check",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ATPを出す前に、心房調律が安定しているかを P-P 間隔で判定する仕組み** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**隣り合う P-P 間隔の差が、8 P-P 間隔中5 P-P 間隔で 40ms 以内であれば「安定」。****8 P-P 間隔中4 P-P 間隔で 40ms を超えていれば「不安定」となり、治療は Inhibit（抑制）され最短10分後に再チェックされる。****さらに、8 P-P 間隔中3 P-P 間隔が 200ms より短い場合は治療が保留される。**Atrial ATP が「周期が安定している AF」だけを対象にする仕掛けの中心で、**Therapy delay がノミナル OFF でよいのは、このチェックが待機時間の役目を果たしているためである。**",
+   "tags": "Stability check リズム安定性チェック 心房調律安定性チェック P-P間隔 8P-P 5P-P 40ms以内 4P-P 40ms超 200ms 3P-P 治療保留 Inhibit 10分後 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "アンダーセンシング補正（Stability check）",
+   "en": "Undersensing compensation in stability check",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房波を1拍おきに取りこぼして P-P 間隔が2倍に見える「（機能的な）アンダーセンシング」に備えた判定** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**「最新の P-P 間隔と、その直近 P-P 間隔の2倍との差が 80ms 以内」**であれば Stable、**「最新の P-P 間隔の2倍と、直近 P-P 間隔との差が 80ms 以内」**であれば Stable と判定する。資料の例では、素の差が 195ms／211ms と大きく不安定に見える系列が、2倍で読み替えると 16ms／8ms に収まり Stable になる。取りこぼしの原因はブランキング（Far-field protection）に心房波が落ちることなので、**この補正がないと「本当は規則的な心房頻拍」を不安定と誤判定して治療機会を失う。**",
+   "tags": "アンダーセンシング補正 機能的アンダーセンシング P-P間隔 2倍 80ms以内 Stable Blanking Far-field protection 取りこぼし Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "リード留置位置チェック（Atrial ATP）",
+   "en": "Lead position check",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房リードが所定の位置にあることを確認してから心房ATPを出すための仕組み** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Daily checks（毎日）と Last minute checks（治療直前）の二重構造**になっている。**Daily チェック.1＝心房リード抵抗値チェック、Daily チェック.2＝ACC テスト＋Ap-Vs コンダクション確認。****直前チェック＝リズム安定性チェックと、心房リード抵抗値・心室レート（HVR）のチェック。****Position check の合否は「直近の心房リード抵抗値測定で 100〜2500Ω 以内であれば治療可能」。****Daily の異常は Blocked（再プログラムが必要）、直前の異常は Inhibit（自動再開あり）という違いがある。**",
+   "tags": "リード留置位置チェック Lead position check Daily checks Last minute checks 心房リード抵抗値 ACCテスト Ap-Vs 100-2500Ω Blocked Inhibit Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "心房リード抵抗値チェック（Atrial ATP）",
+   "en": "Daily atrial lead impedance check",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial ATP の Daily チェック.1。抵抗値を毎日測定して心房リード異常の有無を確認する** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**リード抵抗値は32秒毎に測定され、1日の平均値が使用される。****13日間の平均抵抗値を基準に、上限＝平均×1.5、下限＝平均×0.75 を算出する**（資料の例：13日間の平均 694Ω → 上限 1,041Ω／下限 520Ω）。**Daily の抵抗値異常は、治療が “Blocked（停止）” に変更される。****Blocked からの復帰には、Atrial ATP 機能を “Enabled” にするためのプログラマによる再プログラムが必要になる。**これとは別に、治療直前の Position check では **100〜2500Ω** という絶対値の窓が使われる。",
+   "tags": "心房リード抵抗値チェック 32秒毎 1日の平均値 13日間 694ohm 1.5倍 1041 0.75倍 520 Blocked 再プログラム 100-2500Ω Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Ap-Vs コンダクション確認（Atrial ATP）",
+   "en": "Ap-Vs conduction check",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial ATP の Daily チェック.2の後半。ACC テスト完了後に ApVs 伝導時間を確認する** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**5拍中3拍の ApVs 伝導時間が 81ms 以上であれば Atrial ATP 機能は “enabled”、80ms 以下であれば “Blocked”。****ApVp 作動は「80ms 以下」には含まれないため、ペーシング治療は施行される。****狙いは、心房リードが心室側に落ち込んだ状態で心房ATPを出す（＝心室で心房ATPを送出する）ことを防ぐこと。**ApVs が極端に短ければ、心房と称して刺激している場所が心室に近い可能性がある、という理屈である。",
+   "tags": "Ap-Vs コンダクション ApVs伝導時間 5拍中3拍 81ms以上 enabled 80ms以下 Blocked ApVp 心室で心房ATP Daily チェック2 ACC Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Blocked（Atrial ATP）",
+   "en": "Blocked (atrial ATP)",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial ATP が停止し、プログラマによる再プログラムをしないと再開しない状態** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Blocked になる条件は3つ。①AT/AF エピソードが48時間以上持続したとき、②デイリーのリード留置位置チェックにより条件外と判断されたとき（リード抵抗値、Ap-Vs コンダクションテスト）、③Atrial ATP 治療後30秒以内に HVR で検出されたとき（Atrial ATP 設定時は HVR が “ON”）。****Inhibit（抑制）が条件の解消で自動再開するのに対し、Blocked は自動では戻らない**のが決定的な違い。外来で「Atrial ATP が働いていない」と分かったら、まず Blocked か Inhibit かを切り分ける。",
+   "tags": "Blocked 停止 再プログラム 48時間 デイリー リード留置位置チェック 治療後30秒以内 HVR Inhibitとの違い 自動復帰しない Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Inhibit（Atrial ATP）",
+   "en": "Inhibit (atrial ATP)",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial ATP が一時的に抑制（延期）され、条件が解消すれば自動的に再開する状態** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Inhibit になる条件は6つ。①Atrial ATP 治療が 1,000アテンプト／30日に達したとき（再開条件は ≦1,000／30日）、②リズム安定性チェックで不安定と判断されたとき（最短10分後）、③治療直前のリード留置位置チェックで不安定と判断されたとき（最短10分後）、④ACC テストが不成功だったとき（翌日、ACC テストが成功したとき）、⑤≦200ms の心房インターバルが 8 P-P 間隔中3 P-P 間隔以上で認められたとき（最短10分後）、⑥治療前に HVR で検出されたとき（最短10分後）。****②③⑤⑥はいずれも「10分ごとのリズム再チェック」で再評価される。****再プログラムが必要な Blocked とは扱いが違う。**",
+   "tags": "Inhibit 抑制 延期 1000アテンプト 30日 リズム安定性チェック リード留置位置チェック ACCテスト不成功 翌日 200ms 8P-P 3P-P HVR 10分ごと 再チェック Blockedとの違い Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Attempts（Atrial ATP）",
+   "en": "Attempts",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ATPの1モジュールあたりの試行回数** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**設定範囲は OFF, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 で、1st ATP・2nd ATP それぞれ最大10回まで設定できる**（画面例は 10／10）。**Atrial Therapy Sequence 図では、Attempt 1 → Attempt 2 → … → Attempt n が並び、1st Atrial ATP モジュールの後に「確認時間：30s」、2nd Atrial ATP モジュールの後に「確認時間：90s」が置かれている。**MINERVA 参考表の「# Sequences」に対応する概念だが、項目名も本数も一致しない。",
+   "tags": "Attempts OFF 1-10 試行回数 10回 1st ATP 2nd ATP Atrial Therapy Sequence 確認時間 30s 90s # Sequences Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "ATP type（Burst／Ramp）",
+   "en": "ATP type",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ATPの治療の種類を選ぶ設定。Amvia Sky の選択肢は Burst と Ramp の2つだけ** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。画面例は 1st・2nd とも **Ramp**（ノミナルは資料に明記なし）。**Burst は一定の間隔で連続刺激、Ramp は1拍ごとに刺激間隔を短縮していく方式**（Ramp の短縮量が S1 decrement）。**MINERVA 参考表に出てくる “Burst+” は Amvia Sky の選択肢には無い。**資料が引く比較試験（EP Europace 2006）では **ATCL≧240ms の AT エピソードでは Burst+ よりも Ramp の有効性が高く、Ramp の高い有効性は最初の6回のシーケンスで明らかになり、それ以降の ATP 試行ではどちらでも同様の結果だった**とされる。",
+   "tags": "ATP type Burst Ramp 2択 Burst+は無い ATCL 240ms EP Europace 2006 最初の6回 S1 decrement Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "S1 decrement／Scan decrement",
+   "en": "S1 decrement / Scan decrement",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ATPの刺激間隔を短縮していく量の設定** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**S1 decrement [ms]＝5, 10, 15, 20, 25, 30, 35, 40（画面例 10ms）。**Ramp の中で1拍ごとに間隔を詰めていく量にあたる。**Scan decrement [ms]＝OFF, 5, 10, 15, 20, 25, 30, 35, 40（画面例 OFF）。****Scan は「次のシーケンスの開始間隔を前のシーケンスより短くする」向きの短縮**で、シーケンスをまたいで連結期を走査する働きをする。S1 decrement がシーケンス内、Scan decrement がシーケンス間、と押さえると混同しにくい。",
+   "tags": "S1 decrement Scan decrement 5 10 15 20 25 30 35 40 ms OFF Ramp シーケンス内 シーケンス間 スキャン 連結期 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "確認時間（Atrial ATP モジュール）",
+   "en": "Confirmation time (atrial ATP module)",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ATPの各モジュールの後に置かれる、頻拍が止まったかを見る待ち時間** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Atrial Therapy Sequence 図では 1st Atrial ATP モジュールの後が「確認時間：30s」、2nd Atrial ATP モジュールの後が「確認時間：90s」。****治療成功（Atr. therapy successful）の定義が「心房ATP送出後30秒以内の終了」であることと対応している。**この30秒を超えて自然停止した場合は成功に数えられず、Counters では “Unsuccessful” に振り分けられる。",
+   "tags": "確認時間 30s 90s Atrial Therapy Sequence 1st ATP 2nd ATP 治療成功 30秒以内 Unsuccessful Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Atr. therapy successful",
+   "en": "Atr. therapy successful",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**保存されたエピソードの Remark 欄に出る、心房ATPの治療成功表示** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**定義は「心房ATP送出後、30秒以内に AT/AF エピソードが終了した場合」のみ。****治療後30秒を超えて自然停止した場合は “Not delivered” と識別され、Counters の詳細では “Unsuccessful” に振り分けられる。****この定義のため、実際には ATP が効いていても成功に計上されない例がありうる。**外来で成功率を読むときはこの点を織り込む。",
+   "tags": "Atr. therapy successful 治療成功 30秒以内 Remark Not delivered Unsuccessful Counters 成功率 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Not delivered（心房ATP）",
+   "en": "Not delivered (atrial ATP)",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**エピソードの［Details］に出る、心房ATPが送出されなかった回数の内訳** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Not delivered (unstable rhythm)＝安定性リズムチェックにおいて不安定となり心房ATPが保留された回数。****Not delivered (non-tachy. rhythm)＝心房ATPの送出時前に検出レート未満となり心房ATPが保留された回数。****Not delivered (lead position check)＝リードチェック時に心房抵抗値異常が認められた回数。**どの理由で治療が入らなかったのかがこの3項目で切り分けられるので、「Atrial ATP を入れたのに治療されていない」という相談ではまずここを見る。",
+   "tags": "Not delivered unstable rhythm non-tachy rhythm lead position check Details 内訳 保留 心房抵抗値異常 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Reactivated due to repetition interv.／rhythm change",
+   "en": "Reactivated due to repetition interval / rhythm change",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**エピソードの［Details］に出る、治療が繰り返された回数の内訳** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Reactivated due to repetition interv.＝エピソードの中で時間をおいて治療が繰り返された回数**（Repetition interval による再治療）。**Reactivated due to rhythm change＝エピソードの中でリズムが変化したために治療が繰り返された回数**（Repetition through rhythm change による再治療）。**同じ画面の Delivered attempts が実際に送出されたアテンプト数で、「*」印は Last delivered ATP を示す。**",
+   "tags": "Reactivated due to repetition interv rhythm change Delivered attempts Last delivered ATP Details 繰返し 再治療 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "心房ATP出力（6.0V／1.5ms）",
+   "en": "Atrial ATP output (fixed)",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky の心房ATPの出力は 6.0V／1.5ms に固定されており、設定変更ができない** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。通常のブラディの心房出力設定とは独立しているため、**心房出力を低く設定していても ATP のときだけ 6.0V が出る。****資料は「Atrial ATP 治療を設定する際には、心房出力を 6.0V／1.5ms に設定しクロストークが起きないか事前に確認してください。また必要に応じて “Ven. blanking after Ap” の設定変更を行ってください」と明記している。**Atrial ATP を有効にする前のクロストーク確認は必須と考える。",
+   "tags": "心房ATP出力 6.0V 1.5ms 固定 設定変更不可 クロストーク Ven. blanking after Ap 事前確認 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Atrial ATP のバッテリー影響",
+   "en": "Battery impact of atrial ATP",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial ATP を作動させた場合の電池寿命への影響** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**作動状況を「ATP 出力＝6.0V／1.5ms（設定変更不可）、600 attempts（1 attempt＝15 stim.）／月＝9,000 stim./月」と置いたとき、10年後の予測寿命に対する影響は −1.1%（10年 ⇒ 9年10か月）。****つまり月600回の治療という多めの想定でも、失われるのは約2か月にとどまる。**「電池の無駄遣いではないか」という懸念に対する定量的な答えとして資料に置かれている。",
+   "tags": "Atrial ATP バッテリー 電池寿命 -1.1% 10年 9年10か月 600 attempts 15 stim 9000 stim 月 6.0V 1.5ms Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "1,000アテンプト／30日",
+   "en": "1,000 attempts per 30 days",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky の心房ATPの作動回数の上限** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Atrial ATP 治療が 1,000アテンプト／30日に達すると Inhibit（抑制）となり、再開条件は「≦1,000／30日」。**電池消耗と、効かない治療を延々と繰り返すことの両方を抑えるための上限で、**バッテリー影響の試算（600 attempts／月で −1.1%）はこの上限より少ない想定で置かれている。**",
+   "tags": "1000アテンプト 30日 上限 Inhibit 抑制 作動制限 600 attempts 電池 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "最小ペーシングインターバル（160ms）",
+   "en": "Minimum pacing interval",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky が心房ATPで送出できる最小のペーシングインターバルは 160ms** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。作動制限の一覧に脚注として置かれている。**約375bpm に相当する。****P-S1 interval（70〜95%）と S1 decrement で刺激間隔を詰めていっても、この 160ms より短い間隔では刺激できない。**頻拍周期が短い症例では、設定どおりの％まで詰められない場合がある点に注意する。",
+   "tags": "最小ペーシングインターバル 160ms 375bpm P-S1 interval S1 decrement 刺激間隔 下限 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "ERAF",
+   "en": "Early recurrences of atrial fibrillation",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**早期の心房細動再発**。心房細動が停止した直後の脆弱な時期に再発する現象 （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料が引く報告（Circulation 2006;113(16):1933-1941）では、**5分以内の心房細動の開始が全エピソードの50%（305/612例）、全患者の69%（68/98例）で観察され、反復性心房細動は305回中225回で早期に開始し、225回中134回で日中に発生した。****「早期の心房細動再発の現象は、心房細動終了直後の心房の脆弱な状態で発生しやすい傾向にある」。****Amvia Sky では Post ModeSw rate／Post ModeSw duration によるオーバードライブペーシングで ERAF を予防する。**",
+   "tags": "ERAF Early recurrences of atrial fibrillation 早期心房細動再発 5分以内 50% 305/612 69% 68/98 225 134 Circulation 2006 Post ModeSw rate オーバードライブ BIOTRONIK"
+  },
+  {
+   "term": "organized AF／true AF",
+   "en": "Organized AF / true AF",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**心房ATPの効き方を分けるための AF の呼び分け** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**true AF＝ランダムリエントリーによる真の心房細動で、心房ATPの治療効果は期待できない。****organized AF＝周期が安定し規則性のある心房性頻拍で、心房ATPの対象になる。**資料の整理は**「Atrial ATP の治療効果 ⇒ リエントリー性頻拍への治療は有効」「心房細動への治療効果 ⇒ true AF には期待できない」「MINERVA の結果 ⇒ 治療対象は true AF ではなく organized AF」「それ以外 ⇒ カテーテルアブレーション治療後の再発には有効である可能性がある」。****要点は「周期が安定してる AF が対象になる」。**Stability check はこの切り分けをデバイス側で行う仕掛けである。",
+   "tags": "organized AF true AF ランダムリエントリー リエントリー性頻拍 周期が安定 MINERVA カテーテルアブレーション後 Stability check 心房ATP対象 BIOTRONIK"
+  },
+  {
+   "term": "心房細動の Type I／Type II／Type III",
+   "en": "Type I / II / III atrial fibrillation",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**心内電位の周期長と組織化の程度による心房細動の分類**（J Am Coll Cardiol. 2001 Aug;38(2):355-363）（追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**Type I＝最小の周期長が ≧200ms で高度に organized された AF。****Type III＝多形性で最小周期長が <200ms の AF。****Type II＝Type I および Type III の定義を満たさない AF。**同研究では**記録された279のエピソードのうち、97のATエピソード（35%）がI型として開始し、確認時には97のうち72（74%）がI型のままであったが、97のうち25（26%）がII型またはIII型に変性していた。****II型またはIII型として記録された182（65%）のエピソードは、51（28%）が1分以内に「I型ATに二次的に編成された」。****AF が時間とともに organized に変わりうるという事実が、心房ATPを繰り返し試行する設計（Repetition interval／rhythm change）の根拠になっている。**",
+   "tags": "Type I Type II Type III 心房細動 分類 200ms organized 多形性 279エピソード 35% 74% 26% 182 65% 51 28% 1分以内 JACC 2001 BIOTRONIK"
+  },
+  {
+   "term": "MINERVA試験",
+   "en": "MINERVA trial",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**新世代の心房抗頻拍ペーシング（Reactive ATP）が徐脈患者における持続性・永続性心房細動のリスク低下と関連することを示した無作為化多施設国際共同試験**（Heart Rhythm 2015;12(8):1717-1725）（追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**結論は「DDDRP＋MVP は心房細動の疾患の進行を遅延させ、Reactive ATP の有効性は永続的または持続的な心房細動を減少させた独立した予測因子となった」。****「ATP は真の AF を停止させることはできないが、多くの（64%）AF エピソードで、リズムと規則性の遷移が確認され、リズムが安定したり遅くなったりすれば停止させることができる」。****さらに「心房ペーシング率が1%増加するごとに AF のリスクが2%減少」「心室ペーシング率が1%増加するごとに AF のリスクが3%増加」という所見も示されている。****なお試験で使用された設定表は Amvia Sky のプログラマ画面と項目名も本数も対応しない**（用語「MINERVA試験（参考設定）」を参照）。",
+   "tags": "MINERVA Heart Rhythm 2015 DDDRP MVP Reactive ATP 持続性 永続性 心房細動 64% リズム遷移 心房ペーシング率1% AF2%減少 心室ペーシング率1% AF3%増加 エビデンス"
+  },
+  {
+   "term": "rATP とカテーテルアブレーション既往",
+   "en": "rATP efficacy and prior catheter ablation",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**心房ATPの成功率とカテーテルアブレーション既往の関係を調べた報告**（J Cardiovasc Electrophysiol. 2022;33:1513-1521）（追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**51名／1,564件のデータを解析し、治療されたエピソードの60%以上が規則的であったものを「規則的エピソード」と定義。カテーテルアブレーションの既往があるものをA群とした結果、規則性エピソードを有する患者より成功率が高かった。A群では規則的なエピソードの方が有意に成功率が高かったが、NA群では有意差は確認されなかった。****代表症例では rATP 成功率が 64.9% と高く、シーケンスの 87.3% が CL 200-449ms であった。****アブレーション前は左房（CS distal 173ms）の CL が右房（HRA 200ms）より短かったが、広範な LA アブレーション後には LA の CL が延長し（CS distal 212ms／HRA 220ms）、LA と RA の CL はほぼ同等となった。****結論は「心房細動に対してカテーテルアブレーション治療の既往がある患者では、Atrial ATP による効果が高く、CIEDs 患者において有用かつ効果的な併用療法である可能性がある」。**",
+   "tags": "rATP カテーテルアブレーション既往 A群 NA群 51名 1564件 60%以上 規則的エピソード 64.9% 87.3% CL200-449ms HRA200 CS distal173 220 212 J Cardiovasc Electrophysiol 2022 併用療法 エビデンス"
+  },
+  {
+   "term": "アップストリーム治療／ダウンストリーム治療（AF管理）",
+   "en": "Upstream / downstream therapy for AF",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房細動に対する介入を、発生前に予防するものと発生後に治療するものに分けた呼び方** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料は BIOTRONIK の AF 管理を **「アップストリーム治療としての Closed Loop Stimulation（CLS）＝AF を予防する」**と**「ダウンストリーム治療としての Atrial ATP＝AF を治療する」**の2本立てで示している。**CLS 側は自律神経系 → 洞結節の変時性・心筋収縮性 → 心拍数・一回拍出量 → 平均動脈圧という生理のループを利用し、心房ペーシング率を上げることで AF を抑える。****Atrial ATP 側は「心房頻脈検出 → リード位置チェック → 心房調律安定性チェック → ATP治療 → 繰返し → 治療終了」という循環で AF を止めにいく。****MINERVA の「心房ペーシング率が1%増加するごとに AF リスクが2%減少」という所見が、アップストリーム側の根拠になっている。**",
+   "tags": "アップストリーム治療 ダウンストリーム治療 CLS Closed Loop Stimulation Atrial ATP AF予防 AF治療 自律神経 洞結節 変時性 心房ペーシング率 MINERVA Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "拡張期僧帽弁閉鎖不全症（房室延長）",
+   "en": "Diastolic mitral regurgitation with AV prolongation",
+   "abbr": "",
+   "cat": "ペーシング管理",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**極端な房室延長により、心房収縮後の僧帽弁閉鎖が遅れて生じる逆流。心房の過負荷となることがある** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**安静時の心エコー図検査では、AV 間隔が 230ms 以上になると拡張期僧帽弁閉鎖不全症が発生するという報告がある**（Pacing Clin Electrophysiol 1992;15:1927-31）。**資料の症例報告（Int Heart J 2015;56:558-563）では、CLS＋IRSplus 機能から CLS＋Dynamic AV delay に変更することで PAF の発生率が低下し、Dynamic AV ディレイを設定しても心室ペーシング率に大きな変化はなかった。****この症例では安静時よりも動的に心房容量や圧力過多が増加したことが予想され、90bpm 以上の場合にのみ心室ペーシングをしたことで心房過負荷が有効に減少し、心房の脆弱性が改善された可能性が示された。****レート上昇時に AV ディレイが延長する症例では「Dynamic AV ディレイによるペーシング管理も選択肢になる」。**心室ペーシングを減らす方向（IRSplus）が常に正解とは限らない、という反例として押さえる。",
+   "tags": "拡張期僧帽弁閉鎖不全症 diastolic MR 房室延長 AV間隔230ms IRSplus Dynamic AV delay CLS PAF 90bpm 心房過負荷 逆説的延長 Int Heart J 2015 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "HAR limit",
+   "en": "High Atrial Rate limit",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky の AT/AF detection のレート設定画面に現れる選択肢の並び** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**画面の選択肢は 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 で、画面下の［bpm］［ms］ボタンで表示単位を切り替えられる。**ms として読むと 250bpm から 100bpm までの 10bpm 刻みにきれいに一致する（300ms＝200bpm、375ms＝160bpm など）が、**資料に「設定範囲は 100〜250bpm」という明記はないため、対応づけは読みにとどめてある（未確定）。**画面例では Interval [ms]＝300（＝200bpm）が選ばれている。",
+   "tags": "HAR limit High Atrial Rate 240 250 261 273 286 300 316 333 353 375 400 429 462 500 545 600 bpm ms 切替 AT/AF detection 未確定 Amvia Sky BIOTRONIK"
   }
  ],
  "feats": [

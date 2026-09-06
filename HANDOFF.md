@@ -1,24 +1,42 @@
-# Pacemaker Navi 引き継ぎ（2026-09-06 更新・追補50時点）
+# Pacemaker Navi 引き継ぎ（2026-09-06 更新・追補51時点）
 
 ## ▼ 次のトークで最初に読むところ
 
 **渡すファイル**：`HANDOFF.md`（このファイル）＋ `algos.json` `data.json` `products.json` `mri.json` `notes.json`。
-`index.html` は改修が要るときだけ渡せばよい（465KB あるが会話には載らない）。
+`index.html` は改修が要るときだけ渡せばよい（466KB あるが会話には載らない）。
 **追補40で `index.html` を改修した**（製品タブの `CAT_ORDER` に「スリッター・ツール」を追加）。
 **追補43で `index.html` の `G_FALLBACK` を修正し、追補44で5語、追補45で10語、追補46で2語、追補47で4語、追補48で17語、追補49で11語を同期した**
 （`CAT_ORDER` と `F_FALLBACK` は変更なし。**製品用 `CAT_ORDER` には「CRT-P」が既に入っているので、追補49の CRT-P 登録でも HTML 改修は不要だった**）。
 **手元の `index.html` が追補40より古いと、スリッター2件が分類の末尾に出る。**
 **JSON は何個渡しても会話容量を食わない。`.md` は全文が載るのでこのファイルだけにする。**
 
-**直前のトークで終わったこと**：BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」（日本語・2スライド）を反映した（追補50）。
-**アルゴリズム・用語集・製品の3タブを更新。MRI タブは変更なし（本資料に MRI の記載が一切ないため）。件数は増やしていない**（アルゴリズム 197／製品 939／MRI 56）。**用語集は 1162 → 1172語。**
-**`BIO-ATRIAL-ATP` の `device` を「ICD / CRT-D」→「PM / ICD / CRT」に訂正した**（追補49で Amvia Sky が唯一のブラディ搭載機種と判明していたのに直し忘れていた）。
-**治療の循環が判明**：①心房頻脈検出 → ②リード位置チェック → ③心調律安定性チェック → ④ATP治療 → ⑤繰返しインターバル／リズム変化時の繰返し → ⑥心房頻脈治療終了 →（治療待機時間）→ ①へ戻る。
-**画面例の値**：AT/AF detection Rate 170bpm／HVR detection Rate 200bpm・Detection counter 8／Therapy delay OFF（ノミナル）／1st ATP・2nd ATP とも 10*Ramp／
-Repetition interval [h] 2／Repetition through rhythm change ON／［1st and 2nd ATP］は Attempts 10・Number S1 13・Add S1 ON・**P-S1 interval 90%／80%**・S1 decrement 10ms・Scan decrement OFF／Backup stimulation 70bpm・VVI。
-**資料の3注記**：**AT/AF の治療可能な頻拍のレートは 300bpm 未満**／**Atrial ATP Therapy は安定しているイベントのみ治療を行うため Therapy delay は「OFF」がノミナル**／
-**HVR detection は心室レートでのみ評価するため、1:1AT などの上室性頻脈でも設定レートを超える心室レートが検出されると治療は行われない。**
-**MINERVA 試験の参考設定表が併記されているが、項目名も本数も Amvia Sky のプログラマ画面と対応しないので「参考」として扱った**（§6 に未確定として追加）。
+**直前のトークで終わったこと**：BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」（日本語・スキャンPDF・24スライド）を反映した（追補51）。
+**追補50で反映した2スライドは、この資料の抜粋だったと判明した。**追補50は「Atrial ATP の設定」の章の2枚だけで、本資料はその前段の理論・フローチャート・作動制限をすべて含む完全版である。
+**アルゴリズム・用語集・製品の3タブを更新。MRI タブは変更なし（本資料に MRI の記載が一切ないため）。件数は増やしていない**（アルゴリズム 197／製品 939／MRI 56）。**用語集は 1172 → 1199語。**
+**手書きの書き込みが多数あるスキャンだが、指示どおり手書きは一切採用していない。**
+
+**`BIO-ATRIAL-ATP` を全面的に書き直した**（追補50時点は「循環図と画面例」だけだった）。**あわせて6件に加筆した**（`BIO-ATRIAL-CAPTURE-CONTROL`／`BIO-MODE-SWITCHING`／`BIO-BLANKING`／`BIO-CLOSED-LOOP-STIMULATION`／`BIO-INTRINSIC-RHYTHM-SUPPORT`／`BIO-DYNAMIC-AV-DELAY`／`BIO-OVERDRIVE-PREVENTION-PACING`）。
+
+**4段階のフローチャートが判明**：①心房性頻脈の検出（**AT/AF detection［36 out of 48］**／Therapy delay）→ ②Atrial ATP 治療前（リズム安定性チェック／リード位置チェック）→ ③Atrial ATP 治療（Burst/Ramp／繰返しインターバル／リズム変化時繰返し）→ ④エピソード終了（**AT/AF termination［20 out of 24］**）。
+**チェックは二重構造**：**Daily checks**（①心房リード抵抗値チェック＝32秒毎に測定し1日平均を使用、13日平均の×1.5／×0.75 が上下限 ②ACC テスト＋Ap-Vs コンダクション確認＝**5拍中3拍の ApVs が 81ms 以上なら enabled、80ms 以下なら Blocked**）と **Last minute checks**（リズム安定性チェック／心房リード抵抗値 **100〜2500Ω**／HVR）。
+**Stability check＝隣り合う P-P 間隔の差が 8 P-P 間隔中5 P-P 間隔で 40ms 以内なら安定、4 P-P 間隔で 40ms 超なら不安定。8 P-P 中3 P-P が 200ms より短ければ治療保留。**
+**アンダーセンシング補正＝「最新 P-P と直近 P-P の2倍の差が 80ms 以内」または「最新 P-P の2倍と直近 P-P の差が 80ms 以内」なら Stable。**
+**設定範囲が全面的に判明**：Attempts＝OFF,1〜10／**ATP type＝Burst／Ramp の2択**／Number S1＝1〜15／Add S1＝OFF・ON／P-S1 interval＝70,75,80,85,88,90,95%／S1 decrement＝5〜40ms／Scan decrement＝OFF,5〜40ms／Backup stimulation＝70,90bpm／Mode＝OFF・VVI／Repetition interval＝OFF,2,4,7,12,24,36h／Repetition through rhythm change＝OFF・ON／**心房ATP出力＝6.0V/1.5ms 固定**／**Therapy delay＝OFF・1〜10min・15〜55min・1〜24h**。
+**作動制限の一覧表が最大の収穫**。**Blocked（再プログラムが必要）**＝AT/AF エピソード48時間以上持続／デイリーのリード留置位置チェック条件外／治療後30秒以内の HVR 検出。**Inhibit（条件解消で自動再開）**＝1,000アテンプト/30日到達／リズム安定性チェック不安定／直前のリード位置チェック不安定／ACC テスト不成功（翌日）／≦200ms の心房インターバルが 8 P-P 中3 P-P 以上／治療前の HVR 検出。**後者4つは10分ごとに再チェック。****最小ペーシングインターバルは 160ms。**
+**電池への影響は −1.1%（10年 ⇒ 9年10か月）**（6.0V/1.5ms・600 attempts〈1 attempt＝15 stim.〉/月＝9,000 stim./月）。
+**治療成功は「心房ATP送出後30秒以内の終了」のみ**（30秒超の自然停止は Not delivered → Counters では Unsuccessful）。
+**最大のリスクは「心室で心房ATPを送出すること」**で、**植込み後1か月程度経過して心房リード固定が安定してから有効にすることが推奨されている。**
+**対象は true AF ではなく organized AF（周期が安定してる AF）。**
+**`models` を「Amvia Sky シリーズ DR-T／HF-T QP／HF-T BP」に広げ、製品タブの CRT-P 2件にも Atrial ATP を追記した**（資料の表題が対象機種を明示している）。
+**`BIO-MODE-SWITCHING` の Post ModeSw rate の刻みを「5拍刻み」→「5bpm刻み」に訂正**（追補49の転記時の単位誤り）。**目的は ERAF の予防**で、資料は「70ppm では十分ではないという報告もあるため 80ppm も検討」と注記している。
+**MINERVA の示唆**：**心房ペーシング率が1%増加するごとに AF リスクが2%減少／心室ペーシング率が1%増加するごとに AF リスクが3%増加。**CLS＝アップストリーム治療、Atrial ATP＝ダウンストリーム治療という枠組み。
+**注意点として拡張期僧帽弁閉鎖不全症**（AV 間隔230ms以上で発生の報告。CLS+IRSplus → CLS+Dynamic AV delay で PAF 発生率が低下した症例報告）。
+
+**追補51で §6 の未確定4件が解消した。**
+① **ATP type の選択肢**＝**Burst／Ramp の2択。****MINERVA 参考表の Burst+ は Amvia Sky の選択肢に無い。**ノミナルだけ未確定として残す。
+② **Atrial ATP の各項目の設定範囲**＝ほぼ全項目が判明。**残るのは AT/AF detection Rate と HVR detection Rate・counter の範囲とノミナルだけ。**
+③ **MINERVA 参考設定表と Amvia Sky の画面が対応しない**＝**Burst+ が設定できない以上、この表は Amvia Sky の設定ではないと裏づけられた。**「どの機種の試験か」だけ残す。
+④ **「治療待機時間」と Therapy delay の関係**＝**フローチャートが01「心房性頻脈の検出」の中に AT/AF detection と Therapy delay（治療待機時間）を並べているので、治療待機時間＝Therapy delay の訳語と確定。**§6 から削除した。
 
 **その前（追補49・49-2）に終わったこと**：BIOTRONIK の製品資料
 「Amvia Sky & Edora  DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」（日本語・スキャンPDF）を反映した（追補49）。
@@ -52,13 +70,17 @@ Repetition interval [h] 2／Repetition through rhythm change ON／［1st and 2nd
 その前（追補46）に MicroPort CRM「総合製品説明資料 Part1」を反映し、アルゴリズム 188 → 190件（`MCP-WARAD`・`MCP-AIDA`）、製品 931 → 937件。
 その前（追補45）にリード技術資料で **`MIO` の定義を訂正**（Metal Ion Oxidation＝金属イオン酸化。MIO は内側から、ESC は外側から）。
 その前（追補43）に `G_FALLBACK` の不一致に決着をつけた。**結論：抜粋ではなく、用語集が698語だった時点の全文コピーが放置されていただけ。**
-**全同期（現在1162語）は見送ったまま**（raw／gzip の増加に対し、`G_FALLBACK` が出るのは「初回訪問がオフライン」の場合と初回描画の一瞬だけのため）。**判断そのものは残っている。**
+**全同期（現在1199語）は見送ったまま**（raw／gzip の増加に対し、`G_FALLBACK` が出るのは「初回訪問がオフライン」の場合と初回描画の一瞬だけのため）。**判断そのものは残っている。**
 プログラマ操作経路は追補27で全削除して **0／190**。
 **追補49-2で `feats` 0行目を変更したので、方針8に従い `F_FALLBACK` を同期した**（同期前の差分は0行目だけで、追補32で確認した65行の一致がその後も保たれていたことを確認できた）。
 **追補33〜48では `feats` を変更していない。**
 
 **次にやること（優先順）**：
-1. ~~追補49で出た「BIOTRONIK 欄だけが空いている」アルゴリズムを起こすかの判断（最大7件）~~
+1. **追補51で出た新規エントリの提案3件を起こすかの判断**（いずれも既存エントリに収めてある。方針11に従い指示待ち）
+   ① **`BIO-STABILITY-CHECK`（心房調律安定性チェック）**。アンダーセンシング補正まで含めると内容量は独立エントリに足りる。現状は `BIO-ATRIAL-ATP` の `how` と用語集3語に収載
+   ② **`BIO-LEAD-POSITION-CHECK`（リード留置位置チェック）**。Daily／Last minute の二重構造と ApVs 判定が `BIO-ATRIAL-CAPTURE-CONTROL` と `BIO-ATRIAL-ATP` に分散している
+   ③ **`BIO-POST-MODESW-RATE`（Post ModeSw rate／duration）**。ERAF 予防という独立した目的を持つ。現状は `BIO-MODE-SWITCHING` に収載
+1-2. ~~追補49で出た「BIOTRONIK 欄だけが空いている」アルゴリズムを起こすかの判断（最大7件）~~
    → **2026-09-06（追補49-2）に指示を受けて7件すべてを追加した。190 → 197件。**
    `BIO-NIGHT-RATE`／`BIO-DYNAMIC-AV-DELAY`／`BIO-SAFETY-WINDOW`／`BIO-EMI-MODE`／`BIO-MAGNET-RESPONSE`／`BIO-PMT-PROTECTION`／`BIO-BLANKING`。
    **残る判断は `BIO-BLANKING` を心房側／心室側の2件に分割するか（197 → 198件）だけ。**
@@ -68,10 +90,11 @@ Repetition interval [h] 2／Repetition through rhythm change ON／［1st and 2nd
 4. Abbott の CRT 残り5
 5. **§6 の3件を医師用マニュアルで確定する**（最高感度のノミナル／検出インターバル数／VT治療タイムアウトの範囲／**ストアードEGM の［診断］と［検出］の違い**）
 6. ~~LBBAP のプログラミングを新規エントリにするかの判断~~ → 追補39のまま保留（用語集に収載済み）
-7. **`G_FALLBACK` を全同期するかの判断**（698語 vs 1162語）。**追補43で「同期漏れ」と確定し、陳腐化16件は修正済み。**
-   残るのは「464語ぶんを載せるか」だけ。**効き目は初回オフライン訪問時のみ。**
+7. **`G_FALLBACK` を全同期するかの判断**（698語 vs 1199語）。**追補43で「同期漏れ」と確定し、陳腐化16件は修正済み。**
+   残るのは「501語ぶんを載せるか」だけ。**効き目は初回オフライン訪問時のみ。**
    あわせて**「用語を訂正・統合・削除したときは `G_FALLBACK` の同名エントリも直す。追加は反映しなくてよい」**を
-   方針12として §2 に格上げするかも判断する（追補43の提案。**追補44で5語、追補45で10語、追補46で2語、追補47で4語、追補48で17語、追補49で11語をこの運用で同期した**）
+   方針12として §2 に格上げするかも判断する（追補43の提案。**追補44で5語、追補45で10語、追補46で2語、追補47で4語、追補48で17語、追補49で11語をこの運用で同期した。**
+   **追補50・追補51では同期不要だった**＝訂正した用語がいずれも `G_FALLBACK` の698語に含まれていないため。追補51では機械的に照合して確認した）
 8. ~~`feats` 0行目「レートレスポンス（生理的センサ）」の `bio` を書き換えるかの判断~~
    → **2026-09-06（追補49-2）に指示を受けて「Closed Loop Stimulation（CLS）／加速度センサ」に変更し、`F_FALLBACK` を同期した。**
    **残る判断は「加速度センサ部分を `BIO-CLOSED-LOOP-STIMULATION` から切り出して独立エントリにするか」だけ**（一覧表の行は1つしかないので、切り出すなら②の形になる）
@@ -92,6 +115,8 @@ Repetition interval [h] 2／Repetition through rhythm change ON／［1st and 2nd
 **BIOTRONIK は世代差（E1／E2／E3／Via）が非常に多い。**Repetitive/Scan の拍数、モードスイッチ中の AV delay、Sense compensation、
 Far-field protection の刻み、MRI AutoDetect の検知条件、Auto gain の判定などが世代で違う。**Amvia Sky の値を E シリーズにそのまま当てない（追補49）。**
 **温度センサのレートレスポンスは追補42で見送り確定。蒸し返さない。**
+**Amvia Sky の Atrial ATP では Blocked と Inhibit を混同しない（追補51）。****Blocked は再プログラムしないと戻らない／Inhibit は条件が解消すれば自動で再開する。**
+**心房ATP出力は 6.0V／1.5ms 固定なので、ブラディの心房出力を低く設定していてもクロストークの事前確認が要る（追補51）。**
 
 ---
 
@@ -103,17 +128,19 @@ Far-field protection の刻み、MRI AutoDetect の検知条件、Auto gain の�
 
 ## 1. アプリの概要
 
-GitHub Pages で公開しているCIEDリファレンス。リポジトリ `ori287/cieds`。
+GitHub Pages で公開しているCIEDリファレンス。**リポジトリ `ori287/pacemaker_navi`（公開URL https://ori287.github.io/pacemaker_navi/ ）。**
+**2026-09-06（追補51）に `ori287/cieds` から改名した。`index.html` の改修は不要と確認済み**（リポジトリ名や絶対URLのハードコードが無く、JSON の読み込みは `fetch("data.json?t=…")` の相対パス。Service Worker も `<base>` も manifest も無い）。
+**`cieds_master_v3` などの localStorage キーはあえて残してある**（localStorage はオリジン単位なのでパス変更では消えない。キー名を変えると利用者の overlay・お気に入り・キャッシュが参照できなくなる）。
 **4タブ構成**：用語集／製品／アルゴリズム／MRI検索。
 
 | ファイル | 規模 | 中身 |
 |---|---|---|
-| `index.html` | 465KB | 単一ファイルのアプリ本体。CSS・JSすべて内包（追補43〜49で `G_FALLBACK` を修正） |
-| `products.json` | 706KB | 939件（リード870・本体**42**・関連機器27）（v11） |
-| `data.json` | 704KB | 用語集**1172語**＋一覧表65行（v47） |
-| `algos.json` | 523KB | アルゴリズム**197件**（v30） |
+| `index.html` | 466KB | 単一ファイルのアプリ本体。CSS・JSすべて内包（追補43〜49で `G_FALLBACK` を修正）。**追補51のリポジトリ改名でも変更不要だった** |
+| `products.json` | 716KB | 939件（リード870・本体**42**・関連機器27）（v12） |
+| `data.json` | 742KB | 用語集**1199語**＋一覧表65行（v48） |
+| `algos.json` | 545KB | アルゴリズム**197件**（v31） |
 | `mri.json` | 250KB | MRI組合せ56グループ（verify 19）（v12） |
-| `notes.json` | 612KB | 作業記録**104エントリ**。**毎回追記すること**。アプリからは読まれない |
+| `notes.json` | 638KB | 作業記録**105エントリ**。**毎回追記すること**。アプリからは読まれない |
 
 ---
 
@@ -460,6 +487,11 @@ AF Suppression は「心房治療」なのでペーシング管理16件には含
     `equiv` を作れる。資料の値（センサ閾値・スロープ・リアクション／リカバリー タイム・
     最大センサ レート）は追補25に記録済み
 
+11. **localStorage キーを `cieds_*` から `pacemaker_navi_*` に揃えるかの判断**（追補51で新出）。
+    **現状は見送り。**リポジトリ改名では実害がない（localStorage はオリジン単位なのでパス変更では消えない）。
+    **揃えるなら旧キーから新キーへ1回だけ移行するコードが要る。**そのまま改名すると利用者の overlay・お気に入り・キャッシュが全部参照できなくなる。
+    対象キー：`cieds_master_v3`／`cieds_overlay`／`cieds_master_t`／`cieds_share`／`cieds_fav`／`cieds_recent`／`ciedsnavi.ext.`
+
 ### 保留中の値（入れ先が決まれば使える）
 
 Accent／Anthem CRT-P：電池は Greatbatch 社製 **QMR**（リチウム＋SVO／CFx）。
@@ -530,20 +562,49 @@ Max Charge 3回/年、100％pace〜0％pace）。Ellipse™ は 39／36J。**本
 | **アヴェイル用 ECG ケーブルの型番** | 追補42の資料①は「アボットが準備する物品」の表で **3625**、フォローアップ章の「必要なアイテム」で **3626** と書いている。**両表記を `GEAR-PRG-8` に併記して未確定と明示。未確定** |
 | **AVEIR VR の予測寿命 10年以上 と 10.3年** | 同じ資料内で概要スライドが「ISO規格の設定において10年以上」、製品スペック表が「10.3 years」。**同じISO規格設定に基づくため、10.3年が具体値・10年以上が丸めた表現と解釈**して `longevity` に 10.3年を入れた。**矛盾ではないと判断済み** |
 | **リードレスの抜去成功率** | 追補42の資料①に「植込みから9年間を通して88％以上」と「植込みから最長7年間において80％を超える」の両方があり、資料②は「最長9年間で88％以上」。**いずれも AVEIR ではなく前位機種 Nanostim のデータ**（Reddy VY ほか、APHRS 2022）。**製品タブには収載していない** |
-| **MINERVA 試験の参考設定表と Amvia Sky の画面が対応しない**（追補50で新出） | 追補50の資料は「参考）MINERVA試験で使用された設定」として **Rx1／Rx2／Rx3 の3本**の表（Therapy Type＝Ramp／Burst+／Ramp、Initial #1 Pulses＝13、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2のみ81%、S2-S3 interval＝Rx2のみ20ms、Interval Decrement＝Rx2のみ10ms、# Sequences＝10、Rhythm Change＝On、Time Interval＝Every 7hr）を併記している。**しかし Amvia Sky のプログラマ画面は［1st ATP］［2nd ATP］の2本で、項目名も Attempts／ATP type／Number S1／Add S1／P-S1 interval[%]／S1 decrement／Scan decrement と違い、値も揃わない**（A-S1 Interval 91%/84%/81% 対 P-S1 interval 90%/80%、Time Interval Every 7hr 対 Repetition interval 2h）。**どの機種で行われた試験かも資料に記載がない。Amvia Sky の設定そのものではないと読むのが妥当と判断し、用語集「MINERVA試験（参考設定）」にその旨を明記したうえで表の値は資料どおり収載した。未確定** |
-| **ATP type の選択肢一覧とノミナル**（追補50で新出） | Amvia Sky の画面例は 1st・2nd とも **Ramp** だが、**選べる種類（Burst／Ramp／Burst+ など）とノミナルが資料にない。**MINERVA の参考表には `Burst+` という Therapy Type が現れるが、**Amvia Sky の ATP type にこの選択肢があるかは読み取れない**ため、用語集にも `Burst+` は起こしていない。**未確定** |
-| **Atrial ATP の各項目の設定範囲**（追補50で新出） | Attempts／Number S1／P-S1 interval／S1 decrement／Scan decrement／Repetition interval／AT/AF detection Rate／HVR detection Rate・Detection counter は、**いずれも画面例の値しか示されておらず設定範囲もノミナルも書かれていない**（追補49の Brady Parameter 資料と違い、この2スライドには一覧表がない）。医師用マニュアルで確定する。**未確定** |
-| **「治療待機時間」と Therapy delay の関係**（追補50で新出） | 追補50の循環図では「心房頻脈治療終了」から「心房頻脈検出」へ戻る矢印に**「治療待機時間」**と添えられているが、**これが Therapy delay と同じものなのか、Repetition interval のことなのか、別の内部タイマーなのかが読み取れない。未確定** |
+| ~~**MINERVA 試験の参考設定表と Amvia Sky の画面が対応しない**~~ **→ 追補51でほぼ解消**（残るのは「どの機種の試験か」だけ）。**追補51で Amvia Sky の ATP type が Burst／Ramp の2択と確定したため、Burst+ を含む Rx2 は Amvia Sky では設定できず、この表が Amvia Sky の設定そのものではないことが裏づけられた。**以下は追補50時点の記録 | 追補50の資料は「参考）MINERVA試験で使用された設定」として **Rx1／Rx2／Rx3 の3本**の表（Therapy Type＝Ramp／Burst+／Ramp、Initial #1 Pulses＝13、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2のみ81%、S2-S3 interval＝Rx2のみ20ms、Interval Decrement＝Rx2のみ10ms、# Sequences＝10、Rhythm Change＝On、Time Interval＝Every 7hr）を併記している。**しかし Amvia Sky のプログラマ画面は［1st ATP］［2nd ATP］の2本で、項目名も Attempts／ATP type／Number S1／Add S1／P-S1 interval[%]／S1 decrement／Scan decrement と違い、値も揃わない**（A-S1 Interval 91%/84%/81% 対 P-S1 interval 90%/80%、Time Interval Every 7hr 対 Repetition interval 2h）。**どの機種で行われた試験かも資料に記載がない。Amvia Sky の設定そのものではないと読むのが妥当と判断し、用語集「MINERVA試験（参考設定）」にその旨を明記したうえで表の値は資料どおり収載した。未確定** |
+| **ATP type のノミナル**（追補50で新出・**追補51で選択肢は確定**） | **選択肢は Burst／Ramp の2択と確定した**（追補51・「心房ATP治療の種類は Burst/Ramp」）。**MINERVA 参考表の `Burst+` は Amvia Sky の選択肢に無いことも確定した。****残るのはノミナルだけ。**画面例は 1st・2nd とも Ramp。資料が引く EP Europace 2006 は「ATCL≧240ms の AT エピソードでは Burst+ よりも Ramp の有効性が高く、Ramp の高い有効性は最初の6回のシーケンスで明らかになった」としており Ramp がノミナルである傍証にはなるが、**明記がないので断定はしていない。未確定** |
+| **AT/AF detection Rate と HVR detection の設定範囲**（追補50で新出・**追補51でほぼ解消**） | **追補51で Attempts（OFF,1〜10）／ATP type（Burst,Ramp）／Number S1（1〜15）／Add S1（OFF,ON）／P-S1 interval（70,75,80,85,88,90,95%）／S1 decrement（5〜40ms）／Scan decrement（OFF,5〜40ms）／Backup stimulation（70,90bpm）／Mode（OFF,VVI）／Repetition interval（OFF,2,4,7,12,24,36h）／Therapy delay（OFF・1〜10min・15〜55min・1〜24h）はすべて判明した。****残るのは AT/AF detection Rate と HVR detection Rate・Detection counter の範囲とノミナルだけ。**AT/AF 側は画面の「HAR limit」に 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm/ms を切り替えられる。**ms と読むと 250〜100bpm の10bpm刻みに一致するが、資料に範囲の明記はないので対応づけは読みにとどめた。未確定** |
+| ~~**「治療待機時間」と Therapy delay の関係**~~ **→ 追補51で解消** | **追補51のフローチャートは、01「心房性頻脈の検出」の中に「AT/AF detection［36 out of 48］」と「Therapy delay（治療待機時間）」を並べて置いている。**したがって循環図で「心房頻脈治療終了 → 心房頻脈検出」の矢印に添えられていた「治療待機時間」は **Therapy delay の訳語**であり、Repetition interval や別の内部タイマーではないと確定した |
 | **Auto gain（Amvia Sky）の②と③の割り当て**（追補49で新出） | 資料の表は「①最大センサーレートの90%に達する時間が24時間で累積30分を超える → **−1**」「②最大センサーレートの90%に達する時間が7日間で累積60分に到達しない → **±0**」「③『①、②』のどちらにも該当しない → **+1**」と読める。**しかし同じ資料の E シリーズ版は「①24時間で合計90秒を超える → −1」「②24時間で合計90秒に満たない → ±0」「③7日間連続して最大センサーレートに達しない → +1」で、「まったく到達しない → +1（ゲインを上げる）」という向きになっている。**Amvia Sky 版をそのまま読むと「到達不足のときに上げず、中間のときに上げる」という不自然な形になる。**②と③が入れ替わっている可能性があるが断定できないので、資料の表記どおりに収載した。未確定** |
 | **Amvia Sky DR-T の償還価格**（追補49で新出） | 既存データは **730,000円**（出典不明）、追補49の資料は **751,000円**（デュアルチャンバⅤ型）。**メーカー資料を優先して 751,000円 に置き換え、`hoken` に旧値も併記した。**既存値の出典が追えていないため一行残す |
 | **Amvia Sky HF-T QP／BP の重量・容積**（追補49で新出） | 資料には寸法（53×53×6.5mm）と寿命（10年4か月）しかなく、**重量・容積の記載がない**ため空欄にした。Amvia Sky DR-T 側の 23.2g／11cm³ は既存データのまま残してある。添付文書で確定する |
 | **DEXTRUS リードの対象型番**（追補49で新出） | 資料は「**一部の** DEXTRUS リードは BIOTRONIK 社製ペースメーカと組合せることで MRI 対応リードとなる」としか書かず、対象型番の一覧が読み取れない。`mri.json` の `BIO-PM4` には既に **Dextrus Model 4136／4137** が入っているが、**この2つで全部なのかは不明。未確定** |
 | **「約3,000人」「既に50名」の分母**（追補49で新出） | DEXTRUS リードの MRI 対応化で撮像可能になる患者数として挙げられているが、**国内なのか全世界なのか、いつ時点なのかが書かれていない。**資料どおりの表記で据え置き |
+| **「確認時間：30s／90s」が設定値か固定値か**（追補51で新出） | Atrial Therapy Sequence 図で 1st Atrial ATP モジュールの後に「確認時間：30s」、2nd Atrial ATP モジュールの後に「確認時間：90s」と書かれているが、**設定項目としては［1st and 2nd ATP］画面に現れない。****治療成功の定義が「30秒以内」であることと 1st ATP 後の30秒は一致するが、2nd ATP 後がなぜ90秒なのかの説明がない。未確定** |
+| **Scan decrement の作動の向き**（追補51で新出） | 設定範囲（OFF, 5〜40ms）は判明したが、**資料に Scan の動作そのものの説明が一切ない。**用語集には「S1 decrement がシーケンス内、Scan decrement がシーケンス間」と書いたが、**これは他社の Scan ATP の一般的な作りからの類推であって本資料の記載ではない。**医師用マニュアルで確定する。**未確定** |
+| **Repetition interval の起点の定義**（追補51で新出） | 図は起点を「最後の Atrial ATP therapy もしくは最後に抑制された治療」と書くが、**「抑制された治療」に Blocked も含むのか Inhibit のみなのかが読み取れない。**Blocked は再プログラムまで再開しないので Inhibit のみと読むのが自然だが、明記はない。**未確定** |
+| **48時間ルールの起点**（追補51で新出） | Blocked の条件「AT/AF エピソードが48時間以上持続したとき」の48時間が、**エピソード検出時からなのか最初の治療からなのかが書かれていない。未確定** |
+| **「600 attempts/月」の位置づけ**（追補51で新出） | バッテリー試算（−1.1%）の前提として置かれているが、**これが標準的な作動量の想定なのか、上限（1,000アテンプト/30日）に対する例示なのかが書かれていない。**1,000/30日より少ないので「多めの想定」と読んだが、資料に根拠の記載はない。**未確定** |
+| **ERAF の引用文献の誌名**（追補51で新出） | スライド下部は「Volume 113, Issue 16, 25 April 2006; Pages 1933-1941」とだけあり、**誌名が資料本文に出ていない。**巻号・年・ページから **Circulation** と同定して用語集に記載した。**誌名は同定であって資料の記載ではない** |
+| **Ramp vs Burst+ の試験の対象機種**（追補51で新出） | EP Europace 2006;8(7):465-473 の紹介スライドは「DDDRP device」とあるだけで機種が書かれていない。**Burst+ が Amvia Sky に無い以上 BIOTRONIK 機ではない可能性が高いが、本文からは断定できない。**用語集では機種を書かず所見のみを記載した。**未確定** |
 | **LSP202V の世代** | `mri.json` は LSP112V と LSP202V の両方を「Aveir VR」として登録している。**LSP202V が第2世代の心室用（VR2）かは追補42・44の資料でも判明せず。**ただし追補44の資料①のプログラマ画面（［LP 植込み／交換］）には「既存心室：LSP202V／VVI／50 min-1／2.5V／0.4ms、電池電圧3.0V」と表示されており、**DR システムの心室側デバイスとして使われることは確認できた。**世代は**未確定** |
 
 ---
 
 ## 7. 直近でやったこと
+
+### 2026-09-06（追補51）
+
+BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」（日本語・スキャンPDF・24スライド）を反映。
+**追補50の2スライドはこの資料の抜粋だった。****アルゴリズム・用語集・製品の3タブを更新。MRI は変更なし。件数は増やしていない。**
+
+- **`BIO-ATRIAL-ATP` を全面的に書き直した**（`how`／`params`／`models`／`ecg`／`pitfall`／`caution` を入れ替え）。
+  **4段階フローチャート**（AT/AF detection［36 out of 48］→ 治療前チェック → Burst/Ramp 治療 → AT/AF termination［20 out of 24］）、
+  **Daily checks と Last minute checks の二重構造**、**Stability check（8 P-P 中5 P-P で 40ms 以内）**、**アンダーセンシング補正（2倍読み替えで 80ms 以内）**、
+  **Position check（100〜2500Ω）**、**ApVs 81ms/80ms 分岐**、**Repetition through rhythm change の判定（8インターバルの中央値・10分毎に再計算・50ms 以上の解離）**を収載
+- **設定範囲が全面的に判明**：Attempts OFF・1〜10／**ATP type＝Burst／Ramp の2択**／Number S1 1〜15／Add S1 OFF・ON／P-S1 interval 70〜95%／S1 decrement 5〜40ms／
+  Scan decrement OFF・5〜40ms／Backup stimulation 70・90bpm／Mode OFF・VVI／Repetition interval OFF・2・4・7・12・24・36h／**Therapy delay OFF・1〜10min・15〜55min・1〜24h**／**出力 6.0V/1.5ms 固定**
+- **作動制限の一覧表を `caution` に収載**（Blocked 3条件＝再プログラム／Inhibit 6条件＝自動再開。**最小ペーシングインターバル 160ms**）
+- **電池への影響 −1.1%（10年 ⇒ 9年10か月）**、**治療成功は「30秒以内の終了」のみ**、**植込み後1か月経過してから有効化を推奨**を収載
+- **他6件に加筆**：`BIO-ATRIAL-CAPTURE-CONTROL`（ACC が Atrial ATP の前提条件）／`BIO-MODE-SWITCHING`（**Post ModeSw rate の刻みを「5拍刻み」→「5bpm刻み」に訂正**・ERAF 予防・80ppm 検討）／
+  `BIO-BLANKING`（6.0V/1.5ms 固定によるクロストーク事前確認）／`BIO-CLOSED-LOOP-STIMULATION`（アップストリーム治療・心房ペーシング率1%増で AF リスク2%減）／
+  `BIO-INTRINSIC-RHYTHM-SUPPORT`（心室ペーシング率1%増で AF リスク3%増・拡張期MRの反例）／`BIO-DYNAMIC-AV-DELAY`（AV 230ms 以上で拡張期MR）／`BIO-OVERDRIVE-PREVENTION-PACING`（ERAF 対策は Post ModeSw rate が代役）
+- **用語集 1172 → 1199語**（新規27語・既存11語を訂正／加筆）
+- **製品は 939件のまま。**`BIO-D-AMVIA-SKY-DR` の `diag` を差し替え、**`BIO-D-AMVIA-SKY-HFT-QP`／`BIO-D-AMVIA-SKY-HFT-BP` にも Atrial ATP を追記**（資料の表題が対象機種を DR-T/HF-T QP/HF-T BP と明示）
+- **§6 の未確定4件が解消**（ATP type の選択肢／設定範囲／MINERVA 参考表／治療待機時間＝Therapy delay）
+- **`G_FALLBACK` の同期は不要**（訂正11語はいずれも698語に含まれない。機械的に照合して確認）。**`feats` 未変更のため `F_FALLBACK` も不要**
+- **リポジトリを `ori287/cieds` → `ori287/pacemaker_navi` に改名。`index.html` の改修は不要と確認**（絶対URLのハードコードなし・相対パス・SW/base/manifest なし）
 
 ### 2026-09-06（追補50）
 
