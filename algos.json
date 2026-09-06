@@ -1,5 +1,5 @@
 {
- "v": 27,
+ "v": 30,
  "updated": "2026-09-06",
  "items": [
   {
@@ -218,7 +218,7 @@
    "how": "本体が体内に植え込まれたことを自動で検知し、保管中の省電力状態から通常の動作へ移行する。植込み後の設定作業を減らす。",
    "params": "Implant Detection: 自動",
    "models": "Azure XT・Cobalt XT 世代",
-   "equiv": "Abbott: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: Automatic Implant Detection"
+   "equiv": "Abbott: —\nBIOTRONIK: Auto-initialization。本体とリードが接続されると自動的に開始される10分間のセルフチェックで、プログラムボタンを押すと解除してすぐフォローアップに移れる\nBoston Scientific: —\nMicroPort CRM: Automatic Implant Detection"
   },
   {
    "id": "MDT-INTRINSIC-ATPTM",
@@ -445,7 +445,7 @@
    "how": "心房頻拍が整順化・徐拍化して停止しやすくなった機を捉えて心房ATPを行う。モードスイッチ中も繰り返し試行できる。",
    "params": "Reactive ATP: On／Off；シーケンス数",
    "models": "Azure XT・Cobalt XT 世代",
-   "equiv": "Abbott: —（非搭載）\nBIOTRONIK: Atrial ATP（aATP）\nBoston Scientific: —（非搭載）\nMicroPort CRM: —",
+   "equiv": "Abbott: —（非搭載）\nBIOTRONIK: Atrial ATP（aATP）。Amvia Sky では［1st ATP］［2nd ATP］の2段構え（Attempts／ATP type／Number S1／Add S1／P-S1 interval[%]／S1 decrement／Scan decrement）に、Repetition interval[h] と Repetition through rhythm change、Backup stimulation（VVI 70bpm）を組み合わせる\nBoston Scientific: —（非搭載）\nMicroPort CRM: —",
    "ecg": "心房頻拍の間に、心房へ連続したペーシングスパイクが入る。停止すれば洞調律または心房ペーシングに戻る。",
    "pitfall": "心房ATPにより心房頻拍が心房細動へ移行することがある。心房粗動では停止率が高いが、細動には無効。"
   },
@@ -702,7 +702,7 @@
    "how": "植込み時やリセット後に、単極リードか双極リードかを自動的に判別して設定する。双極設定で単極リードが接続された場合の出力不全を防ぐ。",
    "params": "Lead Polarity: Auto／Bipolar／Unipolar",
    "models": "Assurity MRI・Gallant・Gallant HF 世代",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: Automatic Lead Recognition／Lead Safety Switch\nMicroPort CRM: Lead Polarity Switch",
+   "equiv": "Medtronic: —\nBIOTRONIK: Auto-initialization 時の Pacing／Sensing polarity＝AUTO。プログラム後は極性が「BIPL」に変更され、以後 AUTO を選択できなくなる\nBoston Scientific: Automatic Lead Recognition／Lead Safety Switch\nMicroPort CRM: Lead Polarity Switch",
    "pitfall": "単極リードに双極設定が残っていると出力が出ないため、判別が働かない条件では手動で極性を確認する。"
   },
   {
@@ -746,7 +746,7 @@
    "how": "心房ペーシング パルスの直後に心室チャンネルの絶対不応期（心室ブランキング）を設け、心房への出力が心室チャンネルでセンシングされて心室ペーシング出力が不適切に抑制されるのを最小限に抑える。\n【Auto】では、心房ペーシング後にまず 12ms のブランキング ウインドウが始まる。この 12ms のウインドウ内で信号がセンスされたら、さらに 12ms 延長する。これを繰り返して最大 52ms まで延長し、ウインドウ中に何もセンスされなければブランキングはそこで終了する。延長分を含めた心室ブランキングの最大値は 64ms。\nクロストーク信号が短ければブランキングは短いままで終わり、長く続くほど段階的に伸びる。",
    "params": "心室ブランキング: Auto（ノミナル）、12〜52ms の固定値。［不応期 & ブランキング］＞【その他の設定、PVC & PMT】にある。ICD／CRT-D の［不応期 & ブランキング］にも同じ項目があり、Current™ 世代の画面例は 52ms",
    "models": "Accent 世代（Zephyr は［心室ブランキング］自動）。ICD／CRT-D にも同じ項目がある（Current™ 世代の画面で確認）",
-   "equiv": "Medtronic: —\nBIOTRONIK: Ventricular blanking after Ap（心房刺激後の心室絶対不応期。Etrinsa 8 DR-T の画面例は30ms）\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Ven. blanking after Ap（心房刺激後の心室絶対不応期。**30ms（30〜70ms、5ms刻み）がノミナル**。心房出力を5.0V以上に設定するとクロストークを惹起する可能性があるため延長が必要）\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "固定値で長く設定すると、心房刺激直後に生じた早期の心室イベントを見落とす。Auto は必要な分だけ延長するため、固定の長い値より取りこぼしが少ない。\nブランキングが終わった直後にはクロストーク検出ウインドウが続き、そこで拾った信号は心室セーフティ スタンバイの対象になる。",
    "ecg": "設定そのものは心電図に直接は現れない。クロストークが抑えられているかは、心房刺激直後の心室ペーシングの有無で判断する。",
    "pitfall": "ブランキングを固定で長くすると、心室の早期収縮が数えられず、頻拍の検出やレート計算に影響する。クロストークが疑われるときは、この設定だけでなく心房出力と心室感度、リード極性を併せて確認する。"
@@ -906,7 +906,7 @@
    "how": "マグネットがデバイスの上に置かれたときに、デバイスがマグネットを認識するかどうかを定めるもの。\n【バッテリー テスト】に設定しておくと、マグネット装着中は一定レートの非同期ペーシングとなり、そのレート（マグネット レート）から電池電圧を推定できる。マグネット レスポンス中の AV ディレイは 120ms に固定される。\nAccent のマグネット レートは、3.2V で 100min⁻¹（BOL）、3.1V・3.0V でも 100min⁻¹、2.9V で 97.9、2.8V で 93.6、2.7V で 89.3、2.6V で 85.0（ERI）、2.5V で 80.7（EOS）。\nZephyr は 2.75V 以上で 98.6min⁻¹（BOL）から始まり、2.50V 以上で 86.3（ERI）、以降 84.4・82.6・80.9・79.2・77.6 と下がる。\n【Off】に設定するとマグネットに反応せず、装着しても動作は変わらない。\n**リードレス（AVEIR™ VR）のマグネットレスポンスは On／Off の2択。**On のときにマグネットを使用すると、**最初の5拍は VOO／100 bpm**、**その後は残りのバッテリー電圧に応じたレートで VOO** となる。**RRT（2.71V）に達した状態でマグネットを使用したときは VOO／65 bpm。**最初の5拍だけ 100bpm を出す設計になっているため、数拍で外すと電池状態を反映したレートを読み損なう。",
    "params": "マグネット レスポンス: Off／バッテリー テスト。［基本動作］画面にある\n**AVEIR™ VR**：マグネット レスポンス On（ノミナル）／Off。設定は［基本動作］画面にある。",
    "models": "Accent・Zephyr 世代（マグネット レートの対応表が世代で異なる）\n**リードレス**：AVEIR™ VR（LSP112V）。マグネット レートは 最初の5拍 100bpm → 電池電圧に応じたレート、RRT で 65bpm。",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Magnet response（Auto／ASYNC／SYNC）。AUTO はまず10拍 DOO/VOO/AOO 90ppm・AV delay 100ms で作動し11拍目以降は設定値に戻る、ASYNC はつねに90ppm・AV delay 100ms、SYNC は何も変わらない。ERI 時はマグネットレートが 80ppm に下降する\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "ERI の判定レートは世代で異なる（Accent 85.0min⁻¹、Zephyr 86.3min⁻¹）。対応表を取り違えると電池状態を誤って判断する。\nOff に設定していると、体外からマグネットで電池状態を確認できない。\nマグネット装着中は非同期ペーシングになるため、自己脈との競合が起こりうる。\n**マグネット レスポンスはストアードEGMのトリガ項目のひとつで、保存時間はプレトリガ10秒／ポストトリガ6秒に固定（変更できない）。メモリが一杯になっても「最初の」マグネット エピソードは保護される。**作動回数は【ログ＆サマリー】の［デバイス リバージョン］欄に、前回記録の日時とともに集計される。\n**ICD ではマグネットが治療の中止理由になる。**［治療サマリー詳細］の［ショック中止の原因］には「マグネット／ノイズ」の行があり、初回治療・2回目以降の治療に分けてカウントされる。\n**AVEIR™ VR ではマグネットモードが「記録されるエピソードの種類」の3項目のひとつ**で、イベント数と直近エピソードの日時が残る（EGMは保存されない）。**最初の5拍が 100bpm で、そのあとに電池状態を反映したレートになる**ため、当てた直後のレートだけを見て電池状態を判断しない。",
    "ecg": "マグネットを当てているあいだ、自己脈と無関係な一定レートのペーシングになり、デュアルチャンバでは心房刺激に続いて短い AV 間隔で心室刺激が入る。マグネットを外すと元の動作に戻る。\n**AVEIR™ VR** のプログラマ画面では、マグネット検出のマーカが **Mag** と表示される。",
    "pitfall": "マグネット レスポンスが Off だと反応せず、故障と誤解されることがある。レートから電池状態を読む方法は機種ごとの対応表が前提で、他社や他世代の表を当てはめると判断を誤る。"
@@ -954,7 +954,7 @@
    "how": "自己 R 波を感知すると、そのときの AV インターバルを実測し、［実測した AV インターバル − ヒステリシス デルタ］を新しい AV インターバルとして 31サイクル継続する。32サイクル目に元の AV インターバルへ戻り、自己 R 波が出なければそのまま設定値で動く。\n短縮した AV インターバルで動作している最中にさらに自己 R 波が出現した場合は、そこからさらに AV インターバルを短縮し、その値を 256サイクル維持する。\n短縮の下限は［最短 AV ディレイ］で、これ以上は短くならない。\n資料の例では、ペース後 AV ディレイ 175ms・ヒステリシス デルタ 40ms・最短 AV ディレイ 70ms の設定で、実測 AV インターバル 140ms に対して 140−40＝100ms で 31サイクル動作し、32サイクル目に 175ms へ戻る。",
    "params": "サーチ機能付ネガティブ AV ヒステリシス: On／Off；ヒステリシス デルタ（短縮量）；最短 AV ディレイ: 25〜120ms（Accent）／30〜120ms（Zephyr）。最短 AV ディレイはレート応答 AV ディレイと共通の下限値で、［ディレイ］画面にある",
    "models": "Accent・Zephyr 世代（設定範囲は世代で異なる）",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Negative AV hysteresis。短縮幅 −50ms（−10〜−150ms、10ms刻み）、AV repetitive は On（180拍）固定、AV scan は OFF（変更不可）\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "VIP（心室自己心拍優先機能）とは方向が逆の機能で、本機能が有効なあいだは VIP のパラメータが無効になる。自己伝導を活かしたいのか、心室ペーシングを確実に届けたいのかを決めてから選ぶ。\n短縮の下限は最短 AV ディレイで決まる。短く設定しすぎると房室同期が損なわれる。",
    "ecg": "自己 R 波が出た次の拍から AV 間隔が短くなり、心室ペーシングが確実に入るようになる。一定のサイクル数が過ぎると AV 間隔が元に戻り、自己伝導が残っていれば再び短縮する、という周期的な変化を示す。",
    "pitfall": "AV 間隔が周期的に変わるため、心電図だけを見るとタイミング不良や設定変更と誤解されやすい。短縮しすぎると心房収縮の寄与が減り、心拍出量が落ちることがある。自己房室伝導を温存したい徐脈症例では、この機能はむしろ不利になる。"
@@ -970,7 +970,7 @@
    "how": "心室チャンネルでノイズを検出したときに、一時的にモードを切り替える機能。Accent では、1秒あたり 100 以上のイベントで十分な振幅をもつ信号をノイズとして検出し、設定に従って DOO・VOO・ペーシング Off のいずれかへ移行する。VOO または DOO に設定した場合は基本レートでペーシングする。出力は固定出力設定ならそのまま、オートキャプチャー使用中は高出力モードの出力（5V または 4.5V）になる。\nZephyr では、400Hz 以上の電磁干渉またはノイズ（通常、骨格筋電位では引き起こされない）を相対不応期内でセンシングするとノイズ レスポンスが始まる。DDD または DDI モードで動作中に心室チャンネルでノイズを検出すると、心室・心房の両方の不応期が延長する。ノイズから始まる 150ms の不応期延長（ノイズ サンプリング ピリオド）が置かれ、前半 75ms が絶対不応期、後半 75ms が相対不応期となる。相対不応期中にノイズが検出されなければ通常動作に戻り、ノイズが途切れずに続くとさらに 150ms が追加される。連続的にセンシングされるノイズが存在すると、基本レートのプログラム設定値での非同期動作、またはセンサ指示レートでの非同期動作にリバージョンし、ノイズがなくなるまで継続する。\n**リードレス（AVEIR™ VR）のノイズリバージョンモードは、不応期に連続ノイズがセンシングされた場合に発動する。**発動中は**基本レートまたはセンサ指示レート（SIR）で非同期ペーシング**を行い、**ノイズがなくなると終了する**。経静脈機のように移行先モード（VOO／DOO／ペーシングOff）を選ぶ設定ではなく、動作が決まっている。",
    "params": "心室ノイズ リバージョン モード: ペーシング Off／VOO／DOO（Accent。ノミナルは DOO）",
    "models": "Accent・Zephyr 世代（判定の方式が世代で異なる）\n**リードレス**：AVEIR™ VR（LSP112V）。移行先モードの選択肢はなく、基本レートまたは SIR での非同期ペーシングに固定。",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: EMI mode（ノイズリバージョン）。常時作動し、As／Vs マーカからそれぞれ始まる 50ms の EMI インターバル内に新たなセンシング電位を感知するとそこから 50ms 延長される\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "ペーシング Off を選ぶと、強い電磁干渉のあいだ刺激が出ない。ペースメーカ依存例では選ばない。\n非同期ペーシングへ移行するため、自己脈があると競合し、受攻期に刺激が落ちる可能性がある。電気メスなど強い干渉が予測される場面では、事前に設定と対処方針を決めておく。\n**作動回数は【ログ＆サマリー】の［デバイス リバージョン］欄に集計される。****心房ノイズ リバージョン／心室ノイズ リバージョン／マグネット レスポンス**の3行があり、それぞれ回数と「前回記録」の日時が並ぶ。**ノイズ リバージョンはストアードEGMのトリガ項目でもあり、保存時間はプレトリガ10秒／ポストトリガ6秒に固定（変更できない）、優先度の画面例ノミナルは Off。**リード不全やEMIを疑うときは、この回数とEGMを合わせて見る。トリガを Off にしたままだと波形が残らない。\n**ノイズ リバージョン中はエクササイズ＆アクティビティ診断のデータ収集も中断される。**\n**AVEIR™ VR ではノイズ リバージョンが「記録されるエピソードの種類」の3項目のひとつであり、イベント数と直近エピソードの日時だけが残る（EGMは保存されない）。**回数が増えているときに波形で裏を取ることができないため、体位変換や上肢運動での再現、インピーダンスのトレンドなど、別の材料で評価する。",
    "ecg": "干渉のあいだだけ、自己脈と無関係な一定レートのペーシングに変わり、干渉が消えると元の動作に戻る。リード由来の雑音でも作動しうるため、体位変換や上肢の運動で再現するかを確認する。",
    "pitfall": "リードの不完全断線や絶縁不良による雑音でも作動する。干渉源が見当たらないのに繰り返すときは、リード側の問題を疑ってインピーダンスの推移と記録を確認する。非同期動作への移行を不具合と取り違えないようにする。"
@@ -986,7 +986,7 @@
    "how": "PMT は、心房トラッキング心室ペーシングを行うモードで逆行性 P 波にトラッキングして心室をペーシングしてしまう頻拍。起因となるのは心室期外収縮、心房ペーシング不全、心房オーバーセンシング、間欠的心房アンダーセンシング、心房期外収縮など。\nPMT 検出レートを上回る心房レート（FARI）が PMT かどうかを判定し、成立していれば連鎖を断つ。\n【Auto Detect】は、PMT 検出レートより速いインターバルが出現すると、VP-AS インターバルを8拍測定して平均を求め、8拍がいずれも平均値 ±16ms 以内に収まっていれば PMT と認識する。続いて9拍目の VP-AS インターバルを測定し、10拍目の心室ペーシング前の AV ディレイを変化させて10拍目の VP-AS インターバルを測定する（設定のセンス後 AV ディレイが 100ms 未満なら 50ms 延長し、100ms 以上なら 50ms 短縮する。短縮すると最大トラッキングレートを超える場合は、100ms 以上でも逆に 50ms 延長する）。9拍目と10拍目の VP-AS インターバルの差が ±16ms 以内であれば PMT と確定し、次の心室ペーシングを抑制したうえで、逆行性 P 波から 330ms 後に心房ペーシングを入れる。PMT が続く場合は 256サイクル後に再度診断する。\n【10 Beats > PMT】は、PMT 検出レートを上回るレートを検出したあと AS-VP イベントを10連続でカウントし、10回目の AS-VP イベントの後に1サイクルだけ PVARP を 480ms に設定して 330ms の心房アラート ピリオドを置き、PMT を停止させる。その後 256サイクル一時停止してから繰り返す。安定性を評価しないため、洞頻拍でも作動しうる。\n**発生機序を押さえると回避できる（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**PMT は **Endless loop tachycardia（ELT）**とも呼ばれ、資料は誘因として **PVC／PAC／Atrial Non-capture（心房非捕捉）／Atrial under sensing／Atrial over sensing／長い AV delay** の6つを挙げている。**PMT 作動を確認したら、まずどれが引き金だったかを特定する。**引き金が分かれば設定で回避できる可能性がある。\n**成立の前提は「SAV ディレイのあるモード」であること。**逆行性伝導が心房で感知されると、SAV ディレイをもつモードでは心室へ高頻度にペーシングを行うことがある。**DDI のように AsVp を持たないモードでは、この連鎖は成立しない。**",
    "params": "PMT レスポンス: Integrity・Identity・Verity／Zephyr・Victory は Off、10 Beats > PMT、Auto Detect；Accent は Off、心房ペーシング（Auto Detect と同じアルゴリズム）。10 Beats > PMT は Zephyr 以前の世代でのみ選択できる。画面上の項目名は Accent が［PMT レスポンス］、Zephyr が［PMT オプション］。あわせて PMT 検出レートを設定する（画面で確認できる値は 90／110／130min⁻¹）。いずれも［不応期 & ブランキング］の【PVC & PMT】にある。",
    "models": "Accent（心房ペーシング）／Zephyr・Victory／Identity・Integrity・Verity\n**リードレス**：AVEIR™ DR に **A Pace on PMT** が搭載されている（メーカー資料の「その他のデュアルチャンバアルゴリズム」）。名称は Accent 世代の【心房ペーシング】と同じ考え方だが、**設定範囲・ノミナルは追補42の資料に記載がない**。",
-   "equiv": "Medtronic: —\nBIOTRONIK: PMT protection（On／Off）。判定には VA criterion（画面例 350ms）を用いる\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: PMT protection（On／Off）。**VA criterion＝350ms（250〜500ms、10ms刻み）。検出は「VpAs interval が8拍連続して VA criterion より短い」かつ「7拍の VpAs interval の偏差が24ms以内」、確認は8拍目に AV ディレイを延長または短縮しても VpAs interval が変化しないこと、停止は確認後の1拍だけ PVARP を 400ms（VA criterion＋50ms）に延長すること**\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "上限レートにかかって AV ディレイが見掛け上延長している場合でも、Auto Detect が10拍目に行う延長・短縮は、元の AV ディレイの設定値によって決まる。\n10 Beats > PMT は連続性だけを見て安定性を評価しないため、洞頻拍でも作動して房室同期が一過性に乱れることがある。\n洞頻拍と PMT の鑑別では、AV ディレイを短くしたときに洞頻拍では VP インターバルが延びるのに対し、PMT では VP インターバルが変わらず PP インターバルが短くなる。\n逆行性室房伝導は珍しくない。洞不全症候群の約70〜80%、房室ブロックの約35% に VA 伝導が認められるとされ、資料が引用する Hayes・Furman（1983）では、ペースメーカ植込み患者の47% に VA 1:1 伝導があり、伝導時間は平均 235±50ms（110〜380ms）と報告されている。\nVA 伝導の確認は、モードを VVI にし、搬送速度 50mm/秒、基本レートを自己心拍より 20min⁻¹ ほど速く設定して、低め・中間・高め（80／100／120min⁻¹ など）で心室ペーシングから生じる心房電位を探す。VA 伝導があれば PVARP を「VA 伝導時間＋50ms 程度」に設定するのが目安。\n**PMT の検出回数は［診断機能］⇒【房室伝導】タブの心室レート ヒストグラム欄に「PMT 検出」として表示される**（画面例は 0）。**PMT はストアードEGMのトリガ項目でもあり、保存時間はプレトリガ12秒／ポストトリガ4秒に固定（変更できない）。**優先度は Off／Low／High から選び、画面例のノミナルは Off。**メモリが一杯になっても「最初の」PMTエピソードは保護される。**PMT を疑うのに記録が残っていない場合は、エピソード トリガが Off のままになっていないかを確認する。\n**PVARP を延ばして逆行性P波を隠す対処には裏がある（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。****PVARP 内に逆行性P波を隠せば PMT は避けられるが、その逆行性P波は「見えていない」ため機能的なアンダーセンシングの状態になり、RNRVAS（反復性非リエントリー性室房伝導）を招くことがある。**また **PVARP を延ばせば TARP（＝PVARP＋SAV ディレイ）が延び、2:1 ブロックポイント（＝60,000÷TARP）が下がる。**PMT 対策と追従性の確保は相反するので、Auto PVARP のようなレート応答型の設定が用意されている。",
    "ecg": "上限レート付近の一定した頻拍が続いたあと、心室ペーシングが1拍抜けて心房ペーシングが入り、頻拍が止まる。マーカでは AS と VP が交互に並ぶ状態が続き、停止の直前に AV ディレイが変化する拍が入る。停止後しばらくは介入が行われず、再発すれば同じ経過を繰り返す。",
    "pitfall": "Off にしていると PMT が持続し、動悸や心不全の増悪につながる。逆に洞頻拍で作動すると、運動中に心房追従が途切れて息切れとして自覚されることがある。停止させても逆行性伝導そのものは残るため、再発を繰り返すときは PVARP と PVC レスポンスの設定を併せて見直す。"
@@ -1002,7 +1002,7 @@
    "how": "PMT に対処するロジックは2種類あり、本機能（PVC レスポンス）は **PMT にならないように予防する側**、PMT レスポンスは起こってしまった PMT を停止する側にあたる。\nDDD(R) で心室期外収縮（PVC）を検出し、逆行性伝導による PMT の成立を予防する。PVC の判定は2通りで、① R 波に先行する心房イベントがない、② PVARP の相対不応期部分で P 波を感知したあと、その心房イベントから 280ms 以内に R 波が生じない、のいずれかを満たす心室イベントを PVC とする。\n【心房ペーシング】（Zephyr の A Pace on PVC）では、PVC の検出後に PVARP を 475ms（Zephyr は 480ms）へ自動延長する。延長した PVARP 内に心房イベントがあれば PVARP を直ちに終了し、その心房イベントから 330ms 後に心房ペーシングを出す。この 330ms は 120ms の絶対不応期と 210ms のアラート ピリオドで構成され、アラート ピリオド中に P 波をセンシングすれば通常の DDD タイミングに戻る。延長した PVARP 内に心房イベントがなければ、PVC から VA インターバル後に心房ペーシングを出す。\nVDD モードでは心房ペーシングを出せないため、現在の PVARP 設定を 125ms 延長する（上限 550ms）。\n旧機種の【+PVARP on PVC】では、PVC の検出後に PVARP を 480ms へ延長し、続けて 330ms の心房アラート ピリオドを置く。このとき心房エスケープインターバルは、基本レートの設定によらず 810ms になる。",
    "params": "PVC レスポンス（選択肢と表示名が世代で異なる）: Identity・Integrity・Verity は Off、+PVARP on PVC；Zephyr・Victory は Off、A Pace on PVC（VDD では +PVARP on PVC として動作）；Accent は Off、心房ペーシング。資料には「心房ペーシング」と「A Pace on PVC」は同じ機能と明記されている。画面上の項目名も世代で異なり、Accent は［PVC レスポンス］、Zephyr は［PVC オプション］。いずれも［不応期 & ブランキング］の【PVC & PMT】にあり、PMT レスポンス・PMT 検出レートと同じ枠に並ぶ。あわせて PVARP（125〜500ms）と PVAB（Accent 60〜250ms／Zephyr 60〜350ms）を同じ画面で設定する。",
    "models": "Accent（心房ペーシング）／Zephyr・Victory（A Pace on PVC）／Identity・Integrity・Verity（+PVARP on PVC）",
-   "equiv": "Medtronic: —\nBIOTRONIK: PVARP after PVC（画面例 375ms。PVC 後だけ PVARP を延長する項目）\nBoston Scientific: —\nMicroPort CRM: Atrial Pacing on PVC",
+   "equiv": "Medtronic: —\nBIOTRONIK: PVARP after PVC（**Auto、または「自動調整もしくは設定された PVARP＋150ms（固定）」**。PVARP 225ms なら 375ms になる）\nBoston Scientific: —\nMicroPort CRM: Atrial Pacing on PVC",
    "caution": "+PVARP on PVC が作動した拍では、心房エスケープインターバルが基本レートの設定によらず 810ms になる。基本レートを高く設定している症例では、この1拍だけ間隔が延びる。\nPVARP を延長しているあいだの心房イベントは心室追従に使えない。心房レートが速い症例では追従が途切れることがある。\nVDD モードでは心房ペーシングによる介入ができず、PVARP の延長だけが行われる。",
    "ecg": "心室期外収縮の直後に不応期が通常より長くなり、続いて心房ペーシングが入る。プログラマのマーカでは、PVC と判定された心室イベントに続いて心房ペーシングのマーカが並ぶ。VDD モードでは心房ペーシングは現れず、不応期の延長だけが見られる。",
    "pitfall": "心室期外収縮が頻発する症例では心房ペーシングが増え、ペーシング率と電池消耗が上がる。逆行性伝導のない症例では得られる利益が乏しい。Off にしていると、PVC を起点とした PMT が繰り返し起こることがある。PVC の判定条件を満たさない心室イベント（先行する心房イベントがある期外収縮など）では作動しない。"
@@ -1065,7 +1065,7 @@
    "how": "心房レートが上がるにつれて PR 間隔が短くなる生理的な変化を模倣する機能。フィルタ処理後心房レート（FARI）が 90min⁻¹ を超えると、ペース後 AV ディレイとセンス後 AV ディレイの短縮が始まる。\n短縮の傾きは3段階で、Low はレート 1min⁻¹ の変化につき 1ms、Medium は 2ms、High は 3ms 変化する。Off では AV ディレイは変化しない。\nどこまで短縮するかは［最短 AV ディレイ］で頭打ちになり、傾きが急なほど早く下限へ到達する。",
    "params": "レート応答 AV ディレイ: Off／Low（1ms/min⁻¹）／Medium（2ms/min⁻¹）／High（3ms/min⁻¹）；最短 AV ディレイ: 25〜120ms（Accent）／30〜120ms（Zephyr）。最短 AV ディレイはレート応答 AV ディレイを選択したときのみ設定できる。ペース後 AV ディレイは 25〜350ms、センス後 AV ディレイは 25〜325ms の範囲で設定し、両者の差はノミナルで 50ms",
    "models": "Accent・Zephyr 世代（設定範囲は世代で異なる）",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Dynamic AV delay。Low＝150ms(60ppm)〜120ms(130ppm)／Medium＝140〜100ms／High＝130〜80ms\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "AV ディレイの短縮は TARP を短くするため、上限追従レートの確保にも働く。一方で短縮しすぎると心房収縮による心室充満の寄与が減る。\n基本レートが高いと設定できる AV ディレイの最大値そのものが制限される（Accent では基本レート 30〜90min⁻¹ で 350ms、130〜160min⁻¹ で 170ms、170min⁻¹ で 160ms）。",
    "ecg": "運動などで心房レートが上がるにつれて、AV 間隔が段階的に短くなっていく。レートが下がると元の AV 間隔へ戻る。",
    "pitfall": "設定を High にすると短時間で最短 AV ディレイに達し、房室同期が浅くなって息切れの訴えにつながることがある。レートが上がったときだけ AV 間隔が短い所見を、機能を知らないと異常と取り違えやすい。"
@@ -1081,7 +1081,7 @@
    "how": "自己レートやペーシングレートの変動に合わせて不応期を変える機能。AF サプレッション アルゴリズムのレート、センサ指示レート、または FARI の増減に反応して、心室ペーシング不応期（V Ref）と PVARP の設定値を自動的に変更する。\n短縮の傾きは3段階で、Low（ノミナル）は 1min⁻¹ につき 1ms、Medium は 2ms、High は 3ms ずつ短縮する。Off では不応期は変動しない。\n短縮の下限は［最短 PVARP／V Ref］で決まる。",
    "params": "レート応答 PVARP／V Ref: Off／Low（ノミナル）／Medium／High；最短 PVARP／V Ref: 125〜475ms（ノミナル 175ms）。基準となる PVARP は 125〜500ms（ノミナル 275ms）、心室ペーシング不応期は 125〜500ms（ノミナル 250ms）。いずれも［不応期 & ブランキング］画面にある",
    "models": "Accent 世代（Zephyr でも［レート応答 PVARP／VREF］として設定できる）",
-   "equiv": "Medtronic: —\nBIOTRONIK: Auto PVARP（On／Off）。あわせて Atrial refractory period を AUTO に、Wenckebach response をレート範囲（画面例 130〜167bpm）で設定する\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Auto PVARP。**PMT protection が7日間作動していない場合は PVARP−50ms（PVARP が一度も延長されていない場合のみ）、PMT protection が作動した場合は PVARP＋50ms。Amvia Sky で Auto 設定した場合 PVARP は 175ms から開始される。一度でも延長されると短縮されることはない。メーカーは Off を推奨**\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "PVARP を短縮しすぎると逆行性 P 波を心房不応期の外で拾いやすくなり、PMT のリスクが上がる。VA 伝導のある症例では最短 PVARP／V Ref を VA 伝導時間＋50ms 程度より短くしない。\n逆に PVARP が長いままだと TARP が延び、2:1 ブロックが低いレートで出る。",
    "ecg": "レートが上がったときに、不応期が短いままであれば見られるはずの追従の途切れが起こりにくくなる。プログラマのマーカでは、レートに応じて不応期の表示幅が変化する。",
    "pitfall": "短縮しすぎると、運動時など速いレートのときに逆行性 P 波を拾って PMT を誘発することがある。PMT の再発を繰り返す症例では、この設定と PVARP・PVC レスポンスを併せて見直す。"
@@ -1097,7 +1097,7 @@
    "how": "時計ではなく体動に基づいて安静を判定するため、就寝時刻が一定でない患者や時差のある場所でも設定を変えずに使える。加速度センサの指標をそのまま使うのでもなく、3つの基準で判定する。\n第一の基準は、1週間の活動性をモニターして体動レベルの移動平均のヒストグラムを作り、活動の少ない側から 29%（1日約7時間の睡眠＝24時間の29%）の位置を活動偏差閾値とするもので、閾値は7日ごとに更新される。\n第二の基準は、第一の基準を満たしたうえで、さらに 15〜20分間 加速度センサに信号がないこと。患者が 15〜20分以上活動していないと感知した時点でレスト レートへ切り替わる。\n第三の基準は寝たきりへの対策で、活動変動の分布が1つの大きな山になった場合は閾値を更新せず、前回までの閾値を継続する。\n作動すると安静時のレートを 5〜10ppm 下げる。",
    "params": "レスト レート: Off、30〜170min⁻¹（5ステップ刻み。130min⁻¹ 以上は10ステップ刻み・Accent）／Off、30〜130min⁻¹（5間隔）、140、150（Zephyr・Victory・Identity・Verity）。［レート］画面で基本レートの直下に並ぶ",
    "models": "Accent 世代／Zephyr・Victory・Identity・Verity 世代（設定範囲は世代で異なる）",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Night rate（On／Off）。設定レート 30〜100ppm、開始・終了時刻を 00:00〜23:55 で設定する\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "植込み後少なくとも7日間はプログラムしない。信頼できる体動データが集まっていないと閾値が定まらない。\nキャプチャー & センシングおよび NIPS の実施中は無効になる。\nレスト レートが作動しているあいだは、ヒステリシス レートとヒステリシス サーチの各パラメータが無効になる。\nAMS 基本レートで動作しているあいだは、レスト レートのパラメータは基本レートの設定で動作する。",
    "ecg": "夜間や長時間の安静時に、日中より低いレートでのペーシングが続く。レートの移行は緩やかで、体動が戻ると基本レートへ戻る。",
    "pitfall": "設定レートを低くしすぎると、夜間の徐脈による症状が出ることがある。日中に長く安静にしている患者では日中でも作動しうるため、レートの低下をセンシング不全やペーシング休止と取り違えないようにする。植込み直後にプログラムすると体動データが不十分で、意図した時間帯に作動しないことがある。"
@@ -1348,7 +1348,7 @@
    "how": "心房ペーシングの出力が心室チャンネルに漏れ込む（クロストーク）と、心室は自己波と誤認して刺激を抑制してしまう。これを防ぐため、心房ペーシング直後の一定時間に［クロストーク検出ウインドウ］を置き、この窓の中で心室が何かをセンシングした場合は、刺激を抑制せず**心房ペーシング パルスの 120ms 後に心室ペーシング パルスを出力する。**\nクロストーク検出ウインドウは、心室ブランキングの終了から心房ペーシング後 64ms までの区間で、それ以降 AV ディレイの終わりまでは通常のセンシングに戻る。",
    "params": "心室セーフティー スタンバイ: On／Off（ノミナル On）。［不応期 & ブランキング］＞【その他の設定、PVC & PMT】にある",
    "models": "Accent・Zephyr 世代",
-   "equiv": "Medtronic: —\nBIOTRONIK: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Safety window（常に On）。心房ペーシング後 100ms、または設定された AV ディレイの短い方\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "作動した拍の AV 間隔は設定値ではなく 120ms 固定になる。設定した AV ディレイより明らかに短い。\nOff にするとクロストークで心室ペーシングが抑制され、ペースメーカ依存例では心停止につながりうる。",
    "ecg": "心房スパイクの直後に、設定した AV ディレイより明らかに短い間隔で心室スパイクが入る。毎拍ではなく、クロストークを検出した拍にだけ現れる。",
    "pitfall": "短い AV 間隔の拍を AV ディレイの設定ミスやセンシング不全と取り違えやすい。頻発する場合は、心房出力が高すぎないか、心室感度が鋭すぎないか、ユニポーラ設定になっていないかを確認する。"
@@ -1390,10 +1390,11 @@
    "generic": "閾値トレンドの監視",
    "device": "PM / ICD / CRT",
    "scope": "刺激閾値の推移を自動で記録する",
-   "how": "定期的に閾値を測定して時系列で記録し、出力の自動調整（Capture Control）を行わない設定でも閾値の変化を追跡できるようにする。",
-   "params": "ATM: On／Off；測定頻度",
+   "how": "閾値を定期的に測定して記録するが、出力の自動変更は行わない。トレンドとして推移を確認できる。\n**ATM は独立した機能ではなく、Capture control の選択肢（On／Off／ATM）のひとつとして心房・心室それぞれに用意されている（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**ACC・VCC の status 欄には「ACC および ATM 機能が作動し適切に機能している場合」に OK が表示される、という書き方がされており、**測定の仕組みそのものは On と共通で、結果を出力に反映するかどうかだけが違う。**",
+   "params": "**Capture control：On／Off／ATM（Active Threshold Monitor）。ATM でも Threshold test start・Safety margin・Search type は設定できる**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**E シリーズでは Search type＝Time of day（Interval／Time of day）を選べる。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
-   "equiv": "Medtronic: —\nAbbott: —\nBoston Scientific: —\nMicroPort CRM: —"
+   "equiv": "Medtronic: —\nAbbott: —\nBoston Scientific: —\nMicroPort CRM: —",
+   "caution": "**VCC を On または ATM に設定する場合、パルス幅は 0.5ms 以上には設定できない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**ATM を選んでもこの制約はかかる。\n**On/ATM に設定後 256日間連続して SQC が失敗すると VCC status は Disabled になる。**"
   },
   {
    "id": "BIO-ATRIAL-ATP",
@@ -1401,14 +1402,15 @@
    "cat": "心房治療",
    "name": "Atrial ATP（aATP）",
    "generic": "心房ATP（心房抗頻拍ペーシング）",
-   "device": "ICD / CRT-D",
-   "scope": "心房頻拍を無痛で停止させる",
-   "how": "心房頻拍・心房粗動を検出すると、心房に対しBurst・Ramp・高頻度バーストを行って停止を図る。",
-   "params": "刺激数；連結期（％）；シーケンス数",
-   "models": "Acticor 7／Ilivia Neo 7 世代のICD／Rivacor 7 HF-T／Ilivia Neo 7 HF-T 世代のCRT-D",
+   "device": "PM / ICD / CRT",
+   "scope": "心房頻拍を無痛のペーシングで停止させる",
+   "how": "心房頻拍・心房粗動を検出すると、心房に対し Burst・Ramp などのペーシングを行って停止を図る。\n**Amvia Sky の一連の流れが判明した（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**資料の図は次の循環で示されている。\n**①心房頻脈検出 → ②リード位置チェック → ③心調律安定性チェック → ④ATP治療 → ⑤繰返しインターバル／リズム変化時の繰返し → ⑥心房頻脈治療終了 →（治療待機時間）→ ①へ戻る。**\n**治療は「安定しているイベント」に限って行われる**（③のチェックがあるため）。\n**ATP は［1st ATP］と［2nd ATP］の2段構えで、それぞれ試行回数（Attempts）と ATP type（Ramp など）を設定する。**\n**［Repetition interval］で治療を繰り返す間隔を時間単位で決め、［Repetition through rhythm change］を ON にするとリズムが変化したときにも繰り返しを行う。**\n**ATP 中は［Backup stimulation］として VVI・70bpm のバックアップペーシングが働く。**",
+   "params": "**検出側（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」））**：**AT/AF detection の Rate＝170bpm**（画面例）。**HVR detection の Rate＝200bpm、Detection counter＝8**（画面例）。\n**治療側**：**Therapy delay＝OFF（ノミナル）／1st ATP＝10*Ramp／2nd ATP＝10*Ramp／Repetition interval [h]＝2／Repetition through rhythm change＝ON**（画面例）。\n**［1st and 2nd ATP］の詳細画面**：Attempts＝10／10、ATP type＝Ramp／Ramp、Number S1＝13／13、Add S1＝ON／ON、**P-S1 interval [%]＝90／80**、S1 decrement [ms]＝10／10、Scan decrement [ms]＝OFF／OFF。\n**Backup stimulation＝70bpm、Mode＝VVI。**\n**参考として資料は MINERVA 試験で使用された設定も併記している**：Rx1＝Ramp／Rx2＝Burst+／Rx3＝Ramp、Initial #1 Pulses＝13（3つとも）、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2 のみ 81%、S2-S3 interval＝Rx2 のみ 20ms、Interval Decrement＝Rx2 のみ 10ms、# Sequences＝10（3つとも）、Rhythm Change＝On、Time Interval＝Every 7hr。**ただしこの表は項目名（A-S1 Interval／# Sequences／Therapy Type）が Amvia Sky のプログラマ画面の項目名（P-S1 interval／Attempts／ATP type）と違い、Rx が3本ある点も画面（1st／2nd の2本）と合わない。あくまで「参考」として併記されたものと読むのが妥当（notes 追補50に未確定として記録）。**",
+   "models": "**Amvia Sky DR-T（デバイスごとの機能一覧で Atrial ATP Therapy の印があるのは Amvia Sky のみ）**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）／Acticor 7・Ilivia Neo 7 世代の ICD／Rivacor 7 HF-T・Ilivia Neo 7 HF-T 世代の CRT-D",
    "equiv": "Medtronic: Reactive ATP™（rATP）\nAbbott: —（非搭載）\nBoston Scientific: —（非搭載）\nMicroPort CRM: —",
-   "ecg": "心房頻拍の間に、心房へ連続したペーシングスパイクが入る。停止すれば洞調律または心房ペーシングに戻る。",
-   "pitfall": "心房ATPにより心房頻拍が心房細動へ移行することがある。心房粗動では停止率が高いが、細動には無効。"
+   "ecg": "心房頻拍の間に、心房へ連続したペーシングスパイクが入る。停止すれば洞調律または心房ペーシングに戻る。\n**Ramp では刺激間隔が1拍ごとに短縮していく**（S1 decrement 10ms なら10msずつ）。**Number S1＝13 なら1シーケンスあたり13発**で、Add S1 が ON だと追加の S1 が入る。**ATP 中に心室が止まらないよう、VVI・70bpm のバックアップペーシングが並走する（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**",
+   "pitfall": "心房ATPにより心房頻拍が心房細動へ移行することがある。心房粗動では停止率が高いが、細動には無効。\n**HVR detection は心室レートでのみ評価を行っているため、1:1AT などの上室性頻脈であっても、設定レートを超える心室レートが検出されると治療は行われない（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**心房側のレートが治療域に入っていても心室が速ければ ATP は出ない、という向きの取りこぼしになる。\n**AT/AF の治療可能な頻拍のレートは 300bpm 未満**なので、それより速い心房細動には治療が及ばない。",
+   "caution": "**デバイスごとの機能一覧では、Atrial ATP Therapy が搭載されているのは Amvia Sky のみで、E1〜E3 の各シリーズには印がない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**この機能の有無が保険上の機能区分に直結している。**同資料の「ペースメーカ 機能区分定義・保険償還価格」は、**デュアルチャンバ（Ⅴ型）の定義を「エ：頻脈変動感知型抗上室性頻脈ペーシング治療機能を有するものであること」**とし、該当デバイスとして **Amvia Sky DR-T と Azure™ XT MRI（Medtronic）**を挙げている（償還価格 751,000円）。\n**心房細動波を確実にセンシングするため、Auto sensitivity control を『Auto』に設定することが推奨されている。**\n**Therapy delay は「OFF」がノミナル（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**資料は理由を**「Atrial ATP Therapy は安定しているイベントのみ治療を行うため」**と説明している。検出してすぐ治療するのではなく、治療の前段に「リード位置チェック」と「心調律安定性チェック」が入る設計になっているため、待機時間を別に設ける必要がない、という理屈である。\n**HVR detection（Rate 200bpm・Detection counter 8 が画面例）は心室レートだけを見ている。**上室性頻脈で心室レートが速い場合に ATP を抑止する安全側の仕組みなので、「心房頻拍なのに ATP が出ていない」ときはまず心室レートを確認する。"
   },
   {
    "id": "BIO-ATRIAL-CAPTURE-CONTROL",
@@ -1418,12 +1420,13 @@
    "generic": "心房自動閾値測定",
    "device": "PM / ICD / CRT",
    "scope": "心房の刺激閾値を自動測定し出力を調整する",
-   "how": "定期的に心房閾値を測定し、安全域を確保した出力へ自動的に設定する。測定結果はトレンドとして記録される。",
-   "params": "ACC: Auto／ATM（Monitor）／Off；安全域",
+   "how": "**心房閾値を測定してマージンを加えた出力を自動で調整する（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。5段階の手順を踏む。**\n**Step1（閾値測定時の出力調整）**：閾値測定中に心房ペーシング不全が発生した際、逆行性伝導により PMT 作動とならないよう**モードは DDI** となり、また心房ペーシング不全により発生する自己心房収縮が FFP に隠れないよう **PAV ディレイは 50ms** となる。Threshold test start＝3.0V、Sync pace＝Test pace と同一もしくは +0.6V、Decrement step＝−0.6V。\n**Step2（閾値の測定）**：5拍の心房ペーシング中に、**2拍の自己心房収縮（As マーカ）を感知するまで出力を 0.6V 刻みで下げていき**、ペーシング不全が確認されると Step3 へ進む。\n**Step3（閾値の測定）**：同様に5拍の心房ペーシング中に、2拍の自己心房収縮を感知するまで **0.1V 刻み**で出力を下げて確認する。\n**Step4（閾値の最終確認）**：測定された閾値に **+0.3V および −0.3V** の値で調整し Ap を行うことで、確実な捕捉／非捕捉を再確認する。\n**Step5（心房出力の調整）**：ACC が On のとき、**最小振幅 ≦ 閾値+セーフティマージン ≦ テストスタート振幅 → 閾値+セーフティマージン**、**閾値+セーフティマージン > テストスタート振幅 → テストスタート振幅**、**最小振幅 > 閾値+セーフティマージン → 最小振幅**で出力が決まる。\n**測定中のレートは直近の4P-P間隔平均の +20% に設定される。ACC は最大 108bpm の心房レートまで対応可能。**",
+   "params": "**Amvia Sky：Capture control＝On／Off／ATM（Active Threshold Monitor）、Threshold test start＝3.0V（2.5, 3.0, 3.5, 4.0, 4.5, 5.0V）、Safety margin＝1.0V（0.5, 1.0, 1.2V）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**E シリーズ：Capture control＝On／Off／ATM、Min. amplitude＝1.0V（0.5〜4.8V）0.1V刻み、Threshold test start＝3.0V（2.4〜4.8V）0.6V刻み、Safety margin＝1.0V（0.5〜1.2V）0.1V刻み、Search type＝Time of day（Interval／Time of day）。**\n**ACC status：OK（ACC および ATM 機能が作動し適切に機能している）／Disabled（Unipolar でリード不全＝正常値 100〜2500Ω の場合、または ERI の場合）／Pending（ペーシング閾値が決定できなかった場合）。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Atrial Capture Management™（ACM）\nAbbott: ACap™ Confirm\nBoston Scientific: PaceSafe™ RA Automatic Threshold\nMicroPort CRM: Atrial Auto-threshold",
-   "ecg": "閾値測定の最中だけ、出力が段階的に下がって捕捉が失われる拍が現れ、その直後に高出力のバックアップ刺激が入る。1拍のなかにスパイクが2本並んで見える。",
-   "pitfall": "融合波や偽融合があると捕捉ありと誤判定して出力を下げすぎることがある。誘発反応が小さい症例では測定そのものが成立せず、安全側の固定出力に戻る。テスト中の非捕捉を不具合と取り違えないよう、記録の時刻とテスト周期を照合する。"
+   "ecg": "閾値測定の最中だけ、出力が段階的に下がって捕捉が失われる拍が現れ、その直後に高出力のバックアップ刺激が入る。1拍のなかにスパイクが2本並んで見える。\n**BIOTRONIK の ACC では、テスト中はモードが DDI・PAV ディレイ 50ms になるため、AV 間隔が極端に短い拍が5拍ずつまとまって並ぶ（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**また各ステップの区切りに **Sync pace**（テスト出力と同一もしくは +0.6V のペーシング）が挟まる。",
+   "pitfall": "**ACC の捕捉／非捕捉の評価は、自己心房収縮（もしくは逆行性伝導）による As および As(PVARP) マーカーをモニタして行っている（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**そのため**逆行性伝導を含め自己心房収縮が確認できない症例では適切に作動しないことがある。**心房センスがまったく出ない患者では ACC の測定そのものが成立しない。\n**リードの種類は問わない（Unipolar も可）。**\n**ACC 機能は毎拍（beat to beat）の閾値管理は行っていない。**VCC との最大の違いで、心房側は1日1回の測定に留まる。",
+   "caution": "**測定は Home Monitoring 伝送時間の90分前に行われる。測定ができなかった場合には24分後にリトライする（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**ACC の測定開始時から心房ペーシング不全が発生していた場合、出力は 4.0V（Threshold test start + Safety margin）に設定され、note には「No stable threshold found.」と表示記載される。**\n**ACC 機能が停止した場合、心房出力は①または②で調整される。①最後に測定されたペーシング閾値×2 の値が Threshold test start の値より小さい場合は Threshold test start の値に調整される。②それ以外の場合には Threshold test start + セーフティマージンの値に調整される。**"
   },
   {
    "id": "BIO-AUTO-LV-VECTOROPT",
@@ -1444,14 +1447,15 @@
    "cat": "センシング",
    "name": "Automatic Sensitivity Control",
    "generic": "感知の自動調整（可変センシング）",
-   "device": "ICD / CRT-D",
+   "device": "PM / ICD / CRT",
    "scope": "感度を自動で調整して確実な感知を保つ",
-   "how": "感知した波高に応じて感度を自動的に調整する。上限・下限の閾値、感度変化を保留するHold off期間、ペーシング後のブランキングを設定できる。",
-   "params": "Sensitivity threshold；Upper & Lower threshold；Hold off periods；Blanking periods after pacing",
+   "how": "感知した波高に応じて感度を自動的に調整する。\n**ブラディ側（Amvia Sky／E シリーズ）の実装が判明した（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。自己収縮イベントが感知されると波高値を計測し感度調整を行う。**\n**センシング後のルール**：自己収縮イベントが感知されると測定された波高値の 50% の値から感度調整がスタートする。心房＝①イベント感知後 100ms 経過すると 50% に調整、②80ms（E-series 82ms／Amvia 80ms）その値を維持、③経過後に波高値の 25% に調整、④その後1秒間イベントが発生しなければ最高感度に調整。心室＝①イベント感知後 120ms 経過すると 50% に調整、②125ms その値を維持、③125ms 経過後に波高値の 25% に調整、④その後1秒間イベントが発生しなければ最高感度に調整。\n**ペーシング後のルール**：ペーシングイベントが行われるとペーシング後スタート感度の 50% の値から感度調整がスタートする。心房＝①ペーシング後 120ms 経過すると 1.0mV に設定、②160ms（E-series 164ms／Amvia 160ms）1.0mV を維持、③経過後 0.5mV に調整され 82ms 維持、④80ms 経過後 0.25mV に設定され 82ms 維持、⑤80ms 経過後は最高感度に調整。心室＝①ペーシング後 200ms 経過すると 2.5mV に設定、②250ms のあいだ 2.5mV を維持、③250ms 経過後 2.0mV に調整。",
+   "params": "**ブラディ側の波高値設定（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」））**：DR＝心房 Auto／OFF／0.1〜7.5mV、心室 Auto／OFF／0.5（Auto の場合は 2.0）〜7.5mV。SR＝共通 Auto／OFF／0.5〜7.5mV。\n**自動感度調整時の最高感度**：心房 0.2mV（DR）／0.5mV（SR）、心室 2.0mV。**心房心室ペーシング時のスタート感度**：心房 2.0mV、心室 5.0mV。**センシングウィンドウ**：心房 センシング時 100ms／ペーシング時 120ms、心室 センシング時 120ms／ペーシング時 200ms。**ステップ持続時間**：心房 80ms、心室 125ms。\nICD／CRT-D 側は Sensitivity threshold；Upper & Lower threshold；Hold off periods；Blanking periods after pacing。",
    "models": "Acticor 7／Ilivia Neo 7 世代のICD／Rivacor 7 HF-T／Ilivia Neo 7 HF-T 世代のCRT-D",
    "equiv": "Medtronic: Sensing Assurance\nAbbott: SenseAbility™\nBoston Scientific: Automatic Gain Control（AGC）\nMicroPort CRM: AutoSensitivityControl",
    "ecg": "T波を二重に感知すると、マーカー上は自己心拍の2倍のレートが記録される。体表心電図のレートと本体が記録したレートが合わないのが手がかり。",
-   "pitfall": "感度を鋭くしすぎるとT波オーバーセンシングや筋電位の誤感知が起こり、ペーシング抑制や不適切作動につながる。逆に鈍くしすぎると細動波のアンダーセンシングを招く。どちらに振っても危険側があるため、設定変更後は必ず感知の確認を行う。"
+   "pitfall": "感度を鋭くしすぎるとT波オーバーセンシングや筋電位の誤感知が起こり、ペーシング抑制や不適切作動につながる。逆に鈍くしすぎると細動波のアンダーセンシングを招く。どちらに振っても危険側があるため、設定変更後は必ず感知の確認を行う。\n**測定された心室波高値が高い場合、次に発現するイベント（PVC など）の波高値が低いとアンダーセンシングする可能性がある（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**自己波高が大きい症例ほど PVC を取りこぼしやすい、という向きの誤差になる。",
+   "caution": "**Unipolar 設定時には、心房の自動感度調整後の最高感度は 0.5mV に制限される（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**Amvia Sky では Atrial ATP 治療機能が新たに搭載され、心房細動波を確実にセンシングするため『Auto』に設定することが推奨されている。**\n**ブラディデバイスとタキデバイスでは感度調整のアルゴリズムが違う。**ICD の感覚をそのままペースメーカに持ち込まない。"
   },
   {
    "id": "BIO-CLOSED-LOOP-STIMULATION",
@@ -1461,11 +1465,11 @@
    "generic": "レートレスポンス（生理的センサ）",
    "device": "PM / ICD / CRT",
    "scope": "心筋収縮力の変化を捉えて生理的にレートを上げる",
-   "how": "右室での心内インピーダンス変化を拍ごとに評価し、交感神経緊張による収縮性の変化を推定してレートへ反映する。体動を伴わない精神的負荷や起立負荷にも反応しやすい。",
-   "params": "レートレスポンス: CLS／加速度センサ／CLS＋加速度；CLSレスポンス",
+   "how": "右室での心内インピーダンス変化を拍ごとに評価し、交感神経緊張による収縮性の変化を推定してレートへ反映する。体動を伴わない精神的負荷や起立負荷にも反応しやすい。\n**Amvia Sky ではモードとして『DDI-CLS』が追加され、『AOO』モードが廃止された（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**あわせて『OFF』モードも追加されている（資料は「OFF に設定することは推奨していないが、使用される際は事前に想定されるリスクを熟慮したうえで判断すること」と注記）。\n**加速度センサによるレート応答も並行して搭載されており、設定項目は CLS とは別系統である。**Max. sensor rate（E-series では Max. activity rate と表記）＝加速度センサを On に設定した際の心房ペーシングレートの上限を規定する機能で **120ppm（80〜180ppm、10ppm刻み）。****Sensor gain**＝加速度センサから得られた信号を増幅する設定で **Auto／Very low／Low／Medium／High／Very high（ノミナル Medium）。****Sensor threshold**＝増幅された信号に対して設定される閾値で、閾値を超えた信号のみレートに反映させる。**Very low／Low／Medium／High／Very high（ノミナル Medium）。****Rate increase＝2ppm/cycle（1, 2, 4, 8）／Rate decrease＝0.5ppm/cycle（0.1, 0.2, 0.5, 1.0）。**",
+   "params": "レートレスポンス: CLS／加速度センサ／CLS＋加速度；CLSレスポンス\n**加速度センサ側の設定（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」））**：Max. sensor rate 120ppm（80〜180ppm、10ppm刻み）／Sensor gain（Auto, Very low, Low, Medium, High, Very high）／Sensor threshold（Very low, Low, Medium, High, Very high）／Rate increase 2ppm/cycle（1, 2, 4, 8）／Rate decrease 0.5ppm/cycle（0.1, 0.2, 0.5, 1.0）。\n**Sensor optimization（テスト機能）の評価項目**：Basic rate 30〜200ppm／Max. activity rate 80〜180ppm／Sensor gain／Sensor threshold／Rate increase／Rate decrease。**加速度センサを「On」にする前に、最長16分間の運動評価を行うことが可能。****センサ機能を「OFF」のまま運動を実施してもらい、センサ機能が「ON」の場合にどう変化するかを確認できる。**\n**Auto gain（Amvia Sky）**：On の場合、Max. activity rate への到達状況で1段階ずつ調整する。①最大センサーレートの90%に達する時間が24時間で累積30分を超える → −1、②最大センサーレートの90%に達する時間が7日間で累積60分に到達しない → ±0、③①②のどちらにも該当しない → +1（**資料の表記どおり。E シリーズ側の論理と向きが揃わないため未確定として notes に記録**）。**E シリーズの Auto gain**：①最大センサーレートに達した時間が24時間で合計90秒を超える → −1、②24時間で合計90秒に満たない → ±0、③7日間連続して最大センサーレートに達しない → +1。",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: 加速度センサ（ADLレート／運動レートの2ゾーン）\nAbbott: 加速度センサ（Accelerometer）\nBoston Scientific: Blended Sensor（加速度＋分時換気量）\nMicroPort CRM: Dual Sensor（加速度＋分時換気量）／SonR™ センサ（レート応答）",
-   "caution": "頻回の心室期外収縮や不安定な右室リード位置があると挙動が乱れることがある。",
+   "caution": "頻回の心室期外収縮や不安定な右室リード位置があると挙動が乱れることがある。\n**Vp suppression 機能は CLS との併用ができない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**CLS モードを使用する場合には IRSplus 機能を検討する。\n**Max. activity rate は Upper tracking rate より低く設定する必要がある。****DDIR モードでは、設定されている AV ディレイの長さによって設定できる Max. activity rate に制限がある。**\n**Sensor gain の Auto は比較的レートが上昇しやすいため、初期設定は Medium が推奨されている。****E シリーズの Auto gain も、On だとレートが上昇しやすく違和感や不快感を示すことがあることから Off が推奨されている。**\n**Sensor optimization はデバイスとワンドが交信している間はテストができないため、ワンドレステレメトリを Off にする必要がある。**「Tests」タブの2ページ目で使用でき、表示されるグラフの青の実線が加速度センサによる仮想のレート変化となる。",
    "ecg": "体動がほとんどない状況でもレートが上がる。起立や精神的負荷でレートが追随するのが加速度センサとの違い。",
    "pitfall": "心室期外収縮が頻発する症例や右室リードが不安定な症例では、心内インピーダンスの変化を拾って不適切なレート上昇が起こることがある。頻脈の訴えがあるときは体動の有無と合わせて評価する。"
   },
@@ -1492,13 +1496,13 @@
    "generic": "心室ペーシング抑制（AVD延長タイプ）",
    "device": "PM / ICD / CRT",
    "scope": "AVヒステリシスで自己房室伝導を優先する",
-   "how": "AVディレイを設定量だけ延長して自己伝導を探索する。Positiveは延長したまま維持し、Negativeは短縮方向に働く。ScanとRepetitiveで探索の頻度を選べる。\n**A-A カウンタ機での AV 延長の意味（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。****BIOTRONIK の DDD は A-A カウンタ**で動くため、AV ディレイを延長しても**心房イベントの間隔（A-A）は設定どおりに保たれる。**延長分は VA 側（心室イベントから次の心房イベントまで）が吸収する形になる。V-V カウンタ機のように「AV を延ばすと全体のレートがずれる」形にはならない点が、探索型アルゴリズムを使ううえでの前提になる。",
-   "params": "IRSplus: Off／Positive／Negative；AVヒステリシス量；Scan／Repetitive",
+   "how": "**AV ディレイを延長することで自己房室伝導を優先させ、不必要な心室ペーシングを避ける（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**設定されたAVディレイ内に自己心室波を感知すると **AV ディレイは最大 400ms まで延長する。**\n**IRSplus は「AV hysteresis」の選択肢のひとつで、Off／IRSplus／Positive／Negative から選ぶ。**IRSplus の延長パターンは**最大 400ms まで**、Positive は**最大 450ms まで**。",
+   "params": "**AV hysteresis：Off／IRSplus／Positive／Negative。IRSplus の延長は最大 400ms。AV repetitive／AV scan：On（5拍）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**IRSplus に設定すると、「AV hysteresis は Auto（変更不可）」「AV scan／repetitive は ON（変更不可）」に自動で変更される。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Search AV+（SAV+）\nAbbott: Ventricular Intrinsic Preference（VIP™）\nBoston Scientific: AV Search +\nMicroPort CRM: Dplus™",
    "ecg": "AVヒステリシスによりAV間隔が延長し、自己QRSが確認できる間はその状態を保つ。",
    "pitfall": "探索中は一時的にAV間隔が大きく延長するため、房室同期が崩れて動悸や血圧低下を自覚することがある。CRT症例では両室ペーシングの脱落につながるため、原則として使用しない。",
-   "caution": "**AV ディレイを長く保つことは PMT の誘因そのものである（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**資料は PMT（Endless loop tachycardia＝ELT）の誘因として、PVC・PAC・Atrial Non-capture・Atrial under sensing・Atrial over sensing とならんで**「長い AV delay」**を挙げている。探索で AV を延ばしている間は、逆行性P波が PVARP の外に落ちやすくなる。\n**TARP（＝PVARP＋SAV ディレイ）が延びることにも注意する。****2:1 ブロックポイント＝60,000 ÷ TARP（ms）**であり、AV ディレイの延長はそのまま追従できる上限レートの低下につながる。\n**逆行性伝導は房室ブロック症例でも起こりうる。**資料は「房室逆行性伝導は洞不全症候群だけでなく房室ブロック症例であっても発現することがある。また一般的に、心室レートが早くなると房室逆行性伝導は延長する傾向にある」と明記している。"
+   "caution": "**自己心室収縮が発現しなければ、設定された AV ディレイで心室ペーシングを行う（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**そのため不適切に長い AV ディレイは避けること。\n**Vp suppression が CLS と併用できないのに対し、IRSplus は CLS モードでも使える。**資料は CLS を使う場合には IRSplus を検討するよう勧めている。\n**IRSplus 設定時は AV hysteresis と AV scan／repetitive が固定され、個別には変えられない。**"
   },
   {
    "id": "BIO-LV-T-WAVE-PROTECTION",
@@ -1537,13 +1541,13 @@
    "generic": "モードスイッチ（心房頻拍時の追従回避）",
    "device": "PM / ICD / CRT",
    "scope": "心房頻拍を検出して非追従モードへ切り替える",
-   "how": "設定した介入レートを超える心房イベントをX out of Zの形で計数し、基準に達するとDDI(R)などへ切り替える。復帰条件も設定できる。\n**カウンタの土台が切り替わる点を押さえる（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。****BIOTRONIK の DDD は A-A カウンタ**（心房イベントでカウンタをスタート／リセット）で動くが、**モードスイッチ先の DDI は V-V カウンタ**（心室イベント基準）で動く。**DDI では第3文字が I（抑制）だけなので SAV ディレイが存在せず、心室ペーシングは V-V カウンタが計算したタイミングで行われる。**デュアルチャンバの V-V カウンタでは**心室イベント後に必ず VA インターバルがスタートし、VA インターバル＝ベーシックインターバル − AV ディレイ**で求められる（資料の例：1,000ms − 240ms ＝ 760ms）。したがってモードスイッチの前後では、同じ基本レート設定でも心房・心室の出るタイミングの決まり方そのものが変わる。\n**A-A カウンタを使うモードは AOO・AAI・DOO・VDD・DDD、V-V カウンタを使うモードは VOO・VVI・DDI。**ここでいう心房イベントは**心房へのペーシングと心房でのセンシングのどちらも含む**（心室イベントも同様）。",
-   "params": "Mode Switching: On／Off；介入レート；X out of Z。**不応期・ブランキングの設定項目（Etrinsa 8 DR-T のプログラマ画面例）**：Atrial refractory period＝AUTO、Auto PVARP＝ON、PVARP＝225ms、PVARP after PVC＝375ms、Wenckebach response＝130〜167bpm、Ventricular refractory period＝250ms、**Far-field protection after Vs＝100ms／Far-field protection after Vp＝150ms**（他社でいう PVAB）、**Ven. blanking after Ap＝30ms**、PMT protection＝ON、VA criterion＝350ms。**画面例でありノミナルとは限らない。**",
+   "how": "設定した介入レートを超える心房イベントをX out of Zの形で計数し、基準に達するとDDI(R)などへ切り替える。復帰条件も設定できる。\n**カウンタの土台が切り替わる点を押さえる（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。****BIOTRONIK の DDD は A-A カウンタ**（心房イベントでカウンタをスタート／リセット）で動くが、**モードスイッチ先の DDI は V-V カウンタ**（心室イベント基準）で動く。**DDI では第3文字が I（抑制）だけなので SAV ディレイが存在せず、心室ペーシングは V-V カウンタが計算したタイミングで行われる。**デュアルチャンバの V-V カウンタでは**心室イベント後に必ず VA インターバルがスタートし、VA インターバル＝ベーシックインターバル − AV ディレイ**で求められる（資料の例：1,000ms − 240ms ＝ 760ms）。したがってモードスイッチの前後では、同じ基本レート設定でも心房・心室の出るタイミングの決まり方そのものが変わる。\n**A-A カウンタを使うモードは AOO・AAI・DOO・VDD・DDD、V-V カウンタを使うモードは VOO・VVI・DDI。**ここでいう心房イベントは**心房へのペーシングと心房でのセンシングのどちらも含む**（心室イベントも同様）。\n**設定値が判明した（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。****Intervention rate 160ppm（100〜250ppm）／Mode は DDD 時＝DDIR・DDI、VDD 時＝VDIR・VDI ／Onset criterion 5/8拍（3/8〜8/8拍）／Resolution criterion 5/8拍（3/8〜8/8拍）／モードスイッチ中の AV delay 75ms（設定変更不可。E-series では100ms に調整される）。**\n**モードスイッチ中と終了後のレートを底上げする2つの付随機能がある。****Change of basic rate**＝MS 中のベーシックレートを一時的に上昇させる機能（+10ppm、Off／+5〜+30ppm、5拍刻み）。**Post ModeSw rate／Post ModeSw duration**＝MS 終了後のベーシックレートを設定された時間だけ一時的に上昇させる機能（rate＝+10ppm、Off／+5〜+50ppm、5拍刻み／duration＝1min、1〜30min、1分刻み）。**Post ModeSw rate／duration は Amvia Sky から搭載された。**\n**2:1 Lock-in protection（On/Off）はモードスイッチの取りこぼしを拾う補助機能（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**心室ペーシングレートが速く VpAs インターバルの変動が少ない場合に心房性不整脈の確認を行い、確認できるとモードスイッチを働かせる。**検出**＝Vp が100ppm 以上で送出されている／7拍の VpAs interval の偏差が24ms 以内。**確認**＝8拍目に AV ディレイを FFP（150ms）分延長することで Ars マーカが発現するか確認する。**停止**＝「As-Ars」後、AV ディレイを段階的に短縮しながら MS 検出条件を満たすと次の心室イベントに合わせて MS が作動し、満たさなければ MS は作動しない。**AV 延長後に「As-As」が確認された場合は、次の心室イベントに合わせてすぐに MS が作動する。****2分経過するとふたたび作動する。E-series では停止条件が異なる。**",
+   "params": "Mode Switching: On／Off；介入レート；X out of Z。**不応期・ブランキングの設定項目（Etrinsa 8 DR-T のプログラマ画面例）**：Atrial refractory period＝AUTO、Auto PVARP＝ON、PVARP＝225ms、PVARP after PVC＝375ms、Wenckebach response＝130〜167bpm、Ventricular refractory period＝250ms、**Far-field protection after Vs＝100ms／Far-field protection after Vp＝150ms**（他社でいう PVAB）、**Ven. blanking after Ap＝30ms**、PMT protection＝ON、VA criterion＝350ms。**画面例でありノミナルとは限らない。**\n**Amvia Sky／E シリーズのモードスイッチ設定（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」））**：Intervention rate 160ppm（100〜250ppm）／Mode（DDD 時 DDIR・DDI／VDD 時 VDIR・VDI）／Onset criterion 5/8拍（3/8〜8/8拍）／Resolution criterion 5/8拍（3/8〜8/8拍）／AV delay 75ms（設定変更不可、E-series 100ms）／Change of basic rate +10ppm（Off, +5〜+30ppm、5拍刻み）／Post ModeSw rate +10ppm（Off, +5〜+50ppm、5拍刻み）／Post ModeSw duration 1min（1〜30min、1分刻み）／Rate stabilization during mode switching On／OFF ／2:1 Lock-in protection On／Off。\n**急激なレート変化の抑制は「Sensor / Rate fading」内の Rate increase／Rate decrease によって決定される。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Mode Switch（AT/AFエビデンスカウント）\nAbbott: Auto Mode Switch（AMS／FARI）\nBoston Scientific: ATR Mode Switch\nMicroPort CRM: Mode Switching",
    "ecg": "心房頻拍の間は心室の追従が止まり、心室レートが下限レートやセンサ指示レートまで落ちる。心房の速い波形と、それに追従しない規則的な心室ペーシングが同時に見える。復帰時は追従が戻る。\n**パターンで覚えると読み違えにくい（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。DDD は AsVs／AsVp／ApVs／ApVp の4パターン、DDI は AsVs／ApVs／ApVp の3パターン、VDD は AsVs／AsVp の2パターン。**モードスイッチで DDD → DDI に移ると、**AsVp が消えること**が心電図上の最大の変化になる。",
    "pitfall": "ファーフィールドR波を心房で拾うと、洞調律でも不適切にモードスイッチが起こり心室レートが落ちる。逆に心房波高が低くアンダーセンシングになると、心房頻拍でもモードスイッチせず速い心室追従が続く。心房不応期（PVAB）と心房感度の設定を確認する。\n**DDI を積極的に選ぶ場面もある（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**資料は DDI の適応を**「心房細動発生時の早い自己心房イベントにトリガーして心室ペーシングを行いたくない患者」**としている。**DDI には AsVs／ApVs／ApVp の3パターンしかなく、AsVp（心房トリガーによる心室ペーシング）が存在しない**ためである。",
-   "caution": "**モードスイッチの誤作動はまず心房側の不応期設定を疑う（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**BIOTRONIK では心房の絶対不応期を **Far-field protection after Vs／after Vp** と呼び、これがファーフィールドR波（FFRW）の誤感知を防いでいる。**FFRW には、心室イベントの後に出る Type I と、心室イベントの前（心房イベントの直後）に出る Type II がある。**Type I は Vp／Vs の後の心房不応期で隠せるが、**Type II は As の直後に出るため、心房側の絶対不応期を延ばすだけでは対処できない。**\n**心房不応期は「感知してもタイミングカウンタをリセットしない」期間であって、感知そのものを止める期間ではない。**絶対不応期（ブランキング）だけが電位を感知しない期間である。この違いを取り違えると、診断データ上の心房イベント数の解釈を誤る。"
+   "caution": "**モードスイッチの誤作動はまず心房側の不応期設定を疑う（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**BIOTRONIK では心房の絶対不応期を **Far-field protection after Vs／after Vp** と呼び、これがファーフィールドR波（FFRW）の誤感知を防いでいる。**FFRW には、心室イベントの後に出る Type I と、心室イベントの前（心房イベントの直後）に出る Type II がある。**Type I は Vp／Vs の後の心房不応期で隠せるが、**Type II は As の直後に出るため、心房側の絶対不応期を延ばすだけでは対処できない。**\n**心房不応期は「感知してもタイミングカウンタをリセットしない」期間であって、感知そのものを止める期間ではない。**絶対不応期（ブランキング）だけが電位を感知しない期間である。この違いを取り違えると、診断データ上の心房イベント数の解釈を誤る。\n**2:1 Lock-in protection は CAVB への新規植込み時に不適切に働くことがある（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**資料は「検出条件に2:1イベントであることは含まれていないことから CAVB に対する新規植込み時に不適切に働くことがある」と明記している。心房レート100・心室レート30の完全房室ブロックに DDD で植え込むと、As-Vp が続いて Vp が100ppm で出るため検出条件を満たしてしまう。\n**Post ModeSw 中は設定されたモードと AV ディレイで作動し、変化するのは設定されたレートだけである。**"
   },
   {
    "id": "BIO-MORPHMATCH",
@@ -1584,12 +1588,13 @@
    "generic": "CRT確保：PQ間隔短縮への対応",
    "device": "CRT",
    "scope": "自己PQ間隔が短縮しても両室ペーシングを維持する",
-   "how": "自己房室伝導が現れた拍の次から、AVディレイを設定量だけ短くして心室刺激を自己伝導より先行させ、両室ペーシングの脱落を防ぐ。",
-   "params": "Negative AV Hysteresis: On／Off；短縮量（ms）",
+   "how": "**心室ペーシングを積極的に行う目的で AV ディレイを短縮する（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。****設定された AV ディレイ内に自己心室イベントを確認すると、次のイベントから6拍は AV ディレイを設定値分短縮して作動する。**",
+   "params": "**AV hysteresis：Negative。短縮パターン −50ms（−10ms〜−150ms）、10ms刻み。AV repetitive：On（180拍）。AV scan：OFF（変更不可）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。",
    "models": "Rivacor 7 HF-T／Ilivia Neo 7 HF-T 世代のCRT-D",
    "equiv": "Medtronic: —\nAbbott: —\nBoston Scientific: —\nMicroPort CRM: —",
    "ecg": "自己房室伝導が現れた次の拍から、AV間隔が設定量だけ短くなって心室スパイクが自己QRSより先行する。",
-   "pitfall": "AV間隔を短くしすぎると心房収縮の寄与が失われ、血行動態が悪化することがある。"
+   "pitfall": "AV間隔を短くしすぎると心房収縮の寄与が失われ、血行動態が悪化することがある。",
+   "caution": "**短縮した AV ディレイ内でさらに心室自己イベントが発現すると、180拍のカウントがリセットされる（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**自己伝導が残っている症例では短縮状態が続くことになる。\n**Negative では AV scan が OFF 固定（変更不可）になる。**AV ディレイを延ばして自己伝導を探す動作とは目的が正反対のためである。"
   },
   {
    "id": "BIO-ONSET",
@@ -1614,12 +1619,13 @@
    "generic": "心房オーバードライブ（AF抑制）",
    "device": "PM / ICD / CRT",
    "scope": "自己P波よりわずかに速く心房を刺激して心房性不整脈を抑える",
-   "how": "自己の心房レートに追随して、それよりわずかに速いレートで心房を刺激し続ける。心房期外収縮の出現を減らして心房細動の契機を減らす。",
-   "params": "Overdrive Prevention Pacing: On／Off；最大介入レート",
-   "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
+   "how": "自己の心房レートに追随して、それよりわずかに速いレートで心房を刺激し続ける。心房期外収縮の出現を減らして心房細動の契機を減らす。\n**BIOTRONIK の実装は「Atrial overdrive」で、上げ下げの刻みが固定されている（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。****As イベントがあると 8ppm レートを上昇させる。ただし PAC（先行間隔から25%以上短縮したもの）は除外する。****20拍 As イベントがなければ 1ppm レートを下降させ、下降中に As イベントを確認すると再び上昇する。****Maximum activity rate（MAR）を超えてペーシングすることはない。**\n**高心房レートに対する安全機能を内蔵する。****Pending（一時停止）**は、①心房頻拍等により MAR を超える心房イベントを確認すると一時停止し「Rate decrease」によってベーシックレートまで下降する、②最新64,000拍の平均心房レートが**安全値（＝MAR −10〜20ppm、可変）**を超えると①と同様にベーシックレートまで下降し、レートが安全値を下回ると再起動する（この作動は12時間ごとに評価される）。**Disabled（無効）**は、②の12時間ごとの評価による Deactivate が**4回繰り返される**と機能停止となる状態。**再度 Activate するには、次回インテロゲーションの際にプログラムボタンを押す必要がある（設定変更そのものは不要）。**",
+   "params": "**Rate increase：8ppm（固定）／Rate decrease：1ppm／20cycle（固定）／Maximum activity rate：120ppm（80〜180ppm）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n安全機能の安全値＝**MAR −（10〜20ppm で可変）**。評価周期は12時間。Deactivate が4回で Disabled。",
+   "models": "Evia／Estella（E1）・Etrinsa 8／Etrinsa 6／Eluna 8／Epyra 8（E2）・Edora 8／Enitra 8／Enitra 6／Enticos 8／Evity 8（E3）。**Amvia Sky には搭載されていない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**",
    "equiv": "Medtronic: Atrial Preference Pacing（APP）／Post Mode Switch Overdrive Pacing（PMOP）／Sinus Preference\nAbbott: AF Suppression™\nBoston Scientific: AP Scan™／Atrial Preference Pacing（APP）／ProACt\nMicroPort CRM: Atrial Overdrive",
    "ecg": "心房ペーシング率がほぼ100％になり、自己P波がほとんど見えなくなる。心拍数は自己の洞レートよりわずかに速い状態で推移する。",
-   "pitfall": "心房ペーシングが増えるため電池消耗が大きくなる。心房細動の発症を減らす効果は臨床試験で一貫していないため、効果を過大に見積もらない。"
+   "pitfall": "心房ペーシングが増えるため電池消耗が大きくなる。心房細動の発症を減らす効果は臨床試験で一貫していないため、効果を過大に見積もらない。\n**PAC を起点とする心房頻拍では、レートが上がりやすく下がりにくいという特性が出やすい（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**上昇は 8ppm 刻みなのに対し、下降は 20拍かけて 1ppm しか下がらないためである。",
+   "caution": "**Amvia Sky（Via シリーズ）には Atrial overdrive が搭載されていない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**世代をまたぐ設定引き継ぎの際に見落としやすい。\n**テレメトリ中は作動しない。**外来でのチェック中に「動いていない」と誤って判断しないこと。\n**E1 シリーズでは Disabled になるとポップアップが発現する。**"
   },
   {
    "id": "BIO-PVC-DISCRIMINATION-AFTER-AS",
@@ -1627,13 +1633,14 @@
    "cat": "CRT",
    "name": "PVC discrimination after As",
    "generic": "CRT確保：心房追従の回復（UTR・PVC後）",
-   "device": "CRT",
-   "scope": "心室期外収縮の後も両室ペーシングを保つ",
-   "how": "心房センシングの後に現れた早期心室興奮を心室期外収縮として区別し、不要な不応期延長を避けて次の拍の両室ペーシングを維持する。",
-   "params": "PVC discrimination: On／Off",
-   "models": "Rivacor 7・Ilivia Neo 7 世代",
+   "device": "PM / ICD / CRT",
+   "scope": "PVARP内の心房収縮に続く自己心室収縮をPVCと誤認識させない",
+   "how": "**正式名称は PVC discrimination after As（＝AVC；AV Control window）で、「PVARP 内に発生した心房収縮が機能的なアンダーセンシングとなることで、そのあとに続く自己心室収縮が不適切に PVC と認識させないための機能（期間）」（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**設定値は 350ms、もしくはそれよりも長く設定された AV ディレイ値。****すべての As／Ap／As(PVARP) マーカよりスタートする期間で、Ars マーカからはスタートしない。**\n**この期間は、IRS plus を On にしていると 400ms、Vp suppression を On にしていると 450ms になる**（自己伝導を待つために AV ディレイを延ばす機能と連動する）。",
+   "params": "**AVC（AV Control window）＝350ms、もしくはそれよりも長く設定された AV ディレイ値。IRS plus On で 400ms、Vp suppression On で 450ms**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella（**デバイスごとの機能一覧では E1〜Via の全世代に搭載**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」））",
    "equiv": "Medtronic: Atrial Tracking Recovery\nAbbott: —\nBoston Scientific: Tracking Preference\nMicroPort CRM: —",
-   "pitfall": "期外収縮の判定を誤ると、かえって不応期の扱いが不適切になる。"
+   "pitfall": "期外収縮の判定を誤ると、かえって不応期の扱いが不適切になる。\n**設定された ARP が AV delay より短い場合でも、AV delay のあいだは必ず ARP になる（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**AVC と ARP は別物なので、心房不応期の長さを AVC から読み替えないこと。",
+   "ecg": "**AVC がない場合**：As → Vp のあと、PVARP 内に落ちた心房収縮（As(PVARP)）に続く自己心室収縮が **PVC として扱われ、PVARP が延長される。****AVC がある場合**：同じ心室収縮が AVC 期間内にあるため PVC と認識されず、**Vs として扱われて Vs 後の PVARP は出ない**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。"
   },
   {
    "id": "BIO-POSITIVE-AV-HYSTERESIS-WITH-SCAN-REPETIT",
@@ -1643,13 +1650,13 @@
    "generic": "心室ペーシング抑制（AVD延長タイプ）",
    "device": "PM / ICD / CRT",
    "scope": "AVディレイを延長して自己房室伝導を探す頻度を選ぶ",
-   "how": "AVディレイを設定量だけ延長して自己伝導を探索する。Scanは一定間隔ごとに探索し、Repetitiveは自己伝導が失われた直後にも繰り返し探索する。\n**A-A カウンタ機での AV 延長の意味（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。****BIOTRONIK の DDD は A-A カウンタ**で動くため、AV ディレイを延長しても**心房イベントの間隔（A-A）は設定どおりに保たれる。**延長分は VA 側（心室イベントから次の心房イベントまで）が吸収する形になる。V-V カウンタ機のように「AV を延ばすと全体のレートがずれる」形にはならない点が、探索型アルゴリズムを使ううえでの前提になる。",
-   "params": "AVヒステリシス量；Scan（探索間隔）／Repetitive（繰り返し回数）",
+   "how": "**Positive は、設定された AV ディレイに Positive で設定した値が加算された値が、調整後の AV ディレイとなる（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**そのため**最大 450ms まで延長させるには、AV ディレイを 250ms 以上に設定し、Positive を +200ms に設定する必要がある。**\n**AV repetitive**＝延長された AV ディレイで心室ペーシングが行われた際に、すぐに設定された AV ディレイへ戻さず自己心室イベントの出現を期待する機能。**1拍目は確認となるため、合計6拍の心室ペーシング後に設定された AV ディレイへ戻る。**\n**AV scan**＝設定された AV ディレイで心室ペーシングが継続している際に、AV ディレイを延長することで自己心室イベントの出現を期待する機能。**180拍連続心室ペーシングが行われた際に働き、181拍目から AV ディレイを延長する。**",
+   "params": "**AV hysteresis：Off／IRSplus／Positive／Negative。Positive の設定値＝70, 110, 150, 200, 250ms（設定 AV ディレイへの加算値）。AV repetitive／AV scan：On（5拍）／OFF。延長の上限は 450ms**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**Positive に設定すると、「AV hysteresis は 70ms（変更可）」「AV scan／repetitive は ON（変更可）」に変更される**（IRSplus と違い、いずれも後から変更できる）。",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Search AV+（SAV+）\nAbbott: Ventricular Intrinsic Preference（VIP™）\nBoston Scientific: AV Search +\nMicroPort CRM: Dplus™",
    "ecg": "Scanでは一定間隔ごとに、RepetitiveではAV延長が失敗した直後にも繰り返しAV間隔の延長が現れる。",
    "pitfall": "探索中は一時的にAV間隔が大きく延長するため、房室同期が崩れて動悸や血圧低下を自覚することがある。CRT症例では両室ペーシングの脱落につながるため、原則として使用しない。",
-   "caution": "**AV ディレイを長く保つことは PMT の誘因そのものである（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**資料は PMT（Endless loop tachycardia＝ELT）の誘因として、PVC・PAC・Atrial Non-capture・Atrial under sensing・Atrial over sensing とならんで**「長い AV delay」**を挙げている。探索で AV を延ばしている間は、逆行性P波が PVARP の外に落ちやすくなる。\n**TARP（＝PVARP＋SAV ディレイ）が延びることにも注意する。****2:1 ブロックポイント＝60,000 ÷ TARP（ms）**であり、AV ディレイの延長はそのまま追従できる上限レートの低下につながる。\n**逆行性伝導は房室ブロック症例でも起こりうる。**資料は「房室逆行性伝導は洞不全症候群だけでなく房室ブロック症例であっても発現することがある。また一般的に、心室レートが早くなると房室逆行性伝導は延長する傾向にある」と明記している。"
+   "caution": "**IRSplus と Positive は、どちらも AV ディレイ延長型だが上限と可変性が違う（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**IRSplus は最大 400ms・関連項目は変更不可、Positive は最大 450ms・関連項目は変更可。\n**自己心室収縮が発現しなければ設定された AV ディレイで心室ペーシングを行うため、不適切に長い AV ディレイは避けること。**\n**AV scan は「180拍連続心室ペーシング」がきっかけで、Scan（レートヒステリシス側）の「180拍連続心房ペーシング」とは対象が違う。**混同しないこと。"
   },
   {
    "id": "BIO-RATE-FADING",
@@ -1658,13 +1665,14 @@
    "name": "Rate Fading",
    "generic": "レートドロップ応答機能",
    "device": "PM",
-   "scope": "急激な徐脈を検出して一時的にレートを上げる",
-   "how": "自己レートの急な低下を検出すると、設定した介入レートで一定時間ペーシングする。",
-   "params": "Rate Fading: On／Off；介入レート；介入時間",
-   "models": "Amvia Sky・Enitra 世代",
+   "scope": "自己心房レートの急激な低下を抑制する",
+   "how": "**Rate fading は「急激なレートの減少を抑制する機能」であり、目標レート（Target rate）を作ってそこまでの落ち込みを支える（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**Target rate＝（直近4P-P間隔の平均）−10ppm。**心房レートが急激に下降して Target rate に達すると、**Back up rate として心房ペーシングを行う。**\n**Rate increase は Target rate を作成するためだけに使用される**（レートを上げるためのものではない）。**Rate fading が働くためには4連続以上の As マーカが必要となる。**",
+   "params": "**Rate increase：2ppm/cycle（1, 2, 4, 8 ppm/cycle）／Rate decrease：0.5ppm/cycle（0.1, 0.2, 0.5, 1.0 ppm/cycle）／Target rate：（直近4P-P間隔の平均）−10ppm**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。On／Off。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
    "equiv": "Medtronic: Rate Drop Response（RDR）\nAbbott: Advanced Hysteresis\nBoston Scientific: Sudden Brady Response（SBR）\nMicroPort CRM: Acceleration（レートドロップ応答）",
-   "ecg": "自己レートの急な低下の直後から、下限レートより明らかに高いレートでのペーシングが一定時間続き、その後は段階的に下限レートへ戻る。発作の前後で心拍数が階段状に変化する。",
-   "pitfall": "心抑制型の血管迷走神経性失神が対象で、血管抑制型（血圧低下が主体）には効果が乏しい。介入レートを高くしすぎると動悸や不要な高頻度ペーシングにつながる。"
+   "ecg": "自己心房レートが 100ppm 前後から急に落ちる場面で、Target rate（例：90ppm）に達したところから心房ペーシング（Back up rate）が入り、そこから Rate decrease の刻み（例 0.5ppm/cycle）でゆっくり下がっていく（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。心拍数の落ち方が階段状ではなく緩やかな傾斜になる。",
+   "pitfall": "心抑制型の血管迷走神経性失神が対象で、血管抑制型（血圧低下が主体）には効果が乏しい。介入レートを高くしすぎると動悸や不要な高頻度ペーシングにつながる。",
+   "caution": "**他社のレートドロップ応答（Medtronic の RDR など）は「介入レートで一定時間ペーシングする」方式だが、BIOTRONIK の Rate fading は「直近の自己レートから10ppm低い目標を追いかける」方式で、考え方が違う（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**介入レートや介入時間という設定項目はなく、Rate increase／Rate decrease と Target rate の3項目で決まる。\n**4連続以上の As マーカがないと作動しない**ため、心房ペーシング主体の症例では効かない。"
   },
   {
    "id": "BIO-RATE-HYSTERESIS-SCAN-REPETITIVE",
@@ -1674,28 +1682,28 @@
    "generic": "レートヒステリシス（自己脈の探索）",
    "device": "PM / ICD / CRT",
    "scope": "一時的にレートを下げて自己脈が出るか探す",
-   "how": "自己波を感知した後、設定量だけ下限レートを下げて自己脈を優先する。Scanは一定間隔ごとに、Repetitiveは繰り返し探索を行う。",
-   "params": "Rate Hysteresis: On／Off；ヒステリシス量；Scan／Repetitive",
+   "how": "自己波を感知した後、設定量だけ下限レートを下げて自己脈を優先する。Scanは一定間隔ごとに、Repetitiveは繰り返し探索を行う。\n**3つの項目の役割が違う（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**① Rate hysteresis（On/Off）**＝**自己調律を確認するとエスケープインターバルを長くとることで、ペーシングを可能な限り避ける機能。**エスケープインターバル（レート）は**ベーシックレートから設定レートを減算した値**で決まる。\n**② Repetitive（On/Off）**＝**延長されたエスケープインターバルでペーシングが行われても、すぐにベーシックレートへ戻さず、延長されたエスケープインターバルを継続する機能。**\n**③ Scan（On/Off）**＝**ベーシックレートで心房ペーシングが継続している場合に、自己心拍が発現することを期待する機能。**作動するタイミングは **①プログラム変更後、②180拍連続心房ペーシングが継続した時**の2つ。",
+   "params": "**Rate hysteresis：OFF／ON（−5, −10, −15, −20, −25, −45, −65ppm）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。エスケープインターバル（レート）＝ベーシックレート − 設定レート。\n**Repetitive：On／Off。延長を継続する拍数は 10拍（固定）。E-series では 5拍（固定）で作動する。**\n**Scan：On／Off。10拍（固定）。E-series では 5拍（固定）。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: —\nAbbott: —\nBoston Scientific: —\nMicroPort CRM: —",
-   "caution": "探索中は下限レートより低い心拍数となる。",
-   "ecg": "自己脈が出ている間は下限レートより遅い心拍数が許容され、ペーシングが止まる。探索中は一時的に下限レートを下回る。",
+   "caution": "探索中は下限レートより低い心拍数となる。\n**Rate hysteresis は PAC 発生時だけでなく PVC 発生時にも作動する（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**一方 **Repetitive は PVC 発生時には作動しない。**この非対称を知らないと、心電図上の延長／非延長の説明がつかなくなる。\n**延長されたエスケープインターバルでペーシングが行われると、次のタイミングはベーシックレートで再計算される。**",
+   "ecg": "自己脈が出ている間は下限レートより遅い心拍数が許容され、ペーシングが止まる。探索中は一時的に下限レートを下回る。\n**Repetitive Off では、延長されたエスケープインターバルでのペーシングが1拍入るとすぐベーシックレートに戻る。On では延長されたインターバルが10拍続き、11拍目からベーシックインターバルに戻る（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**Scan On では180拍連続の心房ペーシングの後に10拍だけレートが下がり、11拍目からベーシックレートに戻る。**",
    "pitfall": "探索のあいだ心拍数が下限レートより低くなるため、症状のある症例ではヒステリシス量を抑える。"
   },
   {
    "id": "BIO-RATE-STABILIZATION",
    "maker": "BIOTRONIK",
    "cat": "CRT",
-   "name": "Rate Stabilization",
+   "name": "Rate Stabilization during Mode Switching",
    "generic": "心房細動時の心室レート制御",
    "device": "PM / ICD / CRT",
-   "scope": "心房細動や期外収縮による心室レートの変動をならす",
-   "how": "先行するR-R間隔をもとに次のペーシング間隔を決め、急激なレート変動を抑える。CRTでは両室ペーシング率の維持にも寄与する。",
-   "params": "Rate Stabilization: On／Off；最大介入レート",
+   "scope": "心房細動中のR-R間隔のばらつきを抑える",
+   "how": "**正式名称は Rate stabilization during mode switching で、「心房細動中の R-R 間隔のバラツキを抑制する目的で心室ペーシングを早期に行いレートの安定化をはかる機能」（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**Target rate＝（直近4R-R間隔の平均）−10ppm。**Rate fading とおなじ方法で算出され、この目標に向けて心室へのペーシングが行われる。",
+   "params": "**Rate stabilization during mode switching：On／OFF（ノミナル OFF）。Target rate＝（直近4R-R間隔の平均）−10ppm**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。",
    "models": "Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Conducted AF Response（CAFR）\nAbbott: —\nBoston Scientific: Ventricular Rate Regulation（VRR）\nMicroPort CRM: —",
    "ecg": "期外収縮や心房細動の後でも、次のペーシング間隔が急に長くならず心拍数の変動が小さくなる。",
-   "pitfall": "ペーシング率が上がるため電池消耗が増える。"
+   "pitfall": "ペーシング率が上がるため電池消耗が増える。\n**印刷された心電図から正確なレートを解析するのは難しい（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**Target rate は自己心室波の出現によりつねに計算し直されていること、また印字されているインターバルに誤差が生じることが理由と資料は説明している。\n**過去の報告によると、ペーシングにより心室のレートを安定化させることで平均心室レートが減少する効果が期待できる。**"
   },
   {
    "id": "BIO-SMART-DETECTION",
@@ -1748,12 +1756,13 @@
    "generic": "心室自動閾値測定",
    "device": "PM / ICD / CRT",
    "scope": "心室の刺激閾値を自動測定し出力を調整する",
-   "how": "定期的に心室閾値を測定し、安全域を加えた出力へ自動設定する。ATMと組み合わせて閾値の推移を記録できる。",
-   "params": "VCC: Auto／ATM（Monitor）／Off；安全域",
+   "how": "**心室閾値を測定してマージンを加えた出力を自動で調整する（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。心房側の ACC と違い、捕捉判定に誘発反応波（Evoked Response）と分極ノイズ（Polarization artifact）を使う。**\n**Step1（Signal Quality Check＝SQC）**：独立した単極センシングチャネルにて分極ノイズと誘発反応の評価を行う。第1段階は**5発の Vp を送出し誘発反応波を確認**（確認できなければテスト終了）。第2段階は無効ペーシング後の分極ノイズを評価するため **Vp 後 100ms のタイミングでさらに Vp を送出**し、心室非捕捉時の分極ノイズを測定して問題があればテスト終了。\n**Step2（閾値測定時の出力調整）**：閾値測定中のフュージョンビートを避ける目的で **PAV ディレイは 50ms、SAV ディレイは 15ms** となる。**ペーシング不全と判断されると 130ms 後（最大）にパルス幅を 1.0ms に延長し Backup pace を送出する。**\n**Step3（閾値の自動測定）**：Threshold test start から **0.6V 刻み**で出力を減少していき、ペーシング不全が確認されると1つ前の出力から **0.1V 刻み**で測定する。**キャプチャロスと判断されると追加で最大2拍ペーシングを行い、1拍でも誘発反応波が確認できなければペーシング不全と判断される。**\n**Step4（心室出力の調整）**：**最小振幅 ≦ 閾値+セーフティマージン ≦ テストスタート振幅 → 閾値+セーフティマージン**、**閾値+セーフティマージン > テストスタート振幅 → テストスタート振幅**、**最小振幅 > 閾値+セーフティマージン → 最小振幅。**\n**測定中のレート調整は行われない。VCC は最大 110bpm の心室レートまで対応可能。**",
+   "params": "**Amvia Sky：Capture control＝On／Off／ATM、Threshold test start＝3.0V（2.5, 3.0, 3.5, 4.0, 4.5, 4.8V）、Safety margin＝0.5V（0.3〜1.2V）0.1V刻み**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**E シリーズ：Capture control＝On／Off／ATM、Min. amplitude＝0.7V（右心室）／1.0V（左心室）：設定変更不可、Threshold test start＝3.0V（2.4〜4.8V）0.6V刻み、Safety margin＝0.5V（0.3〜1.2V）0.1V刻み、Search type＝Time of day（Interval／Time of day）。**\n**心室ペーシング様式が RV の場合の最小振幅は 0.7V、BiV の場合は 1.0V。****VCC を On または ATM に設定する場合、パルス幅は 0.5ms 以上には設定できない。**\n**VCC status：OK ／ Disabled（On/ATM に設定後 256日間連続して SQC が失敗／一度でも測定が成功すると「3日連続 VCC が失敗」「24時間以内に24回の測定不成功」が加わる／Unipolar でリード不全（異常値 100〜2500Ω）／ERI に到達）／ Pending（適切なペーシング閾値を決定できなかった場合）。**",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: RV Capture Management™（RVCM）／Ventricular Capture Management™（VCM）\nAbbott: RVCap™ Confirm／Ventricular AutoCapture™\nBoston Scientific: PaceSafe™ RV Automatic Capture／PaceSafe™ RV Automatic Threshold／Ventricular Automatic Capture\nMicroPort CRM: RV Auto-threshold／Ventricular Auto-threshold",
-   "ecg": "閾値測定の最中だけ、出力が段階的に下がって捕捉が失われる拍が現れ、その直後に高出力のバックアップ刺激が入る。1拍のなかにスパイクが2本並んで見える。",
-   "pitfall": "融合波や偽融合があると捕捉ありと誤判定して出力を下げすぎることがある。誘発反応が小さい症例では測定そのものが成立せず、安全側の固定出力に戻る。テスト中の非捕捉を不具合と取り違えないよう、記録の時刻とテスト周期を照合する。"
+   "ecg": "閾値測定の最中だけ、出力が段階的に下がって捕捉が失われる拍が現れ、その直後に高出力のバックアップ刺激が入る。1拍のなかにスパイクが2本並んで見える。\n**SQC の第2段階では Vp の 100ms 後にもう1発 Vp を出すため、スパイクが2本ずつ並ぶ「ダブルパルス」が5拍続く。これはホルターに残ることがある（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**不整脈や誤作動と読み違えないこと。\n**バックアップは「ペーシング不全と判断されてから 130ms 後（最大）、パルス幅 1.0ms」で出る。**",
+   "pitfall": "**VCC は毎拍（beat to beat）心室捕捉をモニタしている（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。****テスト中とは違い、3連続のペーシング不全によって新たな出力を設定するための自動閾値テストが開始される。**そのためフュージョンビートによる不適切なペーシング不全と判断されないよう**フュージョンハンドリング機能**が働くことがある。**DDD ではバックアップペーシングが行われた次の1拍で AV delay を延長してフュージョンの確認を行い、VVI ではバックアップペーシングが行われた次の1拍でレートを減少（ベーシックレート −10ppm で調整）させてフュージョンの確認を行う。**\n**Amvia Sky および E1・E3 シリーズではヒステリシス機能を設定していなくても AV ディレイはそれぞれ 110ms および 70ms 延長するが、E2 シリーズでは設定していなければ作動しない。**\n**VVI でレートを下降させた際に自己心室イベントが確認された場合は最大で16心拍維持されるが、ペーシングが行われるとただちにベーシックレートに戻る。**",
+   "caution": "**測定は Home Monitoring 伝送時間の90分前に行われる。測定ができなかった場合には24分後にリトライする（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**\n**測定された閾値にセーフティマージンを加えた値がテストスタート振幅を超える場合、note には「High threshold.」と表示記載される。****VCC の測定開始時から心室ペーシング不全が発生していた場合、出力は 4.2V（Threshold test start + Safety margin）に設定され、note には「No stable threshold found.」と表示記載される。**\n**VCC による測定が働きにくい場合、「Threshold test start を 2.4V に変更する」または「パルス幅を 0.3ms に変更する」等で改善することがある。過去デバイスにおいては「ペーシング極性を Uni に変更する」でも改善することがある。**\n**E2 シリーズ以前のデバイスにおいては、VCC を On にプログラムするとただちに自動閾値測定機能が作動する。****過去デバイスでは心室の自動閾値測定機能を ACC（Active Capture Control）と呼んでいた**ので、心房の Atrial Capture Control と混同しないこと。"
   },
   {
    "id": "BIO-VP-SUPPRESSION",
@@ -1763,11 +1772,11 @@
    "generic": "心室ペーシング抑制（モード変換タイプ）",
    "device": "PM / ICD / CRT",
    "scope": "AAI(R)で動作し、必要時のみDDD(R)へ切り替える",
-   "how": "AAI(R)相当で動作して心室刺激を出さず、房室伝導の脱落が続くとDDD(R)へ切り替える。一定時間ごとにAAI(R)へ戻せるか再判定する。",
-   "params": "Vp Suppression: On／Off",
+   "how": "**心室ペーシングが入らない ADI モードに自動で変更することで、自己の房室伝導を優先させ不必要な心室ペーシングを避ける（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**房室伝導があると判断された場合は **DDD(R) ⇒ ADI(R)**、房室伝導がないと判断された場合は **ADI(R) ⇒ DDD(R)** に切り替わる。\n**DDD(R) ⇒ ADI(R) の基準**：設定値は **6連続／8拍中（1/8〜8/8拍、1拍刻み）**。作動条件（Vs 連続性サーチ）は **①プログラムボタンを押したとき、②30s→1m→2m→4m→…→128m→20h（変更不可）、③AV delay 内に発生する Vs イベントを確認したとき**の3つ。サーチ中は **AV delay を 450ms（Vp suppression limit）まで延ばし、**8拍中の任意の設定拍数の連続 Vs イベントを探す。\n**ADI(R) ⇒ DDD(R) の基準**：**①3/8拍の Vs の欠如（1/8〜8/8拍）、②2cycle の Vs の欠如（設定変更不可）、③2sec の Vs の欠如（設定変更不可）**のいずれか。**房室伝導の有無の評価は、心房イベントから 450ms（Vp suppression limit）以内に確認できる自己心室イベント、もしくはレートに応じた AV delay 内で確認できる自己心室イベントの有無で行う。**",
+   "params": "**Vp suppression：On／Off。DDD(R)⇒ADI(R) の切替基準＝6連続／8拍中（1/8〜8/8拍、1拍刻み）。ADI(R)⇒DDD(R) の切替基準＝3/8拍の Vs 欠如（1/8〜8/8拍）／2cycle 連続の Vs 欠如（変更不可）／2秒間の Vs 欠如（変更不可）。Vp suppression limit＝450ms（レートに応じて短縮）**（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。\n**Vp suppression limit のレート依存**：60bpm＝450ms／80bpm＝450ms／100bpm＝450ms／**140bpm＝300ms。**高レートでは血行動態の悪化を抑制する目的で AV ディレイが短縮されるため、Vp suppression limit も同様に短縮される。",
    "models": "Amvia Sky・Acticor 7・Rivacor 7 世代",
    "equiv": "Medtronic: Managed Ventricular Pacing（MVP™）\nAbbott: —\nBoston Scientific: RYTHMIQ™\nMicroPort CRM: SafeR™",
-   "caution": "**AAI(R) 相当で動作している間に起こりうるのが RNRVAS（Repetitive Non-Reentrant VA Synchrony＝反復性非リエントリー性室房伝導）である（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**資料の説明は次のとおり。①**PVARP 内に適切に逆行性P波を隠すことで PMT 作動は避けられるが、この逆行性P波は見えていないことから「機能的なアンダーセンシング」の状態といえる。**②**活動時など心房へのペーシングが早期に行われる場合には、この逆行性P波に心房ペーシングが近づくことになり、無効ペーシングとなることがある。**③**心房収縮を伴わない心室ペーシングが行われると、さらなる逆行性P波を誘引し、心房への無効ペーシング → 心室へのペーシング → リエントリではない室房伝導、という連鎖が継続する。**\n**PMT と違って頻拍にならないため気づきにくい。**心房ペーシングが出ているのに心房が捕捉されていない状態が続く。",
+   "caution": "**AAI(R) 相当で動作している間に起こりうるのが RNRVAS（Repetitive Non-Reentrant VA Synchrony＝反復性非リエントリー性室房伝導）である（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**資料の説明は次のとおり。①**PVARP 内に適切に逆行性P波を隠すことで PMT 作動は避けられるが、この逆行性P波は見えていないことから「機能的なアンダーセンシング」の状態といえる。**②**活動時など心房へのペーシングが早期に行われる場合には、この逆行性P波に心房ペーシングが近づくことになり、無効ペーシングとなることがある。**③**心房収縮を伴わない心室ペーシングが行われると、さらなる逆行性P波を誘引し、心房への無効ペーシング → 心室へのペーシング → リエントリではない室房伝導、という連鎖が継続する。**\n**PMT と違って頻拍にならないため気づきにくい。**心房ペーシングが出ているのに心房が捕捉されていない状態が続く。\n**Vp suppression 機能は CLS との併用ができない（追補49・BIOTRONIK「Amvia Sky & Edora DR-T/SR-T/HF-T QP/HF-T BP  BIOTRONIK Product Brady Parameter」）。**CLS モードを使用する場合には IRSplus 機能を検討する、と資料は明記している。\n**Vp suppression limit は Sense compensation の影響をうける。自己心房レートが上昇する場合には注意が必要となる。**\n**自動切替えが1時間に15サイクル行われると、この機能は一時停止する。次に作動するのは午前0時となり、その30秒後から自己の房室伝導の評価が再開される。**\n**心房性不整脈が発生した場合は、ADI モード作動中であっても Mode switching 機能が働き DDI(R) モードに切り替わる。**頻拍の停止が確認されると DDD モードとなり、その後に連続性サーチが開始される。",
    "ecg": "心房スパイクに続いて自己QRSのみが出る状態が続き、脱落時にDDD(R)へ切り替わって心室スパイクが現れる。",
    "pitfall": "AAI(R)動作中はAV間隔が長くなるため、逆行性室房伝導があるとRNRVASを誘発することがある。\n**AAI(R) の適応そのものは「心室へのペーシングを行う必要がない場合＝洞性徐脈の患者」とされる（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**一方 DDD の適応は「AAI や VVI を選択しなければならない理由がない場合＝**慢性心房細動を除く、ペースメーカの必要な患者にはすべて**」とされており、Vp Suppression は「DDD を基本としつつ不要な心室ペーシングを避ける」という位置づけになる。"
   },
@@ -1871,7 +1880,7 @@
    "how": "植込み時に接続されたリードが単極か双極かを判別し、適切な極性設定を自動で選ぶ。双極設定で単極リードが接続された場合の出力不全を防ぐ。",
    "params": "Lead Recognition: Auto／手動設定",
    "models": "ACCOLADE MRI・RESONATE 世代",
-   "equiv": "Medtronic: —\nAbbott: Auto Lead Polarity Detection\nBIOTRONIK: —\nMicroPort CRM: Lead Polarity Switch"
+   "equiv": "Medtronic: —\nAbbott: Auto Lead Polarity Detection\nBIOTRONIK: Auto-initialization 時の極性 AUTO（プログラム後は BIPL に確定する）\nMicroPort CRM: Lead Polarity Switch"
   },
   {
    "id": "BSX-BIVENTRICULAR-TRIGGER",
@@ -2373,7 +2382,7 @@
    "how": "本体が体内に植え込まれたことを自動で検知し、保管中の状態から通常の動作へ移行する。",
    "params": "Automatic Implant Detection: 自動",
    "models": "ALIZEA・ULYS・PLATINIUM 世代",
-   "equiv": "Medtronic: Implant Detection\nAbbott: —\nBIOTRONIK: —\nBoston Scientific: —"
+   "equiv": "Medtronic: Implant Detection\nAbbott: —\nBIOTRONIK: Auto-initialization（10分間のセルフチェック。開始前は「Prog. Inactive」または「Shelf mode active」と表示される）\nBoston Scientific: —"
   },
   {
    "id": "MCP-AUTOSWITCH-ATP",
@@ -2461,7 +2470,7 @@
    "how": "双極でのインピーダンス異常を検出すると、ペーシング極性を単極へ自動的に切り替えて出力不全を回避する。",
    "params": "Lead Polarity Switch: On／Off",
    "models": "ALIZEA・ULYS・PLATINIUM 世代",
-   "equiv": "Medtronic: —\nAbbott: Auto Lead Polarity Detection\nBIOTRONIK: —\nBoston Scientific: Automatic Lead Recognition／Lead Safety Switch",
+   "equiv": "Medtronic: —\nAbbott: Auto Lead Polarity Detection\nBIOTRONIK: Auto-initialization 時の極性 AUTO（プログラム後は BIPL に確定し AUTO は選べない）\nBoston Scientific: Automatic Lead Recognition／Lead Safety Switch",
    "caution": "単極へ切り替わると心電図上のスパイクが大きくなり、大胸筋刺激が起こることがある。",
    "ecg": "単極へ切り替わると心電図上のペーシングスパイクが急に大きくなる。双極では小さいスパイクに戻る。",
    "pitfall": "単極へ切り替わると大胸筋刺激が起こることがある。切替はリード異常の兆候なので、原因の確認を優先する。"
@@ -2752,7 +2761,7 @@
    "how": "心房チャンネルが心室脱分極に由来する遠隔電位（ファーフィールドR波＝FFRW）を心房イベントとして検出してしまうのを防ぐための心房側のブランキング。**心室ペーシング後とセンシングイベント後の両方に、心房不応期（ブランキング）を設ける。**この区間に現れた心房チャンネルの信号は心房イベントとして扱われないため、ファーフィールドR波が心房レートの計数やモードスイッチの判定に混入しない。\n設定は徐脈タブの［不応期 & ブランキング］画面にある。**Atlas+Ⅱ までは「Far Rサプレッション」という名称だったが、機能は同じもの。**\n**他社では「心房側の絶対不応期」として整理される（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**BIOTRONIK は同じ役割の項目を **Far-field protection after Vs／after Vp** と呼び、心室センスの後と心室ペースの後で別々の値を持つ（Etrinsa 8 DR-T の画面例は Vs 後100ms／Vp 後150ms）。**絶対不応期は「電位を感知しない」期間であり、感知はするがカウンタをリセットしない「不応期」とは目的が違う。**絶対不応期の目的は、①**クロストークによるオーバーセンシングの防止**（ペーシング出力＝アフターポテンシャルを含む、を反対のチャンバで検出してしまうこと）と、②**ファーフィールド電位のオーバーセンシングの防止**（収縮電位を反対側のチャンバで検出してしまうこと）の2つ。",
    "params": "PVAB: 60〜250ms（ノミナル60ms）。**Off には設定できない。**［不応期 & ブランキング］画面にあり、PVARP・レート応答PVARP／V Ref・最短PVARP／V Ref と同じ画面で設定する",
    "models": "Atlas+Ⅱ までは「Far Rサプレッション」、Current™ 以降は「PVAB」。現行は Gallant／Entrant 世代のICD／Gallant HF／Quadra Assura MP 世代のCRT-D",
-   "equiv": "Medtronic: —\nBIOTRONIK: Far-field protection after Vs／Far-field protection after Vp（心房側の絶対不応期。Etrinsa 8 DR-T の画面例は Vs後100ms／Vp後150ms）\nBoston Scientific: —\nMicroPort CRM: —",
+   "equiv": "Medtronic: —\nBIOTRONIK: Far-field protection after Vs／Far-field protection after Vp（心房側の絶対不応期。**after Vs＝100ms（100〜225ms、25ms刻み）／after Vp＝150ms（100〜225ms、25ms刻み）がノミナル**。E シリーズは10ms刻みで最大220ms、ブランキング内でも「Ars(FFP)」マーカが表示される）\nBoston Scientific: —\nMicroPort CRM: —",
    "caution": "ファーフィールドR波センシング（FFRWS）には、R波の後に出る Type I と、R波の前に出る Type II があり、**PVAB で対処できるのは Type I だけ**である。Type II は心室イベントより前に現れるためブランキングでは捉えられず、感度側の調整が必要になる。\nOff にできない設計になっているのは、心房側で FFRW を拾う事態を避けるためと考えられる。下限の60msがノミナルなので、既定では最小限のブランキングしか置かれていない。\n心房のブランキングを延ばすと PVARP との関係で心房の感知できる時間帯が狭まる。モードスイッチの効き方と合わせて評価する。\n**ファーフィールドには2方向ある（追補48・BIOTRONIK「Pacemaker fundamentals ペースメーカのタイミングサイクルについて」）。**心房側から見た心室の電位が**ファーフィールドR波（FFRW）**、心室側から見た心房の電位が**ファーフィールドP波（FFPW）**である。**FFRW には Type I（心室イベントの後に As が出る）と Type II（心室イベントの前、心房イベントの直後に As が出る）があり、Type II は心室イベント後の心房ブランキングでは隠せない。**",
    "ecg": "心房マーカーに、心室イベントの直後に AS が並ぶのがファーフィールドR波オーバーセンシングの典型像。真のP波は心室イベントから離れた位置に出るため、1心拍のなかに「離れた位置のAS（真のP波）」と「心室イベント直後のAS（FFRW）」が2つ並んで見える。心房レートが見かけ上2倍に記録され、心房頻拍として誤って記録されることがある。",
    "pitfall": "長くしすぎると本当の心房イベント、とくに心房頻拍・心房細動の速い心房波を見落とし、モードスイッチが働かなくなる。逆に短すぎるとファーフィールドR波を拾い、誤ったモードスイッチや心房頻拍の過剰な記録（AHRE の偽陽性）を招く。心房リードが心室に近い位置にある症例、心室の出力が高い症例で FFRW は出やすい。"
@@ -2884,6 +2893,118 @@
    "ecg": "AIDA 自体は診断データの提示機能で、固有の心電図所見はない。各エピソードから記録された心内心電図（Mode Switch AAI/DDD など）を呼び出して波形を確認できる。",
    "pitfall": "**AVB エピソード数と DDD スイッチ回数は一致しない。**画面にも「1つの AVB エピソードが複数の DDD スイッチにつながることがある」と注記されており、**スイッチ回数だけを見て房室ブロックの頻度を評価しない。**\n所見文の「Proposed（推奨値）」はあくまで提案であり、そのまま適用する前に患者背景を確認する。",
    "caution": "**SafeR のフォローでは AVB エピソードテーブルが要になる。**どの基準（Pause／AVB Ⅰ／Ⅱ／Ⅲ）で DDD に移行しているかで、設定の見直し方が変わる（→ SafeR™）。\n**日中（労作時・安静時）と夜間の分布が分かれて集計される点が特徴。**夜間に偏る AVB は迷走神経性の可能性を考える材料になるが、資料はその解釈までは述べていない。"
+  },
+  {
+   "id": "BIO-NIGHT-RATE",
+   "maker": "BIOTRONIK",
+   "cat": "レート応答",
+   "name": "Night rate",
+   "generic": "睡眠時・安静時のレート低下",
+   "device": "PM / ICD / CRT",
+   "scope": "就寝中の時間帯だけ下限レートを下げる",
+   "how": "**就寝中として設定した時間帯のレートを基本レートよりも低く調整する機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**開始時間になると徐々に設定レートへ向けて下降し、設定レートは終了時間まで継続、終了時間になると徐々に Basic rate まで上昇する。**\nレートは時刻で切り替わるだけで、体動や姿勢は判定に使わない。",
+   "params": "**設定レート 30〜100ppm。設定可能な時間は開始 00:00〜23:55／終了 00:00〜23:55**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。On／Off。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: Sleep Rate（睡眠レート）\nAbbott: Rest Rate（レスト レート）\nBoston Scientific: —\nMicroPort CRM: Night Rate",
+   "ecg": "設定した開始時刻から心拍数が階段状ではなく緩やかに下がり、設定レートで一晩推移して、終了時刻から緩やかに基本レートへ戻る。**下降・上昇とも「徐々に」行われるため、時刻ちょうどにレートが跳ぶわけではない（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**",
+   "pitfall": "**Night rate が作動する時間はプログラマに依存するため、プログラマの時間は常に調整されている必要がある（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**プログラマの時刻がずれていると、患者が実際に寝ている時間帯とレートを下げる時間帯がずれる。\n夜間の徐脈で症状が出る症例では、下げすぎると失神やふらつきの原因になる。",
+   "caution": "**時差のある場所へ行く場合には設定を Off に変更することが推奨されている（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**デバイス側は現地時刻を知らないため、海外渡航中は日中にレートが下がることになる。"
+  },
+  {
+   "id": "BIO-DYNAMIC-AV-DELAY",
+   "maker": "BIOTRONIK",
+   "cat": "ペーシング管理",
+   "name": "Dynamic AV delay",
+   "generic": "レートに応じたAVディレイの自動短縮",
+   "device": "PM / ICD / CRT",
+   "scope": "レート変動に合わせてAVディレイを自動で短縮する",
+   "how": "**心拍数の変動に合わせて変化する PQ 間隔に倣って、レート変動に合わせて AV delay を調整する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**Low＝150ms（at 60ppm）〜120ms（at 130ppm）、Medium＝140ms〜100ms、High＝130ms〜80ms** の3段階から選ぶ。レートが上がるほど AV ディレイが短くなり、上限追従レートを確保しやすくなる。\n**AV dynamics を Fixed にすると固定値となり、Dynamic にすると上の3段階から選ぶ形になる。**",
+   "params": "**AV dynamics：Fixed／Dynamic（Low／Medium／High）。Low 150→120ms、Medium 140→100ms、High 130→80ms（いずれも 60ppm→130ppm）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**選択された AV dynamics によって、設定可能な AV ディレイの範囲が変わる。**\n関連項目として **Sense compensation（−40ms。Off、−5〜−120ms、5ms刻み。E-series は −45ms）**があり、AsVp 時と ApVp 時の心房心室間の収縮タイミングを揃える。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: Rate Adaptive AV（RAAV）\nAbbott: Rate Responsive AV Delay（レート応答 AV ディレイ）\nBoston Scientific: Dynamic AV Delay\nMicroPort CRM: Rate Adaptive AV Delay",
+   "ecg": "自己心房レートの上昇に伴って As-Vp 間隔が段階的に短くなる。**資料の例では 366bpm 相当の表示から 451bpm、612bpm と上がるにつれて AV 間隔が縮んでいく（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**AV 間隔が変わっていることに気づかないと、モードやヒステリシスの誤作動と読み違えやすい。",
+   "pitfall": "**プログラマ画面で確認できる「Dynamic AV delay 180/140」は PAV/SAV を表記しているのではなく、Dynamic AV delay の Maximum と Minimum を表記している（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**この読み違えが多く、PAV 180ms／SAV 140ms が設定されていると誤解しやすい。\n短くしすぎると心房収縮による心室充満（心房キック）が損なわれ、長すぎると上限追従レートが制限される。",
+   "caution": "**AsVp と ApVp のタイミング差は Sense compensation で調整する（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**資料は理由として **①心房センシング時の遅延、②心房ペーシング時のレイテンシ、③心房内における伝導遅延**の3つを挙げ、**心房センシング時と心房ペーシング時での違いは 30ms〜50ms 程度と知られている**としている。**心拍出量ならびに全身的血行動態の AV ディレイの最適化は、左心房と左心室間の伝導に依存する。**"
+  },
+  {
+   "id": "BIO-SAFETY-WINDOW",
+   "maker": "BIOTRONIK",
+   "cat": "ペーシング管理",
+   "name": "Safety window",
+   "generic": "心室セーフティペーシング（クロストーク対策）",
+   "device": "PM / ICD / CRT",
+   "scope": "クロストークによる心室ペーシングの抑制を防ぐ",
+   "how": "**常に On で作動する機能。心房ペーシング後のセーフティウィンドウ内に心室イベントが感知されたら、抑制せずに心室へペーシングを行う**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n他社でいう心室セーフティペーシング（VSP）にあたる。クロストーク（心房ペーシング出力を心室が自己収縮と誤認識すること）が起きても、短い AV 間隔で心室刺激が出るため、房室ブロックのある症例で心室収縮が消失することを防げる。",
+   "params": "**設定値は「心房ペーシング後 100ms、または設定された AV ディレイの短い方」。常に On（設定変更の項目ではない）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**作動回数は Statistics で確認可能。**\n関連する設定は **Ven. blanking after Ap＝30ms（30〜70ms、5ms刻み）。**",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: Ventricular Safety Pacing（VSP）\nAbbott: Ventricular Safety Standby（心室セーフティ スタンバイ）\nBoston Scientific: Ventricular Safety Pacing\nMicroPort CRM: Ventricular Safety Pacing",
+   "ecg": "心房スパイクの直後、**通常より明らかに短い AV 間隔（100ms または設定 AV ディレイの短い方）で心室スパイクが出る（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定した AV ディレイとは違う短い間隔のスパイクが混じるのが手がかりになる。",
+   "pitfall": "**クロストークの主な発生原因は、高い心房出力設定／鋭い心室感度設定／心室のセンシング極性が Unipolar 設定／短い心室ブランキング設定（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Safety window が頻回に作動している場合は、この4つを順に確認する。\n**Safety window 機能は心房ペーシングのタイミングと PVC の発現が重なってしまうことでも作動する。**この場合はクロストークではないので、原因の切り分けが必要になる。",
+   "caution": "**心房出力を 5.0V 以上に設定するとクロストークを惹起する可能性があるため、Ven. blanking after Ap の延長が必要になる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**ただし**ブランキング期間を不適切に長く設定すると自己心室イベントを感知できないことがある**ため、延ばしすぎない。"
+  },
+  {
+   "id": "BIO-EMI-MODE",
+   "maker": "BIOTRONIK",
+   "cat": "センシング",
+   "name": "EMI mode（ノイズリバージョン）",
+   "generic": "ノイズ検出時の非同期ペーシングへの切替",
+   "device": "PM / ICD / CRT",
+   "scope": "連続ノイズによるペーシング抑制を防ぐ",
+   "how": "**常に作動している機能。外部から混入するノイズが連続的に発生し、ベーシックインターバルまで継続すると、不適切にペーシングを抑制しないよう非同期でペーシングを行う**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**As／Vs マーカからそれぞれ始まる 50ms の EMI インターバルの中に新たなセンシング電位を感知すると、そこから 50ms 延長される。**ノイズが途切れずに続くかぎり EMI インターバルが更新され続け、ベーシックインターバルに達した時点で非同期ペーシングとなる。",
+   "params": "**EMI インターバル＝50ms（As／Vs マーカからそれぞれ開始）。インターバル内に新たなセンシング電位を感知するとそこから 50ms 延長。常に作動しており設定項目ではない**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: Noise Reversion（ノイズ検出時の非同期ペーシング）\nAbbott: Noise Reversion（ノイズ リバージョン）\nBoston Scientific: Noise Response（Inhibit／Pace）\nMicroPort CRM: Noise Reversion",
+   "ecg": "電気メスや筋電位などの連続ノイズが混入している間だけ、自己脈の有無にかかわらず基本レートで規則的なスパイクが出る。**ノイズが途切れると通常のデマンド動作に戻る（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**",
+   "pitfall": "非同期ペーシングになるため、自己脈があると競合し R on T のリスクが生じる。**ノイズが 50ms 間隔より疎らな場合は EMI インターバルが更新されず、ペーシングが抑制されたままになる**ことがあり、「ノイズがあるのに EMI mode に入らない」という形の徐脈が起こりうる。",
+   "caution": "**常時作動しているためプログラマ上で Off にはできない（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**電気メス使用時などに意図して非同期にしたい場合は、マグネットやモード変更で対応する（Magnet response の AUTO／ASYNC を参照）。"
+  },
+  {
+   "id": "BIO-MAGNET-RESPONSE",
+   "maker": "BIOTRONIK",
+   "cat": "ペーシング管理",
+   "name": "Magnet response",
+   "generic": "マグネット装着時の動作と電池状態の推定",
+   "device": "PM / ICD / CRT",
+   "scope": "マグネット装着時の動作を決める",
+   "how": "**マグネットを近づけることにより作動が変化する機能。Auto／ASYNC／SYNC の3択**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**AUTO**＝まず10拍、DOO／VOO／AOO 90ppm（マグネットレート）の非同期ペーシングを **AV delay 100ms** で行い、**11拍目以降は設定値に戻る。**\n**ASYNC**＝つねに 90ppm の非同期ペーシングを AV delay 100ms で行う。\n**SYNC**＝マグネットを当てても何も作動は変わらない。",
+   "params": "**Magnet response：Auto／ASYNC／SYNC。マグネットレート 90ppm、AV delay 100ms、AUTO は10拍のみ**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**ERI 時はマグネットレートが 80ppm に下降する。**",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: Magnet Response（マグネットレート 85ppm 等）\nAbbott: Magnet Response（マグネット レスポンス）\nBoston Scientific: Magnet Response（Async／Off／Store EGM）\nMicroPort CRM: Magnet Mode（マグネットレートで電池状態を推定）",
+   "ecg": "マグネットを当てた瞬間から**10拍だけ 90ppm の非同期ペーシング（AV delay 100ms）**が入り、11拍目から元の設定に戻る（AUTO の場合）。**ERI に達していると 80ppm になる**ため、マグネットレートを数えることで電池状態のおおよその判定ができる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。",
+   "pitfall": "**Tachy 用テレメトリヘッド（マグネットなし）使用時には非同期モードにならない（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**ヘッドを当てても挙動が変わらないことを「故障」と誤解しないこと。\n非同期ペーシングになるため自己脈と競合し、受攻期に刺激が落ちるリスクがある。SYNC を選べば競合は起きないが、電池状態の推定もできなくなる。",
+   "caution": "**MRI モード中は自動的に AUTO ⇒ SYNC に切り替わる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**MRI 撮像可能モードの間はマグネットに反応しなくなるので、撮像前後の動作確認で混乱しないこと。"
+  },
+  {
+   "id": "BIO-PMT-PROTECTION",
+   "maker": "BIOTRONIK",
+   "cat": "ペーシング管理",
+   "name": "PMT protection",
+   "generic": "PMTの検出と停止（PMTレスポンス）",
+   "device": "PM / ICD / CRT",
+   "scope": "PMT（ペースメーカ介在性頻拍）を検出して停止させる",
+   "how": "**PMT 作動を停止させるための機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。検出・確認・停止の3段階で動く。\n**検出**＝**VpAs interval が8拍連続して VA criterion より短い**こと、かつ**7拍の VpAs interval の偏差が24ms 以内**であること。\n**確認**＝**8拍目に AV ディレイを延長または短縮しても VpAs interval が変化しないことを確認する。**設定された AV ディレイ<200ms なら **AV 延長（直近の AV 間隔＋50ms）**、設定された AV ディレイ≧200ms なら **AV 短縮（直近の AV 間隔−50ms）**を用いる。逆行性伝導であれば VpAs は変わらず、洞性の追従であれば変わる、という切り分けである。\n**停止**＝**確認後の1拍だけ PVARP を 400ms（VA criterion＋50ms）に延長し、逆行性心房波を PVARP 内に収めることによって PMT 作動を停止する。**",
+   "params": "**VA criterion：350ms（250〜500ms）10ms刻み。PMT protection：On／Off**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n検出＝VpAs interval が8拍連続して VA criterion より短い／7拍の VpAs interval の偏差が24ms 以内。停止時の PVARP 延長＝VA criterion＋50ms（VA criterion 350ms なら 400ms）。\n**PMT protection の作動回数は Statistics で確認可能。**\n関連項目として **Auto PVARP**（PMT protection が7日間作動していなければ PVARP−50ms、作動すれば PVARP＋50ms）がある。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: PVC Response／PMT Intervention\nAbbott: PMT Response（Auto Detect／10 Beats > PMT）\nBoston Scientific: PMT Termination\nMicroPort CRM: PMT protection（PVARP自動延長）",
+   "ecg": "上限追従レート付近の規則的な AsVp が続いたあと、**8拍目だけ AV 間隔が前後の拍と違う（±50ms ずれた）拍**が現れ、その次の1拍で PVARP が 400ms に延びて心房波が追従されなくなり、頻拍が止まる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**AV 間隔が1拍だけずれる**のが、この機能が働いた印になる。",
+   "pitfall": "**洞頻拍で VpAs が安定していると、PMT でないのに検出条件を満たしうる。**そのために確認段階で AV ディレイを動かして VpAs が変わるかを見ているが、**AV ディレイを短縮することで上限レートを超えてしまうと判断された場合には AV ディレイは延長する**という例外があり、確認のやり方が症例ごとに変わる点に注意する（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n作動回数が多いときは、逆行性室房伝導そのものへの対策（PVARP の固定延長、AV ディレイ短縮）を検討する。",
+   "caution": "**Auto PVARP との組合せに注意する（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。****PMT protection が働かなければ PVARP は短縮し、その短縮によって PMT 作動を誘発する可能性もあるため、メーカーは Auto PVARP を Off にすることを推奨している。****PVARP が一度でも延長されると、その後短縮されることはない。延長された PVARP を短縮するためには再プログラミングが必要。**"
+  },
+  {
+   "id": "BIO-BLANKING",
+   "maker": "BIOTRONIK",
+   "cat": "センシング",
+   "name": "Blanking（Far-field protection／Ven. blanking after Ap）",
+   "generic": "心房ブランキング（ファーフィールドR波対策）",
+   "device": "PM / ICD / CRT",
+   "scope": "反対側のチャンバの電位を誤って感知させない",
+   "how": "**BIOTRONIK のブランキング（絶対不応期）は心房側と心室側で項目名が分かれている**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。\n**Far-field protection after Vs／after Vp**＝**心室収縮電位を不適切に心房チャンネルでセンシングさせないための機能。**心室センスの後と心室ペースの後で別々の値を持つ。他社の PVAB にあたり、ファーフィールドR波（FFRW）のオーバーセンシングによる不適切なモードスイッチを防ぐ。\n**Ven. blanking after Ap**＝**心房ペーシング出力や出力後のチャージ電位を不適切に心室でセンシングさせないための機能。**クロストークによる心室ペーシングの抑制を防ぐ。",
+   "params": "**Far-field protection after Vs：100ms（100〜225ms）25ms刻み／Far-field protection after Vp：150ms（100〜225ms）25ms刻み**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**E シリーズは設定が10ms刻みとなるため最大 220ms。**\n**Ven. blanking after Ap：30ms（30〜70ms）5ms刻み。**設定場所は Amvia Sky ではセンシング設定、**E シリーズでは「Refractory period/Blanking」**から行う。\n関連する不応期として **ARP＝225ms（ただし AV ディレイがそれより長い場合には AV ディレイと同じ長さになる）**、**PVARP＝Auto、または 175〜600ms（25ms刻み）**、**PVARP after PVC＝Auto、または設定された PVARP＋150ms（固定）**、**VRP** がある。",
+   "models": "Amvia Sky・Evity 8／Edora 8／Enitra 8／6／Enticos 8・Eluna 8・Etrinsa 8／6／Epyra 8・Evia／Estella",
+   "equiv": "Medtronic: PVAB（Post Ventricular Atrial Blanking）／Ventricular Blanking after Atrial Pace\nAbbott: PVAB（心室後心房ブランキング）／Auto Ventricular Blanking（心室ブランキング）\nBoston Scientific: PVAB／Ventricular Blanking\nMicroPort CRM: PVAB／Ventricular Blanking",
+   "ecg": "**E-series ではブランキング内でも「Ars(FFP)」マーカが表示される（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**このマーカが心室イベントの直後に規則的に並んでいれば、心房側でファーフィールドR波を拾っているが不応期で処理できている状態とわかる。**Amvia Sky ではブランキング内のマーカが立たない。**",
+   "pitfall": "**Far-field protection を延ばしすぎると本当の心房イベントを見落とす。**とくに心房頻拍中の心房波が隠れると、モードスイッチが働かなくなる。\n**Ven. blanking after Ap を不適切に長く設定すると自己心室イベントを感知できないことがある（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**\n**FFRW には、心室イベントの後に出る Type I と、心室イベントの前（心房イベントの直後）に出る Type II がある。**Type I は心室イベント後の心房不応期で隠せるが、**Type II は As の直後に出るため、Far-field protection を延ばすだけでは対処できない**（追補48）。",
+   "caution": "**心房出力を 5.0V 以上に設定するとクロストークを惹起する可能性があるため、Ven. blanking after Ap を延長する必要がある（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**\n**心房不応期（ARP・PVARP）は「感知してもタイミングカウンタをリセットしない」期間であって、感知そのものを止める期間ではない。****絶対不応期（ブランキング＝Far-field protection、Ven. blanking）だけが電位を感知しない期間である**（追補48）。この違いを取り違えると、診断データ上の心房イベント数の解釈を誤る。"
   }
  ]
 }

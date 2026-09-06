@@ -1,5 +1,5 @@
 {
- "v": 44,
+ "v": 47,
  "updated": "2026-09-06",
  "gloss": [
   {
@@ -789,8 +789,8 @@
    "cat": "MRI・EMI",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "磁石装着時の非同期ペーシングレート等。電池状態の指標として利用された/されるが機種依存。挙動は機種によって異なるため一律には扱えない。",
-   "tags": "Battery / PM / ICD / CRT / General / magnet / rate"
+   "short": "磁石装着時の非同期ペーシングレート等。電池状態の指標として利用された/されるが機種依存。挙動は機種によって異なるため一律には扱えない。**BIOTRONIK（Amvia Sky／E シリーズ）の Magnet response は Auto／ASYNC／SYNC の3択**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**AUTO＝まず10拍、DOO/VOO/AOO 90ppm（マグネットレート）の非同期ペーシングを AV delay 100ms で行い、11拍目以降は設定値に戻る。ASYNC＝つねに 90ppm の非同期ペーシング・AV delay 100ms。SYNC＝マグネットを当てても何も作動は変わらない。****ERI 時はマグネットレートが 80ppm に下降する。****Tachy 用テレメトリヘッド（マグネットなし）使用時には非同期モードにならない。****MRI モード中は自動的に AUTO ⇒ SYNC に切り替わる。**",
+   "tags": "Battery / PM / ICD / CRT / General / magnet / rate Magnet response Auto ASYNC SYNC 90ppm 10拍 11拍目 AV delay 100ms ERI 80ppm Tachyヘッド MRIモード SYNC BIOTRONIK"
   },
   {
    "term": "慢性期閾値",
@@ -1429,8 +1429,8 @@
    "cat": "ペーシング",
    "device": "PM",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのIntrinsic Rhythm Support plus。AV hysteresis/自己伝導探索を用いて不要な心室ペーシングを抑える機能群。AVヒステリシスの延長幅と探索間隔を設定できる。",
-   "tags": "Manufacturer / PM / BIOTRONIK / Intrinsic / Rhythm / Support / plus"
+   "short": "BIOTRONIK の Intrinsic Rhythm Support plus。**AV ディレイを延長することで自己房室伝導を優先させ、不必要な心室ペーシングを避ける機能。****AV hysteresis の選択肢（Off／IRSplus／Positive／Negative）のひとつ**で、IRSplus の延長は**最大 400ms まで**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**IRSplus に設定すると「AV hysteresis は Auto（変更不可）」「AV scan／repetitive は ON（変更不可）」に自動で変更される。****Vp suppression が CLS と併用できないのに対し、CLS モードでは IRSplus の使用が推奨される。**自己心室収縮が発現しなければ設定された AV ディレイで心室ペーシングを行うため、不適切に長い AV ディレイは避ける。",
+   "tags": "Manufacturer / PM / BIOTRONIK / Intrinsic / Rhythm / Support / plus 400ms AV hysteresis Auto変更不可 AV scan repetitive ON固定 CLS併用可 Off Positive Negative"
   },
   {
    "term": "Asynchronous pacing",
@@ -1669,8 +1669,8 @@
    "cat": "レート応答",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのrate response。心筋収縮に伴う心内インピーダンス変化をbeat-to-beatで評価しレートへ反映する。体動を伴わない精神的負荷にも反応しやすい。",
-   "tags": "Manufacturer / PM / ICD / CRT / BIOTRONIK"
+   "short": "BIOTRONIKのrate response。心筋収縮に伴う心内インピーダンス変化をbeat-to-beatで評価しレートへ反映する。体動を伴わない精神的負荷にも反応しやすい。**Amvia Sky ではモードとして『DDI-CLS』が追加され、『AOO』モードが廃止された**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）（あわせて『OFF』モードも追加）。**Vp suppression 機能は CLS と併用できないため、CLS モードを使用する場合は IRSplus 機能を検討する。**",
+   "tags": "Manufacturer / PM / ICD / CRT / BIOTRONIK DDI-CLS AOO廃止 OFFモード追加 Vp suppression併用不可 IRSplus Amvia Sky"
   },
   {
    "term": "Capture Control",
@@ -1679,8 +1679,8 @@
    "cat": "ペーシング",
    "device": "PM / CRT",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKの自動capture threshold測定・出力調整機能。定期的に閾値を測り、安全域を確保した出力へ自動調整する。",
-   "tags": "Manufacturer / PM / CRT / BIOTRONIK / threshold / capture"
+   "short": "BIOTRONIK の自動 capture threshold 測定・出力調整機能。**心房側が ACC（Atrial Capture Control）、心室側が VCC（Ventricular Capture Control）で、いずれも Capture control＝On／Off／ATM（Active Threshold Monitor）から選ぶ**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**ACC は毎拍の閾値管理を行わず1日1回の測定にとどまるが、VCC は毎拍（beat to beat）心室捕捉をモニタしている**点が最大の違い。**過去デバイスでは心室の自動閾値測定機能を ACC（Active Capture Control）と呼んでいた**ため、現在の心房用 ACC と紛らわしい。**測定は Home Monitoring 伝送時間の90分前に行われ、できなかった場合は24分後にリトライする。**",
+   "tags": "Manufacturer / PM / CRT / BIOTRONIK / threshold / capture ACC VCC ATM On Off beat to beat 毎拍 1日1回 Active Capture Control 名称衝突 HM90分前 24分後リトライ"
   },
   {
    "term": "MRI AutoDetect",
@@ -1689,8 +1689,8 @@
    "cat": "MRI・EMI",
    "device": "PM / CRT",
    "maker": "BIOTRONIK",
-   "short": "対応機種でMRI環境を検知し、設定期間内に自動でMRI modeへ移行する機能。設定期間の経過で自動的に元へ戻り、戻し忘れを防げる。",
-   "tags": "Manufacturer / PM / CRT / BIOTRONIK / MRI"
+   "short": "対応機種でMRI環境を検知し、設定期間内に自動でMRI modeへ移行する機能。**設定は Off／On／Auto の3択**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Auto にした場合：Auto に設定した日＋14日間が有効。4秒以上継続する磁場強度の上昇、もしくは磁場が 150mT 以上で検知されると MRI 撮像可能モードへ移行する。MRI 撮像可能モードの解除は磁場が 10mT 以下のときに自動的に復帰する。撮像後は必要な検査を行い、MRI 設定を「off」へプログラムする。****E シリーズでは条件が異なり、10mT（100G）以上の磁場を検知すると MRI 撮像可能モードに移行し、磁場が検知できなくなると1分後にパーマネントモードへ復帰する。****搭載機種は Amvia Sky／Evity 8／Edora 8／Enitra 8・6**（E3 シリーズ以降）。",
+   "tags": "Manufacturer / PM / CRT / BIOTRONIK / MRI Off On Auto 14日間 4秒以上 150mT 10mT 100G 1分後 パーマネントモード E3シリーズ以降 Amvia Sky Evity8 Edora8 Enitra8 Enitra6"
   },
   {
    "term": "LV VectorOpt",
@@ -1979,8 +1979,8 @@
    "cat": "レート応答",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "自己心拍が出たら次の刺激までのレートを設定より下げ、自己脈を優先する。待つ間の心拍数は下限より低くなる。",
-   "tags": "hysteresis ヒステリシス レート"
+   "short": "自己心拍が出たら次の刺激までのレートを設定より下げ、自己脈を優先する。待つ間の心拍数は下限より低くなる。**BIOTRONIK では Rate hysteresis（OFF／ON：−5, −10, −15, −20, −25, −45, −65ppm）として設定し、エスケープインターバル（レート）はベーシックレートから設定レートを減算した値になる**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**PAC 発生時だけでなく PVC 発生時にも作動する。****延長されたエスケープインターバルでペーシングが行われると、次のタイミングはベーシックレートで再計算される。**",
+   "tags": "hysteresis ヒステリシス レート −5 −10 −15 −20 −25 −45 −65ppm 減算 PVC発生時も作動 再計算 BIOTRONIK"
   },
   {
    "term": "サーチヒステリシス",
@@ -1999,8 +1999,8 @@
    "cat": "レート応答",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "レートが上がるとAVディレイを自動短縮し、生理的な房室伝導に近づける。上限追従レートを確保しやすくなる。",
-   "tags": "rate adaptive AV dynamic AV 動的AV"
+   "short": "レートが上がるとAVディレイを自動短縮し、生理的な房室伝導に近づける。上限追従レートを確保しやすくなる。**BIOTRONIK では Dynamic AV delay といい、Low／Medium／High の3段階から選ぶ**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Low＝150ms（at 60ppm）〜120ms（at 130ppm）、Medium＝140ms〜100ms、High＝130ms〜80ms。****選択された AV dynamics によって、設定可能な AV ディレイの範囲が変わる。****プログラマ画面の「Dynamic AV delay 180/140」は PAV/SAV を表記しているのではなく、Dynamic AV delay の Maximum と Minimum を表記している。**",
+   "tags": "rate adaptive AV dynamic AV 動的AV Dynamic AV delay Low Medium High 150 120 140 100 130 80 60ppm 130ppm 180/140 Maximum Minimum PAV SAV誤読注意 BIOTRONIK"
   },
   {
    "term": "センス補正（SAVオフセット）",
@@ -2009,8 +2009,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "自己P波感知の遅れを見込み、SAVをPAVより短く設定する差分。これにより実際の房室間隔をPAVと揃えられる。",
-   "tags": "sense compensation SAV offset"
+   "short": "自己P波感知の遅れを見込み、SAVをPAVより短く設定する差分。これにより実際の房室間隔をPAVと揃えられる。**BIOTRONIK では Sense compensation という項目で、設定値は −40ms（Off、−5〜−120ms、5ms刻み）。E シリーズでは −45ms に調整される**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。資料は理由として**①心房センシング時の遅延、②心房ペーシング時のレイテンシ、③心房内における伝導遅延**の3つを挙げ、**心房センシング時と心房ペーシング時での違いは 30ms〜50ms 程度と知られている**としている。**心拍出量ならびに全身的血行動態の AV ディレイの最適化は、左心房と左心室間の伝導に依存する。**",
+   "tags": "sense compensation SAV offset Sense compensation −40ms −45ms Off −5 −120ms 5ms刻み 30-50ms 左房左室 J Cardiovasc Electrophysiol 2010 BIOTRONIK"
   },
   {
    "term": "PVAB",
@@ -2059,8 +2059,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "連続雑音を感知すると一時的に非同期ペーシングへ切替え、過抑制を防ぐ。DOO/VOO/AOOの下限レートで非同期ペーシングとなる。AVEIR VR（リードレス）では、不応期に連続ノイズがセンシングされると発動し、基本レートまたはセンサ指示レート（SIR）で非同期ペーシングを行い、ノイズがなくなると終了する。",
-   "tags": "noise reversion 雑音 非同期 noise reversion DOO VOO AOO 非同期 自己脈識別 AVEIR VR リードレス 基本レート SIR 非同期 ノイズ消失で終了"
+   "short": "連続雑音を感知すると一時的に非同期ペーシングへ切替え、過抑制を防ぐ。DOO/VOO/AOOの下限レートで非同期ペーシングとなる。AVEIR VR（リードレス）では、不応期に連続ノイズがセンシングされると発動し、基本レートまたはセンサ指示レート（SIR）で非同期ペーシングを行い、ノイズがなくなると終了する。**BIOTRONIK では EMI mode（ノイズリバージョン）といい常に作動している**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**外部から混入するノイズが連続的に発生し、ベーシックインターバルまで継続すると不適切にペーシングを抑制しないよう非同期でペーシングを行う。****As／Vs マーカからそれぞれ始まる 50ms の EMI インターバルの中に新たなセンシング電位を感知すると、そこから 50ms 延長される。**",
+   "tags": "noise reversion 雑音 非同期 noise reversion DOO VOO AOO 非同期 自己脈識別 AVEIR VR リードレス 基本レート SIR 非同期 ノイズ消失で終了 EMI mode 常に作動 50ms EMIインターバル 延長 ベーシックインターバル BIOTRONIK"
   },
   {
    "term": "レスポンスファクター（スロープ）",
@@ -6339,8 +6339,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "PMTを検出するとPVARP延長や1拍休止で連鎖を断つ機能。PVC後にPVARPを延長する方式が一般的。",
-   "tags": "PMT intervention 起因性頻拍 PMT対応"
+   "short": "PMTを検出するとPVARP延長や1拍休止で連鎖を断つ機能。PVC後にPVARPを延長する方式が一般的。**BIOTRONIK の PMT protection（On／Off）の中身が判明した**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**VA criterion＝350ms（250〜500ms、10ms刻み）。****検出**は「VpAs interval が8拍連続して VA criterion より短い」かつ「7拍の VpAs interval の偏差が24ms 以内」。**確認**は8拍目に AV ディレイを延長または短縮しても VpAs interval が変化しないことを確かめる（設定 AV ディレイ<200ms なら AV 延長＝直近の AV 間隔＋50ms、≧200ms なら AV 短縮＝直近の AV 間隔−50ms）。**停止**は確認後の1拍だけ PVARP を **400ms（VA criterion＋50ms）**に延長し、逆行性心房波を PVARP 内に収めること。**AV ディレイを短縮することで上限レートを超えてしまうと判断された場合には AV ディレイは延長する。作動回数は Statistics で確認できる。**",
+   "tags": "PMT intervention 起因性頻拍 PMT対応 VA criterion 350ms 250-500ms 10ms刻み 8拍連続 偏差24ms AV延長 AV短縮 200ms 400ms Statistics BIOTRONIK"
   },
   {
    "term": "植込型心電計",
@@ -6369,8 +6369,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "レートに応じてPVARPを自動で伸縮させる設定。高レートで短縮し追従性を保つ。安静時はPMT対策、運動時は追従性確保という相反する目的を両立させる。",
-   "tags": "dynamic auto PVARP 動的 動的PVARP"
+   "short": "レートに応じてPVARPを自動で伸縮させる設定。高レートで短縮し追従性を保つ。安静時はPMT対策、運動時は追従性確保という相反する目的を両立させる。**BIOTRONIK の Auto PVARP は「PMT protection 作動の有無に応じて PVARP を自動調整する機能」で、レートではなく PMT の発生履歴で動く**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**PMT protection が7日間作動していない場合は PVARP−50ms（PVARP が一度も延長されていない場合のみ）、PMT protection が作動した場合は PVARP＋50ms。****Amvia Sky で Auto 設定した場合、PVARP は 175ms から開始される。****PVARP が一度でも延長されると、その後短縮されることはない。**",
+   "tags": "dynamic auto PVARP 動的 動的PVARP PMT protection 7日間 −50ms +50ms 175ms 一度延長されると短縮されない BIOTRONIK Auto PVARP"
   },
   {
    "term": "アクティビティ閾値",
@@ -7089,8 +7089,8 @@
    "cat": "レート応答",
    "device": "PM",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのレートドロップ応答機能。急な徐脈を検出して一時的にレートを引き上げる。",
-   "tags": "Manufacturer / PM / BIOTRONIK / rate fading レートドロップ 徐脈"
+   "short": "BIOTRONIK の**「急激なレートの減少を抑制する機能」**（On／Off）。他社のレートドロップ応答とは考え方が違う（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Target rate＝（直近4P-P間隔の平均）−10ppm** を作り、心房レートが急激に下降して Target rate に達すると **Back up rate として心房ペーシングを行う。****Rate increase（2ppm/cycle。1, 2, 4, 8）は Target rate を作成するためだけに使用され**、Rate decrease（0.5ppm/cycle。0.1, 0.2, 0.5, 1.0）が下降速度を決める。**Rate fading が働くためには4連続以上の As マーカが必要。**",
+   "tags": "Manufacturer / PM / BIOTRONIK / rate fading レートドロップ 徐脈 Target rate 直近4P-P −10ppm Back up rate 4連続As Rate increase Rate decrease 2ppm/cycle 0.5ppm/cycle"
   },
   {
    "term": "Advanced Hysteresis",
@@ -7129,8 +7129,8 @@
    "cat": "ペーシング管理",
    "device": "PM",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのAVディレイ延長型の心室ペーシング抑制機能。IRSplus Positiveとして搭載される。モード変換型のVp Suppressionとは別方式。",
-   "tags": "Manufacturer / PM / BIOTRONIK / IRSplus Positive AVD延長 Vp Suppression"
+   "short": "BIOTRONIK の AV ディレイ延長型の心室ペーシング抑制機能。**AV hysteresis の4択（Off／IRSplus／Positive／Negative）のうち IRSplus と Positive がこれにあたる**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**IRSplus は最大 400ms まで延長し関連項目は変更不可、Positive は設定 AV ディレイに加算する形（70／110／150／200／250ms）で最大 450ms まで延長し関連項目は変更可。**モード変換型の Vp Suppression とは別方式。",
+   "tags": "Manufacturer / PM / BIOTRONIK / IRSplus Positive AVD延長 Vp Suppression Positive 70 110 150 200 250ms 450ms 加算 変更可 IRSplus 400ms 変更不可"
   },
   {
    "term": "Explant表示",
@@ -10969,8 +10969,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIK における**心房側の絶対不応期（ブランキング）**の設定項目名。他社の PVAB にあたる。**心室センスの後（after Vs）と心室ペースの後（after Vp）で別々の値を持つ。**目的は**ファーフィールドR波（FFRW）のオーバーセンシング防止**で、不適切なモードスイッチを避けるために設定する。Etrinsa 8 DR-T のプログラマ画面例は **after Vs＝100ms／after Vp＝150ms**（画面例でありノミナルとは限らない）。",
-   "tags": "Far-field protection after Vs after Vp PVAB 心房 絶対不応期 ブランキング FFRW ファーフィールドR波 モードスイッチ 100ms 150ms Etrinsa BIOTRONIK"
+   "short": "BIOTRONIK における**心房側の絶対不応期（ブランキング）**の設定項目名。他社の PVAB にあたる。**心室センスの後（after Vs）と心室ペースの後（after Vp）で別々の値を持つ。**目的は**ファーフィールドR波（FFRW）のオーバーセンシング防止**で、不適切なモードスイッチを避けるために設定する。**設定値は after Vs＝100ms（100〜225ms、25ms刻み）、after Vp＝150ms（100〜225ms、25ms刻み）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**E シリーズは設定が10ms刻みとなるため最大 220ms。また E-series ではブランキング内でも「Ars(FFP)」マーカが表示される。**追補48の Etrinsa 8 DR-T の画面例（100ms／150ms）はノミナルと一致していた。",
+   "tags": "Far-field protection after Vs after Vp PVAB 心房 絶対不応期 ブランキング FFRW ファーフィールドR波 モードスイッチ 100ms 150ms Etrinsa BIOTRONIK 100ms 150ms 100-225ms 25ms刻み Eシリーズ 10ms刻み 220ms Ars(FFP)マーカ ノミナル確定 Amvia Sky"
   },
   {
    "term": "Ventricular blanking after Ap",
@@ -10979,8 +10979,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIK における**心房刺激後の心室絶対不応期**の設定項目名。**クロストーク（心房ペーシング出力を心室が自己収縮と誤認識すること）の防止**が目的。Etrinsa 8 DR-T のプログラマ画面例は **30ms**（画面例でありノミナルとは限らない）。ブランキングが Off だと房室ブロックのある症例で PAV ディレイ後の心室ペーシングが抑制され心室収縮が消失しうるが、On であればペーシングが維持される。",
-   "tags": "Ventricular blanking after Ap 心室ブランキング 心房刺激後 クロストーク 30ms アフターポテンシャル 房室ブロック Etrinsa BIOTRONIK"
+   "short": "BIOTRONIK における**心房刺激後の心室絶対不応期**の設定項目名。**クロストーク（心房ペーシング出力や出力後のチャージ電位を心室が自己収縮と誤認識すること）の防止**が目的。**設定値は 30ms（30〜70ms、5ms刻み）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**心房出力を 5.0V 以上に設定するとクロストークを惹起する可能性があるためブランキングを延長する必要がある。**逆に**ブランキング期間を不適切に長く設定すると自己心室イベントを感知できないことがある。**プログラマ上の位置は Amvia Sky では「センシング設定」、**E シリーズでは「Refractory period/Blanking」**から行う。",
+   "tags": "Ventricular blanking after Ap 心室ブランキング 心房刺激後 クロストーク 30ms アフターポテンシャル 房室ブロック Etrinsa BIOTRONIK 30ms 30-70ms 5ms刻み 5.0V クロストーク チャージ電位 Refractory period/Blanking Eシリーズ ノミナル確定"
   },
   {
    "term": "PVARP after PVC（BIOTRONIK）",
@@ -10989,8 +10989,8 @@
    "cat": "AV・タイミング",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**PVC を検出したときだけ用いる PVARP** の設定項目。逆行性P波が PVARP の外に落ちて PMT が成立するのを防ぐ。Etrinsa 8 DR-T のプログラマ画面例は **375ms**（通常の PVARP は 225ms）。Abbott の［+PVARP on PVC］、MicroPort の Atrial Pacing on PVC などと同じ考え方の枠にある。",
-   "tags": "PVARP after PVC PVC後 PVARP延長 375ms 225ms 逆行性P波 PMT予防 Etrinsa BIOTRONIK +PVARP on PVC"
+   "short": "**PVC を検出したときだけ用いる PVARP** の設定項目。逆行性P波が PVARP の外に落ちて PMT が成立するのを防ぐ。**設定値は Auto、または「自動調整もしくは設定された PVARP＋150ms（固定）」**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。PVARP が 225ms なら PVC 後は 375ms となり、追補48の Etrinsa 8 DR-T の画面例（225ms／375ms）はこの規則で説明できる。**Vs 後には PVARP はない。**Abbott の［+PVARP on PVC］、MicroPort の Atrial Pacing on PVC などと同じ考え方の枠にある。",
+   "tags": "PVARP after PVC PVC後 PVARP延長 375ms 225ms 逆行性P波 PMT予防 Etrinsa BIOTRONIK +PVARP on PVC PVARP+150ms 固定 Auto 225ms 375ms 規則判明 Vs後PVARPなし"
   },
   {
    "term": "Wenckebach response（設定項目）",
@@ -11161,6 +11161,566 @@
    "maker": "General",
    "short": "BIOTRONIK の基礎資料が示す整理。**AAI を選ぶのは「心室へのペーシングを行う必要がない場合」＝洞性徐脈の患者。****VVI を選ぶのは「心房へのペーシングを行う必要がない場合」＝徐脈性心房細動の患者。****DDD を選ぶのは「AAI や VVI を選択しなければならない理由がない場合」＝慢性心房細動を除く、ペースメーカの必要な患者にはすべて。****DDI は基本設定では特に適応はなく、「心房細動発生時の早い自己心房イベントにトリガーして心室ペーシングを行いたくない患者」に選ぶ。**",
    "tags": "モード選択 AAI 洞性徐脈 VVI 徐脈性心房細動 DDD 慢性心房細動を除く DDI トリガーしたくない 適応 BIOTRONIK"
+  },
+  {
+   "term": "Night rate",
+   "en": "Night rate",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK の**就寝中として設定した時間帯のレートを基本レートよりも低く調整する機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定レートは 30〜100ppm、設定可能な時間は開始 00:00〜23:55／終了 00:00〜23:55。****開始時間になると徐々に設定レートへ向けて下降し、設定レートは終了時間まで継続、終了時間になると徐々に Basic rate まで上昇する。****Night rate が作動する時間はプログラマに依存するため、プログラマの時間は常に調整されている必要がある。****時差のある場所へ行く場合には設定を Off に変更することが推奨される。**",
+   "tags": "Night rate ナイトレート 就寝 30-100ppm 00:00 23:55 徐々に下降 上昇 プログラマ時刻依存 時差 Off推奨 BIOTRONIK 睡眠時レート"
+  },
+  {
+   "term": "Repetitive（BIOTRONIK）",
+   "en": "Repetitive",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Rate hysteresis に付随する設定（On／Off）。**延長されたエスケープインターバルでペーシングが行われてもすぐにベーシックレートに戻さず、延長されたエスケープインターバルを継続する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定値は 10拍（固定）。E-series では 5拍（固定）で作動する。****PVC 発生時には Repetitive は作動しない**（Rate hysteresis 本体は PVC でも作動するので、挙動の違いに注意）。",
+   "tags": "Repetitive 10拍 固定 5拍 E-series PVC発生時は作動しない エスケープインターバル継続 BIOTRONIK"
+  },
+  {
+   "term": "Scan（BIOTRONIK）",
+   "en": "Scan",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Rate hysteresis に付随する設定（On／Off）。**ベーシックレートで心房ペーシングが継続している場合に、自己心拍が発現することを期待する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定値は 10拍（固定）。E-series では 5拍（固定）。****作動するタイミングは ①プログラム変更後、②180拍連続心房ペーシングが継続した時。**AV ディレイを延ばす AV scan（180拍連続心室ペーシングが契機）とは対象が違う。",
+   "tags": "Scan 10拍 5拍 E-series プログラム変更後 180拍連続心房ペーシング AV scanと別 BIOTRONIK"
+  },
+  {
+   "term": "Atrial overdrive（BIOTRONIK）",
+   "en": "Atrial overdrive",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房ペーシングを優位にするための機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Rate increase＝8ppm（固定）、Rate decrease＝1ppm/20cycle（固定）、Maximum activity rate（MAR）＝120ppm（80〜180ppm）。****As イベントがあると 8ppm レート上昇する。ただし PAC（先行間隔から25%以上の短縮）は除外する。MAR を超えてペーシングすることはない。****20拍 As イベントがなければ 1ppm レート下降し、下降中に As イベントを確認すると上昇する。****Amvia Sky には搭載されていない。****テレメトリ中は作動しない。**",
+   "tags": "Atrial overdrive 8ppm 1ppm/20cycle MAR 120ppm 80-180ppm PAC25%除外 Amvia Sky非搭載 テレメトリ中作動せず BIOTRONIK 心房オーバードライブ"
+  },
+  {
+   "term": "高心房レートの場合の安全機能（Atrial overdrive）",
+   "en": "Atrial overdrive safety function",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Atrial overdrive が高心房レートで暴走しないための保護（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Pending（一時停止）**＝①心房頻拍等により MAR（120ppm）を超える心房イベントを確認すると一時停止し「Rate decrease」によってベーシックレートまで下降する。②最新64,000拍の平均心房レートが**安全値**を超えると①と同様にベーシックレートまで下降し、レートが安全値を下回ると再起動する（この作動は12時間ごとに評価される）。**Disabled（無効）**＝②の12時間ごとに評価する Deactivate が**4回繰り返される**と機能停止となる。**再度 Activate にする場合には、次回インテロゲーションの際にプログラムボタン（設定変更の必要なし）を押す必要がある。****安全値＝MAR −（10〜20ppm で可変）。****プログラマ設定は On のまま変化しない。E1 シリーズではポップアップが発現する。**",
+   "tags": "Pending Disabled 一時停止 無効 64000拍 安全値 12時間 4回 Activate Deactivate Reactivate プログラムボタン MAR-10 20ppm E1ポップアップ BIOTRONIK"
+  },
+  {
+   "term": "Max. sensor rate／Max. activity rate",
+   "en": "Maximum sensor rate",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**加速度センサを On に設定した際の心房ペーシングレートの上限を規定する機能。設定値は 120ppm（80〜180ppm、10ppm刻み）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**E-series では「Max. activity rate」と表記される。****Max. activity rate は Upper tracking rate より低く設定する必要がある。****DDIR モードでは、設定されている AV ディレイの長さによって設定できる Max. activity rate に制限がある。**",
+   "tags": "Max. sensor rate Max. activity rate 120ppm 80-180ppm 10ppm刻み UTRより低く DDIR AVディレイ制限 E-series BIOTRONIK MSR"
+  },
+  {
+   "term": "Sensor gain（BIOTRONIK）",
+   "en": "Sensor gain",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**患者の心拍需要に合わせてレート応答をするため、加速度センサから得られた信号を増幅する設定。Auto／Very low／Low／Medium／High／Very high（ノミナル Medium）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Sensor gain は患者に最大負荷がかかったときに Max. activity rate に達するように設定する。****Auto は比較的レートが上昇しやすいため、初期設定は Medium が推奨されている。****E2 シリーズからは「Sensor gain」の Auto に変更されている。**センサの評価は Sensor optimization で行える。",
+   "tags": "Sensor gain Auto Very low Low Medium High Very high ノミナルMedium 最大負荷 Max activity rate E2シリーズ BIOTRONIK 増幅"
+  },
+  {
+   "term": "Auto gain（BIOTRONIK）",
+   "en": "Auto gain",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Sensor gain を自動調整する設定（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Amvia Sky（On の場合／Max. activity rate への到達）**：①最大センサーレートの90%に達する時間が24時間で累積30分を超える → **−1**、②最大センサーレートの90%に達する時間が7日間で累積60分に到達しない → **±0**、③①②のどちらにも該当しない → **+1**。**E シリーズ（On の場合）**：①最大センサーレートに達した時間が24時間で合計90秒を超える → **−1**、②24時間で合計90秒に満たない → **±0**、③7日間連続して最大センサーレートに達しない → **+1**。**E シリーズでは、On だと比較的レートが上昇しやすく違和感や不快感を示すこともあることから Off が推奨されている。**なお **Amvia Sky 側の②と③の割り当ては E シリーズの論理と向きが揃わず、資料の表記のまま収載している（未確定）。**",
+   "tags": "Auto gain −1 ±0 +1 90% 24時間 30分 7日間 60分 90秒 Off推奨 Eシリーズ Amvia Sky 未確定 BIOTRONIK"
+  },
+  {
+   "term": "Sensor threshold（BIOTRONIK）",
+   "en": "Sensor threshold",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**患者の心拍需要に合わせたレート応答をするため、増幅された信号に対して設定される閾値。閾値を超えた信号のみレートに反映させる。Very low／Low／Medium／High／Very high（ノミナル Medium）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Sensor gain を調整してもうまく調整できないときに使用を検討する。****Very low に設定されるとレートに反映されやすく、Very high に設定するとレートに反映されにくくなる**（Sensor gain とは調整の順序が違い、まず gain、次に threshold）。",
+   "tags": "Sensor threshold Very low Low Medium High Very high ノミナルMedium 反映されやすい 反映されにくい gain優先 BIOTRONIK"
+  },
+  {
+   "term": "Rate increase／Rate decrease（BIOTRONIK）",
+   "en": "Rate increase / Rate decrease",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**センサ指示レートの上昇・下降速度を決定する設定。Rate increase＝2ppm/cycle（1, 2, 4, 8 ppm/cycle）、Rate decrease＝0.5ppm/cycle（0.1, 0.2, 0.5, 1.0 ppm/cycle）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**1ppm/cycle に設定するとレートはゆっくりと上昇し、8ppm/cycle に設定すると早く上昇する。0.1ppm/cycle に設定するとゆっくり下降し、1.0ppm/cycle では早く下降する。**この2項目は Rate fading、Rate stabilization、Mode switching 中の Change of basic rate にも共通で使われる。",
+   "tags": "Rate increase Rate decrease 2ppm/cycle 0.5ppm/cycle 1 2 4 8 0.1 0.2 0.5 1.0 共通パラメータ BIOTRONIK"
+  },
+  {
+   "term": "Sensor optimization",
+   "en": "Sensor optimization",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**センサ指示レートを患者の心拍需要に合わせて最適化するためのテスト機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**評価項目は Basic rate 30〜200ppm／Max. activity rate 80〜180ppm／Sensor gain／Sensor threshold／Rate increase／Rate decrease。****加速度センサを「On」にする前に、最長16分間の運動評価を行うことが可能。****センサ機能を「OFF」のまま運動を実施してもらい、センサ機能が「ON」の場合にはどのように変化するかを確認できる。****「Tests」タブの2ページ目で使用でき、デバイスとワンドが交信している間はテストができないためワンドレステレメトリは Off にする必要がある。****表示されるグラフの青の実線が加速度センサによる仮想のレート変化で、パラメータを変更するとトレンドも変化する。**",
+   "tags": "Sensor optimization 16分 運動評価 Testsタブ2ページ目 ワンドレステレメトリOff 青の実線 仮想レート Basic rate 30-200ppm BIOTRONIK"
+  },
+  {
+   "term": "特殊なVA interval",
+   "en": "Special VA interval",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**常に On で作動する機能。心房レートが上昇することでウェンケバッハ様作動が発生すると断続的に V-V 間隔が延長してしまうため、それを防ぐ目的で作動する**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**作動条件は「AV ディレイの延長が4連続を超えて発生すること」。****特殊な VA interval＝（Upper rate interval）−（100ms、又は AV ディレイの短い方）。****Atrial upper rate を Off に設定しても、この特殊な VA interval は作動する。**",
+   "tags": "特殊なVA interval Special VA interval 常にOn ウェンケバッハ様作動 4連続 Upper rate interval 100ms AVディレイの短い方 Atrial upper rate Off でも作動 BIOTRONIK"
+  },
+  {
+   "term": "Atrial upper rate",
+   "en": "Atrial upper rate",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房レート上昇や PAC など早期に発現する心房収縮が PVARP 内で機能的アンダーセンシングとなった際に、その後の心房受攻期へ心房ペーシングを行わないための機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定レートは 200ppm（Off, 175, 200, 240ppm）。****As(PVARP) マーカからインターバルが計算される。おなじ心房不応期である Ars マーカでは作動しない。****Off に設定しても特殊な VA interval は作動する。****E1 シリーズでは 240ppm の固定となる。**他社の NCAP（非競合心房ペーシング）に相当する考え方。",
+   "tags": "Atrial upper rate 200ppm 175 240 Off As(PVARP) Ars 心房受攻期 機能的アンダーセンシング E1 240ppm固定 NCAP BIOTRONIK"
+  },
+  {
+   "term": "Change of basic rate",
+   "en": "Change of basic rate",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**モードスイッチ（MS）中のベーシックレートを一時的に上昇させる機能。+10ppm（Off、+5〜+30ppm）5拍刻み**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。あわせて Rate increase＝2ppm/cycle（1, 2, 4, 8）、Rate decrease＝0.5ppm/cycle（0.1, 0.2, 0.5, 1.0）を設定する。**検出時は DDD ⇒ DDIR、停止時は DDIR ⇒ DDD。****急激なレート変化の抑制は「Sensor / Rate fading」内の Rate increase／Rate decrease によって決定される。**DDI 中は心房同期が失われて心拍出量が落ちるため、レートで補う趣旨の機能。",
+   "tags": "Change of basic rate +10ppm Off +5 +30ppm 5拍刻み DDD DDIR 検出時 停止時 Sensor Rate fading BIOTRONIK モードスイッチ"
+  },
+  {
+   "term": "Post ModeSw rate／Post ModeSw duration",
+   "en": "Post ModeSw rate / duration",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**モードスイッチ終了後のベーシックレートを、設定された時間だけ一時的に上昇させる機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Post ModeSw rate＝+10ppm（Off、+5〜+50ppm）5拍刻み、Post ModeSw duration＝1min（1〜30min）1分刻み。****ModeSw 終了後には設定されたモード・AV ディレイで作動するため、Post ModeSw 中は設定されたレートのみが変化する。****Post ModeSw rate／Post ModeSw duration は Amvia Sky から搭載された。**心房細動が止まった直後の再発を抑える趣旨で、Medtronic の PMOP（Post Mode Switch Overdrive Pacing）と近い位置づけ。",
+   "tags": "Post ModeSw rate duration +10ppm Off +5 +50ppm 1min 1-30min Amvia Skyから搭載 PMOP 再発抑制 BIOTRONIK"
+  },
+  {
+   "term": "Rate stabilization during mode switching",
+   "en": "Rate stabilization during mode switching",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房細動中の R-R 間隔のバラツキを抑制する目的で、心室ペーシングを早期に行いレートの安定化をはかる機能**（On／OFF、ノミナル OFF）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Target rate＝（直近4R-R間隔の平均）−10ppm** で、Rate fading とおなじ方法で算出され心室へのペーシングが行われる。**自己心室波の出現によりつねに計算されていること、また印字されているインターバルに誤差が生じることから、印刷された心電図をもとに正確なレートを解析することは難しい。****過去の報告によると、ペーシングにより心室のレートを安定化させることで平均心室レートが減少する効果が期待できる。**",
+   "tags": "Rate stabilization during mode switching Target rate 直近4R-R −10ppm OFFノミナル 平均心室レート減少 解析困難 BIOTRONIK VRR CAFR"
+  },
+  {
+   "term": "2:1 Lock-in protection",
+   "en": "2:1 Lock-in protection",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心室ペーシングレートが速く VpAs インターバルの変動が少ない場合には心房性不整脈の確認を行い、心房性不整脈が確認されるとモードスイッチ（MS）機能を働かせる機能**（On／Off）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**検出**＝Vp が 100ppm 以上で送出されている／7拍の VpAs interval の偏差が 24ms 以内。**確認**＝8拍目に AV ディレイを FFP（150ms）分延長することで Ars マーカが発現するか確認する。**停止**＝「As-Ars」後、AV ディレイを段階的に短縮しながら、MS 検出条件を満たすと次の心室イベントに合わせて MS が作動し、満たさなければ MS は作動しない。**AV 延長後に「As-As」が確認された場合は、次の心室イベントに合わせてすぐに MS が作動する。****2分経過するとふたたび作動する。E-series では停止条件が異なる。****検出条件に2:1イベントであることは含まれていないことから、CAVB に対する新規植込み時に不適切に働くことがある。**",
+   "tags": "2:1 Lock-in protection Vp100ppm 7拍 偏差24ms 8拍目 FFP150ms Ars As-Ars As-As 2分 CAVB 新規植込み 不適切作動 BIOTRONIK 心房粗動 2:1"
+  },
+  {
+   "term": "Dynamic AV delay",
+   "en": "Dynamic AV delay",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心拍数の変動に合わせて変化する PQ 間隔に倣って、レート変動に合わせて AV delay を調整する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Low＝150ms（at 60ppm）〜120ms（at 130ppm）、Medium＝140ms〜100ms、High＝130ms〜80ms。****選択された AV dynamics によって、設定可能な AV ディレイの範囲が変わる。****プログラマ画面で確認できる「Dynamic AV delay 180/140」は PAV/SAV を表記しているのではなく、Dynamic AV delay の Maximum と Minimum を表記している**（この読み違えが多い）。",
+   "tags": "Dynamic AV delay Low Medium High 150 120 140 100 130 80 AV dynamics Fixed 180/140 Maximum Minimum PAV SAVではない BIOTRONIK"
+  },
+  {
+   "term": "AV repetitive",
+   "en": "AV repetitive",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**延長された AV ディレイで心室ペーシングが行われた際に、すぐに設定された AV ディレイに戻さず自己心室イベントの出現を期待する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**On（5拍）／OFF。1拍目は確認となるため、合計6拍の心室ペーシング後に設定された AV ディレイに戻る。****Negative AV hysteresis の場合は On（180拍）となる。**IRSplus 設定時は ON（変更不可）、Positive 設定時は ON（変更可）。",
+   "tags": "AV repetitive On 5拍 6拍 OFF 180拍 Negative IRSplus変更不可 Positive変更可 BIOTRONIK"
+  },
+  {
+   "term": "AV scan",
+   "en": "AV scan",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**設定された AV ディレイで心室ペーシングが継続している際に、AV ディレイを延長することで自己心室イベントの出現を期待する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**180拍連続心室ペーシングが行われた際に働き、181拍目から AV ディレイを延長する。****Negative AV hysteresis では OFF（変更不可）となる。**心房側の Scan（180拍連続心房ペーシングが契機でレートを下げる）と契機も対象も違うので混同しない。",
+   "tags": "AV scan 180拍連続心室ペーシング 181拍目 Negative OFF変更不可 Scanと別 BIOTRONIK"
+  },
+  {
+   "term": "Negative AV hysteresis",
+   "en": "Negative AV hysteresis",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心室ペーシングを積極的に行う目的で AV ディレイを短縮する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**短縮パターンは −50ms（−10ms〜−150ms）10ms刻み。AV repetitive は On（180拍）、AV scan は OFF（変更不可）。****設定された AV ディレイ内に自己心室イベントを確認すると、次のイベントから6拍は AV ディレイを設定値分短縮して作動する。****短縮した AV ディレイ内でさらに心室自己イベントが発現すると、180拍のカウントがリセットされる。**HOCM など心尖部ペーシングで圧較差を下げたい場面で使うことがある。",
+   "tags": "Negative AV hysteresis −50ms −10 −150ms 10ms刻み 6拍 180拍 リセット AV scan OFF HOCM 圧較差 BIOTRONIK"
+  },
+  {
+   "term": "Vp suppression",
+   "en": "Vp suppression",
+   "abbr": "",
+   "cat": "ペーシング管理",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心室ペーシングが入らない ADI モードに自動で変更することで、自己の房室伝導を優先させ不必要な心室ペーシングを避ける機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**房室伝導があると判断された場合 DDD(R) ⇒ ADI(R)、房室伝導がないと判断された場合 ADI(R) ⇒ DDD(R)。****DDD(R)⇒ADI(R) の基準は 6連続／8拍中（1/8〜8/8拍、1拍刻み）**で、作動条件（Vs 連続性サーチ）は ①プログラムボタンを押したとき、②30s→1m→2m→4m→…→128m→20h（変更不可）、③AV delay 内に発生する Vs イベントを確認したとき。**ADI(R)⇒DDD(R) の基準は ①3/8拍の Vs の欠如（1/8〜8/8拍）、②2cycle の Vs の欠如（変更不可）、③2sec の Vs の欠如（変更不可）のいずれか。****自動切替えが1時間に15サイクル行われると一時停止し、次に作動するのは午前0時、その30秒後から評価が再開される。****心房性不整脈が発生すると ADI モード作動中でも Mode switching が働き DDI(R) に切り替わる。****CLS との併用はできない。**",
+   "tags": "Vp suppression ADI DDD 6連続8拍中 Vs連続性サーチ 30s 128m 20h 3/8 2cycle 2sec 15サイクル 午前0時 30秒後 CLS併用不可 IRSplus BIOTRONIK MVP"
+  },
+  {
+   "term": "Vp suppression limit",
+   "en": "Vp suppression limit",
+   "abbr": "",
+   "cat": "ペーシング管理",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Vp suppression で自己房室伝導の有無を評価するときに用いる、心房イベントからの待ち時間の上限**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**基本は 450ms。****高レートで作動している場合は、血行動態の悪化を抑制する目的で AV ディレイが短縮されることから Vp suppression limit も同様に短縮される：60bpm＝450ms／80bpm＝450ms／100bpm＝450ms／140bpm＝300ms。****Vp suppression limit は Sense compensation の影響をうけるため、自己心房レートが上昇する場合には注意が必要となる。****房室伝導の有無の評価は、心房イベントから 450ms 以内に確認できる自己心室イベント、もしくはレートに応じた AV delay 内で確認できる自己心室イベントの有無で行う。**",
+   "tags": "Vp suppression limit 450ms 300ms 60bpm 80bpm 100bpm 140bpm Sense compensation 房室伝導評価 BIOTRONIK"
+  },
+  {
+   "term": "Vs連続性サーチ",
+   "en": "Vs continuity search",
+   "abbr": "",
+   "cat": "ペーシング管理",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Vp suppression が **DDD(R) から ADI(R) へ戻れるかどうかを確かめるためのサーチ**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**AV delay を 450ms（Vp suppression limit）まで延長し、8拍中の任意の設定拍数（ノミナル6拍）連続で Vs イベントが出るかを見る。****作動条件は ①プログラムボタンを押したとき、②30s→1m→2m→4m→…→128m→20h（変更不可）、③AV delay（AVC）内に発生する Vs イベントを確認したとき。**サーチ中は AV 間隔が最大 450ms まで延びるため、心電図上は PR 間隔が極端に長い拍が並ぶ。",
+   "tags": "Vs連続性サーチ Vs continuity search 450ms 8拍中 6拍 30s 1m 2m 4m 128m 20h AVC プログラムボタン BIOTRONIK"
+  },
+  {
+   "term": "Sync pace",
+   "en": "Sync pace",
+   "abbr": "",
+   "cat": "ペーシング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**ACC（心房自動閾値測定）の各ステップの区切りに挟まれる確認用ペーシング**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Sync pace＝Test pace と同一もしくは +0.6V** で送出され、テスト出力を下げていく過程で捕捉を再確立させる役割を持つ。**測定された閾値+0.3V で確認し、Sync pace を挟んだ後、閾値−0.3V にてキャプチャロスの確認をする**という流れで最終確認（Step4）が行われる。",
+   "tags": "Sync pace Test pace +0.6V ACC 閾値+0.3V 閾値−0.3V Step4 BIOTRONIK"
+  },
+  {
+   "term": "Signal Quality Check（SQC）",
+   "en": "Signal Quality Check",
+   "abbr": "SQC",
+   "cat": "ペーシング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**VCC（心室自動閾値測定）の第1段階で、誘発反応波（Evoked Response）と分極ノイズ（Polarization artifact）を評価する工程**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**独立した単極センシングチャネルにて行う。****第1段階＝5発の Vp を送出し誘発反応波を確認する（確認できなければテスト終了）。第2段階＝無効ペーシング後の分極ノイズを評価するため Vp 後 100ms のタイミングでさらに Vp を送出し、心室非捕捉時の分極ノイズを測定して問題があればテスト終了。****ダブルパルスはホルターに残ることもある。****VVI の場合、直近4拍の平均レート +10ppm でスタートする。****過去デバイスにおいては独立したセンシングチャネルを持たず、設定極性のまま評価を行っている。****On/ATM に設定後 256日間連続して SQC が失敗すると VCC は Disabled になる。**",
+   "tags": "Signal Quality Check SQC 誘発反応波 分極ノイズ 単極センシングチャネル 5発 Vp後100ms ダブルパルス ホルター VVI 直近4拍+10ppm 256日 Disabled BIOTRONIK"
+  },
+  {
+   "term": "フュージョンハンドリング",
+   "en": "Fusion handling",
+   "abbr": "",
+   "cat": "ペーシング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**VCC の beat-to-beat 監視中に、フュージョンビートを「ペーシング不全」と誤判定しないために働く機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**VCC テスト中とは違い、3連続のペーシング不全によって新たな出力を設定するための自動閾値テストが開始されるため、この誤判定を防ぐ必要がある。****DDD＝バックアップペーシングが行われた次の1拍は AV delay を延長しフュージョンの確認をおこなう。VVI＝バックアップペーシングが行われた次の1拍はレートを減少（ベーシックレート −10ppm で調整）させフュージョンの確認を行う。****Amvia Sky および E1・E3 シリーズではヒステリシス機能を設定していなくても AV ディレイはそれぞれ 110ms および 70ms 延長するが、E2 シリーズでは設定していなければ作動しない。****VVI でレートを下降させた際に自己心室イベントが確認された場合は最大で16心拍維持されるが、ペーシングが行われるとただちにベーシックレートに戻る。**",
+   "tags": "フュージョンハンドリング Fusion handling 3連続 バックアップペーシング AV delay延長 110ms 70ms E2シリーズ ベーシックレート−10ppm 16心拍 BIOTRONIK VCC"
+  },
+  {
+   "term": "Safety window",
+   "en": "Safety window",
+   "abbr": "",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**常に On で作動する機能。心房ペーシング後のセーフティウィンドウ内に心室イベントが感知されたら心室へペーシングを行う**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。他社でいう心室セーフティペーシング（VSP）。**設定値は「心房ペーシング後 100ms、または設定された AV ディレイの短い方」。****クロストークの主な発生原因は、高い心房出力設定／鋭い心室感度設定／心室のセンシング極性が Unipolar 設定／短い心室ブランキング設定。****Safety window 機能は心房ペーシングのタイミングと PVC の発現が重なってしまうことでも作動する。****作動回数は Statistics で確認可能。**",
+   "tags": "Safety window 常にOn 心房ペーシング後100ms AVディレイの短い方 クロストーク Unipolar 心室ブランキング PVC重複 Statistics VSP BIOTRONIK"
+  },
+  {
+   "term": "EMI mode（BIOTRONIK）",
+   "en": "EMI mode",
+   "abbr": "",
+   "cat": "MRI・EMI",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**常に作動しているノイズリバージョン機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**外部から混入するノイズが連続的に発生し、ベーシックインターバルまで継続すると不適切にペーシングを抑制しないよう、非同期でペーシングを行う。****As／Vs マーカからそれぞれ始まる 50ms の EMI インターバルの中に新たなセンシング電位を感知すると、そこから 50ms 延長される。**ノイズが途切れずに続くかぎり EMI インターバルが更新され続け、ベーシックインターバルに達した時点で非同期ペーシングとなる。",
+   "tags": "EMI mode ノイズリバージョン 常に作動 50ms EMIインターバル 延長 非同期 ベーシックインターバル BIOTRONIK"
+  },
+  {
+   "term": "Economy mode",
+   "en": "Economy mode",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**ワンドレステレメトリ（RF）接続中にバッテリーの消耗を抑制するためのモード変更**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**プログラマ未操作でこのモードに切り替わるまでの時間は Brady 3分／Tachy 5分。**画面には「in economy mode. IEGMs have been disabled to conserve battery. Press 'Close' to re-enable IEGMs.」というポップアップが出る。**Economy mode はバッテリーの消耗を抑制するためのモード変更であり、特に理由がなければ “Close” は押さないことが推奨されている**（Close を押すと元の画面に戻り IEGM が再開されるが、そのぶん電池を消費する）。",
+   "tags": "Economy mode RF ワンドレステレメトリ Brady3分 Tachy5分 IEGM disabled Close押さない 推奨 BIOTRONIK"
+  },
+  {
+   "term": "ワンドレステレメトリ（RF・BIOTRONIK）",
+   "en": "Wandless telemetry (RF)",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**テレメトリワンドを清潔野に侵入させる必要がないため、植込み手技における感染のリスクを低減できる無線通信**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**RF 通信有効距離は 3m（Brady／Tachy 共通）。****電力消費の目安（20分の使用）は Brady 約5〜7日間／Tachy 約2日間。****プログラマ未操作で Economy mode に切り替わるまでの時間は Brady 3分／Tachy 5分。****プログラマ未操作で RF が無効になるまでの時間は Brady 30分／Tachy 180分。****通信不可状態で RF が無効になるまでの時間は 5分（共通）。****意図せぬ原因で電源切断による接続中断後に、ワンドを当てずに再接続可能な時間は 5分以内。**再接続方法は ①電源 On →「Continue RF session」のポップアップ →「Yes」、②電源 On → スタート画面左下「Special」→「Continue RF session」。**MICS（Medical Implant Communications Service）周波数帯 402〜405MHz を使用する。****Brady デバイスは ERI にて RF が使用不可となる。**",
+   "tags": "ワンドレステレメトリ RF 3m 5-7日 2日 3分 5分 30分 180分 5分以内 Continue RF session Special MICS 402-405MHz ERIでRF不可 感染リスク低減 BIOTRONIK"
+  },
+  {
+   "term": "Auto-initialization",
+   "en": "Auto-initialization",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**本体とリードが接続されると自動的に開始される10分間のセルフチェック機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**解除するにはプログラムボタンを押す必要がある**（押すことですぐにフォローアップが可能になる）。**開始前のプログラマ表示は「Prog. Inactive」または「Shelf mode active」、実施中は「Prog. Confirmation」、プログラム後は「Prog. Perm.」。****プログラム後は極性が「BIPL」に変更され、「AUTO」を選択することが出来なくなる。**（Auto-initialization 中は Pacing／Sensing polarity が AUTO と表示されている。）",
+   "tags": "Auto-initialization 10分間 セルフチェック プログラムボタン Prog. Inactive Shelf mode active Prog. Confirmation Prog. Perm. BIPL AUTO選択不可 極性 BIOTRONIK"
+  },
+  {
+   "term": "Shelf mode",
+   "en": "Shelf mode",
+   "abbr": "",
+   "cat": "デバイス構造",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**出荷・保管時のデバイスの状態**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。Auto-initialization 開始前のプログラマ画面には「**Shelf mode active**」または「**Prog. Inactive**」と表示され、「Implantation has not been detected. Program shown will be activated as soon as the implantation has been detected. Pacing can be activated by transmitting a program.」という趣旨のメッセージが出る。**本体とリードが接続されて植込みが検知されると Auto-initialization が始まる。**",
+   "tags": "Shelf mode active Prog. Inactive 出荷状態 保管 植込み検知 Auto-initialization BIOTRONIK"
+  },
+  {
+   "term": "Leadless ECG（BIOTRONIK）",
+   "en": "Leadless ECG",
+   "abbr": "",
+   "cat": "センシング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK のプログラマで**体表面心電図を接続しなくても心内信号から ECG 様の波形を表示する機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Amvia Sky 世代では Far field 電位の表示が可能になった。****Far field 電位は『RV ring to Can』で記録している。**プログラマ画面では「Show far-field ECG instead of ECG (if available)」のチェックで切り替え、Far field 電位のみの表示と、Far field 電位＋体表面心電図の同時表示が選べる。Abbott の Leadless ECG（ストアード EGM のチャンネル割り当て）とは別物なので混同しない。",
+   "tags": "Leadless ECG Far field電位 RV ring to Can Show far-field ECG instead of ECG 体表面心電図 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Temporary program（BIOTRONIK）",
+   "en": "Temporary program",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**一時的に別の設定で作動させるプログラマ機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Amvia Sky シリーズには「Temporary program」は搭載されていない。****ワイヤレスがないデバイスは、ワンドがデバイス上にある時のみ作動する。****「Show permanent program」を選択しなければ、プログラマの表示は Temporary 表示のままになっているので注意が必要。**Temporary を止めると（Stop temporary）恒久設定に戻る。",
+   "tags": "Temporary program Amvia Sky非搭載 ワンド Show permanent program Stop temporary 表示注意 BIOTRONIK"
+  },
+  {
+   "term": "Expected ERI",
+   "en": "Expected ERI",
+   "abbr": "",
+   "cat": "電池",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK のプログラマが表示する**ERI 到達までの予測期間**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**電池の寿命予測は「Expected ERI」を参考にする。****EOS まで “6か月” になると ERI に変化する。****「%」表示は5%刻みで表示され、EOS の時点で “0%” になる。****「%」表記はすべて切り上げ表記のため、表示が “10%” の場合には 6%〜10% の残量となる。****Amvia Sky シリーズはバッテリーステータスバーに ERI の表記がなくなった。**資料の例（Evia DR-T）：DDD/60ppm・100%pacing・A/V=2.5V/0.4ms・A/V=500Ω で期待寿命（BOS→ERI）114か月（9.5年）、ERI 到達時の残%目安 5%、5%に相当する目安寿命 6か月。同条件で 3.0V/0.4ms なら 92か月（7.6年）・6%（表示は10%）・4.9か月。",
+   "tags": "Expected ERI EOS6か月 5%刻み 0% 切り上げ 10%表示は6-10% Amvia Skyバッテリーステータスバー Evia DR-T 114か月 9.5年 92か月 7.6年 BIOTRONIK"
+  },
+  {
+   "term": "患者情報のインポート（Patientタブ）",
+   "en": "Patient data import",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**交換されるデバイスに入力されている患者情報を、新しいデバイスへエクスポートできる機能**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**新たに植え込まれるデバイスの「Patient」タブ内の下にある「Import」ボタンを押すと、プログラマのデータマネージャー内にある交換前のデバイスに入力された患者情報を選択でき、エクスポートすることが可能となる。****E3 シリーズからインポート可能。**移行できるのは氏名・リード情報などの患者情報で、**設定値そのものは移行されない。**",
+   "tags": "患者情報 インポート Patientタブ Import データマネージャー E3シリーズから 交換 設定値は移行されない BIOTRONIK"
+  },
+  {
+   "term": "PVC discrimination after As（AVC）",
+   "en": "PVC discrimination after As / AV Control window",
+   "abbr": "AVC",
+   "cat": "AV・タイミング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**PVARP 内に発生した心房収縮が機能的なアンダーセンシングとなることで、そのあとに続く自己心室収縮が不適切に PVC と認識させないための機能（期間）**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**設定値は 350ms、もしくはそれよりも長く設定された AV ディレイ値。****すべての As／Ap／As(PVARP) マーカよりスタートする期間で、Ars マーカからはスタートしない。****この期間は、IRS plus を On にしていると 400ms、Vp suppression を On にしていると 450ms になる。****設定された ARP が AV delay より短い場合でも、AV delay の間は必ず ARP になる。**AVC 内の心室イベントは PVC と認識されないため、Vs 後の PVARP も出ない。",
+   "tags": "PVC discrimination after As AVC AV Control window 350ms IRSplus 400ms Vp suppression 450ms As Ap As(PVARP) Arsからは開始しない ARP AVdelay BIOTRONIK"
+  },
+  {
+   "term": "DDI-CLS",
+   "en": "DDI-CLS",
+   "abbr": "",
+   "cat": "モード",
+   "device": "PM",
+   "maker": "BIOTRONIK",
+   "short": "**Amvia Sky で新たに追加されたモード**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。DDI モードで CLS（Closed Loop Stimulation）によるレート応答を行う。**同時に『OFF』モードも追加され、『AOO』モードは廃止された。****OFF に設定することは推奨されていないが、使用される際は事前に想定されるリスクを熟慮したうえで判断すること**と資料は注記している。E シリーズとは表記が違う点にも注意（Amvia には AOO がない）。",
+   "tags": "DDI-CLS OFFモード AOO廃止 Amvia Sky 新モード CLS リスク熟慮 BIOTRONIK"
+  },
+  {
+   "term": "Amvia Sky",
+   "en": "Amvia Sky",
+   "abbr": "",
+   "cat": "デバイス構造",
+   "device": "PM / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK の**Via シリーズ**にあたるペースメーカ／CRT-P 世代（2023年7月〜）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**ラインナップは Amvia Sky DR-T（IPG）と Amvia Sky HF-T／HF-T QP（CRT-P）。シングルチャンバは導入されないため、Edora 8 SR-T ProMRI を引き続き販売する。****Amvia Sky DR-T は「デュアルチャンバⅤ型」（償還価格 751,000円）に区分される。**この区分の定義は「エ：頻脈変動感知型抗上室性頻脈ペーシング治療機能を有するものであること」で、**Atrial ATP Therapy を搭載しているのが Amvia Sky のみ**であることに対応する。**Post ModeSw rate／duration も Amvia Sky から搭載。****Atrial overdrive と Temporary program は非搭載。**ホルターは25件（E シリーズは12〜20件）。",
+   "tags": "Amvia Sky Via シリーズ 2023年7月 DR-T HF-T HF-T QP シングルチャンバなし Edora 8 SR-T デュアルチャンバⅤ型 751000円 Atrial ATP Post ModeSw Atrial overdrive非搭載 Temporary program非搭載 ホルター25件 BIOTRONIK"
+  },
+  {
+   "term": "Edora 8-T ProMRI",
+   "en": "Edora 8-T ProMRI",
+   "abbr": "",
+   "cat": "デバイス構造",
+   "device": "PM",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK の **E3 シリーズ**のペースメーカ（2017年1月〜）（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Amvia Sky ではシングルチャンバが導入されないため、Edora 8 SR-T ProMRI が引き続き販売されている。****2023年7月に撮像条件が変更され、Edora 8 DR-T／SR-T ProMRI は 1.5T／3T の全身撮像が可能になった。**同時に**一部の DEXTRUS リードが、BIOTRONIK 社製ペースメーカと組み合わせることで MRI 対応リードとなった。**変更点は、体重条件が「あり→なし」、アイソセンタ配置が「あり→なし」、撮像時体位が「仰臥位→制限なし」、一度の撮像における1スキャンごとの条件が「30分以内であること」。**Edora 8 DR-T ProMRI は「デュアルチャンバ（Ⅳ型）」（償還価格 593,000円）に区分される。**",
+   "tags": "Edora 8-T ProMRI E3シリーズ 2017年1月 SR-T 引き続き販売 2023年7月 1.5T 3T 全身撮像 DEXTRUS 体重 アイソセンタ 仰臥位 30分 デュアルチャンバⅣ型 593000円 BIOTRONIK"
+  },
+  {
+   "term": "E1／E2／E3／Via シリーズ",
+   "en": "BIOTRONIK Brady device generations",
+   "abbr": "",
+   "cat": "デバイス構造",
+   "device": "PM / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK のブラディデバイスの世代区分（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**E1＝Evia-T／Estella／Evia-T Pro／Estella Pro（CRT-P は Evia HF-T Pro／Evia HF-T）。E2＝Etrinsa 8-T ProMRI／Etrinsa 6 ProMRI／Epyra 8-T／Eluna 8-T ProMRI。E3＝Edora 8-T ProMRI／Enitra 6 ProMRI／Enticos 8-T／Evity 8-T ProMRI（CRT-P は Evity 8 HF-T QP ProMRI／Evity 8 HF-T ProMRI／Enitra 8 HF-T QP ProMRI／Enitra 8 HF-T ProMRI）。Via＝Amvia Sky DR-T（CRT-P は Amvia Sky HF-T／HF-T QP、いずれも2023年7月〜）。**世代ごとに挙動が違う項目が多く、Repetitive／Scan の拍数（E-series 5拍／Amvia 10拍）、モードスイッチ中の AV delay（E-series 100ms／Amvia 75ms）、Sense compensation（E-series −45ms／Amvia −40ms）、Far-field protection の刻み（E シリーズ 10ms刻み・最大220ms）、MRI AutoDetect の検知条件などが該当する。日本光電（NK）扱いでは Evia-T に対応する Entovis がある。",
+   "tags": "E1 E2 E3 Via シリーズ Evia Estella Etrinsa Epyra Eluna Edora Enitra Enticos Evity Amvia Sky Entovis 日本光電 世代差 BIOTRONIK"
+  },
+  {
+   "term": "機能区分（ペースメーカ）",
+   "en": "Functional category (Japanese reimbursement)",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "PM / CRT",
+   "maker": "BIOTRONIK",
+   "short": "日本の保険償還におけるペースメーカの機能区分（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**シングルチャンバ・標準型＝454,000円（全社／特記事項なし）。デュアルチャンバ（Ⅳ型）＝593,000円（全社／特記事項なし。Edora 8 DR-T ProMRI、Attesta（MDT）、Assurity MRI（ABT）、ACCOLADE MRI（BSX）、ENO（MP））。デュアルチャンバ（Ⅴ型）＝751,000円（定義「エ：頻脈変動感知型抗上室性頻脈ペーシング治療機能を有するものであること」。Amvia Sky DR-T、Azure™ XT MRI（MDT））。シングルチャンバ・リード一体型＝1,060,000円（定義「ウ：本体とリードが一体化した構造を有するものであること」。Micra VVI（MDT）、Aveir VVI（ABT））。デュアルチャンバ・リード一体型＝1,170,000円（定義「ア：デュアルチャンバ型であること。ウ：本体とリードが一体化した構造を有するものであること」。Micra AV（MDT））。****CRT-P は QP（Ⅲ型4極用）＝1,710,000円、BP（Ⅲ型）＝1,640,000円**（2023年7月〜。それ以前は QP（Ⅱ型4極用）1,460,000円、BP（Ⅱ型）1,430,000円）。",
+   "tags": "機能区分 償還価格 454000 593000 751000 1060000 1170000 1710000 1640000 Ⅳ型 Ⅴ型 Ⅲ型 Ⅱ型 リード一体型 頻脈変動感知型抗上室性頻脈ペーシング Micra Aveir Attesta Assurity ACCOLADE ENO Azure XT"
+  },
+  {
+   "term": "DEXTRUSリード",
+   "en": "DEXTRUS lead",
+   "abbr": "",
+   "cat": "リード",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**BIOTRONIK が Boston Scientific（BSX）社へ OEM 供給しているリード**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**2023年7月の撮像条件変更により、一部の DEXTRUS リードは BIOTRONIK 社製ペースメーカと組み合わせることで MRI 対応リードとなった。**資料は「“約3,000人”の患者の MRI 撮像が可能に」「既に50名が “Edora 8-T” と接続されている」と記載している。**ペースメーカ交換時に BIO デバイスに交換することで MRI 撮像が可能になるが、ペースメーカ手帳の入替え、および MRI カード発行が必要になる。**mri.json では Dextrus Model 4136／4137 が BIO-PM4 の適合リードに含まれる。",
+   "tags": "DEXTRUS Dextrus 4136 4137 BSX OEM 2023年7月 MRI対応リード 3000人 50名 Edora 8-T 手帳入替え MRIカード発行 BIOTRONIK"
+  },
+  {
+   "term": "部分撮像条件（Partial）",
+   "en": "Partial-body MRI conditions",
+   "abbr": "",
+   "cat": "MRI・EMI",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "BIOTRONIK の条件付き MRI 対応デバイスで、**全身撮像条件（Full-body）が満たせない場合に用いる部分撮像条件**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Full-body は アイソセンターの配置・撮像時間・検査前の体温・身長・撮像時体位のいずれも「条件なし」だが、Partial では アイソセンターの配置＝あり、撮像時間＝あり（1回30分）、検査前の体温＝発熱していないこと（37.8℃未満）、身長＝140cm以上、撮像時体位＝仰臥位のみ、となる。****両者に共通する条件**は、リードの植込み又は再固定後6週間を経過／植込み部位は胸部／ペーシング閾値 2.0V/0.4ms 以下／リードインピーダンス 200〜1,500Ω／残存電池容量が ERI/EOS ではないこと／遺残リードやアダプタ類など MRI 非対応品の体内留置不可／円筒型ボア装置（最大傾斜磁場 SR 200T/m/s 以下）／SAR 全身2.0W/kg以内・頭部3.2W/kg以内／局所送受信コイルを胸部に使用しないこと。**最新の MRI 撮像条件は http://www.pro-mri.jp で確認する。**",
+   "tags": "部分撮像条件 Partial Full-body 全身撮像 アイソセンター 1回30分 37.8℃ 140cm 仰臥位 6週間 2.0V 0.4ms 200-1500Ω ERI EOS 200T/m/s SAR 2.0 3.2 pro-mri.jp BIOTRONIK"
+  },
+  {
+   "term": "ATM（Active Threshold Monitor）",
+   "en": "Active Threshold Monitor",
+   "abbr": "ATM",
+   "cat": "ペーシング",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**閾値を定期的に測定して記録するが、出力の自動変更は行わない設定**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**Capture control の選択肢（On／Off／ATM）のひとつ**として心房（ACC）・心室（VCC）それぞれに用意されている。ACC／VCC の status 欄には「ACC および ATM 機能が作動し適切に機能している場合」に OK が表示される、と書かれており、**測定の仕組みそのものは On と共通で、結果を出力へ反映するかどうかだけが違う。****VCC を On または ATM に設定する場合、パルス幅は 0.5ms 以上には設定できない。**",
+   "tags": "ATM Active Threshold Monitor Capture control On Off ACC VCC status OK パルス幅0.5ms BIOTRONIK モニタのみ"
+  },
+  {
+   "term": "Atrial ATP Therapy（Amvia Sky）",
+   "en": "Atrial antitachycardia pacing therapy",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Amvia Sky に搭載された心房抗頻拍ペーシング治療（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**流れは ①心房頻脈検出 → ②リード位置チェック → ③心調律安定性チェック → ④ATP治療 → ⑤繰返しインターバル／リズム変化時の繰返し → ⑥心房頻脈治療終了 →（治療待機時間）→ ① という循環。****ATP は［1st ATP］［2nd ATP］の2段構え。**画面例は 1st ATP＝10*Ramp／2nd ATP＝10*Ramp、Repetition interval [h]＝2、Repetition through rhythm change＝ON、Therapy delay＝OFF。**ATP 中は Backup stimulation として VVI・70bpm が働く。****AT/AF の治療可能な頻拍のレートは 300bpm 未満。**",
+   "tags": "Atrial ATP Therapy 心房ATP aATP Amvia Sky 1st ATP 2nd ATP Ramp Repetition interval Repetition through rhythm change Therapy delay Backup stimulation VVI 70bpm 300bpm未満 リード位置チェック 心調律安定性チェック BIOTRONIK"
+  },
+  {
+   "term": "AT/AF detection",
+   "en": "AT/AF detection",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心房頻拍・心房細動を検出するためのレート設定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。プログラマの Tachycardia タブに置かれ、**画面例は Rate＝170bpm。****AT/AF の治療可能な頻拍のレートは 300bpm 未満**で、それより速いものは治療の対象にならない。検出したあと、実際に ATP を出すかどうかは心調律安定性チェックと HVR detection の条件で決まる。",
+   "tags": "AT/AF detection 170bpm 300bpm未満 Tachycardiaタブ 心房頻拍検出 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "HVR detection",
+   "en": "High Ventricular Rate detection",
+   "abbr": "HVR",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**心室レートが速いときに心房ATPを抑止するための安全側の判定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は Rate＝200bpm、Detection counter＝8。****HVR detection は心室レートでのみ評価を行っているため、1:1AT などの上室性頻脈であっても、設定レートを超える心室レートが検出されると治療は行われない。**「心房頻拍なのに ATP が出ていない」ときは、まず心室レートを確認する。",
+   "tags": "HVR detection High Ventricular Rate 200bpm Detection counter 8 心室レート 1:1AT 上室性頻脈 治療抑止 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Therapy delay",
+   "en": "Therapy delay",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "心房頻拍を検出してから ATP を開始するまでの待機時間（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**ノミナルは OFF。**資料は理由を**「Atrial ATP Therapy は安定しているイベントのみ治療を行うため」**と説明している。治療の前段に**リード位置チェックと心調律安定性チェック**が入る設計になっているため、待機時間を別に設ける必要がない、という考え方。",
+   "tags": "Therapy delay OFF ノミナル 待機時間 安定しているイベント 心調律安定性チェック リード位置チェック Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Repetition interval／Repetition through rhythm change",
+   "en": "Repetition interval / Repetition through rhythm change",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "心房ATPを繰り返す条件の設定（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**Repetition interval [h]＝ATP治療を繰り返す間隔を時間単位で決める（画面例は 2）。****Repetition through rhythm change＝ON にすると、リズムが変化したときにも繰り返しを行う（画面例は ON）。**資料の循環図では「繰返しインターバル」「リズム変化時の繰返し」として ATP治療 と 心房頻脈治療終了 のあいだに置かれている。",
+   "tags": "Repetition interval Repetition through rhythm change 2時間 ON リズム変化 繰返し 循環図 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "1st ATP／2nd ATP（Amvia Sky）",
+   "en": "1st and 2nd ATP",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "Amvia Sky の心房ATPの詳細設定画面（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**項目は Attempts（試行回数）／ATP type／Number S1／Add S1／P-S1 interval [%]／S1 decrement [ms]／Scan decrement [ms] の7つで、1st ATP と 2nd ATP に別々の値を持てる。**画面例は Attempts 10／10、ATP type Ramp／Ramp、Number S1 13／13、Add S1 ON／ON、**P-S1 interval 90%／80%**、S1 decrement 10ms／10ms、Scan decrement OFF／OFF。**同じ画面に Backup stimulation（70bpm・VVI）が並ぶ。**",
+   "tags": "1st ATP 2nd ATP Attempts ATP type Number S1 Add S1 P-S1 interval S1 decrement Scan decrement Ramp 10 13 90% 80% 10ms OFF Backup stimulation 70bpm VVI Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Backup stimulation（Atrial ATP）",
+   "en": "Backup stimulation",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "心房ATPを行っているあいだに働くバックアップペーシング（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は 70bpm・Mode VVI。**心房へ高頻度の刺激を出すあいだ心室が保護されるようにするための設定で、［1st and 2nd ATP］画面の下段に置かれている。徐脈時のバックアップモード（ERI 到達時などに自動で切り替わる安全動作）とは別項目なので混同しない。",
+   "tags": "Backup stimulation 70bpm VVI 心房ATP中 心室保護 バックアップモードとは別 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "P-S1 interval",
+   "en": "P-S1 interval",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "心房ATPの**最初の刺激（S1）を、直前のP波からどのタイミングで出すかを頻拍周期に対する％で決める設定**（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。他社でいう連結期（カップリングインターバル）にあたる。**画面例は 1st ATP＝90%、2nd ATP＝80%** で、2回目のほうが短く（頻拍周期に食い込む向きに）設定されている。**S1 decrement [ms]** はシーケンスごとに間隔を短縮する量（画面例 10ms）、**Scan decrement [ms]** はスキャンによる短縮量（画面例 OFF）。",
+   "tags": "P-S1 interval 90% 80% 連結期 カップリングインターバル S1 decrement 10ms Scan decrement OFF Ramp Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "Number S1／Add S1",
+   "en": "Number S1 / Add S1",
+   "abbr": "",
+   "cat": "心房治療",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "心房ATPの**1シーケンスあたりの刺激発数（Number S1）と、追加の S1 を出すかどうか（Add S1）**の設定（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**画面例は Number S1＝13、Add S1＝ON**（1st・2nd とも）。発数が多いほど頻拍を捕捉しやすい一方、心房細動へ移行させるリスクも増える。参考として資料が併記する MINERVA 試験の設定でも Initial #1 Pulses は 13 とされている。",
+   "tags": "Number S1 Add S1 13 ON 発数 シーケンス MINERVA Initial #1 Pulses Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "MINERVA試験（参考設定）",
+   "en": "MINERVA trial (reference settings)",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "追補50の資料が**「参考）MINERVA試験で使用された設定」**として併記している表（追補50・BIOTRONIK「Amvia Sky ～ Atrial Anti-tachycardia pacing ～ Atrial ATP の設定」）。**Rx1＝Ramp／Rx2＝Burst+／Rx3＝Ramp、Initial #1 Pulses＝13（3つとも）、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2 のみ81%、S2-S3 interval＝Rx2 のみ20ms、Interval Decrement＝Rx2 のみ10ms、# Sequences＝10（3つとも）、Rhythm Change＝On、Time Interval＝Every 7hr。****ただしこの表の項目名（Therapy Type／A-S1 Interval／# Sequences）は Amvia Sky のプログラマ画面の項目名（ATP type／P-S1 interval／Attempts）と違い、Rx が3本ある点も画面（1st／2nd の2本）と合わない。****Amvia Sky の設定そのものではなく、あくまで参考として併記されたものと読むのが妥当**（どの機種で行われた試験かは資料に記載がない。未確定）。",
+   "tags": "MINERVA 参考設定 Rx1 Rx2 Rx3 Ramp Burst+ 13 91% 84% 81% 20ms 10ms 10シーケンス Rhythm Change Every 7hr 項目名が違う 未確定 BIOTRONIK"
   }
  ],
  "feats": [
@@ -11170,10 +11730,10 @@
    "cat": "レート応答",
    "mdt": "加速度センサ（ADLレート／運動レートの2ゾーン）",
    "abt": "加速度センサ（Accelerometer）",
-   "bio": "Closed Loop Stimulation（CLS）",
+   "bio": "Closed Loop Stimulation（CLS）／加速度センサ",
    "bsx": "Blended Sensor（加速度＋分時換気量）",
    "mcp": "Dual Sensor（加速度＋分時換気量）／SonR™ センサ（レート応答）",
-   "note": "BiotronikのCLSは心筋収縮に伴う心内インピーダンス変化を利用する点が特徴。SonRは血行動態センサ。　この行はメーカー別の一覧に該当項目がないメーカーを含む。一覧表として保持している比較行。"
+   "note": "BiotronikのCLSは心筋収縮に伴う心内インピーダンス変化を利用する点が特徴。SonRは血行動態センサ。**BIOTRONIK は CLS と加速度センサの両方を搭載しており、加速度センサ側は Max. sensor rate（E-series は Max. activity rate）120ppm（80〜180ppm、10ppm刻み）、Sensor gain（Auto／Very low／Low／Medium／High／Very high、ノミナル Medium）、Sensor threshold（同5段階、ノミナル Medium）、Rate increase 2ppm/cycle（1, 2, 4, 8）、Rate decrease 0.5ppm/cycle（0.1, 0.2, 0.5, 1.0）で設定する。Sensor optimization で最長16分間の運動評価が行える。Amvia Sky では DDI-CLS モードが追加された（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）。**　この行はメーカー別の一覧に該当項目がないメーカーを含む。一覧表として保持している比較行。"
   },
   {
    "fn": "自動閾値管理（オートキャプチャ）",

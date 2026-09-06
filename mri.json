@@ -1,5 +1,5 @@
 {
- "v": 11,
+ "v": 12,
  "updated": "2026-09-06",
  "note": "本体とリードの組合せから撮像可能な静磁場強度を判定する。実施前に必ず添付文書と各社の最新情報を確認すること。",
  "items": [
@@ -2503,7 +2503,8 @@
     "出典": "JADIA 撮像条件表 MRI_Search_List_BIO.pdf（2026-02-01現在）",
     "適合リード出典": "BIOTRONIK ProMRI MR conditional device systems Technical Manual 371712 Rev.CM",
     "リード適合の注意": "リードの組合せは BIOTRONIK ProMRI テクニカルマニュアル（CE版）に基づく暫定値。国内添付文書がPMDAで公開されていない世代のため未確認。同社の国内添付文書では長さが53/60cm中心に限定される傾向があり、実際の適合範囲はより狭い可能性がある",
-    "資料の格付け": "海外資料に基づく（国内承認範囲は要確認）"
+    "資料の格付け": "海外資料に基づく（国内承認範囲は要確認）",
+    "MRIモードへの移行（Eシリーズ）": "E シリーズでは MRI AutoDetect の条件が異なり、10mT（100G）以上の磁場を検知すると MRI 撮像可能モードに移行し、磁場が検知できなくなると1分後にパーマネントモードへ復帰する（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）"
    },
    "verify": true
   },
@@ -2697,7 +2698,8 @@
     "出典": "JADIA 撮像条件表 MRI_Search_List_BIO.pdf（2026-02-01現在）",
     "適合リード出典": "BIOTRONIK ProMRI MR conditional device systems Technical Manual 371712 Rev.CM",
     "リード適合の注意": "リードの組合せは BIOTRONIK ProMRI テクニカルマニュアル（CE版）に基づく暫定値。国内添付文書がPMDAで公開されていない世代のため未確認。同社の国内添付文書では長さが53/60cm中心に限定される傾向があり、実際の適合範囲はより狭い可能性がある",
-    "資料の格付け": "海外資料に基づく（国内承認範囲は要確認）"
+    "資料の格付け": "海外資料に基づく（国内承認範囲は要確認）",
+    "MRIモードへの移行（Eシリーズ）": "E シリーズでは MRI AutoDetect の条件が異なり、10mT（100G）以上の磁場を検知すると MRI 撮像可能モードに移行し、磁場が検知できなくなると1分後にパーマネントモードへ復帰する（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）"
    },
    "verify": true
   },
@@ -2906,7 +2908,14 @@
     "出典": "JADIA 撮像条件表 MRI_Search_List_BIO.pdf（2026-02-01現在）",
     "適合リード出典": "国内添付文書（バイオトロニックジャパン）の「本品と組み合わせてMRI対応が確認されているリード」（アムヴィア Sky 30500BZX00070000／エドラ 8-T ProMRI 22800BZX00330000／エヴィティ 8-T ProMRI 22900BZX00307000）",
     "資料の格付け": "国内一次資料",
-    "心房リードなしの扱い": "RAポートに心房リードを接続せず BS IS-1 ブラインドプラグを使用した場合もMRI対応"
+    "心房リードなしの扱い": "RAポートに心房リードを接続せず BS IS-1 ブラインドプラグを使用した場合もMRI対応",
+    "全身撮像条件（Full-body）": "アイソセンターの配置／撮像時間／検査前の体温／身長／撮像時体位のいずれも「条件なし」（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "部分撮像条件（Partial）": "全身撮像条件を満たせない場合の代替条件。アイソセンターの配置＝あり／撮像時間＝あり（1回30分）／検査前の体温＝発熱していないこと（37.8℃未満）／身長＝140cm以上／撮像時体位＝仰臥位のみ（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "MRIモードへの移行": "MRI AutoDetect（Off／On／Auto）を搭載。Auto にした場合は「設定した日＋14日間」が有効で、4秒以上継続する磁場強度の上昇もしくは磁場が150mT以上で検知されるとMRI撮像可能モードへ移行する。解除は磁場が10mT以下のときに自動的に復帰。撮像後は必要な検査を行いMRI設定を「off」へプログラムする（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "マグネットレスポンスの扱い": "MRIモード中は自動的に AUTO ⇒ SYNC に切り替わる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "撮像条件の変更（2023年7月）": "Edora 8 DR-T／SR-T ProMRI は 1.5T／3T の全身撮像が可能になった。従前との変更点は、体重条件「あり→なし」、アイソセンタ配置「あり→なし」、撮像時体位「仰臥位→制限なし」、一度の撮像における1スキャンごとは「30分以内であること」（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "DEXTRUSリード": "一部の DEXTRUS リード（BIOTRONIK が Boston Scientific へ OEM 供給しているリード）は、BIOTRONIK 社製ペースメーカと組み合わせることで MRI 対応リードとなる（2023年7月〜）。ペースメーカ交換時に BIO デバイスへ交換することで MRI 撮像が可能になるが、ペースメーカ手帳の入替えおよび MRI カード発行が必要（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "最新条件の確認先": "http://www.pro-mri.jp （メーカー資料が明示している確認先）"
    }
   },
   {
@@ -4715,7 +4724,12 @@
     "出典": "JADIA 撮像条件表 MRI_Search_List_BIO.pdf（2026-02-01現在）",
     "適合リード出典": "国内添付文書（バイオトロニックジャパン）の「本品と組み合わせてMRI対応が確認されているリード」（アムヴィア Sky HF-T 30500BZX00069000／エヴィティ 8 HF-T ProMRI 22900BZX00079000／エヴィティ 8 HF-T QP ProMRI 22900BZX00078000）",
     "資料の格付け": "国内一次資料",
-    "心房リードなしの扱い": "RAポートに心房リードを接続せず BS IS-1 ブラインドプラグを使用した場合もMRI対応"
+    "心房リードなしの扱い": "RAポートに心房リードを接続せず BS IS-1 ブラインドプラグを使用した場合もMRI対応",
+    "全身撮像条件（Full-body）": "アイソセンターの配置／撮像時間／検査前の体温／身長／撮像時体位のいずれも「条件なし」（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "部分撮像条件（Partial）": "全身撮像条件を満たせない場合の代替条件。アイソセンターの配置＝あり／撮像時間＝あり（1回30分）／検査前の体温＝発熱していないこと（37.8℃未満）／身長＝140cm以上／撮像時体位＝仰臥位のみ（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "MRIモードへの移行": "MRI AutoDetect（Off／On／Auto）を搭載。Auto にした場合は「設定した日＋14日間」が有効で、4秒以上継続する磁場強度の上昇もしくは磁場が150mT以上で検知されるとMRI撮像可能モードへ移行する。解除は磁場が10mT以下のときに自動的に復帰。撮像後は必要な検査を行いMRI設定を「off」へプログラムする（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "マグネットレスポンスの扱い": "MRIモード中は自動的に AUTO ⇒ SYNC に切り替わる（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）",
+    "最新条件の確認先": "http://www.pro-mri.jp （メーカー資料が明示している確認先）"
    }
   },
   {
