@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F6F7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pacemaker Navi">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<title>Pacemaker Navi — Cardiac Device Quick Reference</title>
+<style>
+:root{
+ --page:#F4F6F7; --surface:#FFFFFF; --ink:#1B2A2F; --ink2:#4E5F66; --ink3:#83939A;
+ --line:#DCE3E5; --line2:#EBF0F1;
+ --teal:#0F766E; --teal-d:#0A5A54; --teal-t:#E6F2F0; --teal-t2:#CDE6E2;
+ --ok:#15803D; --ok-t:#E7F4EB; --warn:#A35A07; --warn-t:#FCF3E2; --danger:#B42318; --danger-t:#FCEBE9; --gray:#66767D; --gray-t:#EEF2F3;
+ --r-lg:13px; --r-md:10px; --r-sm:7px;
+ --sat:env(safe-area-inset-top); --sab:env(safe-area-inset-bottom); --sal:env(safe-area-inset-left); --sar:env(safe-area-inset-right);
+ --nav-h:52px;
+ --font:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5}
+body{padding-bottom:calc(var(--nav-h) + var(--sab) + 8px);-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.wrap{max-width:760px;margin:0 auto;padding:0 max(16px,var(--sal)) 0 max(16px,var(--sar))}
+.hidden{display:none!important}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:30;background:rgba(244,246,247,.92);-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);padding-top:var(--sat);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;gap:8px;min-height:42px;padding-top:4px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}
+.mark{width:26px;height:26px;border-radius:8px;background:var(--teal);display:grid;place-items:center;flex:none}
+.mark svg{width:19px;height:12px}
+.brandtx{min-width:0}
+.brandtx b{display:block;font-size:17px;font-weight:750;letter-spacing:-.02em;line-height:1.15}
+.brandtx small{display:block;font-size:10.5px;color:var(--ink3);letter-spacing:.01em;line-height:1.3}
+.bar .spacer{flex:1}
+.count-pill{font-size:11px;color:var(--ink3)}
+.backbtn{display:flex;align-items:center;gap:2px;color:var(--teal);font-weight:600;font-size:15px;min-height:40px;padding-right:6px}
+.backbtn svg{width:20px;height:20px}
+.vtitle{font-size:16px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iconbtn{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:var(--ink2)}
+.iconbtn svg{width:20px;height:20px}
+.searchrow{padding:6px 0 8px}
+.sbox{position:relative}
+.sbox svg.mag{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink3);pointer-events:none}
+.sbox input{width:100%;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface);padding:0 40px 0 36px;font-size:16px;outline:none;-webkit-appearance:none;appearance:none;box-shadow:0 1px 1px rgba(20,40,45,.03)}
+.sbox input::placeholder{color:var(--ink3)}
+.sbox input:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-t2)}
+.sbox input::-webkit-search-cancel-button{display:none}
+.sclear{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;display:none;place-items:center;color:var(--ink3)}
+.sclear.on{display:grid}
+.sclear svg{width:16px;height:16px}
+
+/* ---------- common ---------- */
+main{padding-top:4px}
+.view{display:none}
+.view.on{display:block}
+h2.sec{font-size:13.5px;font-weight:700;margin:18px 0 6px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+h2.sec .aside{font-size:11px;font-weight:500;color:var(--ink3)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px;margin:0 -16px;padding-left:16px;padding-right:16px;scroll-padding:16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:29px;padding:0 10px;border-radius:15px;border:1px solid var(--line);background:var(--surface);font-size:12px;color:var(--ink2);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.chip .n{font-size:10.5px;color:var(--ink3)}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip.on .n{color:rgba(255,255,255,.8)}
+.chip[disabled],.chip.zero{opacity:.45}
+.flabel{font-size:11px;color:var(--ink3);margin:8px 0 3px}
+.seg{display:flex;background:#E7ECED;border-radius:9px;padding:2px;gap:2px;margin:2px 0 6px}
+.seg button{flex:1;height:28px;border-radius:7px;font-size:12px;color:var(--ink2);font-weight:600}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,45,.12)}
+.muted{color:var(--ink3)}
+.empty{padding:30px 12px;text-align:center;color:var(--ink2);font-size:13px}
+.empty b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.note{font-size:12px;line-height:1.6;color:var(--ink2)}
+.btn{height:40px;padding:0 14px;border-radius:10px;font-weight:650;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.primary{background:var(--teal);color:#fff}
+.btn.ghost{border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.block{width:100%}
+.linkish{color:var(--teal);font-weight:600;font-size:13px;min-height:36px;display:inline-flex;align-items:center}
+
+/* ---------- home ---------- */
+.lead{margin:10px 0 2px}
+.lead h1{font-size:21px;line-height:1.3;font-weight:750;letter-spacing:-.02em;margin:0 0 4px}
+.lead p{margin:0;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.tile{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:10px 11px 9px;text-align:left;min-height:78px;display:flex;flex-direction:column}
+.tile:active{background:var(--teal-t)}
+.tile .ti{width:28px;height:28px;border-radius:8px;background:var(--teal-t);color:var(--teal);display:grid;place-items:center;margin-bottom:6px}
+.tile .ti svg{width:17px;height:17px}
+.tile b{font-size:13.5px;font-weight:700;line-height:1.3}
+.tile span{font-size:11px;color:var(--ink3);line-height:1.4;margin-top:1px}
+.tile .tn{position:absolute;right:10px;top:10px;font-size:11px;color:var(--ink3)}
+.examples .chip{height:28px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.stat div{display:flex;justify-content:space-between;align-items:baseline;padding:8px 12px;border-top:1px solid var(--line2);font-size:13px}
+.stat div:first-child{border-top:0}
+.stat div span:last-child{font-weight:650}
+.stat small{color:var(--ink3);font-size:11px;font-weight:400;margin-left:6px}
+
+/* ---------- rows ---------- */
+.list{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.row{display:flex;gap:9px;width:100%;text-align:left;padding:9px 12px;border-top:1px solid var(--line2);align-items:flex-start;background:var(--surface)}
+.row:first-child{border-top:0}
+.row:active{background:var(--teal-t)}
+.row .ri{flex:none;width:25px;height:25px;border-radius:7px;background:var(--gray-t);color:var(--ink2);display:grid;place-items:center;margin-top:1px}
+.row .ri svg{width:15px;height:15px}
+.row .rb{flex:1;min-width:0}
+.row .rt{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.row .rn{font-size:14px;font-weight:650;line-height:1.35;word-break:break-word}
+.row .rn mark{background:#D7EEEA;color:inherit;border-radius:3px;padding:0 1px}
+.row .rm{font-size:11px;color:var(--ink2);margin-top:1px;display:flex;flex-wrap:wrap;gap:1px 8px}
+.row .rm .md{font-weight:600;color:var(--ink)}
+.row .rs{font-size:12px;color:var(--ink2);line-height:1.5;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.badge{flex:none;font-size:10px;font-weight:650;height:19px;line-height:17px;padding:0 7px;border-radius:10px;border:1px solid var(--teal-t2);color:var(--teal-d);background:var(--teal-t);white-space:nowrap}
+.badge.gray{border-color:var(--line);color:var(--gray);background:var(--gray-t)}
+.badge.warn{border-color:#F1D9A8;color:var(--warn);background:var(--warn-t)}
+.badge.ok{border-color:#BFE3CB;color:var(--ok);background:var(--ok-t)}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;margin:14px 2px 5px}
+.ghead b{font-size:12px;color:var(--ink2);font-weight:700}
+.ghead button{font-size:12px;color:var(--teal);font-weight:600;min-height:28px}
+.more{display:block;width:100%;padding:10px;text-align:center;color:var(--teal);font-weight:650;font-size:13px;border-top:1px solid var(--line2);background:var(--surface)}
+.sentinel{height:1px}
+.rescount{font-size:11px;color:var(--ink3);margin:8px 2px 0}
+
+/* ---------- notices ---------- */
+.notice{border-radius:var(--r-md);padding:9px 11px;font-size:12px;line-height:1.55;display:flex;gap:8px;align-items:flex-start}
+.notice svg{flex:none;width:16px;height:16px;margin-top:1px}
+.notice.warn{background:var(--warn-t);color:#7A4305}
+.notice.info{background:var(--teal-t);color:var(--teal-d)}
+.notice.gray{background:var(--gray-t);color:var(--ink2)}
+.notice.danger{background:var(--danger-t);color:#8A1B12}
+.notice.ok{background:var(--ok-t);color:#135E30}
+
+/* ---------- MRI ---------- */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:11px 12px}
+.step{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.step i{font-style:normal;width:19px;height:19px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+.step b{font-size:13px}
+.field{margin:8px 0 0}
+.field label{display:block;font-size:11px;color:var(--ink2);margin-bottom:3px;font-weight:600}
+.field select,.field input{width:100%;height:40px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:0 12px;font-size:16px;-webkit-appearance:none;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--ink3) 50%),linear-gradient(135deg,var(--ink3) 50%,transparent 50%);background-position:calc(100% - 18px) 17px,calc(100% - 13px) 17px;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+.chosen{display:flex;align-items:center;gap:8px;border:1px solid var(--teal-t2);background:var(--teal-t);border-radius:10px;padding:8px 11px}
+.chosen .cb{flex:1;min-width:0}
+.chosen b{display:block;font-size:14px}
+.chosen span{font-size:11px;color:var(--ink2)}
+.sugg{margin-top:6px}
+.verdict{border-radius:var(--r-lg);padding:11px 12px;margin-top:10px;border:1px solid}
+.verdict.hit{border-color:var(--teal-t2);background:var(--teal-t)}
+.verdict.miss{border-color:#F1D9A8;background:var(--warn-t)}
+.verdict h3{margin:0 0 3px;font-size:15px}
+.verdict p{margin:3px 0 0;font-size:12px;line-height:1.55;color:var(--ink2)}
+.tesla{display:flex;gap:6px;margin-top:8px}
+.tesla span{font-size:12px;font-weight:650;border-radius:8px;padding:4px 9px;background:var(--surface);border:1px solid var(--line)}
+.tesla span.y{color:var(--teal-d);border-color:var(--teal-t2)}
+.tesla span.n{color:var(--gray)}
+
+/* ---------- sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(20,35,40,.38);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);border-radius:18px 18px 0 0;max-height:calc(100% - var(--sat) - 18px);height:calc(100% - var(--sat) - 18px);display:flex;flex-direction:column;transform:translateY(102%);transition:transform .26s cubic-bezier(.2,.8,.2,1);box-shadow:0 -6px 30px rgba(20,35,40,.12);max-width:760px;margin:0 auto}
+.sheet.on{transform:none}
+.sheet .grab{padding:6px 0 0;display:grid;place-items:center;touch-action:none}
+.sheet .grab i{width:34px;height:4px;border-radius:3px;background:#CDD6D8}
+.shead{padding:4px 14px 8px;display:flex;gap:8px;align-items:flex-start;touch-action:pan-y}
+.shead .sh{flex:1;min-width:0}
+.shead h2{margin:3px 0 1px;font-size:17px;line-height:1.35;letter-spacing:-.01em;word-break:break-word}
+.shead .ss{font-size:12px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:1px 8px}
+.shead .acts{display:flex;gap:4px;flex:none}
+.shead .acts button{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink2);background:var(--gray-t)}
+.shead .acts button svg{width:17px;height:17px}
+.shead .acts button.saved{color:var(--teal);background:var(--teal-t)}
+.stabs{display:flex;gap:2px;padding:0 14px;border-bottom:1px solid var(--line2);overflow-x:auto;scrollbar-width:none;flex:none}
+.stabs::-webkit-scrollbar{display:none}
+.stabs button{flex:none;height:35px;padding:0 9px;font-size:12.5px;color:var(--ink2);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
+.stabs button.on{color:var(--teal);border-bottom-color:var(--teal)}
+.sbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:10px 14px calc(20px + var(--sab))}
+.kv{margin:0}
+.kv>div{padding:7px 0;border-top:1px solid var(--line2)}
+.kv>div:first-child{border-top:0}
+.kv dt{font-size:11px;color:var(--ink3);font-weight:600;margin-bottom:1px}
+.kv dd{margin:0;font-size:13.5px;line-height:1.6;word-break:break-word}
+.kv dd .cond{display:block;font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.55}
+.prose{font-size:13.5px;line-height:1.72;word-break:break-word}
+.prose p{margin:0 0 .6em}
+.prose strong{font-weight:700;color:var(--ink)}
+.prose code,.kv code{font-size:.9em;background:var(--gray-t);border-radius:5px;padding:1px 5px;font-family:inherit}
+.xref{color:var(--teal);font-weight:600;text-decoration:underline;text-decoration-color:var(--teal-t2);text-underline-offset:3px;background:none;padding:0;font-size:inherit}
+ul.plist{list-style:none;margin:0;padding:0}
+ul.plist li{padding:7px 0 7px 13px;border-top:1px solid var(--line2);position:relative;font-size:13.5px;line-height:1.6}
+ul.plist li:first-child{border-top:0}
+ul.plist li:before{content:"";position:absolute;left:2px;top:16px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.vgrid>div{display:grid;grid-template-columns:92px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line2)}
+.vgrid>div:first-child{border-top:0}
+.vgrid .vk{font-size:11px;font-weight:700;color:var(--ink2);padding-top:2px}
+.vgrid .vv{font-size:13.5px;line-height:1.6;word-break:break-word}
+.vgrid .vv.none{color:var(--ink3)}
+.subh{font-size:11.5px;font-weight:700;color:var(--teal-d);margin:14px 0 3px}
+.subh:first-child{margin-top:2px}
+.tech{margin:22px 0 0;font-size:11px;color:var(--ink3);word-break:break-all}
+details.other{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-md)}
+details.other summary{padding:9px 11px;font-size:12px;font-weight:650;color:var(--ink2);cursor:pointer;list-style:none}
+details.other summary::-webkit-details-marker{display:none}
+details.other[open] summary{border-bottom:1px solid var(--line2)}
+details.other .kv{padding:0 11px}
+.rel{display:flex;flex-wrap:wrap;gap:5px}
+.rel button{min-height:30px;padding:5px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-size:12px;text-align:left;line-height:1.35}
+.future{border:1px dashed var(--line);border-radius:var(--r-md);padding:7px 11px;margin-top:6px}
+.future div{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:4px 0}
+.future div span:last-child{color:var(--ink3)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-top:1px solid var(--line);padding:0 var(--sar) var(--sab) var(--sal)}
+.nav .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h)}
+.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#8A989E;font-size:10px;font-weight:650}
+.nav button svg{width:21px;height:21px}
+.nav button.on{color:var(--teal)}
+@media (max-width:959px){body.kb .nav{transform:translateY(120%)}}
+.nav{transition:transform .15s}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + var(--sab) + 12px);transform:translateX(-50%) translateY(20px);background:#223338;color:#fff;font-size:12px;padding:9px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;z-index:90;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.loading{padding:60px 0;text-align:center;color:var(--ink3);font-size:14px}
+.err{margin-top:30px}
+
+@media (min-width:700px){
+ .tiles{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:960px){
+ .sheet{left:auto;right:0;top:0;bottom:0;height:100%;max-height:100%;width:540px;border-radius:0;margin:0;transform:translateX(102%);box-shadow:-8px 0 30px rgba(20,35,40,.12)}
+ .sheet.on{transform:none}
+ .sheet .grab{display:none}
+ .shead{padding-top:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+ <div class="wrap">
+  <div class="bar" id="bar"></div>
+  <div class="searchrow" id="searchrow">
+   <div class="sbox">
+    <svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="製品名・型番・機能・用語を検索" aria-label="製品名・型番・機能・用語を検索">
+    <button class="sclear" id="qclear" aria-label="検索語を消す"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.5 12.1-1.4 1.4L12 13.4l-2.1 2.1-1.4-1.4 2.1-2.1-2.1-2.1 1.4-1.4 2.1 2.1 2.1-2.1 1.4 1.4-2.1 2.1 2.1 2.1Z"/></svg></button>
+   </div>
+  </div>
+ </div>
+</header>
+<main class="wrap" id="main">
+ <div class="loading" id="loading">データを読み込んでいます…</div>
+ <section class="view" id="v-home"></section>
+ <section class="view" id="v-search"></section>
+ <section class="view" id="v-list"></section>
+ <section class="view" id="v-mri"></section>
+ <section class="view" id="v-history"></section>
+ <section class="view" id="v-saved"></section>
+ <section class="view" id="v-menu"></section>
+ <section class="view" id="v-more"></section>
+</main>
+<nav class="nav" id="nav" aria-label="メイン">
+ <div class="in">
+  <button data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>ホーム</button>
+  <button data-nav="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>検索</button>
+  <button data-nav="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg>履歴</button>
+  <button data-nav="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4.2-6.5 4.2v-16a1 1 0 0 1 1-1z"/></svg>保存</button>
+  <button data-nav="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>メニュー</button>
+ </div>
+</nav>
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sTitle">
+ <div class="grab" id="grab"><i></i></div>
+ <div class="shead" id="shead"></div>
+ <div class="stabs" id="stabs" role="tablist"></div>
+ <div class="sbody" id="sbody"></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* 現行版 index.html の表記ゆれ辞書と概念マップ（ビルド時にそのまま複写） */
+const SYN=[
+ ["アンダーセンシング","undersensing","under sensing","アンダーセンス","us","感度不足","感度が悪い","感度悪い","感知不全"],
+ ["オーバーセンシング","oversensing","over sensing","オーバーセンス","os","過剰感知","誤感知"],
+ ["刺激閾値","ペーシング閾値","pacing threshold","capture threshold","閾値","しきい値"],
+ ["ペースメーカ介在性頻拍","pmt","endless loop tachycardia","elt","ペースメーカ起因性頻拍"],
+ ["室房伝導","va conduction","逆行性伝導","retrograde conduction","逆伝導"],
+ ["リード断線","lead fracture","断線","コンダクタ断線"],
+ ["リードリーク","insulation failure","絶縁不良","漏電","リーク"],
+ ["モードスイッチ","mode switch","ams","automatic mode switch","自動モード変更"],
+ ["心房細動","af","atrial fibrillation","afib","エーエフ"],
+ ["心室細動","vf","ventricular fibrillation"],
+ ["心室頻拍","vt","ventricular tachycardia"],
+ ["上室頻拍","svt","supraventricular tachycardia","psvt"],
+ ["横隔神経刺激","pns","phrenic nerve stimulation","しゃっくり","吃逆"],
+ ["除細動閾値","dft","defibrillation threshold"],
+ ["両心室ペーシング","biv","biventricular pacing","両室ペーシング"],
+ ["心臓再同期療法","crt","cardiac resynchronization therapy"],
+ ["遠隔モニタリング","remote monitoring","rm","リモートモニタリング"],
+ ["挿入型心電計（ICM）","icm","ループレコーダー","植込み型ループレコーダー","ilr"],
+ ["抗頻拍ペーシング","atp","antitachycardia pacing"],
+ ["T波オーバーセンシング","twos","t wave oversensing","t波オーバーセンス"],
+];
+const CONCEPT_MAP={
+ "閾値":["刺激閾値","ステップダウン試験","AutoCapture","Capture management","セーフティマージン","急性閾値","慢性期閾値","誘発反応"],
+ "しきいち":["刺激閾値","ステップダウン試験","AutoCapture","Capture management","セーフティマージン"],
+ "threshold":["刺激閾値","ステップダウン試験","AutoCapture","Capture management","セーフティマージン","除細動閾値"],
+ "capturethreshold":["刺激閾値","ステップダウン試験","AutoCapture","Capture management"],
+ "pmt":["ペースメーカ介在性頻拍","PVARP","室房伝導","PMT対応","PVC反応（PVARP延長）","反復性非リエントリー性室房同期"],
+ "vaconduction":["室房伝導","逆行性伝導","ペースメーカ介在性頻拍","室房伝導時間測定"],
+ "逆行":["逆行性伝導","室房伝導","ペースメーカ介在性頻拍","反復性非リエントリー性室房同期"],
+ "lbb":["LBBP","LBBAP","LVAT","V6 RWPT","CSP"],
+ "lbbp":["LBBP","LBBAP","LVAT","V6 RWPT","CSP"],
+ "lbbap":["LBBP","LBBAP","LVAT","V6 RWPT","CSP"],
+ "his":["ヒス束","HBP","Selective HBP","Non-selective HBP","刺激伝導系ペーシングの適応"],
+ "csp":["CSP","HBP","LBBP","LBBAP","ヒス束","刺激伝導系ペーシングの適応"],
+ "刺激伝導系ペーシング":["CSP","HBP","LBBP","LBBAP","刺激伝導系ペーシングの適応"],
+ "アンダーセンシング":["アンダーセンシング","センシング感度","心房頻拍の検出不全","センシング不全"],
+ "オーバーセンシング":["オーバーセンシング","TWOS","T波上ペーシング","クロストーク","FFRW","Lead noise"],
+ "センシング不全":["センシング不全","アンダーセンシング","オーバーセンシング","センシング感度"],
+ "twos":["TWOS","TWOSへの各社対策","T波ダブルカウント","可変センシング方式"],
+ "クロストーク":["クロストーク","心室安全ペーシング","クロストークセンシングウインドウ","心室ブランキング（心房刺激後）"],
+ "融合":["融合収縮","偽性融合収縮","偽性偽性融合収縮"],
+ "fusion":["融合収縮","偽性融合収縮","偽性偽性融合収縮"],
+ "断線":["リード断線","半断線","リードインピーダンス","リード不全","偽断線像","Lead noise"],
+ "リード不全":["リード不全","リード断線","半断線","リードリーク","リード絶縁体不良","リードインピーダンス"],
+ "リーク":["リードリーク","リード絶縁体不良","絶縁体亀裂","リードインピーダンス"],
+ "感染":["デバイス感染","ポケット感染","CDRIE","感染性心内膜炎","疣腫","全システム抜去","リード抜去"],
+ "抜去":["リード抜去","経皮的デバイス抜去","全システム抜去","レーザー抜去（レーザーシース）","ロッキングスタイレット","スネアカテーテル"],
+ "mri":["MRI検査","条件付きMRI対応デバイス","MRI撮像時のモード設定","MRI撮像条件","MRIの磁場と電磁波","条件付きMRI検査の患者側要件"],
+ "atp":["ATP","ATPバースト","ATPランプ","興奮間隙","iATP","Pain-Free ATP"],
+ "onset":["onset基準","Onset率","頻拍鑑別アルゴリズム","洞頻拍"],
+ "stability":["stability基準","Stability値","頻拍鑑別アルゴリズム","心房細動"],
+ "svt鑑別":["SVT discrimination","onset基準","stability基準","QRS波形識別","頻拍鑑別アルゴリズム"],
+ "af":["心房細動","モードスイッチ","AT/AF burden","AHRE","心房オーバードライブ"],
+ "モードスイッチ":["モードスイッチ","AT/AFエビデンスカウント","FARI","WARAD","AHRE"],
+ "crt":["心臓再同期療法","CRT-P","CRT-D","両心室ペーシング","両室ペーシング欠落","BiV%"],
+ "ノンレスポンダー":["ノンレスポンダー","レスポンダー","両室ペーシング欠落","電気的遅延部位","至適化（オプティマイゼーション）"],
+ "avディレイ":["AVディレイ","SAV","PAV","AVディレイヒステリシス","レート応答性AVディレイ"],
+ "pvarp":["PVARP","TARP","動的PVARP","2:1ブロックレート","ペースメーカ介在性頻拍"],
+ "不応期":["不応期","PVARP","TARP","VRP","ARP","感応期","絶対不応期","相対不応期"],
+ "dft":["除細動閾値","除細動閾値試験","ステップダウン試験（DFT）","セーフティマージン試験（DFT）","高除細動閾値","受攻性上限試験"],
+ "ffrw":["FFRW","FFRWS Type I/II","PVAB","別chamber干渉","心室イベント-ファーフィールドR波時間測定"],
+ "vsp":["心室安全ペーシング","クロストークセンシングウインドウ","クロストーク"],
+ "電池":["ERI","RRT","EOS","BOL","推定寿命","電池内部抵抗","電池交換時期"],
+ "eri":["ERI","RRT","EOS","BOL","電池交換時期","推定寿命"],
+ "遠隔モニタリング":["Remote monitoring","送信機（中継器）","アラート送信","アラート管理","定期送信","遠隔モニタリング加算"],
+ "横隔神経":["横隔神経刺激","横隔膜刺激","LVペーシングベクトル","四極LVリード","最大出力ペーシング試験"],
+ "失神":["神経調節性失神","血管迷走神経性失神","状況失神","頸動脈洞症候群","チルト試験","ストークス・アダムス症候群"],
+ "房室ブロック":["1度房室ブロック","2度房室ブロック","Wenckebach型2度房室ブロック","Mobitz II型2度房室ブロック","高度房室ブロック","完全房室ブロック"],
+ "洞不全":["洞機能不全症候群","洞性徐脈","洞停止","洞房ブロック","徐脈頻脈症候群","洞結節機能回復時間"],
+};
+</script>
+<script>
+(function(){
+"use strict";
+/* =====================================================================
+   Pacemaker Navi — UI v2（試作）
+   ・data.json / algos.json / products.json / mri.json を読むだけで、書き換えない
+   ・医療情報の本文は加工せずに表示する（**強調** と `コード` の表示装飾のみ）
+   ・データにない関係は作らない。リンクは「データ内に明示された参照」だけ
+   ===================================================================== */
+var $=function(s,el){return (el||document).querySelector(s)};
+var $$=function(s,el){return Array.prototype.slice.call((el||document).querySelectorAll(s))};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function nf(s){s=String(s==null?"":s);try{return s.normalize("NFKC")}catch(e){return s}}
+function nq(s){return nf(s).toLowerCase().replace(/[\s\-_\/／　・‐‑–—―－]+/g,"")}
+function fmtN(n){return Number(n).toLocaleString("ja-JP")}
+function isEmpty(v){return v==null||v===""||(Array.isArray(v)&&!v.length)||(typeof v==="object"&&!Array.isArray(v)&&!Object.keys(v).length)}
+
+var ICON={
+ term:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5A2.5 2.5 0 0 1 18 7v12.5H7.5A2.5 2.5 0 0 1 5 17z"/><path d="M5 17a2.5 2.5 0 0 1 2.5-2.5H18M9 8h5.5M9 11h4"/></svg>',
+ algo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13h4l1.4-7 2.2 13 1.9-9h1.2l1-2 1.2 5h6.1"/></svg>',
+ feat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M9.5 9v11M15 9v11"/></svg>',
+ prod:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="11" height="10" rx="4.5"/><path d="M6 8V6.5A1.5 1.5 0 0 1 7.5 5h3A1.5 1.5 0 0 1 12 6.5V8"/><path d="M14 13h2c2.5 0 2.5-6 5-6"/></svg>',
+ lead:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h3v4H3z"/><path d="M6 8c4 0 4 8 8 8s4-4 7-4"/><circle cx="21" cy="12" r="1"/></svg>',
+ gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="11" height="17" rx="2"/><path d="M8 7h3M15 9h3a2 2 0 0 1 2 2v3"/></svg>',
+ mri:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M3.5 12H8M16 12h4.5"/></svg>',
+ more:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h3M4 12h3M4 18h3"/><circle cx="10.5" cy="6" r="1.5"/><circle cx="10.5" cy="12" r="1.5"/><circle cx="10.5" cy="18" r="1.5"/><path d="M14 6h6M14 12h6M14 18h4"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>',
+ search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>',
+ close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+ bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4.2-6.5 4.2v-16a1 1 0 0 1 1-1z"/></svg>',
+ bmOn:'<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4.2-6.5 4.2v-16a1 1 0 0 1 1-1z"/></svg>',
+ link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l2.8-2.8a4.5 4.5 0 0 0-6.4-6.4L11.5 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-2.8 2.8a4.5 4.5 0 0 0 6.4 6.4l1.3-1.2"/></svg>',
+ warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.3v.2"/></svg>',
+ info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.2"/></svg>',
+ mark:'<svg viewBox="0 0 44 28" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h9V4M11 17h5l3-6 3.5 13 3.5-17 3 10h13"/></svg>'
+};
+
+/* ---------- 保存領域（v2専用。現行版のキーには書き込まない） ---------- */
+var LS={
+ get:function(k,d){try{var v=localStorage.getItem("pn2_"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+ set:function(k,v){try{localStorage.setItem("pn2_"+k,JSON.stringify(v))}catch(e){}}
+};
+var histList=LS.get("history",[]);   /* [{k,t}] */
+var saved=LS.get("saved",[]);       /* [{k,t}] */
+var recentQ=LS.get("recentq",[]);   /* ["MVP",...] */
+
+/* ---------- データ ---------- */
+var FILES=["data","algos","products","mri"];
+var RAW={};           /* 読み込んだJSONそのもの（書き換えない） */
+var DB={term:[],feat:[],algo:[],prod:[],mri:[]};
+var BYKEY={};         /* "a:ID" -> rec */
+var TYPES={
+ term:{label:"用語",plural:"用語",icon:"term",pre:"t"},
+ algo:{label:"アルゴリズム",plural:"アルゴリズム",icon:"algo",pre:"a"},
+ feat:{label:"メーカー比較",plural:"メーカー比較",icon:"feat",pre:"f"},
+ prod:{label:"製品・リード",plural:"製品・リード",icon:"prod",pre:"p"},
+ mri:{label:"MRI",plural:"MRI登録グループ",icon:"mri",pre:"m"}
+};
+var PRE2TYPE={t:"term",a:"algo",f:"feat",p:"prod",m:"mri"};
+var ORDER=["term","algo","feat","prod","mri"];
+var MAKER_ORDER=["Medtronic","Abbott","BIOTRONIK","Boston Scientific","MicroPort CRM"];
+var MAKER_CHIPS=[["Medtronic","Medtronic"],["Abbott","Abbott"],["BIOTRONIK","BIOTRONIK"],["Boston Scientific","Boston"],["MicroPort CRM","MicroPort"]];
+var VENDORS=[["mdt","Medtronic"],["abt","Abbott"],["bio","BIOTRONIK"],["bsx","Boston Scientific"],["mcp","MicroPort CRM"]];
+var LEGACY_MAKERS=["Pacesetter AB (Siemens)","Cardiac Pacemakers (CPI), Guidant","Vitatron","Sorin Group","ela medical","Intermedics","Medico","Societe Somedics","Cardiac Control Systems","Cordis","Telectronics"];
+var CAT_ORDER=["PM","Leadless PM","ICD","S-ICD","EV-ICD","CRT-P","CRT-D","ICM","PMリード","ICDリード","LVリード","デリバリーシース","スリッター・ツール","プログラマ","遠隔モニタリング","送信機","ICM付属品"];
+var G_CAT_ORDER=["ペーシング","AV・タイミング","センシング","モード","レート応答","リード","デバイス構造","電池","不整脈・EP","心電図","薬剤","ICD","CRT・CSP","リードレス","植込み・手技","トラブル","MRI・EMI","フォロー","エビデンス"];
+var DEV_TOKENS=["PM","ICD","CRT","ICM","Leadless"];
+var KIND_LABEL={device:"本体",lead:"リード",gear:"関連機器"};
+
+function makerRank(m){var i=MAKER_ORDER.indexOf(m);if(i>=0)return i;var j=LEGACY_MAKERS.indexOf(m);return j>=0?100+j:900}
+function catRank(c){var i=CAT_ORDER.indexOf(c);return i<0?99:i}
+function strip(s){return String(s==null?"":s).replace(/\*\*/g,"").replace(/`/g,"")}
+function leaves(v,out){ /* 文字列の葉をすべて集める（検索とデータ検証の両方で使う） */
+ if(v==null)return out;
+ if(typeof v==="string"){if(v)out.push(v);return out}
+ if(typeof v==="number"||typeof v==="boolean"){out.push(String(v));return out}
+ if(Array.isArray(v)){v.forEach(function(x){leaves(x,out)});return out}
+ Object.keys(v).forEach(function(k){leaves(v[k],out)});return out;
+}
+
+function makeRec(type,raw,idx){
+ var r={type:type,raw:raw,idx:idx};
+ if(type==="term"){r.id=raw.term;r.title=raw.term;r.al=[raw.abbr,raw.en];r.maker=raw.maker;r.makers=[raw.maker];
+  r.meta=[raw.abbr?'<span class="md">'+esc(raw.abbr)+'</span>':"",esc(raw.cat),esc(raw.device)];r.sum=raw.short;r.badge="用語";r.icon="term"}
+ else if(type==="algo"){r.id=raw.id;r.title=raw.name;r.al=[raw.generic,raw.id];r.maker=raw.maker;r.makers=[raw.maker];
+  r.meta=['<span class="md">'+esc(raw.maker)+'</span>',esc(raw.cat),esc(raw.device)];r.sum=raw.scope;r.badge="アルゴリズム";r.icon="algo"}
+ else if(type==="feat"){r.id=raw.fn;r.title=raw.fn;r.al=[raw.en].concat(VENDORS.map(function(v){return raw[v[0]]}));
+  r.makers=VENDORS.filter(function(v){var x=raw[v[0]];return x&&x!=="—"&&String(x).trim()}).map(function(v){return v[1]});
+  r.meta=[esc(raw.cat),esc(raw.en),r.makers.length+"社に記載"];r.sum=VENDORS.filter(function(v){var x=raw[v[0]];return x&&x!=="—"}).map(function(v){return v[1].split(" ")[0]+"："+strip(raw[v[0]])}).join("　");r.badge="メーカー比較";r.icon="feat"}
+ else if(type==="prod"){r.id=raw.id;r.title=raw.name||raw.model||raw.id;r.al=[raw.model,raw.alias,raw.en,raw.family,raw.mfr];r.maker=raw.maker;r.makers=[raw.maker];
+  r.badge=KIND_LABEL[raw.kind]||raw.kind;r.icon=raw.kind==="lead"?"lead":raw.kind==="gear"?"gear":"prod";
+  r.meta=['<span class="md">'+esc(raw.maker)+'</span>',raw.model&&raw.model!==r.title?'<span class="num">'+esc(raw.model)+'</span>':"",esc(raw.cat)];
+  var s=[];
+  if(raw.kind==="lead"){[raw.polarity,raw.site,raw.fixation,raw.connector,raw.period?"販売 "+raw.period:""].forEach(function(x){if(x)s.push(x)})}
+  else if(raw.kind==="device"){[raw.longevity?"電池寿命 "+raw.longevity:"",raw.mri?"MRI "+String(raw.mri).split("（")[0]:"",raw.size].forEach(function(x){if(x)s.push(x)})}
+  else {s.push(strip(String(raw.role||"").split("\n")[0]))}
+  r.sum=s.join("　")}
+ else if(type==="mri"){r.id=raw.id;r.title=raw.group;var dv=(raw.devices||[]).map(function(d){return d.name||d.model});
+  var lm=[].concat(raw.ra||[],raw.rv||[],raw.lv||[]).map(function(l){return l.model});
+  r.al=dv.concat((raw.devices||[]).map(function(d){return d.model})).concat(lm);r.maker=raw.maker;r.makers=[raw.maker];
+  r.meta=['<span class="md">'+esc(raw.maker)+'</span>',esc(raw.type),esc((raw.tesla||[]).join(" / "))];
+  r.sum="本体 "+dv.length+"機種"+(lm.length?"　登録リード "+uniqArr(lm).length+"種":"")+"　"+dv.slice(0,3).join("、")+(dv.length>3?" ほか":"");r.badge="MRI";r.icon="mri"}
+ r.key=TYPES[type].pre+":"+r.id;
+ r.n=nq(r.title);
+ r.aln=(r.al||[]).filter(Boolean).map(nq).filter(Boolean);
+ var lv=leaves(raw,[]);
+ r.hayRaw=nf(lv.join(" \u0001 ")).toLowerCase();
+ r.hay=nq(lv.join("\u0001"));
+ return r;
+}
+function uniqArr(a){var s={},o=[];a.forEach(function(x){if(x&&!s[x]){s[x]=1;o.push(x)}});return o}
+
+function indexAll(){
+ var d=RAW.data||{},a=RAW.algos||{},p=RAW.products||{},m=RAW.mri||{};
+ DB.term=(d.gloss||[]).map(function(x,i){return makeRec("term",x,i)});
+ DB.feat=(d.feats||[]).map(function(x,i){return makeRec("feat",x,i)});
+ DB.algo=(a.items||[]).map(function(x,i){return makeRec("algo",x,i)});
+ DB.prod=(p.items||[]).map(function(x,i){return makeRec("prod",x,i)});
+ DB.mri=(m.items||[]).map(function(x,i){return makeRec("mri",x,i)});
+ BYKEY={};
+ ORDER.forEach(function(t){DB[t].forEach(function(r){BYKEY[r.key]=r})});
+ /* 明示された参照だけを引く索引 */
+ IDX.termByName={};DB.term.forEach(function(r){IDX.termByName[r.raw.term]=r});
+ IDX.algoById={};DB.algo.forEach(function(r){IDX.algoById[r.raw.id]=r});
+ IDX.prodById={};DB.prod.forEach(function(r){IDX.prodById[r.raw.id]=r});
+ IDX.mriById={};DB.mri.forEach(function(r){IDX.mriById[r.raw.id]=r});
+ IDX.prodByMriGroup={};DB.prod.forEach(function(r){var g=r.raw.mri_group;if(g){(IDX.prodByMriGroup[g]=IDX.prodByMriGroup[g]||[]).push(r)}});
+ IDX.prodByMakerModel={};DB.prod.forEach(function(r){if(r.raw.model){var k=r.raw.maker+"\u0001"+r.raw.model;(IDX.prodByMakerModel[k]=IDX.prodByMakerModel[k]||[]).push(r)}});
+ IDX.mriByLead={};DB.mri.forEach(function(r){["ra","rv","lv"].forEach(function(pos){(r.raw[pos]||[]).forEach(function(l){var k=r.raw.maker+"\u0001"+l.model;(IDX.mriByLead[k]=IDX.mriByLead[k]||[]);if(IDX.mriByLead[k].indexOf(r)<0)IDX.mriByLead[k].push(r)})})});
+}
+var IDX={};
+
+/* ---------- 検索（現行版の表記ゆれ辞書 SYN と概念マップ CONCEPT_MAP を引き継ぐ） ---------- */
+var SYN_N=(typeof SYN!=="undefined"?SYN:[]).map(function(g){return g.map(nq)});
+function expandQ(qraw){
+ var qn=nq(qraw);if(!qn)return [];
+ var out=[qn];
+ SYN_N.forEach(function(grp){
+  var hit=grp.some(function(w){return w===qn||(qn.length>=3&&w.indexOf(qn)>=0)||(w.length>=3&&qn.indexOf(w)>=0)});
+  if(hit)grp.forEach(function(w){if(out.indexOf(w)<0)out.push(w)});
+ });
+ return out;
+}
+function conceptTargets(qraw){
+ if(typeof CONCEPT_MAP==="undefined")return [];
+ var qn=nq(qraw),q=String(qraw||"").trim().toLowerCase();
+ var names=CONCEPT_MAP[q]||CONCEPT_MAP[qn];if(names)return names;
+ var cands=[qn].concat(expandQ(qraw));
+ for(var i=0;i<cands.length;i++){var cq=cands[i];
+  if(CONCEPT_MAP[cq])return CONCEPT_MAP[cq];
+  for(var k in CONCEPT_MAP){var kn=nq(k);if(!kn)continue;if(kn===cq||(cq.length>=3&&kn.indexOf(cq)>=0)||(kn.length>=3&&cq.indexOf(kn)>=0))return CONCEPT_MAP[k]}
+ }
+ return [];
+}
+function reEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}
+function prepQuery(qraw){
+ var qn=nq(qraw);if(!qn)return null;
+ var ql=nf(qraw).trim().toLowerCase();
+ var ex=expandQ(qraw).filter(function(x){return x!==qn&&x.length>=3});
+ var shortEx=expandQ(qraw).filter(function(x){return x!==qn&&x.length<3}).map(function(t){return new RegExp("(^|[^a-z0-9])"+reEsc(t)+"([^a-z0-9]|$)","i")});
+ var concept={};conceptTargets(qraw).forEach(function(n){concept[n]=1});
+ return {raw:qraw,qn:qn,ql:ql,ex:ex,shortEx:shortEx,concept:concept};
+}
+function score(r,Q){
+ var qn=Q.qn;
+ if(r.n===qn)return 0;
+ for(var i=0;i<r.aln.length;i++)if(r.aln[i]===qn)return 1;
+ if(r.n.indexOf(qn)===0)return 2;
+ for(i=0;i<r.aln.length;i++)if(r.aln[i].indexOf(qn)===0)return 3;
+ if(r.n.indexOf(qn)>=0)return 4;
+ for(i=0;i<r.aln.length;i++)if(r.aln[i].indexOf(qn)>=0)return 5;
+ if(r.type==="term"&&Q.concept[r.raw.term])return 5.5;
+ if(r.hay.indexOf(qn)>=0||(Q.ql&&r.hayRaw.indexOf(Q.ql)>=0))return 6;
+ for(i=0;i<Q.ex.length;i++)if(r.hay.indexOf(Q.ex[i])>=0)return 7;
+ for(i=0;i<Q.shortEx.length;i++)if(Q.shortEx[i].test(r.hayRaw))return 7;
+ return -1;
+}
+function makerOk(r,mk){if(!mk)return true;return (r.makers||[]).indexOf(mk)>=0}
+function search(qraw,opt){
+ opt=opt||{};var Q=prepQuery(qraw);var out={all:[],by:{term:[],algo:[],feat:[],prod:[],mri:[]}};
+ if(!Q)return out;
+ var types=opt.types||ORDER;
+ types.forEach(function(t){
+  var arr=DB[t],res=out.by[t];
+  for(var i=0;i<arr.length;i++){var r=arr[i];if(opt.maker&&!makerOk(r,opt.maker))continue;if(opt.filter&&!opt.filter(r))continue;
+   var s=score(r,Q);if(s>=0)res.push({r:r,s:s})}
+  res.sort(function(a,b){return (a.s-b.s)||(a.r.idx-b.r.idx)});
+ });
+ return out;
+}
+
+/* ---------- 本文の表示装飾（内容は変えない） ---------- */
+function inline(s){
+ var h=esc(s);
+ h=h.replace(/\*\*([\s\S]+?)\*\*/g,"<strong>$1</strong>");
+ h=h.replace(/`([^`]+)`/g,function(m,c){
+  var t=c.replace(/&amp;/g,"&");
+  if(IDX.algoById[t])return '<button class="xref" data-open="a:'+esc(t)+'">'+c+'</button>';
+  if(IDX.prodById[t])return '<button class="xref" data-open="p:'+esc(t)+'">'+c+'</button>';
+  if(IDX.mriById[t])return '<button class="xref" data-open="m:'+esc(t)+'">'+c+'</button>';
+  return "<code>"+c+"</code>";
+ });
+ h=h.replace(/(用語)『([^』]+)』/g,function(m,a,name){var raw=name.replace(/&amp;/g,"&").replace(/&#39;/g,"'").replace(/&quot;/g,'"');return IDX.termByName[raw]?a+'『<button class="xref" data-open="t:'+esc(raw)+'">'+name+'</button>』':m});
+ return h;
+}
+function prose(s){
+ if(isEmpty(s))return "";
+ return '<div class="prose">'+String(s).split(/\n/).map(function(p){return p.trim()?"<p>"+inline(p)+"</p>":""}).join("")+"</div>";
+}
+function plist(s){ /* 現行版と同じ区切り（改行・；・;）で項目に分ける */
+ var a=String(s||"").split(/\n|；|;/).map(function(x){return x.trim()}).filter(Boolean);
+ return a.length?'<ul class="plist">'+a.map(function(x){return "<li>"+inline(x)+"</li>"}).join("")+"</ul>":"";
+}
+function kvRows(pairs){
+ var h=pairs.filter(function(p){return !isEmpty(p[1])}).map(function(p){
+  return '<div><dt>'+esc(p[0])+'</dt><dd>'+(p[2]?p[1]:inline(p[1]).replace(/\n/g,"<br>"))+'</dd></div>'}).join("");
+ return h?'<dl class="kv">'+h+'</dl>':"";
+}
+function valText(v){
+ if(isEmpty(v))return "";
+ if(typeof v==="string")return v;
+ if(Array.isArray(v))return v.map(function(x){return typeof x==="object"?(x.name&&x.model&&x.name!==x.model?x.name+"（"+x.model+"）":(x.name||x.model||JSON.stringify(x))):String(x)}).join(" / ");
+ if(typeof v==="object")return Object.keys(v).map(function(k){return k+"："+valText(v[k])}).join("\n");
+ return String(v);
+}
+function otherBlock(raw,used,title){
+ var keys=Object.keys(raw).filter(function(k){return used.indexOf(k)<0&&!isEmpty(raw[k])});
+ if(!keys.length)return "";
+ return '<details class="other"><summary>'+esc(title||"そのほかの登録項目")+'（'+keys.length+'）</summary>'+kvRows(keys.map(function(k){return [k,valText(raw[k])]}))+'</details>';
+}
+function u(v,unit){if(isEmpty(v))return "";return /^[0-9.\/×\s]+$/.test(String(v))?v+" "+unit:String(v)}
+
+/* ---------- 詳細の構成 ---------- */
+var PROD_LABEL={
+ maker:"メーカー",mfr:"資料上の表記",dealer:"取扱会社",cat:"分類",family:"一般名称",en:"正式英語名",alias:"日本語表記",model:"型番",nbg:"NBG/NBDコード",jp_release:"国内発売",period:"販売期間",
+ role:"役割",idfr:"内径",odfr:"外径",length:"有効長",leadfit:"適合リード",gw:"ガイドワイヤ",approval:"販売名・承認番号",size:"寸法",mass:"質量",volume:"容積",
+ polarity:"極性",site:"適応部位",fixation:"固定形式",steroid:"ステロイド",connector:"コネクタ",intro:"イントロデューサ",
+ emat:"電極の材質",esurf:"電極表面",sad:"表面積 distal",sap:"表面積 prox",tip:"Tip電極径",ring:"Ring電極径",coil:"コイル",
+ dia:"リード径",cond:"導線形状",insul:"皮膜材質（外部/内部）",odmm:"Outer Diameter（mm）",
+ sback:"シリコンバック",cdesign:"コイルデザイン",ccoat:"コイル表面コーティング",cgap:"コイル間距離",csa_d:"コイル表面積 distal",csa_p:"コイル表面積 prox",
+ mri:"MRI対応",mri_cond:"撮像条件",mri_zone:"撮像範囲・患者条件",mri_gantry:"ガントリ",mri_xray:"MRI識別マーカ",mri_group:"MRI登録グループ",
+ xray:"X線識別マーカ",port_ra:"心房（RA）",port_rv:"右室（RV）",port_lv:"左室（LV）",port_hv:"高電圧（HV）",screwdriver:"ドライバサイズ",
+ longevity:"電池寿命",longevity_cond:"算出条件",longevity_src:"寿命の出典",battery_model:"電池型番",battery_cap:"電池容量",magnet_bol:"マグネットレート @BOL",magnet_eos:"マグネットレート @EOS/RRT",
+ eri_eos:"ERIからEOSまで",eos_behavior:"EOS/RRT の挙動",pace_bol:"ペーシング（BOL）",pace_eos:"ペーシング（EOS/RRT 後）",backup:"バックアップ作動",
+ rm:"遠隔モニタリング",rf:"無線テレメトリ",diag:"診断",shock:"ショック出力",charge:"充電時間",sensing:"センシングオプション",price:"償還価格",hoken:"保険区分"
+};
+function pv(raw,k){
+ var v=raw[k];if(isEmpty(v))return "";
+ var unit={sad:"mm²",sap:"mm²",tip:"mm",ring:"mm",dia:"mm",length:raw.kind==="lead"?"cm":"",odfr:raw.kind==="lead"?"Fr":"",cgap:"mm",csa_d:"mm²",csa_p:"mm²"}[k];
+ return unit?u(v,unit):v;
+}
+function pairsOf(raw,keys,used){return keys.map(function(k){used.push(k);return [PROD_LABEL[k]||k,pv(raw,k)]})}
+
+function detailProd(r){
+ var x=r.raw,used=["id","kind","name"],tabs=[];
+ var basicKeys=["maker","mfr","dealer","cat","family","en","alias","model","nbg","jp_release","period"];
+ if(x.kind==="gear"){
+  tabs.push({k:"basic",label:"基本",html:kvRows(pairsOf(x,basicKeys.concat(["role","approval"]),used))});
+  tabs.push({k:"spec",label:"仕様",html:kvRows(pairsOf(x,["idfr","odfr","length","leadfit","gw","size","mass"],used))});
+ }else if(x.kind==="lead"){
+  tabs.push({k:"basic",label:"基本",html:kvRows(pairsOf(x,basicKeys.concat(["polarity","site","fixation","steroid","connector","intro"]),used))});
+  var sp="";
+  var e=kvRows(pairsOf(x,["emat","esurf","sad","sap","tip","ring"],used));if(e)sp+='<div class="subh">電極</div>'+e;
+  var s=kvRows(pairsOf(x,["dia","cond","insul","length","odfr","odmm"],used));if(s)sp+='<div class="subh">リード構造</div>'+s;
+  var c=kvRows(pairsOf(x,["coil","sback","cdesign","ccoat","cgap","csa_d","csa_p"],used));if(c)sp+='<div class="subh">ショック電極</div>'+c;
+  tabs.push({k:"spec",label:"仕様",html:sp});
+ }else{
+  tabs.push({k:"basic",label:"基本",html:kvRows(pairsOf(x,basicKeys,used))+kvRows(pairsOf(x,["price","hoken"],used))});
+  var sp2="";
+  var a1=kvRows(pairsOf(x,["size","volume","mass","xray"],used));if(a1)sp2+='<div class="subh">寸法とイメージング</div>'+a1;
+  var a2=kvRows(pairsOf(x,["port_ra","port_rv","port_lv","port_hv","connector","screwdriver"],used));if(a2)sp2+='<div class="subh">コネクタ</div>'+a2;
+  used.push("longevity","longevity_cond");
+  var lon=x.longevity?'<div><dt>電池寿命</dt><dd>'+inline(x.longevity)+(x.longevity_cond?'<span class="cond">算出条件：'+inline(x.longevity_cond)+'</span>':"")+'</dd></div>':(x.longevity_cond?'<div><dt>算出条件</dt><dd>'+inline(x.longevity_cond)+'</dd></div>':"");
+  var a3=kvRows(pairsOf(x,["longevity_src","battery_model","battery_cap","magnet_bol","magnet_eos","eri_eos","eos_behavior","pace_bol","pace_eos","backup"],used));
+  if(lon||a3)sp2+='<div class="subh">電池・寿命</div>'+(lon?'<dl class="kv">'+lon+'</dl>':"")+a3;
+  var a4=kvRows(pairsOf(x,["rm","rf"],used));if(a4)sp2+='<div class="subh">通信</div>'+a4;
+  var a5=kvRows(pairsOf(x,["diag"],used));if(a5)sp2+='<div class="subh">診断機能</div>'+a5;
+  var a6=kvRows(pairsOf(x,["shock","charge","sensing"],used));if(a6)sp2+='<div class="subh">治療・センシング</div>'+a6;
+  tabs.push({k:"spec",label:"仕様",html:sp2});
+ }
+ /* MRI */
+ var mh=kvRows(pairsOf(x,["mri","mri_cond","mri_zone","mri_gantry","mri_xray"],used));
+ used.push("mri_group");
+ var groups=[];
+ if(x.mri_group&&IDX.mriById[x.mri_group])groups.push(IDX.mriById[x.mri_group]);
+ var viaLead=x.kind==="lead"&&x.model?(IDX.mriByLead[x.maker+"\u0001"+x.model]||[]):[];
+ if(x.mri_group){mh+='<div class="subh">MRI登録グループ（mri_group：'+esc(x.mri_group)+'）</div>'+(groups.length?'<div class="rel">'+groups.map(function(g){return '<button data-open="'+esc(g.key)+'">'+esc(g.title)+'</button>'}).join("")+'</div>':'<p class="note">'+esc(x.mri_group)+'（MRIデータに該当グループなし）</p>')}
+ if(viaLead.length){mh+='<div class="subh">この型番を登録しているMRI組合せ（'+viaLead.length+'）</div><p class="note" style="margin:0 0 6px">MRIデータのリード一覧に、同じメーカー・同じ型番として登録されているグループです。</p><div class="rel">'+viaLead.map(function(g){return '<button data-open="'+esc(g.key)+'">'+esc(g.title)+'<br><span class="muted" style="font-size:12px">'+esc(g.raw.type)+'</span></button>'}).join("")+'</div>'}
+ if(!mh)mh='<div class="notice gray">'+ICON.info+'<div>この製品データにはMRIの情報が登録されていません。本体とリードの組合せは「MRI」から確認できます。</div></div>';
+ tabs.push({k:"mri",label:"MRI",html:mh+'<div style="margin-top:12px"><button class="btn ghost block" data-go="#/mri">MRI条件を本体＋リードで確認</button></div>'});
+ /* 関連 */
+ var rel='<div class="subh">横断検索</div><div class="rel">'+
+  [x.model,x.name].filter(function(v,i,a){return v&&a.indexOf(v)===i}).map(function(v){return '<button data-q="'+esc(v)+'">「'+esc(v)+'」で検索</button>'}).join("")+
+  '<button data-go="#/list/prod?mk='+encodeURIComponent(x.maker)+'&kd='+encodeURIComponent(x.kind)+'">'+esc(x.maker)+' の'+esc(KIND_LABEL[x.kind]||"")+'一覧</button></div>'+
+  '<div class="subh">相互リンク（データ整備後に表示）</div><div class="future">'+
+  ["搭載アルゴリズム","対応リード","国内発売年表","前世代・後継機種"].map(function(n){return '<div><span>'+n+'</span><span>未登録</span></div>'}).join("")+
+  '</div><p class="note" style="margin-top:8px">製品どうしの関係は、データに登録されたものだけを表示します。推測によるリンクは作りません。</p>';
+ tabs.push({k:"rel",label:"関連",html:rel});
+ var other=otherBlock(x,used);
+ return {badge:r.badge,title:r.title,sub:['<span class="md">'+esc(x.maker)+'</span>',x.model&&x.model!==r.title?'<span class="num">'+esc(x.model)+'</span>':"",esc(x.cat)],tabs:tabs,other:other};
+}
+function detailAlgo(r){
+ var x=r.raw,used=["id","name"],tabs=[];
+ used.push("maker","cat","device","generic","scope","models");
+ tabs.push({k:"ov",label:"概要",html:kvRows([["一般名称",x.generic],["目的",x.scope],["メーカー",x.maker],["分類",x.cat],["対象",x.device],["代表搭載機種",x.models]])});
+ used.push("how");if(!isEmpty(x.how))tabs.push({k:"how",label:"動作",html:prose(x.how)});
+ used.push("params");if(!isEmpty(x.params))tabs.push({k:"set",label:"設定",html:plist(x.params)});
+ used.push("ecg");if(!isEmpty(x.ecg))tabs.push({k:"ecg",label:"心電図所見",html:prose(x.ecg)});
+ used.push("pitfall","caution");
+ if(!isEmpty(x.pitfall)||!isEmpty(x.caution)){var t="";if(!isEmpty(x.pitfall))t+='<div class="subh">トラブル事例</div>'+prose(x.pitfall);if(!isEmpty(x.caution))t+='<div class="subh">注意点</div>'+prose(x.caution);tabs.push({k:"pit",label:"トラブル・注意",html:t})}
+ used.push("equiv");
+ if(!isEmpty(x.equiv)){
+  var rows=String(x.equiv).split("\n").filter(function(s){return s.trim()}).map(function(line){var m=line.match(/^([^:：]{2,40})[:：]\s*([\s\S]*)$/);
+   if(m)return '<div><div class="vk">'+esc(m[1])+'</div><div class="vv'+(/^—/.test(m[2].trim())?" none":"")+'">'+inline(m[2])+'</div></div>';
+   return '<div><div class="vk"></div><div class="vv">'+inline(line)+'</div></div>'});
+  tabs.push({k:"eq",label:"他社比較",html:'<div class="vgrid">'+rows.join("")+'</div><p class="note" style="margin-top:10px">「—」は、このデータに相当機能が登録されていないことを示します。</p>'});
+ }
+ used.push("pathway","glossary");
+ if(!isEmpty(x.glossary))tabs[0].html+=kvRows([["関連用語",x.glossary]]);
+ if(!isEmpty(x.pathway))tabs[0].html+=kvRows([["プログラマ操作",x.pathway]]);
+ return {badge:"アルゴリズム",title:x.name,sub:['<span class="md">'+esc(x.maker)+'</span>',esc(x.cat),esc(x.device)],tabs:tabs,other:otherBlock(x,used)};
+}
+function detailTerm(r){
+ var x=r.raw,used=["term","abbr","en","cat","device","maker","short","tags"];
+ var h=prose(x.short)+kvRows([["英語",x.en],["略語",x.abbr],["カテゴリ",x.cat],["対象デバイス",x.device],["メーカー",x.maker],["検索タグ",x.tags]]);
+ var ct=(typeof CONCEPT_MAP!=="undefined")?conceptTargets(x.term).filter(function(n){return n!==x.term&&IDX.termByName[n]}):[];
+ if(ct.length)h+='<div class="subh">関連する用語（アプリの概念辞書）</div><div class="rel">'+ct.map(function(n){return '<button data-open="t:'+esc(n)+'">'+esc(n)+'</button>'}).join("")+'</div>';
+ h+='<div class="subh">横断検索</div><div class="rel"><button data-q="'+esc(x.abbr||x.term)+'">「'+esc(x.abbr||x.term)+'」で全体を検索</button></div>';
+ return {badge:"用語",title:x.term,sub:[x.abbr?'<span class="md">'+esc(x.abbr)+'</span>':"",esc(x.cat),esc(x.device),x.maker&&x.maker!=="General"?esc(x.maker):""],tabs:[{k:"ov",label:"説明",html:h}],other:otherBlock(x,used)};
+}
+function detailFeat(r){
+ var x=r.raw,used=["fn","en","cat","note"];
+ var rows=VENDORS.map(function(v){used.push(v[0]);var val=x[v[0]];var none=!val||val==="—";
+  return '<div><div class="vk">'+esc(v[1])+'</div><div class="vv'+(none?" none":"")+'">'+(none?esc(val||"—"):inline(val)+'<div><button class="xref" style="font-size:13px;margin-top:2px" data-q="'+esc(strip(val).split(/[（(／/]/)[0].trim())+'">この名称で検索</button></div>')+'</div></div>'}).join("");
+ var h='<div class="vgrid">'+rows+'</div>'+(x.note?'<div class="subh">備考</div>'+prose(x.note):"")+kvRows([["英語",x.en],["カテゴリ",x.cat]])+
+  '<p class="note" style="margin-top:10px">「—」は、この一覧表に記載がないことを示します。</p>';
+ return {badge:"メーカー比較",title:x.fn,sub:[esc(x.cat),esc(x.en)],tabs:[{k:"cmp",label:"5社比較",html:h}],other:otherBlock(x,used)};
+}
+function leadLink(maker,l){
+ var hits=IDX.prodByMakerModel[maker+"\u0001"+l.model]||[];
+ var label=esc(l.name&&l.name!==l.model?l.name+"（"+l.model+"）":(l.name||l.model));
+ return hits.length===1?'<button data-open="'+esc(hits[0].key)+'">'+label+'</button>':'<button data-q="'+esc(l.model)+'">'+label+'</button>';
+}
+function detailMri(r){
+ var x=r.raw,used=["id","group","maker","type","tesla","devices","ra","rv","lv","cond","verify"],tabs=[];
+ var head='<div class="notice warn">'+ICON.warn+'<div>登録情報から候補を提示する参考情報です。撮像可否を保証するものではありません。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
+ if(x.verify)head+='<div class="notice gray" style="margin-top:8px">'+ICON.info+'<div>このデータは取り込み後の検証が未了です。</div></div>';
+ var dev=(x.devices||[]).map(function(d){var hits=IDX.prodByMakerModel[x.maker+"\u0001"+d.model]||[];var lab=esc(d.name&&d.model&&d.name!==d.model?d.name+"（"+d.model+"）":(d.name||d.model));return hits.length===1?'<button data-open="'+esc(hits[0].key)+'">'+lab+'</button>':'<button data-q="'+esc(d.model||d.name)+'">'+lab+'</button>'}).join("");
+ var linked=IDX.prodByMriGroup[x.id]||[];
+ var h=head+kvRows([["メーカー",x.maker],["種別",x.type],["静磁場強度（登録）",(x.tesla||[]).join(" / ")]])+
+  '<div class="subh">本体（'+(x.devices||[]).length+'）</div><div class="rel">'+dev+'</div>';
+ if(linked.length)h+='<div class="subh">このグループを参照している製品データ（mri_group）</div><div class="rel">'+linked.map(function(p){return '<button data-open="'+esc(p.key)+'">'+esc(p.title)+'</button>'}).join("")+'</div>';
+ [["ra","心房リード（RA）"],["rv","心室リード（RV）"],["lv","左室リード（LV）"]].forEach(function(p){var a=x[p[0]]||[];if(a.length)h+='<div class="subh">'+p[1]+'（'+a.length+'）</div><div class="rel">'+a.map(function(l){return leadLink(x.maker,l)}).join("")+'</div>'});
+ tabs.push({k:"cfg",label:"対応構成",html:h});
+ var c=x.cond||{};
+ tabs.push({k:"cond",label:"撮像条件",html:head+kvRows(Object.keys(c).map(function(k){return [k,valText(c[k])]}))});
+ return {badge:"MRI",title:x.group,sub:['<span class="md">'+esc(x.maker)+'</span>',esc(x.type),esc((x.tesla||[]).join(" / "))],tabs:tabs,other:otherBlock(x,used)};
+}
+function techLine(r){
+ var x=r.raw,a=[];
+ if(r.type==="algo"||r.type==="prod"||r.type==="mri")a.push("データID："+x.id);
+ if(r.type==="prod")a.push("kind："+x.kind);
+ if(r.type==="mri"&&x.verify!=null)a.push("verify："+String(x.verify));
+ if(r.type==="term")a.push("用語集（data.json gloss）");
+ if(r.type==="feat")a.push("一覧表（data.json feats）");
+ return '<p class="tech">'+a.map(esc).join("　")+'</p>';
+}
+function buildDetail(r){
+ var D=r.type==="prod"?detailProd(r):r.type==="algo"?detailAlgo(r):r.type==="term"?detailTerm(r):r.type==="feat"?detailFeat(r):detailMri(r);
+ D.tech=techLine(r);return D;
+}
+
+/* ---------- 行 ---------- */
+function hl(title,q){
+ var h=esc(title);if(!q)return h;
+ var t=nf(title).toLowerCase(),ql=nf(q).trim().toLowerCase();if(!ql)return h;
+ var i=t.indexOf(ql);if(i<0||nf(title).length!==String(title).length)return h;
+ var raw=String(title);return esc(raw.slice(0,i))+"<mark>"+esc(raw.slice(i,i+ql.length))+"</mark>"+esc(raw.slice(i+ql.length));
+}
+function rowHTML(r,q){
+ var badgeCls=r.type==="mri"&&r.raw.verify?" gray":"";
+ return '<button class="row" data-open="'+esc(r.key)+'"><span class="ri">'+ICON[r.icon]+'</span><span class="rb"><span class="rt"><span class="rn">'+hl(r.title,q)+'</span><span class="badge'+badgeCls+'">'+esc(r.badge)+'</span></span>'+
+  '<span class="rm">'+r.meta.filter(Boolean).map(function(m){return "<span>"+m+"</span>"}).join("")+'</span>'+
+  (r.sum?'<span class="rs">'+esc(strip(r.sum))+'</span>':"")+'</span></button>';
+}
+/* 大量件数でも一括描画しない：40件ずつ追加 */
+var CHUNK=40;
+function chunkList(container,rows,q,opts){
+ opts=opts||{};var n=0;
+ container.innerHTML='<div class="list"></div>'+(rows.length>CHUNK?'<button class="more">さらに表示</button><div class="sentinel"></div>':"");
+ var list=$(".list",container),more=$(".more",container),sen=$(".sentinel",container);
+ if(!rows.length){container.innerHTML='<div class="empty"><b>'+esc(opts.emptyTitle||"該当する項目はありません")+'</b>'+esc(opts.emptyText||"キーワードやフィルターを変えてお試しください。")+'</div>';return}
+ function add(){var end=Math.min(rows.length,n+CHUNK);var h="";for(var i=n;i<end;i++)h+=rowHTML(rows[i].r||rows[i],q);list.insertAdjacentHTML("beforeend",h);n=end;
+  if(more){more.textContent="さらに表示（残り "+fmtN(rows.length-n)+" 件）";if(n>=rows.length){more.remove();more=null;if(io)io.disconnect()}}}
+ add();
+ var io=null;
+ if(more){more.onclick=add;if("IntersectionObserver" in window){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&more)add()})},{rootMargin:"600px"});io.observe(sen)}}
+}
+
+/* ---------- ルーティング（#/path?query） ---------- */
+var route={path:"home",params:{}};
+function parseHash(){
+ var h=location.hash.replace(/^#\/?/,"");var qi=h.indexOf("?");var path=(qi<0?h:h.slice(0,qi))||"home";var params={};
+ if(qi>=0)h.slice(qi+1).split("&").forEach(function(p){if(!p)return;var kv=p.split("=");params[decodeURIComponent(kv[0])]=decodeURIComponent((kv[1]||"").replace(/\+/g," "))});
+ return {path:path,params:params};
+}
+function buildHash(path,params){var q=Object.keys(params||{}).filter(function(k){return params[k]!==""&&params[k]!=null}).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(params[k])}).join("&");return "#/"+path+(q?"?"+q:"")}
+var keepScroll=false;
+function go(path,params,replace){var h=buildHash(path,params);if(replace){keepScroll=true;history_replace(h)}else location.hash=h}
+function history_replace(h){try{window.history.replaceState(null,"",h)}catch(e){location.replace(h)}onRoute()}
+function setParam(k,v,replace){var p=Object.assign({},route.params);if(v===""||v==null)delete p[k];else p[k]=v;go(route.path,p,replace)}
+
+var scrollMem={};
+var lastViewKey=null;
+function viewKey(rt){var p=Object.assign({},rt.params);delete p.d;return buildHash(rt.path,p)}
+function onRoute(){
+ var nr=parseHash();
+ var prevKey=lastViewKey;
+ var nk=viewKey(nr);
+ if(prevKey&&prevKey!==nk)scrollMem[prevKey]=window.scrollY;
+ route=nr;
+ if(prevKey!==nk){var ks=keepScroll&&prevKey&&prevKey.split("?")[0]===nk.split("?")[0];var y0=window.scrollY;renderView();lastViewKey=nk;var y=ks?y0:(scrollMem[nk]||0);requestAnimationFrame(function(){window.scrollTo(0,y)})}
+ keepScroll=false;
+ if(!route.params.d)pushedDetail=false;
+ if(route.params.d)openSheet(route.params.d);else closeSheet(true);
+}
+
+/* ---------- 画面 ---------- */
+function setBar(opts){
+ var bar=$("#bar");
+ if(opts.home){bar.innerHTML='<div class="brand"><span class="mark" aria-hidden="true">'+ICON.mark+'</span><span class="brandtx"><b>Pacemaker Navi</b><small>Cardiac Device Quick Reference</small></span></div><span class="spacer"></span><span class="count-pill num">'+fmtN(totalCount())+'件</span>'}
+ else{bar.innerHTML=(opts.back?'<button class="backbtn" id="backbtn" aria-label="戻る">'+ICON.back+'</button>':"")+'<span class="vtitle">'+esc(opts.title||"")+'</span><span class="spacer"></span>'+(opts.searchIcon?'<button class="iconbtn" data-go="#/search" aria-label="検索">'+ICON.search+'</button>':"")}
+ $("#searchrow").classList.toggle("hidden",!opts.search);
+ var b=$("#backbtn");if(b)b.onclick=function(){if(window.history.length>1)window.history.back();else go("home",{})};
+}
+function navOn(name){$$(".nav button").forEach(function(b){b.classList.toggle("on",b.dataset.nav===name);b.setAttribute("aria-current",b.dataset.nav===name?"page":"false")})}
+function show(id){$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+id)})}
+function totalCount(){return DB.term.length+DB.feat.length+DB.algo.length+DB.prod.length+DB.mri.length}
+
+function renderView(){
+ if(!ready)return;
+ var p=route.path.split("/");
+ var name=p[0];
+ if(name==="home"){renderHome()}
+ else if(name==="search"){renderSearch()}
+ else if(name==="list"){renderList(p[1]||"term")}
+ else if(name==="mri"){renderMri()}
+ else if(name==="history"){renderHistory()}
+ else if(name==="saved"){renderSaved()}
+ else if(name==="menu"){renderMenu()}
+ else if(name==="more"){renderMore()}
+ else {renderHome()}
+}
+
+function renderHome(){
+ setBar({home:true,search:true});navOn("home");show("home");
+ var q=$("#q");if(q.value){q.value="";$("#qclear").classList.remove("on")}
+ var nDev=DB.prod.filter(function(r){return r.raw.kind==="device"}).length,nLead=DB.prod.filter(function(r){return r.raw.kind==="lead"}).length,nGear=DB.prod.length-nDev-nLead;
+ var tiles=[
+  ["#/list/prod","prod","製品・リード","型番・仕様・販売期間",DB.prod.length],
+  ["#/mri","mri","MRI","本体＋リードから条件を確認",DB.mri.length],
+  ["#/list/algo","algo","アルゴリズム","動作・設定・他社比較",DB.algo.length],
+  ["#/list/term","term","用語","デバイスの用語",DB.term.length],
+  ["#/list/feat","feat","メーカー比較","5社の相当機能を一覧",DB.feat.length],
+  ["#/more","more","年表・その他","過去製品・データ情報",""]
+ ];
+ var h='<div class="lead"><h1>調べたい情報へ、最短で。</h1><p>デバイスの製品・メーカー機能・用語・MRI条件を横断検索します。</p></div>'+
+  '<div class="tiles">'+tiles.map(function(t){return '<button class="tile" data-go="'+t[0]+'"><span class="ti">'+ICON[t[1]]+'</span><b>'+t[2]+'</b><span>'+t[3]+'</span>'+(t[4]!==""?'<i class="tn num" style="font-style:normal">'+fmtN(t[4])+'</i>':"")+'</button>'}).join("")+'</div>';
+ var rec=histList.slice(0,3).map(function(h){return BYKEY[h.k]}).filter(Boolean);
+ if(rec.length)h+='<h2 class="sec">最近見た項目<button class="aside linkish" style="min-height:0" data-go="#/history">すべて</button></h2><div class="list">'+rec.map(function(r){return rowHTML(r)}).join("")+'</div>';
+ var ex=recentQ.length?recentQ.slice(0,8):["MVP","3830","Azure","SmartCRT","アンダーセンシング","BIOMONITOR"];
+ h+='<h2 class="sec">'+(recentQ.length?"最近の検索":"検索の例")+'</h2><div class="chips examples">'+ex.map(function(s){return '<button class="chip" data-q="'+esc(s)+'">'+esc(s)+'</button>'}).join("")+'</div>';
+ h+='<h2 class="sec">収録データ<span class="aside">'+esc(dataDate())+'</span></h2><div class="stat num">'+
+  '<div><span>用語</span><span>'+fmtN(DB.term.length)+'</span></div>'+
+  '<div><span>アルゴリズム</span><span>'+fmtN(DB.algo.length)+'</span></div>'+
+  '<div><span>メーカー比較</span><span>'+fmtN(DB.feat.length)+'</span></div>'+
+  '<div><span>製品・リード<small>本体 '+fmtN(nDev)+'・リード '+fmtN(nLead)+'・関連機器 '+fmtN(nGear)+'</small></span><span>'+fmtN(DB.prod.length)+'</span></div>'+
+  '<div><span>MRI登録グループ</span><span>'+fmtN(DB.mri.length)+'</span></div></div>'+
+  '<p class="note" style="margin:10px 2px 0">登録情報は参考です。診療・設定・MRI検査の判断は、最新の添付文書・メーカー資料等で確認してください。</p>';
+ $("#v-home").innerHTML=h;
+}
+function dataDate(){var ds=FILES.map(function(f){return RAW[f]&&RAW[f].updated}).filter(Boolean).sort();return ds.length?"更新 "+ds[ds.length-1]:""}
+
+/* 検索画面：上部の入力欄を共用する（ホームで打ち始めると、そのまま検索画面に移る） */
+var searchState={q:"",c:"all",m:""};
+function renderSearch(){
+ setBar({title:"検索",search:true});navOn("search");show("search");
+ var P=route.params;searchState.q=P.q||"";searchState.c=P.c||"all";searchState.m=P.m||"";
+ var q=$("#q");if(q.value!==searchState.q&&document.activeElement!==q)q.value=searchState.q;
+ $("#qclear").classList.toggle("on",!!q.value);
+ drawSearch();
+}
+function catChips(counts){
+ var defs=[["all","すべて"],["term","用語"],["algo","アルゴリズム"],["feat","メーカー比較"],["prod","製品・リード"],["mri","MRI"]];
+ return '<div class="chips" id="catchips" role="tablist" aria-label="カテゴリ">'+defs.map(function(d){var n=counts?counts[d[0]]:null;return '<button class="chip'+(searchState.c===d[0]?" on":"")+(n===0?" zero":"")+'" data-cat="'+d[0]+'">'+d[1]+(n!=null?'<span class="n num">'+fmtN(n)+'</span>':"")+'</button>'}).join("")+'</div>';
+}
+function makerChips(){
+ return '<div class="flabel">メーカー</div><div class="chips" id="mkchips">'+[["","すべて"]].concat(MAKER_CHIPS).map(function(m){return '<button class="chip'+(searchState.m===m[0]?" on":"")+'" data-mk="'+esc(m[0])+'">'+esc(m[1])+'</button>'}).join("")+'</div>';
+}
+var lastRes=null;
+function drawSearch(){
+ var el=$("#v-search"),q=searchState.q.trim();
+ if(!q){
+  var ex=["MVP","3830","SmartCRT","Advisa MRI","アンダーセンシング","BIOMONITOR"];
+  el.innerHTML=catChips(null)+makerChips()+
+   (recentQ.length?'<h2 class="sec">最近の検索<button class="aside linkish" style="min-height:0" id="clrq">消去</button></h2><div class="list">'+recentQ.map(function(s){return '<button class="row" data-q="'+esc(s)+'"><span class="ri">'+ICON.search+'</span><span class="rb"><span class="rn">'+esc(s)+'</span></span></button>'}).join("")+'</div>':"")+
+   '<h2 class="sec">検索の例</h2><div class="chips examples">'+ex.map(function(s){return '<button class="chip" data-q="'+esc(s)+'">'+esc(s)+'</button>'}).join("")+'</div>'+
+   '<p class="note" style="margin-top:16px">用語・アルゴリズム・メーカー比較・製品（本体・リード・関連機器）・MRI登録グループをまとめて検索します。型番、機能名、略語、英語名、日本語表記のどれでも探せます。</p>';
+  var c=$("#clrq");if(c)c.onclick=function(){recentQ=[];LS.set("recentq",recentQ);drawSearch()};
+  return;
+ }
+ var t0=performance.now();
+ var res=search(q,{maker:searchState.m});lastRes=res;
+ var counts={all:0};ORDER.forEach(function(t){counts[t]=res.by[t].length;counts.all+=res.by[t].length});
+ var ms=Math.round(performance.now()-t0);
+ var h=catChips(counts)+makerChips();
+ if(!counts.all){h+='<div class="empty"><b>「'+esc(q)+'」に一致する項目はありません</b>型番の一部（例：3830）や略語（例：MVP）でもお試しください。'+(searchState.m?'<br><button class="linkish" data-mk-clear="1">メーカーの絞り込みを外す</button>':"")+'</div>';el.innerHTML=h;return}
+ if(searchState.c==="all"){
+  var groups=ORDER.filter(function(t){return res.by[t].length}).sort(function(a,b){return (res.by[a][0].s-res.by[b][0].s)||(ORDER.indexOf(a)-ORDER.indexOf(b))});
+  var nsyn=0;ORDER.forEach(function(t){res.by[t].forEach(function(x){if(x.s>=7)nsyn++})});
+  h+='<p class="rescount num">'+fmtN(counts.all)+' 件'+(nsyn?'（うち表記ゆれ・関連語による一致 '+fmtN(nsyn)+' 件）':'')+'</p>';
+  groups.forEach(function(t){var arr=res.by[t];var show=arr.slice(0,4);
+   h+='<div class="ghead"><b>'+esc(TYPES[t].plural)+'　'+fmtN(arr.length)+'</b>'+(arr.length>4?'<button data-cat="'+t+'">すべて表示</button>':"")+'</div><div class="list">'+show.map(function(x){return rowHTML(x.r,q)}).join("")+'</div>';
+  });
+  el.innerHTML=h;
+ }else{
+  var arr=res.by[searchState.c]||[];
+  h+='<p class="rescount num">'+esc(TYPES[searchState.c].plural)+' '+fmtN(arr.length)+' 件</p><div id="sres"></div>';
+  el.innerHTML=h;chunkList($("#sres"),arr,q);
+ }
+}
+function commitRecentQ(q){q=String(q||"").trim();if(!q||q.length>60)return;recentQ=[q].concat(recentQ.filter(function(x){return x!==q})).slice(0,10);LS.set("recentq",recentQ)}
+
+/* ---------- 一覧（6つの入口） ---------- */
+function renderList(type){
+ if(!TYPES[type])type="term";
+ var P=route.params;
+ setBar({title:TYPES[type].plural,back:true,searchIcon:true,search:false});navOn("home");show("list");
+ var el=$("#v-list");var all=DB[type].slice();var h="";var rows;
+ var fq=P.fq||"";
+ if(type==="prod"){
+  var kd=P.kd||"",mk=P.mk||"",ct=P.ct||"",per=P.per||"";
+  h+='<div class="seg" role="tablist">'+[["","すべて"],["device","本体"],["lead","リード"],["gear","関連機器"]].map(function(k){return '<button class="'+(kd===k[0]?"on":"")+'" data-p-kd="'+k[0]+'">'+k[1]+'</button>'}).join("")+'</div>';
+  var scope=all.filter(function(r){return !kd||r.raw.kind===kd});
+  var mks=uniqArr(scope.map(function(r){return r.raw.maker})).sort(function(a,b){return makerRank(a)-makerRank(b)||String(a).localeCompare(b,"ja")});
+  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk?" on":"")+'" data-p-mk="">すべて</button>'].concat(mks.map(function(m){var n=scope.filter(function(r){return r.raw.maker===m}).length;return '<button class="chip'+(mk===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  var scope2=scope.filter(function(r){return !mk||r.raw.maker===mk});
+  var cats=uniqArr(scope2.map(function(r){return r.raw.cat})).sort(function(a,b){return catRank(a)-catRank(b)||String(a).localeCompare(b,"ja")});
+  h+='<div class="flabel">分類</div><div class="chips">'+['<button class="chip'+(!ct?" on":"")+'" data-p-ct="">すべて</button>'].concat(cats.map(function(c){var n=scope2.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  rows=scope2.filter(function(r){return (!ct||r.raw.cat===ct)&&(!per||!isEmpty(r.raw.period))});
+  if(per)h+='<div class="notice info" style="margin-top:8px">'+ICON.info+'<div>販売期間が登録されている製品だけを表示しています。<button class="linkish" data-p-per="">解除</button></div></div>';
+  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.raw.maker).localeCompare(b.raw.maker,"ja")||catRank(a.raw.cat)-catRank(b.raw.cat)||String(a.title).localeCompare(b.title,"ja",{numeric:true})});
+ }else if(type==="algo"){
+  var mk2=P.mk||"",ct2=P.ct||"";
+  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk2?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_ORDER.map(function(m){var n=all.filter(function(r){return r.raw.maker===m}).length;return '<button class="chip'+(mk2===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  var sc=all.filter(function(r){return !mk2||r.raw.maker===mk2});
+  var cats2=uniqArr(sc.map(function(r){return r.raw.cat}));
+  h+='<div class="flabel">分類</div><div class="chips">'+['<button class="chip'+(!ct2?" on":"")+'" data-p-ct="">すべて</button>'].concat(cats2.map(function(c){var n=sc.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct2===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  rows=sc.filter(function(r){return !ct2||r.raw.cat===ct2});
+  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.title).localeCompare(b.title,"ja")});
+ }else if(type==="term"){
+  var dv=P.dv||"",ct3=P.ct||"";
+  h+='<div class="flabel">対象デバイス</div><div class="chips">'+['<button class="chip'+(!dv?" on":"")+'" data-p-dv="">すべて</button>'].concat(DEV_TOKENS.map(function(t){var n=all.filter(function(r){return devHas(r.raw.device,t)}).length;return '<button class="chip'+(dv===t?" on":"")+'" data-p-dv="'+t+'">'+t+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  var sc3=all.filter(function(r){return !dv||devHas(r.raw.device,dv)});
+  var cs=uniqArr(sc3.map(function(r){return r.raw.cat}));var ord=G_CAT_ORDER.filter(function(c){return cs.indexOf(c)>=0});cs.forEach(function(c){if(ord.indexOf(c)<0)ord.push(c)});
+  h+='<div class="flabel">カテゴリ</div><div class="chips">'+['<button class="chip'+(!ct3?" on":"")+'" data-p-ct="">すべて</button>'].concat(ord.map(function(c){var n=sc3.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct3===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  rows=sc3.filter(function(r){return !ct3||r.raw.cat===ct3});
+ }else if(type==="feat"){
+  var ct4=P.ct||"",mk4=P.mk||"";
+  var cs4=uniqArr(all.map(function(r){return r.raw.cat}));
+  h+='<div class="flabel">機能カテゴリ</div><div class="chips">'+['<button class="chip'+(!ct4?" on":"")+'" data-p-ct="">すべて</button>'].concat(cs4.map(function(c){var n=all.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct4===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+='<div class="flabel">記載のあるメーカー</div><div class="chips">'+['<button class="chip'+(!mk4?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_CHIPS.map(function(m){return '<button class="chip'+(mk4===m[0]?" on":"")+'" data-p-mk="'+esc(m[0])+'">'+esc(m[1])+'</button>'})).join("")+'</div>';
+  rows=all.filter(function(r){return (!ct4||r.raw.cat===ct4)&&makerOk(r,mk4)});
+ }else if(type==="mri"){
+  var mk5=P.mk||"",ty=P.ty||"";
+  h+='<div class="notice warn" style="margin-bottom:8px">'+ICON.warn+'<div>登録情報から候補を提示する参考情報です。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
+  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk5?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_ORDER.filter(function(m){return all.some(function(r){return r.raw.maker===m})}).map(function(m){return '<button class="chip'+(mk5===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'</button>'})).join("")+'</div>';
+  var sc5=all.filter(function(r){return !mk5||r.raw.maker===mk5});
+  h+='<div class="flabel">種別</div><div class="chips">'+['<button class="chip'+(!ty?" on":"")+'" data-p-ty="">すべて</button>'].concat(uniqArr(sc5.map(function(r){return r.raw.type})).map(function(t){return '<button class="chip'+(ty===t?" on":"")+'" data-p-ty="'+esc(t)+'">'+esc(t)+'</button>'})).join("")+'</div>';
+  rows=sc5.filter(function(r){return !ty||r.raw.type===ty});
+ }
+ h+='<div class="field" style="margin-top:12px"><input id="fq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="この一覧から絞り込む" value="'+esc(fq)+'" aria-label="この一覧から絞り込む"></div>';
+ var shown=rows;
+ if(fq.trim()){var Q=prepQuery(fq);shown=rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx})}
+ h+='<p class="rescount num">'+fmtN(shown.length)+' 件'+(shown.length!==all.length?'（全 '+fmtN(all.length)+' 件）':"")+'</p><div id="lres"></div>';
+ el.innerHTML=h;
+ chunkList($("#lres"),shown,fq);
+ var fi=$("#fq");var tm=null;
+ fi.oninput=function(){clearTimeout(tm);tm=setTimeout(function(){var p=Object.assign({},route.params);if(fi.value)p.fq=fi.value;else delete p.fq;
+  try{window.history.replaceState(null,"",buildHash(route.path,p))}catch(e){}route=parseHash();lastViewKey=viewKey(route);
+  var Q=fi.value.trim()?prepQuery(fi.value):null;var s2=Q?rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx}):rows;
+  $(".rescount",el).textContent=fmtN(s2.length)+" 件"+(s2.length!==all.length?"（全 "+fmtN(all.length)+" 件）":"");chunkList($("#lres"),s2,fi.value)},120)};
+ fi.onkeydown=function(e){if(e.key==="Enter"){fi.blur()}};
+}
+function devHas(dev,t){return String(dev||"").split(/[\/,]/).map(function(x){return x.trim()}).indexOf(t)>=0}
+
+/* ---------- MRI（本体＋リードから登録を探す） ---------- */
+var NONE="__none__";
+var mriSel={dev:"",devMaker:"",devType:"",ra:"",rv:"",lv:""};
+function mriDevices(){
+ var out=[],seen={};
+ DB.mri.forEach(function(g){(g.raw.devices||[]).forEach(function(d){var k=g.raw.maker+"\u0001"+g.raw.type+"\u0001"+d.model;if(seen[k])return;
+  seen[k]={maker:g.raw.maker,type:g.raw.type,model:d.model,name:d.name||d.model,types:[g.raw.type]};out.push(seen[k])})});
+ out.sort(function(a,b){return makerRank(a.maker)-makerRank(b.maker)||String(a.name).localeCompare(b.name,"ja",{numeric:true})});
+ return out;
+}
+function mriCands(){
+ return DB.mri.filter(function(g){return g.raw.maker===mriSel.devMaker&&(!mriSel.devType||g.raw.type===mriSel.devType)&&(g.raw.devices||[]).some(function(d){return d.model===mriSel.dev})});
+}
+function leadIn(list,v){if(!v||v===NONE)return true;return (list||[]).some(function(l){return l.model===v})}
+function renderMri(){
+ setBar({title:"MRI",back:true,searchIcon:true,search:false});navOn("home");show("mri");
+ var P=route.params;mriSel.dev=P.dev||"";mriSel.devMaker=P.dm||"";mriSel.devType=P.dt||"";mriSel.ra=P.ra||"";mriSel.rv=P.rv||"";mriSel.lv=P.lv||"";
+ var el=$("#v-mri");
+ var h='<div class="notice warn">'+ICON.warn+'<div>登録情報から候補を提示する参考機能です。撮像可否を保証する判定ではありません。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
+ h+='<div class="panel" style="margin-top:12px"><div class="step"><i>1</i><b>本体を選ぶ</b></div>';
+ if(mriSel.dev){
+  var d=mriDevices().filter(function(x){return x.model===mriSel.dev&&x.maker===mriSel.devMaker&&(!mriSel.devType||x.type===mriSel.devType)})[0];
+  h+='<div class="chosen"><div class="cb"><b>'+esc(d?d.name:mriSel.dev)+'</b><span>'+esc(mriSel.devMaker)+(d?"　"+esc(d.types.join(" / ")):"")+'</span></div><button class="linkish" data-mri-reset="1">変更</button></div>';
+ }else{
+  h+='<div class="field"><input id="mdq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="本体名・型番（例：Advisa、Azure、Edora）" aria-label="本体名・型番"></div><div class="sugg" id="mdsugg"></div>';
+ }
+ h+='</div>';
+ if(mriSel.dev){
+  var cs=mriCands();
+  var ra=[],rv=[],lv=[];cs.forEach(function(g){(g.raw.ra||[]).forEach(function(l){ra.push(l)});(g.raw.rv||[]).forEach(function(l){rv.push(l)});(g.raw.lv||[]).forEach(function(l){lv.push(l)})});
+  var uq=function(a){var s={},o=[];a.forEach(function(l){if(!s[l.model]){s[l.model]=1;o.push(l)}});return o};
+  ra=uq(ra);rv=uq(rv);lv=uq(lv);
+  var leadKnown=cs.some(function(g){return (g.raw.ra&&g.raw.ra.length)||(g.raw.rv&&g.raw.rv.length)});
+  var hasLv=leadKnown&&lv.length>0;
+  if(leadKnown){
+   h+='<div class="panel" style="margin-top:10px"><div class="step"><i>2</i><b>リードを選ぶ</b></div>'+
+    leadSel("ra","心房リード（RA）",ra)+leadSel("rv","心室リード（RV）",rv)+(hasLv?leadSel("lv","左室リード（LV）",lv):"")+
+    '<p class="note" style="margin:8px 0 0">一覧に表示されるのは、この本体の登録グループに含まれるリードだけです。</p></div>';
+  }
+  var need=[];if(leadKnown){if(!mriSel.ra)need.push("心房リード");if(!mriSel.rv)need.push("心室リード");if(hasLv&&!mriSel.lv)need.push("左室リード")}
+  if(need.length){h+='<div class="verdict miss" style="background:var(--gray-t);border-color:var(--line)"><h3>'+esc(need.join("・"))+'を選んでください</h3><p>使用していない場合や不明な場合は「使用していない／不明」を選びます。</p></div>'}
+  else{
+   var hit=cs.filter(function(g){return leadIn(g.raw.ra,mriSel.ra)&&leadIn(g.raw.rv,mriSel.rv)&&(!hasLv||leadIn(g.raw.lv,mriSel.lv))})[0];
+   if(!hit){h+='<div class="verdict miss"><h3>登録なし</h3><p>この本体とリードの組合せは、条件付きMRI対応の構成として登録されていません。添付文書と各社の最新情報で必ず確認してください。</p></div>'}
+   else{var t15=hit.raw.tesla.indexOf("1.5T")>=0,t30=hit.raw.tesla.indexOf("3.0T")>=0;
+    h+='<div class="verdict hit"><h3>登録あり（参考）</h3><p>「'+esc(hit.title)+'」（'+esc(hit.raw.maker)+'・'+esc(hit.raw.type)+'）の条件付きMRI対応構成として登録されています。</p>'+
+     '<div class="tesla"><span class="'+(t15?"y":"n")+'">1.5T '+(t15?"登録あり":"登録なし")+'</span><span class="'+(t30?"y":"n")+'">3.0T '+(t30?"登録あり":"登録なし")+'</span></div>'+
+     (hit.raw.verify?'<div class="notice gray" style="margin-top:10px">'+ICON.info+'<div>このデータは取り込み後の検証が未了です。</div></div>':"")+
+     '<div style="margin-top:12px"><button class="btn primary block" data-open="'+esc(hit.key)+'">撮像条件を見る</button></div></div>';
+   }
+  }
+ }
+ h+='<h2 class="sec">登録グループから探す</h2><div class="list"><button class="row" data-go="#/list/mri"><span class="ri">'+ICON.mri+'</span><span class="rb"><span class="rn">MRI登録グループの一覧</span><span class="rs">'+fmtN(DB.mri.length)+' グループ（メーカー・種別で絞り込み）</span></span></button></div>';
+ el.innerHTML=h;
+ var mdq=$("#mdq");
+ if(mdq){var devs=mriDevices();
+  var draw=function(){var v=nq(mdq.value);var list=v?devs.filter(function(d){return nq(d.name).indexOf(v)>=0||nq(d.model).indexOf(v)>=0||nq(d.maker).indexOf(v)>=0||nq(d.type).indexOf(v)>=0}):devs;
+   $("#mdsugg").innerHTML='<p class="rescount num" style="margin-top:4px">'+fmtN(list.length)+' 機種</p><div class="list" style="max-height:340px;overflow:auto">'+list.slice(0,80).map(function(d){return '<button class="row" data-mri-dev="'+esc(d.model)+'" data-mri-dm="'+esc(d.maker)+'" data-mri-dt="'+esc(d.type)+'"><span class="rb"><span class="rn">'+esc(d.name)+'</span><span class="rm"><span class="md">'+esc(d.maker)+'</span><span>'+esc(d.types.join(" / "))+'</span>'+(d.model!==d.name?'<span class="num">'+esc(d.model)+'</span>':"")+'</span></span></button>'}).join("")+(list.length>80?'<p class="note" style="padding:10px 14px;margin:0">先頭80機種を表示しています。名称や型番を入力して絞り込んでください。</p>':"")+'</div>'};
+  mdq.oninput=draw;draw();
+ }
+ $$("select[data-lead]",el).forEach(function(s){s.onchange=function(){var p=Object.assign({},route.params);p[s.dataset.lead]=s.value;delete p.d;go("mri",p,true)}});
+}
+function leadSel(pos,label,list){
+ var cur=mriSel[pos];
+ return '<div class="field"><label for="ls-'+pos+'">'+label+'</label><select id="ls-'+pos+'" data-lead="'+pos+'"><option value="">選択してください</option>'+
+  list.map(function(l){return '<option value="'+esc(l.model)+'"'+(cur===l.model?" selected":"")+'>'+esc(l.name&&l.name!==l.model?l.name+"（"+l.model+"）":(l.name||l.model))+'</option>'}).join("")+
+  '<option value="'+NONE+'"'+(cur===NONE?" selected":"")+'>使用していない／不明</option></select></div>';
+}
+
+/* ---------- 履歴・保存 ---------- */
+function timeLabel(t){var d=new Date(t);var now=new Date();var same=d.toDateString()===now.toDateString();return same?("今日 "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")):((d.getMonth()+1)+"/"+d.getDate())}
+function renderHistory(){
+ setBar({title:"履歴",search:false,searchIcon:true});navOn("history");show("history");
+ var rows=histList.map(function(h){return BYKEY[h.k]}).filter(Boolean);
+ var el=$("#v-history");
+ if(!rows.length){el.innerHTML='<div class="empty"><b>まだ履歴はありません</b>開いた用語・製品・アルゴリズム・MRI情報がここに並びます。</div>';return}
+ el.innerHTML='<p class="rescount num">'+fmtN(rows.length)+' 件（新しい順）<button class="linkish" style="float:right;min-height:0" id="clrh">履歴を消去</button></p><div id="hres"></div>';
+ chunkList($("#hres"),rows,"");
+ $("#clrh").onclick=function(){if(confirm("履歴を消去しますか？")){histList=[];LS.set("history",histList);renderHistory()}};
+}
+function renderSaved(){
+ setBar({title:"保存",search:false,searchIcon:true});navOn("saved");show("saved");
+ var rows=saved.map(function(h){return BYKEY[h.k]}).filter(Boolean);
+ var el=$("#v-saved");
+ if(!rows.length){el.innerHTML='<div class="empty"><b>保存した項目はありません</b>詳細画面の右上にある保存ボタンで、この端末に保存できます。</div>';return}
+ var h="";
+ ORDER.forEach(function(t){var arr=rows.filter(function(r){return r.type===t});if(arr.length)h+='<div class="ghead"><b>'+esc(TYPES[t].plural)+'　'+arr.length+'</b></div><div class="list">'+arr.map(function(r){return rowHTML(r)}).join("")+'</div>'});
+ el.innerHTML=h;
+}
+function isSaved(k){return saved.some(function(s){return s.k===k})}
+function toggleSave(k){if(isSaved(k)){saved=saved.filter(function(s){return s.k!==k});toast("保存を解除しました")}else{saved.unshift({k:k,t:Date.now()});toast("保存しました")}LS.set("saved",saved)}
+function addHistory(k){histList=[{k:k,t:Date.now()}].concat(histList.filter(function(h){return h.k!==k})).slice(0,100);LS.set("history",histList)}
+
+/* ---------- メニュー・その他 ---------- */
+function renderMenu(){
+ setBar({title:"メニュー",search:false,searchIcon:true});navOn("menu");show("menu");
+ var el=$("#v-menu");
+ var files=[["data","用語集・メーカー比較",function(d){return "用語 "+fmtN((d.gloss||[]).length)+"・一覧表 "+fmtN((d.feats||[]).length)+" 行"}],["algos","アルゴリズム",function(d){return fmtN((d.items||[]).length)+" 件"}],["products","製品・リード",function(d){return fmtN((d.items||[]).length)+" 件"}],["mri","MRI",function(d){return fmtN((d.items||[]).length)+" グループ"}]];
+ var h='<h2 class="sec" style="margin-top:8px">データ情報</h2><div class="stat">'+files.map(function(f){var d=RAW[f[0]]||{};return '<div><span>'+f[1]+'<small>'+f[0]+'.json　v'+esc(d.v)+'　'+esc(d.updated||"")+'</small></span><span class="num">'+f[2](d)+'</span></div>'}).join("")+'</div>'+
+  '<p class="note" style="margin:8px 2px 0">この画面（UI v2 試作）はデータを読むだけで、JSON の内容は変更しません。'+(EMBED?"このファイルにはデータが同梱されています。":"")+'</p>';
+ h+='<h2 class="sec">ご利用にあたって</h2><div class="panel note">本アプリの内容は、各社資料・公開情報をもとに整理した参考情報です。空欄や「未確認」の項目は、情報が確認できていないことを示します。診療、機器の選択・設定、MRI検査の実施可否は、必ず最新の添付文書・メーカー資料等で確認してください。</div>';
+ h+='<h2 class="sec">この端末のデータ</h2><div class="list">'+
+  '<button class="row" id="m-imp"><span class="rb"><span class="rn">現行版のお気に入りを取り込む</span><span class="rs">現行版（index.html）で★を付けた用語・メーカー比較を「保存」に追加します。現行版のデータは変更しません。</span></span></button>'+
+  '<button class="row" id="m-ch"><span class="rb"><span class="rn">履歴を消去</span><span class="rs">'+fmtN(histList.length)+' 件</span></span></button>'+
+  '<button class="row" id="m-cs"><span class="rb"><span class="rn">保存を消去</span><span class="rs">'+fmtN(saved.length)+' 件</span></span></button>'+
+  '<button class="row" id="m-cq"><span class="rb"><span class="rn">最近の検索を消去</span><span class="rs">'+fmtN(recentQ.length)+' 件</span></span></button></div>';
+ h+='<h2 class="sec">そのほか</h2><div class="list">'+
+  '<a class="row" href="index.html" style="text-decoration:none;color:inherit"><span class="rb"><span class="rn">現行版を開く</span><span class="rs">用語の端末内編集・追加、共有、書き出し・読み込みは現行版で使えます。</span></span></a>'+
+  '<button class="row" data-go="#/more"><span class="rb"><span class="rn">年表・過去製品</span><span class="rs">統合予定のデータベースと、現在のデータで見られる過去製品</span></span></button>'+
+  '<div class="row" style="cursor:default"><span class="rb"><span class="rn">ホーム画面に追加</span><span class="rs">iPhone：Safari の共有ボタン →「ホーム画面に追加」。Android：Chrome のメニュー →「ホーム画面に追加」。</span></span></div></div>'+
+  '<p class="note" style="margin:14px 2px">Pacemaker Navi　UI v2（試作）</p>';
+ el.innerHTML=h;
+ $("#m-ch").onclick=function(){if(confirm("履歴を消去しますか？")){histList=[];LS.set("history",histList);renderMenu()}};
+ $("#m-cs").onclick=function(){if(confirm("保存を消去しますか？")){saved=[];LS.set("saved",saved);renderMenu()}};
+ $("#m-cq").onclick=function(){recentQ=[];LS.set("recentq",recentQ);renderMenu()};
+ $("#m-imp").onclick=function(){var old=[];try{old=JSON.parse(localStorage.getItem("cieds_fav")||"[]")||[]}catch(e){}
+  var n=0;old.forEach(function(k){var m=String(k).match(/^([gf])\|(.*)$/);if(!m)return;var key=(m[1]==="g"?"t:":"f:")+m[2];if(BYKEY[key]&&!isSaved(key)){saved.push({k:key,t:Date.now()});n++}});
+  LS.set("saved",saved);toast(n?n+" 件を保存に追加しました":"取り込める項目はありませんでした");renderMenu()};
+}
+function renderMore(){
+ setBar({title:"年表・その他",back:true,searchIcon:true,search:false});navOn("home");show("more");
+ var per=DB.prod.filter(function(r){return !isEmpty(r.raw.period)}).length;
+ var h='<h2 class="sec" style="margin-top:8px">国内発売年表</h2><div class="panel note">年表のデータはまだ登録されていません。登録後は、製品詳細の「関連」から前世代・後継機種とあわせて辿れるようにする予定です。</div>'+
+  '<h2 class="sec">過去製品</h2><div class="list">'+
+  '<button class="row" data-go="#/list/prod?per=1"><span class="ri">'+ICON.lead+'</span><span class="rb"><span class="rn">販売期間が登録されている製品</span><span class="rs">'+fmtN(per)+' 件（現在のデータから表示）</span></span></button>'+
+  '<button class="row" data-go="#/list/prod?kd=lead"><span class="ri">'+ICON.lead+'</span><span class="rb"><span class="rn">リードの一覧</span><span class="rs">当時の社名のまま収載しています</span></span></button></div>'+
+  '<h2 class="sec">過去製品データベース（統合予定）</h2><div class="panel note">別途作成中の過去製品データベースを、既存データを変換せずに追加できる構成にしています。本体で想定している項目は、メーカー、国内販売会社、デバイス分類、製品名、型式、販売年、MRI、電極（双極／単極）、コネクタ（ピン径・コネクタ径・規格）、固定方式、寸法、容積、質量、電池寿命と算出条件、無線テレメトリ、遠隔モニタリングです。</div>';
+ $("#v-more").innerHTML=h;
+}
+
+/* ---------- 詳細シート ---------- */
+var sheetKey=null,sheetTab=null;
+var pushedDetail=false;
+function openDetail(k){var p=Object.assign({},route.params);p.d=k;pushedDetail=true;go(route.path,p)}
+function openSheet(k){
+ var r=BYKEY[k];
+ if(!r){closeSheet(true);toast("項目が見つかりません");return}
+ if(sheetKey!==k){sheetKey=k;sheetTab=null;addHistory(k)}
+ var D=buildDetail(r);
+ var tabs=D.tabs.filter(function(t){return t.html});
+ if(!tabs.length)tabs=[{k:"ov",label:"概要",html:'<p class="note">登録されている項目はありません。</p>'}];
+ if(!sheetTab||!tabs.some(function(t){return t.k===sheetTab}))sheetTab=tabs[0].k;
+ $("#shead").innerHTML='<div class="sh"><span class="badge'+(r.type==="mri"&&r.raw.verify?" gray":"")+'">'+esc(D.badge)+'</span><h2 id="sTitle">'+esc(D.title)+'</h2><div class="ss">'+D.sub.filter(Boolean).map(function(s){return "<span>"+s+"</span>"}).join("")+'</div></div>'+
+  '<div class="acts"><button id="sSave" class="'+(isSaved(k)?"saved":"")+'" aria-label="保存">'+(isSaved(k)?ICON.bmOn:ICON.bm)+'</button><button id="sLink" aria-label="リンクをコピー">'+ICON.link+'</button><button id="sClose" aria-label="閉じる">'+ICON.close+'</button></div>';
+ $("#stabs").innerHTML=tabs.length>1?tabs.map(function(t){return '<button role="tab" aria-selected="'+(t.k===sheetTab)+'" class="'+(t.k===sheetTab?"on":"")+'" data-tab="'+t.k+'">'+esc(t.label)+'</button>'}).join(""):"";
+ $("#stabs").style.display=tabs.length>1?"":"none";
+ var body=function(){var t=tabs.filter(function(t){return t.k===sheetTab})[0];var last=sheetTab===tabs[tabs.length-1].k;$("#sbody").innerHTML=t.html+(last?(D.other||"")+D.tech:"");$("#sbody").scrollTop=0};
+ /* 「そのほかの登録項目」は最後のタブの下に必ず出す（どのフィールドも隠さない） */
+ body();
+ $$("#stabs button").forEach(function(b){b.onclick=function(){sheetTab=b.dataset.tab;$$("#stabs button").forEach(function(x){x.classList.toggle("on",x===b);x.setAttribute("aria-selected",x===b)});body()}});
+ $("#sSave").onclick=function(){toggleSave(k);var on=isSaved(k);this.classList.toggle("saved",on);this.innerHTML=on?ICON.bmOn:ICON.bm;if(route.path==="saved")renderSaved()};
+ $("#sLink").onclick=function(){var url=location.href.split("#")[0]+buildHash("home",{d:k});if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(function(){toast("リンクをコピーしました")},function(){toast(url)})}else toast(url)};
+ $("#sClose").onclick=closeViaBack;
+ if(!$("#sheet").classList.contains("on")){lockScroll(true);$("#sheet").classList.add("on");$("#scrim").classList.add("on")}
+}
+function closeViaBack(){if(route.params.d){var p=Object.assign({},route.params);delete p.d;
+ if(pushedDetail)window.history.back();else go(route.path,p,true)}else closeSheet()}
+function closeSheet(silent){
+ if(!$("#sheet").classList.contains("on"))return;
+ $("#sheet").classList.remove("on");$("#scrim").classList.remove("on");lockScroll(false);sheetKey=null;
+ if(route.path==="history")renderHistory();
+}
+var lockY=0;
+function lockScroll(on){
+ if(on){lockY=window.scrollY;document.body.style.position="fixed";document.body.style.top=-lockY+"px";document.body.style.left="0";document.body.style.right="0"}
+ else{document.body.style.position="";document.body.style.top="";document.body.style.left="";document.body.style.right="";window.scrollTo(0,lockY)}
+}
+/* 下にスワイプして閉じる（ハンドルとヘッダ） */
+(function(){
+ var y0=null,dy=0,sh=$("#sheet");
+ function st(e){if(window.innerWidth>=960)return;y0=e.touches[0].clientY;dy=0;sh.style.transition="none"}
+ function mv(e){if(y0==null)return;dy=Math.max(0,e.touches[0].clientY-y0);sh.style.transform="translateY("+dy+"px)"}
+ function en(){if(y0==null)return;sh.style.transition="";sh.style.transform="";if(dy>90)closeViaBack();y0=null}
+ ["grab","shead"].forEach(function(id){var el=$("#"+id);el.addEventListener("touchstart",st,{passive:true});el.addEventListener("touchmove",mv,{passive:true});el.addEventListener("touchend",en)});
+})();
+
+/* ---------- 共通のクリック処理 ---------- */
+document.addEventListener("click",function(e){
+ var t=e.target.closest("[data-open],[data-q],[data-go],[data-nav],[data-cat],[data-mk],[data-mk-clear],[data-p-kd],[data-p-mk],[data-p-ct],[data-p-dv],[data-p-ty],[data-p-per],[data-mri-dev],[data-mri-reset]");
+ if(!t)return;
+ if(t.dataset.open!=null){e.preventDefault();openDetail(t.dataset.open);return}
+ if(t.dataset.q!=null){e.preventDefault();var q=t.dataset.q;commitRecentQ(q);$("#q").value=q;go("search",{q:q});return}
+ if(t.dataset.go!=null){e.preventDefault();location.hash=t.dataset.go;return}
+ if(t.dataset.nav!=null){e.preventDefault();var n=t.dataset.nav;
+  if(n==="search"){go("search",searchState.q?{q:searchState.q,c:searchState.c,m:searchState.m}:{});$("#searchrow").classList.remove("hidden");if(!searchState.q)$("#q").focus()}
+  else go(n,{});return}
+ if(t.dataset.cat!=null){var p=Object.assign({},route.params);p.c=t.dataset.cat;if(p.c==="all")delete p.c;go("search",p,true);window.scrollTo(0,0);return}
+ if(t.dataset.mk!=null){var p2=Object.assign({},route.params);if(t.dataset.mk)p2.m=t.dataset.mk;else delete p2.m;go("search",p2,true);return}
+ if(t.dataset.mkClear!=null){var p3=Object.assign({},route.params);delete p3.m;go("search",p3,true);return}
+ var keys=["kd","mk","ct","dv","ty","per"];
+ for(var i=0;i<keys.length;i++){var dk="p"+keys[i].charAt(0).toUpperCase()+keys[i].slice(1);if(t.dataset[dk]!=null){var pp=Object.assign({},route.params);var v=t.dataset[dk];if(v)pp[keys[i]]=v;else delete pp[keys[i]];if(keys[i]==="kd"||keys[i]==="mk")delete pp.ct;go(route.path,pp,true);return}}
+ if(t.dataset.mriDev!=null){go("mri",{dev:t.dataset.mriDev,dm:t.dataset.mriDm,dt:t.dataset.mriDt});return}
+ if(t.dataset.mriReset!=null){go("mri",{});return}
+});
+$("#scrim").addEventListener("click",closeViaBack);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&$("#sheet").classList.contains("on"))closeViaBack()});
+
+/* ---------- 上部検索（入口） ---------- */
+(function(){
+ var q=$("#q"),clr=$("#qclear"),tm=null;
+ q.addEventListener("input",function(){
+  clr.classList.toggle("on",!!q.value);
+  clearTimeout(tm);
+  var v=q.value;
+  if(route.path!=="search"){if(v.trim()){go("search",{q:v})}return}
+  tm=setTimeout(function(){var p=Object.assign({},route.params);if(v)p.q=v;else delete p.q;delete p.d;
+   try{window.history.replaceState(null,"",buildHash("search",p))}catch(e){}
+   route=parseHash();lastViewKey=viewKey(route);searchState.q=v;searchState.c=route.params.c||"all";searchState.m=route.params.m||"";drawSearch()},90);
+ });
+ q.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();commitRecentQ(q.value);q.blur()}});
+ q.addEventListener("blur",function(){if(q.value.trim().length>=2&&route.path==="search")commitRecentQ(q.value)});
+ clr.addEventListener("click",function(){q.value="";clr.classList.remove("on");q.focus();if(route.path==="search"){var p=Object.assign({},route.params);delete p.q;go("search",p,true)}});
+ /* 画面キーボードが実際に出ているときだけ下部ナビを隠す（iOS：visualViewport が縮む／Android：innerHeight が縮む） */
+ var maxH=window.innerHeight;
+ function kbCheck(){
+  maxH=Math.max(maxH,window.innerHeight);
+  var a=document.activeElement,typing=a&&a.matches&&a.matches("input,textarea");
+  var vv=window.visualViewport,shrink=(vv?window.innerHeight-vv.height:0)>120||window.innerHeight<maxH*0.78;
+  document.body.classList.toggle("kb",!!(typing&&shrink));
+ }
+ if(window.visualViewport)window.visualViewport.addEventListener("resize",kbCheck);
+ window.addEventListener("resize",kbCheck);
+ document.addEventListener("focusin",function(){setTimeout(kbCheck,250)});
+ document.addEventListener("focusout",function(){setTimeout(kbCheck,60)});
+})();
+window.addEventListener("scroll",function(){$("#top").classList.toggle("scrolled",window.scrollY>4)},{passive:true});
+
+var toastTm=null;
+function toast(msg){var t=$("#toast");t.textContent=msg;t.classList.add("on");clearTimeout(toastTm);toastTm=setTimeout(function(){t.classList.remove("on")},1800)}
+
+/* ---------- 読み込み ---------- */
+var ready=false,EMBED=false;
+function readEmbedded(name){var el=document.getElementById("pn-data-"+name);if(!el)return null;try{return JSON.parse(el.textContent)}catch(e){return null}}
+function loadAll(){
+ var emb={};FILES.forEach(function(f){var d=readEmbedded(f);if(d)emb[f]=d});
+ if(Object.keys(emb).length===FILES.length){EMBED=true;return Promise.resolve(emb)}
+ return Promise.all(FILES.map(function(f){return fetch(f+".json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error(f+".json（"+r.status+"）");return r.json()})}))
+  .then(function(arr){var o={};FILES.forEach(function(f,i){o[f]=arr[i]});return o});
+}
+loadAll().then(function(o){
+ RAW=o;indexAll();ready=true;$("#loading").remove();
+ window.addEventListener("hashchange",onRoute);onRoute();
+}).catch(function(err){
+ $("#loading").innerHTML='<div class="notice danger err">'+ICON.warn+'<div><b>データを読み込めませんでした。</b><br>'+esc(err.message)+'<br>v2.html を data.json・algos.json・products.json・mri.json と同じフォルダに置き、GitHub Pages などの Web サーバ経由で開いてください（ファイルを直接開くと読み込めません）。</div></div>';
+});
+
+/* 動作確認用の読み取り専用フック（データは返すだけで変更しない） */
+window.PNV2={
+ counts:function(){return {gloss:DB.term.length,feats:DB.feat.length,algos:DB.algo.length,products:DB.prod.length,mri:DB.mri.length}},
+ keys:function(){return ORDER.map(function(t){return DB[t].map(function(r){return r.key})})},
+ detailText:function(k){var r=BYKEY[k];if(!r)return null;var D=buildDetail(r);var div=document.createElement("div");div.innerHTML=D.title+" "+D.sub.join(" ")+" "+D.tabs.map(function(t){return t.html}).join(" ")+" "+(D.other||"")+" "+D.tech;return div.textContent},
+ search:function(q,o){var r=search(q,o||{});var out={};ORDER.forEach(function(t){out[t]=r.by[t].slice(0,10).map(function(x){return x.r.key})});out.total=ORDER.reduce(function(a,t){return a+r.by[t].length},0);return out},
+ raw:function(k){var r=BYKEY[k];return r?r.raw:null},
+ ready:function(){return ready}
+};
+})();
+</script>
+</body>
+</html>
