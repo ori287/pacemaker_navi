@@ -1,5 +1,5 @@
 {
- "v": 48,
+ "v": 52,
  "updated": "2026-09-06",
  "gloss": [
   {
@@ -1669,8 +1669,8 @@
    "cat": "レート応答",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのrate response。心筋収縮に伴う心内インピーダンス変化をbeat-to-beatで評価しレートへ反映する。体動を伴わない精神的負荷にも反応しやすい。**Amvia Sky ではモードとして『DDI-CLS』が追加され、『AOO』モードが廃止された**（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）（あわせて『OFF』モードも追加）。**Vp suppression 機能は CLS と併用できないため、CLS モードを使用する場合は IRSplus 機能を検討する。**",
-   "tags": "Manufacturer / PM / ICD / CRT / BIOTRONIK DDI-CLS AOO廃止 OFFモード追加 Vp suppression併用不可 IRSplus Amvia Sky"
+   "short": "BIOTRONIK の rate response。**心筋の収縮成分をモニターしてレートに反映させる機能で、特別な手技やデバイスを必要とせず使用可能** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**測定は RV tip to Can（unipolar）で心内インピーダンスを毎拍評価する。電極周辺（約1cm²）の心筋の状態に強く依存する抵抗値測定を用いることで、心臓収縮にともなう心筋の経時的な状態の変化を抵抗値の変化としてモニタする。****安静時の抵抗値（リファレンス）と心収縮力増強時の抵抗値の差の面積が大きいほどペーシングレートを上昇させる（beat to beat）。****設定は Max. CLS rate／CLS response／CLS resting rate control／Vp required の4項目。****Amvia Sky シリーズにも搭載されており、Amvia Sky ではモードとして『DDI-CLS』が追加され『AOO』モードが廃止された**（追補49）（あわせて『OFF』モードも追加）。**資料は「CLS と Vp suppression を併用することはできません。心室ペーシングの抑制機能は “IRS plus” もしくは “Positive” を推奨しています」と注記している**（追補49の資料は「心室ペーシングを抑制する場合には、IRS plus の使用を推奨しています」）。**推奨されているのは心室ペーシングの抑制機能としての IRS plus／Positive である。****テレメトリ中は、レートの調節も AV ディレイを変化させるリファレンスの取得も行われない。**",
+   "tags": "Manufacturer / PM / ICD / CRT / BIOTRONIK Closed Loop Stimulation 心内インピーダンス RV tip to Can unipolar 1cm2 リファレンス 面積 beat to beat Max. CLS rate CLS response resting rate control Vp required DDI-CLS AOO廃止 OFFモード Amvia Skyにも搭載 Vp suppression併用不可 心室ペーシングの抑制機能 IRSplus Positive テレメトリ中は作動しない"
   },
   {
    "term": "Capture Control",
@@ -11639,7 +11639,7 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**心房頻拍・心房細動を検出するためのレート設定**（追補50・追補51）。プログラマの Tachycardia タブに置かれ、**画面例は Rate＝170bpm と 200bpm の2例**（Interval [ms] 表示では 300ms）。**検出の基準は［36 out of 48］、終了の基準（AT/AF termination）は［20 out of 24］** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**AT/AF の治療可能な頻拍のレートは 300bpm 未満**で、それより速いものは治療の対象にならない。設定画面の「HAR limit」には 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm と ms を切り替えられる（ms と読むと 250〜100bpm の10bpm刻みに一致するが、資料に範囲の明記はない）。**AT/AF 検出は Ars マーカでは行われない。**検出したあと実際に ATP を出すかどうかは、リズム安定性チェック・リード位置チェック・HVR detection の条件で決まる。",
+   "short": "**心房頻拍・心房細動を検出するためのレート設定**（追補50・追補51）。プログラマの Tachycardia タブに置かれ、**画面例は Rate＝170bpm と 200bpm の2例**（Interval [ms] 表示では 300ms）。**検出の基準は［36 out of 48］、終了の基準（AT/AF termination）は［20 out of 24］** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**AT/AF の治療可能な頻拍のレートは 300bpm 未満**で、それより速いものは治療の対象にならない。設定画面の「HAR limit」には 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm と ms を切り替えられる（**資料は選択肢の並びを示すのみで、単位も設定範囲の上下限も明記していない**）。**AT/AF 検出は Ars マーカでは行われない。**検出したあと実際に ATP を出すかどうかは、リズム安定性チェック・リード位置チェック・HVR detection の条件で決まる。",
    "tags": "AT/AF detection 170bpm 200bpm 300ms 36 out of 48 20 out of 24 HAR limit 300bpm未満 Arsマーカでは検出されない Tachycardiaタブ 心房頻拍検出 Amvia Sky BIOTRONIK"
   },
   {
@@ -11829,8 +11829,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**心房ATPの刺激間隔を短縮していく量の設定** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**S1 decrement [ms]＝5, 10, 15, 20, 25, 30, 35, 40（画面例 10ms）。**Ramp の中で1拍ごとに間隔を詰めていく量にあたる。**Scan decrement [ms]＝OFF, 5, 10, 15, 20, 25, 30, 35, 40（画面例 OFF）。****Scan は「次のシーケンスの開始間隔を前のシーケンスより短くする」向きの短縮**で、シーケンスをまたいで連結期を走査する働きをする。S1 decrement がシーケンス内、Scan decrement がシーケンス間、と押さえると混同しにくい。",
-   "tags": "S1 decrement Scan decrement 5 10 15 20 25 30 35 40 ms OFF Ramp シーケンス内 シーケンス間 スキャン 連結期 Amvia Sky BIOTRONIK"
+   "short": "**心房ATPの刺激間隔を短縮していく量の設定** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**S1 decrement [ms]＝5, 10, 15, 20, 25, 30, 35, 40（画面例 10ms）。**Ramp の中で1拍ごとに間隔を詰めていく量にあたる。**Scan decrement [ms]＝OFF, 5, 10, 15, 20, 25, 30, 35, 40（画面例 OFF）。****資料は Scan decrement の作動そのものについては説明しておらず、設定範囲を示すのみである（未確定）。**",
+   "tags": "S1 decrement Scan decrement 5 10 15 20 25 30 35 40 ms OFF Ramp スキャン 作動の説明なし 未確定 Amvia Sky BIOTRONIK"
   },
   {
    "term": "確認時間（Atrial ATP モジュール）",
@@ -11909,7 +11909,7 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**Amvia Sky が心房ATPで送出できる最小のペーシングインターバルは 160ms** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。作動制限の一覧に脚注として置かれている。**約375bpm に相当する。****P-S1 interval（70〜95%）と S1 decrement で刺激間隔を詰めていっても、この 160ms より短い間隔では刺激できない。**頻拍周期が短い症例では、設定どおりの％まで詰められない場合がある点に注意する。",
+   "short": "**Amvia Sky が心房ATPで送出できる最小のペーシングインターバルは 160ms** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。作動制限の一覧に脚注として置かれている。**P-S1 interval（70〜95%）と S1 decrement で刺激間隔を詰めていっても、この 160ms より短い間隔では刺激できない。**頻拍周期が短い症例では、設定どおりの％まで詰められない場合がある点に注意する。",
    "tags": "最小ペーシングインターバル 160ms 375bpm P-S1 interval S1 decrement 刺激間隔 下限 Amvia Sky BIOTRONIK"
   },
   {
@@ -11989,8 +11989,208 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "BIOTRONIK",
-   "short": "**Amvia Sky の AT/AF detection のレート設定画面に現れる選択肢の並び** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**画面の選択肢は 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 で、画面下の［bpm］［ms］ボタンで表示単位を切り替えられる。**ms として読むと 250bpm から 100bpm までの 10bpm 刻みにきれいに一致する（300ms＝200bpm、375ms＝160bpm など）が、**資料に「設定範囲は 100〜250bpm」という明記はないため、対応づけは読みにとどめてある（未確定）。**画面例では Interval [ms]＝300（＝200bpm）が選ばれている。",
-   "tags": "HAR limit High Atrial Rate 240 250 261 273 286 300 316 333 353 375 400 429 462 500 545 600 bpm ms 切替 AT/AF detection 未確定 Amvia Sky BIOTRONIK"
+   "short": "**Amvia Sky の AT/AF detection のレート設定画面に現れる選択肢の並び** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。**画面の選択肢は 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 で、画面下の［bpm］［ms］ボタンで表示単位を切り替えられる。****資料はこの選択肢の並びを示すのみで、bpm と ms のどちらの単位での値かも、設定範囲としての上下限も明記していない（未確定）。**画面例では Interval [ms]＝300 が選ばれている。",
+   "tags": "HAR limit High Atrial Rate 240 250 261 273 286 300 316 333 353 375 400 429 462 500 545 600 bpm ms 切替 AT/AF detection 単位不明 範囲不明 未確定 Amvia Sky BIOTRONIK"
+  },
+  {
+   "term": "循環制御の閉鎖ループ",
+   "en": "Closed loop of circulatory control",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**CLS という名称の由来になっている生体の制御ループ** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**循環中枢では自律神経（交感神経および副交感神経）の緊張度を調節することで心臓、血管の収縮や拡張をコントロールして血圧を制御している。****平均動脈圧の変化は頸動脈や大動脈弓部などに分布する圧受容器（baroreceptor）により検出される。****この圧受容器では血圧の急激な変化により、心臓を支配する自律神経の興奮や興奮の抑制を行い心拍数や収縮力をコントロールしている。**ブロック図は**循環中枢 →〔クロノトロピー（変時性）→ 洞結節 → 心拍数〕と〔イノトロピー（変力性）→ 心筋 → 収縮力（一回拍出量）〕→ 心拍出量 → 平均動脈圧 →（末梢血管抵抗とともに）圧受容器 → 循環中枢**という形をとる。**洞不全症候群ではクロノトロピー側が欠落し「不完全閉鎖ループ」となる。**",
+   "tags": "循環制御の閉鎖ループ closed loop 循環中枢 自律神経 交感神経 副交感神経 圧受容器 baroreceptor 頸動脈 大動脈弓部 平均動脈圧 クロノトロピー 変時性 イノトロピー 変力性 洞結節 心筋 一回拍出量 心拍出量 末梢血管抵抗 不完全閉鎖ループ CLS BIOTRONIK"
+  },
+  {
+   "term": "循環制御の不完全閉鎖ループ",
+   "en": "Incomplete closed loop",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**洞不全症候群などで心拍数調整機能に不全があり、閉鎖ループのクロノトロピー側（洞結節 → 心拍数）が欠落した状態** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**「洞不全症候群などによる心拍数調整機能に不全がある場合、心拍出量のコントロールは心筋の収縮力に頼らざるを得ない。****心筋の収縮力の変化による1回拍出量の増加はそれほど期待できるものではなく、心筋の収縮力の制御のみでは拍出量の調整に限界がある」。****心拍出量（CO）＝心拍数（HR）×1回拍出量（SV）**なので、HR が上がらなければ SV だけで補うことになるが、その伸びしろが小さいという理屈である。**そこでペースメーカがクロノトロピーの位置に入ってループを再構築するのが CLS。**",
+   "tags": "循環制御の不完全閉鎖ループ 洞不全症候群 SSS 変時性不全 クロノトロピー欠落 心拍出量 CO HR SV 一回拍出量 収縮力に頼る 拍出量の調整に限界 ループの再構築 CLS BIOTRONIK"
+  },
+  {
+   "term": "心拍出量（CO＝HR×SV）",
+   "en": "Cardiac output",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**心拍出量（CO）＝心拍数（HR）×1回拍出量（SV）。1分間に送り出される血液の量** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**心臓は心拍数や収縮力によって血液循環量を調整している。****運動時には、筋肉の酸素消費量が安静時の約20倍と極度に高まるために、心臓は心拍数を増加し、多くの血液を送り込んで、酸素を補給する。**資料の数値では**普通の生活時が心拍数70回/分・1回の心拍出量60〜80ml、運動時は心拍数が増加し1回の心拍出量は約200ml にも達し、毎分の拍出量は安静時の数倍以上になる。****変時性不全では HR を上げられないため、この式のうち SV だけで補うことになる。**",
+   "tags": "心拍出量 CO HR SV 心拍数 1回拍出量 70回/分 60-80ml 200ml 酸素消費量 20倍 運動時 数倍以上 変時性不全 CLS BIOTRONIK"
+  },
+  {
+   "term": "クロノトロピー／イノトロピー",
+   "en": "Chronotropy / Inotropy",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**クロノトロピー（変時性）＝心拍数を変える働き、イノトロピー（変力性）＝心筋の収縮力を変える働き** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。循環制御の閉鎖ループでは、**循環中枢からこの2本が分かれ、クロノトロピーが洞結節を介して心拍数を、イノトロピーが心筋を介して収縮力（一回拍出量）を動かし、両者が合わさって心拍出量になる。****CLS はイノトロピー側（心筋の収縮力）の変化を心内インピーダンスで捉え、欠落したクロノトロピー側をペースメーカで肩代わりする。**「変時性不全（chronotropic incompetence）」はクロノトロピー側の障害を指す。",
+   "tags": "クロノトロピー 変時性 イノトロピー 変力性 chronotropy inotropy 洞結節 心筋 心拍数 収縮力 一回拍出量 循環中枢 変時性不全 chronotropic incompetence CLS BIOTRONIK"
+  },
+  {
+   "term": "圧受容器（baroreceptor）",
+   "en": "Baroreceptor",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**血圧の変化を検出する受容器。頸動脈や大動脈弓部などに分布する** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**平均動脈圧の変化は圧受容器により検出され、血圧の急激な変化により、心臓を支配する自律神経の興奮や興奮の抑制を行い心拍数や収縮力をコントロールしている。**循環制御の閉鎖ループでは**平均動脈圧 → 圧受容器 → 循環中枢**という帰還路にあたる。資料は受容器を**①圧受容器、②化学受容器、③腎臓の圧受容器・浸透圧受容器**の3つに分け、いずれも**血行動態の変化をキャッチする**役割としている。",
+   "tags": "圧受容器 baroreceptor 頸動脈 大動脈弓部 平均動脈圧 化学受容器 腎臓の圧受容器 浸透圧受容器 血行動態 自律神経 心拍数 収縮力 閉鎖ループ CLS BIOTRONIK"
+  },
+  {
+   "term": "神経性調節／液性調節／局所調節",
+   "en": "Neural / humoral / local regulation",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**循環調節の3つの仕組み** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**神経性調節は自律神経**：**交感神経の興奮は心拍数を上昇、心収縮力を増加、血管を収縮させることで血圧を上昇させる。副交感神経の興奮は、心拍数を減少、心収縮力を低下させることで血圧を低下させる。****液性調節はホルモンなど液性因子**：**血圧を上昇させるホルモンにはアンジオテンシンⅡ、アルドステロン、バソプレシン、アドレナリン、ノルアドレナリンがあり、血圧を低下させるホルモンには心房ナトリウム利尿ペプチド（ANP）がある。****局所調節は平滑筋や心筋自体**：**短期的（1〜2分）な調節と長期的（日〜週）な調節がある。****これらの調整は自律神経による神経調節機構とホルモンによる体液性調節機構によって行われる。**",
+   "tags": "神経性調節 液性調節 局所調節 自律神経 交感神経 副交感神経 アンジオテンシンII アルドステロン バソプレシン アドレナリン ノルアドレナリン ANP 心房ナトリウム利尿ペプチド 平滑筋 心筋 短期的 1-2分 長期的 日 週 CLS BIOTRONIK"
+  },
+  {
+   "term": "Frank-Starling の法則",
+   "en": "Frank-Starling law",
+   "abbr": "",
+   "cat": "生理",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**心臓は、心室内に血液量（前負荷）が増大すると心室（心筋）が引き伸ばされ、その反動で心収縮力が強くなる**という法則 （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。資料は循環調節の3つの仕組みのうち**局所調節（平滑筋や心筋自体による調節）**の例として挙げている。**CLS が見ている「心筋の収縮力」は自律神経による調節だけでなく、前負荷の変化によっても動く**ため、**体位変換や輸液・脱水でもセンサ出力が変わりうる**という理解につながる。資料は収縮力を左右する因子として**自律神経／前負荷、後負荷／心拍数**の3つを挙げている。",
+   "tags": "Frank-Starling フランクスターリング 前負荷 後負荷 心室 引き伸ばされる 心収縮力 局所調節 自律神経 心拍数 CLS BIOTRONIK"
+  },
+  {
+   "term": "単極インピーダンスと dp/dt の相関",
+   "en": "Correlation of unipolar impedance and dp/dt",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**CLS のセンサ原理の根拠となる相関** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。仮説は**「変時性不全患者において変化する変力性を観察できる心腔内インピーダンスは理想的なセンサ原理」「単極インピーダンスは心臓収縮時の dp/dt に相関」。****研究方法はドブタミンを投与して心収縮力を増強させ、dp/dt max と心腔内インピーダンスの相関性を評価するもの。****結果は Intrinsic events で y＝0.9386x＋0.0036（R²＝0.9252）、VVI paced events で y＝0.9672x＋0.0166（R²＝0.9247）。**自己波でもペーシング波でも同等に強い相関が示されている。（Closed-Loop Stimulation Using Intracardiac Impedance as a Sensor Principle. PACE 2000; 23(Pt II):1502-1508）",
+   "tags": "単極インピーダンス dp/dt dp/dt max ドブタミン 心腔内インピーダンス 相関 Intrinsic events VVI paced events 0.9386 0.9252 0.9672 0.9247 R2 PACE 2000 1502-1508 センサ原理 変力性 CLS BIOTRONIK"
+  },
+  {
+   "term": "CLS リファレンス波形",
+   "en": "CLS reference waveform",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**CLS が基準にする、安静時の心内インピーダンス波形** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**心室イベント（Vs／Vp）後に微弱な電流により測定する。測定期間は 50〜300ms、測定パルス数は 16発。****加速度センサを併用して安静時と判断するとリファレンスを作成し更新する。****リファレンスは Vs イベントだけでなく Vp イベントでも作成するため、AV ディレイの短縮および延長を自動で行う。****リファレンスは安静時にのみ取得され活動時と比較される。**波形は**心室充満と等容性収縮の相で下がり、駆出の相で上がる**形をとり、**この基準波形と活動時の波形の差の面積が大きいほどペーシングレートを上昇させる。**",
+   "tags": "CLS リファレンス波形 reference 50-300ms 16発 微弱な電流 Vs Vp 加速度センサ併用 安静時 等容性収縮 駆出期 面積 ペーシングレート上昇 AVディレイ短縮 延長 BIOTRONIK"
+  },
+  {
+   "term": "リファレンス取得のルール（Vs／Vp）",
+   "en": "Reference acquisition rules",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**CLS のリファレンスを Vs 時・Vp 時のどちらでどう取るかの規則** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**① AV ヒステリシスによって房室伝導が優先され、自己心室イベントが発現している場合の Vs 時のリファレンスの取得は、安静時に自動で取得、更新されている。****② 同じ状況での Vp 時のリファレンスの取得は、安静時に AV ディレイを2拍短縮（設定された AV ディレイ）して取得、更新されている。****③ Vp required が「Yes」に設定されており、Vp が常に行われている場合の Vp 時のリファレンスの取得は、安静時に自動で取得、更新されている。****※Vp required が「Yes」に設定されていると、「Vs イベント」が発現しても Vs 時のリファレンスは更新されない**（資料の赤字注記）。**②のため、延長中の AV 間隔の中にときどき短い2拍が混じる。**これをヒステリシスの失敗と読み違えない。",
+   "tags": "リファレンス取得ルール Vs Vp AVヒステリシス 房室伝導優先 安静時 自動取得 更新 AVディレイ2拍短縮 Vp required Yes Vsリファレンスは更新されない 赤字注記 BIOTRONIK"
+  },
+  {
+   "term": "CLS response",
+   "en": "CLS response",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**ターゲットレートを決定し、ベーシックレートからターゲットレートまでのレート分布を全体の80%になるように自動調整する機能** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**設定は Medium（Very low／Low／Medium／High／Very high）。****ターゲットレート＝BR＋[（MCLR−BR）×係数]** で、**係数は Very low 0.21／Low 0.26／Medium 0.33／High 0.41／Very high 0.51**（BR＝Basic rate、MCLR＝Max. CLS rate）。設定を上げるほどターゲットレートが上がり、レート分布のヤマが高レート側へ動く。**※レート分布を調整する機能であり、センサ指示レートの上限を変更する機能ではありません。センサ指示レートの上限を変更するには、Max. CLS rate になります**（資料の注記）。",
+   "tags": "CLS response Very low Low Medium High Very high 0.21 0.26 0.33 0.41 0.51 ターゲットレート BR MCLR 80% レート分布 ヒストグラム 上限ではない Max. CLS rate BIOTRONIK"
+  },
+  {
+   "term": "Max. CLS rate",
+   "en": "Max. CLS rate",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**CLS における目標とする最大センサーレート** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**センサ指示レートの上限を決めるのはこの項目**であり、**CLS response はレート分布を変える機能であって上限は変えない。**画面例は 120bpm。**設定範囲とノミナルは資料に明記がない**（未確定）。**Amvia Sky シリーズにも CLS は搭載されている**（追補49）。**CLS response のターゲットレート計算式（BR＋[（MCLR−BR）×係数]）に MCLR として入る。****CLS resting rate control を Off にする場合は、レートアップに必要な Max. CLS レートをあらかじめ検討することが推奨されている。**",
+   "tags": "Max. CLS rate 最大センサーレート 上限 120bpm ターゲットレート 計算式 MCLR CLS response レート分布連動 resting rate control Off 事前検討 未確定 BIOTRONIK"
+  },
+  {
+   "term": "CLS resting rate control",
+   "en": "CLS resting rate control",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**安静が保たれている際のレート上昇をコントロールする機能** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**設定は +20ppm（Off、+10〜+50ppm）10ppm刻み。**CLS は体動を伴わない負荷でもレートが上がるため、**体動センサで安静と判断されている間だけ上限を掛ける**という作りになっている。**※神経調節性失神には迅速なレートアップサポートが必要になることから「OFF」もしくは「100ppm 程度まで上昇可能になる」ように設定することを推奨します。もし「OFF」に設定する場合にはレートアップに必要な Max.CLS レートをあらかじめ事前に検討してください**（資料の注記）。**加算値ではなく到達レートで考える**必要があり、ベーシックレート 60ppm＋20ppm では 80ppm で頭打ちになる。",
+   "tags": "CLS resting rate control 安静時 レート上昇 上限 +20ppm Off +10 +50ppm 10ppm刻み 神経調節性失神 迅速なレートアップサポート 100ppm 到達レート Max. CLS rate BIOTRONIK"
+  },
+  {
+   "term": "Vp required",
+   "en": "Vp required",
+   "abbr": "",
+   "cat": "ペーシング管理",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**CLS における AV ディレイ延長の可否を決定するための機能**（No／Yes） （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**「No」に設定すると AV ディレイを延長して自己伝導を優先する。「Yes」に設定すると AV ディレイの延長は行わずに心室ペーシングを優先する。****No の作動**：**プログラムされた AV ディレイで59サイクル連続して心室ペーシングが行われると、60拍目と61拍目にあらかじめ設定された AV ヒステリシス分 AV ディレイを延長する。この作動を4セット（8拍）繰り返し、6拍自己心室イベントが確認されるとAV ディレイを延長し房室伝導を優先させる。****キャンセル**：**最新8拍の心室イベント中に7拍連続心室ペーシングが確認されると、AV ヒステリシスによる AV ディレイの延長はキャンセルされる。****再評価**：**設定された AV ディレイで180拍連続心室ペーシングが行われると、再び AV ディレイの延長が行われる。****自己心室イベントの発現が期待できない場合には「Yes」に設定することが推奨されている。****資料は別項で「CLS と Vp suppression を併用することはできません。心室ペーシングの抑制機能は “IRS plus” もしくは “Positive” を推奨しています」と注記している**（追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。",
+   "tags": "Vp required No Yes AVディレイ延長 自己伝導優先 心室ペーシング優先 59サイクル 60拍目 61拍目 AVヒステリシス 4セット 8拍 6拍 7拍連続 180拍連続 再評価 リファレンス更新 BIOTRONIK"
+  },
+  {
+   "term": "CLS fusion avoidance zone",
+   "en": "CLS fusion avoidance zone",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**フュージョンによるリファレンス波形への影響を避けるための機能。常に On** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**AV ヒステリシス機能が働いた際に、心房イベントに続く自己心室イベントがプログラムされた AV ディレイから 40ms の間に確認されると心室融合収縮を疑う。****Fusion avoidance zone（40ms）に Vs があると “+1”、Vs がなければ “−1” と増減される。****Fusion avoidance zone 内に最新の16拍中10拍以上の Vs が確認されるとリファレンスの取得は中止され、CLS は休止となる。****「CLS を入れたのにレートが上がらない」ときにまず疑う。****復帰の条件は資料に記載がない**（未確定）。",
+   "tags": "CLS fusion avoidance zone 40ms 常にOn 融合収縮 フュージョン リファレンス波形 +1 -1 16拍中10拍 CLS休止 AVヒステリシス レートが上がらない 復帰条件不明 BIOTRONIK"
+  },
+  {
+   "term": "BURDEN II Study",
+   "en": "BURDEN II Study",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**Atrial overdrive 機能（DDDR+）、加速度センサ（DDDR）、CLS の各設定における AT burden を比較した試験** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**デザインは多施設共同、単盲目、無作為化試験。研究対象は BTS かつ植込み3か月前に AT episode が記録された451例。****AT episode を認めた患者の割合（Overdrive／DDDR／CLS、P値）**は**>1分〜<5分＝116(38.1%)／103(33.9%)／82(27.0%)、P 0.02。****>5分〜<1時間＝73(24.0%)／58(19.1%)／43(14.1%)、P 0.04。****>1時間〜<24時間＝76(25.0%)／52(17.1%)／49(16.1%)、P 0.06。****>24時間＝18(5.9%)／15(4.9%)／18(5.9%)、P 0.78。****短時間〜中時間のエピソードでは CLS が最も少なく、24時間を超える持続例では差がない**という読み方になる。",
+   "tags": "BURDEN II Study 多施設共同 単盲目 無作為化 451例 BTS AT burden Atrial overdrive DDDR+ 加速度センサ DDDR CLS 38.1 33.9 27.0 24.0 19.1 14.1 25.0 17.1 16.1 5.9 4.9 P0.02 P0.04 P0.06 P0.78 エビデンス BIOTRONIK"
+  },
+  {
+   "term": "CLS と心房頻拍性不整脈バーデン（Ikeda ら）",
+   "en": "CLS and atrial tachyarrhythmia burden",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**洞不全症候群と心房細動の患者で、心内インピーダンスに基づく生理的レート応答ペーシング（CLS）が心房頻拍性不整脈バーデンを下げるかを検討した報告** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。（Closed-loop stimulation as a physiological rate-modulated pacing approach based on intracardiac impedance to lower the atrial tachyarrhythmia burden in patients with sinus node dysfunction and atrial fibrillation. Shota Ikeda、Akihiko Nogami、Kosuke Inoue、Shinya Kowase、Kenji Kurosaki、Yasushi Mukai、Hiroyuki Tsutsui）**群のサイズは All patients n=146、FP〈固定レートペーシング〉n=32、All rate modulation pacing n=64（うち CLS n=31、Non-CLS RM n=33）。****%AP は FP 70.6（24.2, 93.2）に対し rate modulation pacing 94.3（82.9, 97.3）で P<.01。****AF/AT burden(%) は FP 1.6（0.1, 11.0）／CLS 0.0（0.0, 2.5）／Non-CLS RM 1.0（0.1, 9.3）**（グラフには p=0.01 と p=0.04 が示されている）。**CLS 群で最も低い。**",
+   "tags": "Ikeda CLS AF/AT burden 洞不全症候群 心房細動 心内インピーダンス 生理的レート応答 146 32 64 31 33 FP rate modulation pacing Non-CLS RM %AP 70.6 94.3 P<.01 1.6 0.0 1.0 p=0.01 p=0.04 エビデンス BIOTRONIK"
+  },
+  {
+   "term": "CLS の透析困難症例への有効性",
+   "en": "CLS in difficult hemodialysis",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**透析中に低血圧（透析低血圧）になり、透析が維持できない透析困難症例に有効であったことが報告されている** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。機序は**透析後半に体内の水分が必要以上に透析で除去される → 脱水状態 → 血管内の血液量が少なくなり血圧が低下 → 循環中枢が血圧を上げようと試みる → 循環中枢の指令を受け心収縮力が増強 → CLS は心収縮力の変化をとらえ、即座に Pacing rate を上昇させる → 早期に血圧を回復させることが可能**、という流れ。**資料の実測例（横浜労災病院からのデータ提供）では、CLS OFF で血圧（上）183 → 154 と下がるあいだレートは 70 → 69 とほぼ動かないのに対し、CLS ON では血圧（上）183 → 179 が保たれ、レートが 74 → 84 に上昇している。**",
+   "tags": "CLS 透析困難症例 透析低血圧 脱水 循環中枢 心収縮力増強 Pacing rate上昇 血圧回復 CLS OFF 183 154 70 69 CLS ON 179 74 84 横浜労災病院 BIOTRONIK"
+  },
+  {
+   "term": "レートレスポンスセンサの比較（加速度／MV／CLS）",
+   "en": "Comparison of rate response sensors",
+   "abbr": "",
+   "cat": "レート応答",
+   "device": "PM / ICD / CRT",
+   "maker": "BIOTRONIK",
+   "short": "**資料が示すセンサごとの長短** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**加速度センサ：メリットは「運動開始時に即座に反応できる」「低い運動レベルであっても反応できる」、デメリットは「非生理的な振動にも応答する」「振動の少ない運動では反応しにくい」。****MV センサ：メリットは「運動中、運動後の呼吸に相関している」「発熱やメンタルストレスにも反応できる」、デメリットは「運動開始時の反応の遅れ」「肺胸郭内の水分量に影響される」。****結論は「CLS は循環中枢制御の閉鎖ループを活用しているため体動センサ・MV センサの欠点を補うことが可能」。****階段昇降では CLS は下りより上りのほうがレートが高く出る**のに対し、加速度センサは上下動そのものを拾うため下りでも上がりやすい。",
+   "tags": "レートレスポンス センサ比較 加速度センサ MVセンサ 分時換気量 CLS メリット デメリット 非生理的な振動 振動の少ない運動 呼吸に相関 発熱 メンタルストレス 反応の遅れ 肺胸郭内の水分量 階段昇降 上り 下り BIOTRONIK"
+  },
+  {
+   "term": "Color-word test（CWT）",
+   "en": "Color-word test",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "PM / ICD / CRT",
+   "maker": "General",
+   "short": "**精神的負荷に対する CLS の応答を評価するために資料が用いているテスト** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。文字が示す色名と実際の文字色を食い違わせた課題（資料の例は黄色地に赤字で「PURPLE」）で、被験者にストレスを与える。**結果のグラフでは MABP（平均動脈圧）と stimulation rate（ペーシングレート）が並行して動き、Rest → CWT1 → Rest → CWT2 → Rest の推移でレートが約80 → 100bpm 台まで上昇している**（Hubmann M., Erlangen, Germany, 1998）。**体動がないのにレートが上がるのが CLS の特徴で、加速度センサではこの反応は出ない。**",
+   "tags": "Color-word test CWT ストループ 精神的負荷 メンタルストレス MABP stimulation rate 相関 Hubmann Erlangen 1998 体動なし レート上昇 CLS 加速度センサでは反応しない エビデンス BIOTRONIK"
   }
  ],
  "feats": [
