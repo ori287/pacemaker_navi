@@ -295,10 +295,10 @@ details.other .kv{padding:0 11px}
 <nav class="nav" id="nav" aria-label="メイン">
  <div class="in">
   <button data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>ホーム</button>
-  <button data-nav="term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5A2.5 2.5 0 0 1 18 7v12.5H7.5A2.5 2.5 0 0 1 5 17z"/><path d="M5 17a2.5 2.5 0 0 1 2.5-2.5H18M9 8h5.5M9 11h4"/></svg>用語</button>
-  <button data-nav="prod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="11" height="10" rx="4.5"/><path d="M6 8V6.5A1.5 1.5 0 0 1 7.5 5h3A1.5 1.5 0 0 1 12 6.5V8"/><path d="M14 13h2c2.5 0 2.5-6 5-6"/></svg>製品</button>
-  <button data-nav="algo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13h4l1.4-7 2.2 13 1.9-9h1.2l1-2 1.2 5h6.1"/></svg>アルゴリズム</button>
-  <button data-nav="mri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M3.5 12H8M16 12h4.5"/></svg>MRI</button>
+  <button data-nav="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>検索</button>
+  <button data-nav="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg>履歴</button>
+  <button data-nav="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4.2-6.5 4.2v-16a1 1 0 0 1 1-1z"/></svg>保存</button>
+  <button data-nav="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>メニュー</button>
  </div>
 </nav>
 <div class="modal" id="modal" hidden>
@@ -859,28 +859,25 @@ function onRoute(){
  if(prevKey!==nk){var ks=keepScroll&&prevKey&&prevKey.split("?")[0]===nk.split("?")[0];var y0=window.scrollY;renderView();lastViewKey=nk;var y=ks?y0:(scrollMem[nk]||0);requestAnimationFrame(function(){window.scrollTo(0,y)})}
  keepScroll=false;
  if(!route.params.d)pushedDetail=false;
- var tb=navFor(route);if(tb&&tb!=="home")tabLast[tb]=viewKey(route);
+ if(/^list\//.test(route.path)||route.path==="mri")tabLast[route.path]=viewKey(route);
  if(route.params.d)openSheet(route.params.d);else closeSheet(true);
 }
 
 /* ---------- 画面 ---------- */
 function setBar(opts){
- var bar=$("#bar"),right="";
- if(!opts.home&&!opts.noSearchIcon)right+='<button class="iconbtn" data-go="#/search" aria-label="横断検索">'+ICON.search+'</button>';
- if(!opts.noMenu)right+='<button class="iconbtn" data-go="#/menu" aria-label="メニュー（履歴・保存・設定）">'+ICON.menu+'</button>';
- if(opts.home){bar.innerHTML='<div class="brand"><span class="mark" aria-hidden="true">'+ICON.mark+'</span><span class="brandtx"><b>Pacemaker Navi</b><small>Cardiac Device Quick Reference</small></span></div><span class="spacer"></span><span class="count-pill num">'+fmtN(totalCount())+'件</span>'+right}
- else{bar.innerHTML=(opts.back?'<button class="backbtn" id="backbtn" aria-label="戻る">'+ICON.back+'</button>':"")+'<span class="vtitle">'+esc(opts.title||"")+'</span><span class="spacer"></span>'+right}
+ var bar=$("#bar");
+ if(opts.home){bar.innerHTML='<div class="brand"><span class="mark" aria-hidden="true">'+ICON.mark+'</span><span class="brandtx"><b>Pacemaker Navi</b><small>Cardiac Device Quick Reference</small></span></div><span class="spacer"></span><span class="count-pill num">'+fmtN(totalCount())+'件</span>'}
+ else{bar.innerHTML=(opts.back?'<button class="backbtn" id="backbtn" aria-label="戻る">'+ICON.back+'</button>':"")+'<span class="vtitle">'+esc(opts.title||"")+'</span><span class="spacer"></span>'}
  $("#searchrow").classList.toggle("hidden",!opts.search);
  var b=$("#backbtn");if(b)b.onclick=function(){if(window.history.length>1)window.history.back();else go("home",{})};
 }
 
 function navFor(rt){
- var p=rt.path.split("/");
- if(p[0]==="home"||p[0]==="search"||p[0]==="more")return "home";
- if(p[0]==="list"){return {term:"term",prod:"prod",algo:"algo",feat:"algo",mri:"mri"}[p[1]]||""}
- if(p[0]==="mri")return "mri";
- return "";
+ var p=rt.path.split("/")[0];
+ if(p==="search"||p==="history"||p==="saved"||p==="menu")return p;
+ return "home";   /* 6つの入口（用語・製品・アルゴリズム・メーカー比較・MRI・年表）はホームの配下 */
 }
+
 var tabLast={};
 function navOn(name){$$(".nav button").forEach(function(b){b.classList.toggle("on",b.dataset.nav===name);b.setAttribute("aria-current",b.dataset.nav===name?"page":"false")})}
 
@@ -916,7 +913,7 @@ function renderHome(){
   ["#/more","more","年表・その他","過去製品・データ情報",""]
  ];
  var h=offlineNotice()+'<div class="lead"><h1>調べたい情報へ、最短で。</h1><p>デバイスの製品・メーカー機能・用語・MRI条件を横断検索します。</p></div>'+
-  '<div class="tiles">'+tiles.map(function(t){return '<button class="tile" data-go="'+t[0]+'"><span class="ti">'+ICON[t[1]]+'</span><b>'+t[2]+'</b><span>'+t[3]+'</span>'+(t[4]!==""?'<i class="tn num" style="font-style:normal">'+fmtN(t[4])+'</i>':"")+'</button>'}).join("")+'</div>';
+  '<div class="tiles">'+tiles.map(function(t){return '<button class="tile" data-tile="'+t[0]+'"><span class="ti">'+ICON[t[1]]+'</span><b>'+t[2]+'</b><span>'+t[3]+'</span>'+(t[4]!==""?'<i class="tn num" style="font-style:normal">'+fmtN(t[4])+'</i>':"")+'</button>'}).join("")+'</div>';
  var sv=saved.slice(0,3).map(function(h){return BYKEY[h.k]}).filter(Boolean);
  if(sv.length)h+='<h2 class="sec">保存した項目<button class="aside linkish" style="min-height:0" data-go="#/saved">すべて</button></h2><div class="list">'+sv.map(function(r){return rowHTML(r)}).join("")+'</div>';
  var rec=histList.slice(0,3).map(function(h){return BYKEY[h.k]}).filter(Boolean);
@@ -943,7 +940,7 @@ function dataDate(){var ds=FILES.map(function(f){return RAW[f]&&RAW[f].updated})
 /* 検索画面：上部の入力欄を共用する（ホームで打ち始めると、そのまま検索画面に移る） */
 var searchState={q:"",c:"all",m:""};
 function renderSearch(){
- setBar({title:"検索",back:true,search:true,noSearchIcon:true});navOn("home");show("search");
+ setBar({title:"検索",search:true});navOn("search");show("search");
  var P=route.params;searchState.q=P.q||"";searchState.c=P.c||"all";searchState.m=P.m||"";
  var q=$("#q");if(q.value!==searchState.q&&document.activeElement!==q)q.value=searchState.q;
  $("#qclear").classList.toggle("on",!!q.value);
@@ -1000,7 +997,7 @@ var LIST_PH={term:"用語・略語・英語・タグで検索",prod:"製品名�
 function renderList(type){
  if(!TYPES[type])type="term";
  var P=route.params;
- setBar({title:LIST_TITLE[type],back:type==="mri",search:false});navOn(navFor(route));show("list");
+ setBar({title:LIST_TITLE[type],back:true,search:false});navOn("home");show("list");
  var el=$("#v-list");var all=DB[type].slice();var h="";var rows;var fq=P.fq||"";
  if(type==="algo"||type==="feat"){
   h+='<div class="seg segtop" role="tablist"><button class="'+(type==="algo"?"on":"")+'" data-go="#/list/algo">メーカー別</button><button class="'+(type==="feat"?"on":"")+'" data-go="#/list/feat">メーカー比較</button></div>';
@@ -1071,7 +1068,7 @@ function renderList(type){
  chunkList($("#lres"),shown,fq,type==="term"&&P.md==="saved"?{emptyTitle:"保存した用語はありません",emptyText:"用語の詳細画面の右上にある保存ボタンで追加できます。"}:type==="term"&&P.md==="recent"?{emptyTitle:"最近見た用語はありません",emptyText:"開いた用語がここに並びます。"}:null);
  var fi=$("#fq");var tm=null;
  fi.oninput=function(){clearTimeout(tm);tm=setTimeout(function(){var p=Object.assign({},route.params);if(fi.value)p.fq=fi.value;else delete p.fq;
-  try{window.history.replaceState(null,"",buildHash(route.path,p))}catch(e){}route=parseHash();lastViewKey=viewKey(route);var tb=navFor(route);if(tb&&tb!=="home")tabLast[tb]=lastViewKey;
+  try{window.history.replaceState(null,"",buildHash(route.path,p))}catch(e){}route=parseHash();lastViewKey=viewKey(route);if(/^list\//.test(route.path))tabLast[route.path]=lastViewKey;
   var Q=fi.value.trim()?prepQuery(fi.value):null;var s2=Q?rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx}):rows;
   $(".rescount",el).textContent=fmtN(s2.length)+" 件"+(s2.length!==all.length?"（全 "+fmtN(all.length)+" 件）":"");chunkList($("#lres"),s2,fi.value)},120)};
  fi.onkeydown=function(e){if(e.key==="Enter"&&!e.isComposing){fi.blur()}};
@@ -1096,7 +1093,7 @@ function mriCands(){
 }
 function leadIn(list,v){if(!v||v===NONE)return true;return (list||[]).some(function(l){return l.model===v})}
 function renderMri(){
- setBar({title:"MRI",search:false});navOn("mri");show("mri");
+ setBar({title:"MRI",back:true,search:false});navOn("home");show("mri");
  var P=route.params;mriSel.dev=P.dev||"";mriSel.devMaker=P.dm||"";mriSel.devType=P.dt||"";mriSel.ra=P.ra||"";mriSel.rv=P.rv||"";mriSel.lv=P.lv||"";
  var mk=P.mk||"",ty=P.ty||"";
  var el=$("#v-mri");
@@ -1174,7 +1171,7 @@ function leadSel(pos,label,list){
 /* ---------- 履歴・保存 ---------- */
 function timeLabel(t){var d=new Date(t);var now=new Date();var same=d.toDateString()===now.toDateString();return same?("今日 "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")):((d.getMonth()+1)+"/"+d.getDate())}
 function renderHistory(){
- setBar({title:"履歴",back:true,search:false});navOn("");show("history");
+ setBar({title:"履歴",search:false});navOn("history");show("history");
  var rows=histList.map(function(h){return BYKEY[h.k]}).filter(Boolean);
  var el=$("#v-history");
  if(!rows.length){el.innerHTML='<div class="empty"><b>まだ履歴はありません</b>開いた用語・製品・アルゴリズム・MRI情報がここに並びます。</div>';return}
@@ -1183,7 +1180,7 @@ function renderHistory(){
  $("#clrh").onclick=function(){if(confirm("履歴を消去しますか？")){histList=[];LS.set("history",histList);renderHistory()}};
 }
 function renderSaved(){
- setBar({title:"保存",back:true,search:false});navOn("");show("saved");
+ setBar({title:"保存",search:false});navOn("saved");show("saved");
  var rows=saved.map(function(h){return BYKEY[h.k]}).filter(Boolean);
  var el=$("#v-saved");
  if(!rows.length){el.innerHTML='<div class="empty"><b>保存した項目はありません</b>詳細画面の右上にある保存ボタンで、この端末に保存できます。</div>';return}
@@ -1207,12 +1204,9 @@ function ovRows(){
  return rows;
 }
 function renderMenu(){
- setBar({title:"メニュー",back:true,search:false,noMenu:true});navOn("");show("menu");
+ setBar({title:"メニュー",search:false});navOn("menu");show("menu");
  var el=$("#v-menu");
  var top='<div class="list" style="margin-top:8px">'+
-  '<button class="row" data-go="#/history"><span class="ri">'+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg>'+'</span><span class="rb"><span class="rn">履歴</span><span class="rs">最近見た項目 '+fmtN(histList.length)+' 件</span></span></button>'+
-  '<button class="row" data-go="#/saved"><span class="ri">'+ICON.bm+'</span><span class="rb"><span class="rn">保存</span><span class="rs">保存した項目 '+fmtN(saved.length)+' 件</span></span></button>'+
-  '<button class="row" data-go="#/search"><span class="ri">'+ICON.search+'</span><span class="rb"><span class="rn">横断検索</span><span class="rs">用語・アルゴリズム・メーカー比較・製品・MRIをまとめて検索</span></span></button>'+
   '<button class="row" data-go="#/more"><span class="ri">'+ICON.more+'</span><span class="rb"><span class="rn">年表・その他</span><span class="rs">過去製品と、統合予定のデータベース</span></span></button></div>';
  var or=ovRows();
  var ovh='<h2 class="sec" id="sec-ov">用語・メーカー比較の変更（この端末）</h2>'+
@@ -1385,15 +1379,16 @@ function lockScroll(on){
 
 /* ---------- 共通のクリック処理 ---------- */
 document.addEventListener("click",function(e){
- var t=e.target.closest("[data-open],[data-q],[data-go],[data-nav],[data-cat],[data-mk],[data-mk-clear],[data-pp],[data-mri-dev],[data-mri-reset],[data-mri-mk],[data-mri-ty],[data-add],[data-ov-undo]");
+ var t=e.target.closest("[data-open],[data-q],[data-go],[data-nav],[data-tile],[data-cat],[data-mk],[data-mk-clear],[data-pp],[data-mri-dev],[data-mri-reset],[data-mri-mk],[data-mri-ty],[data-add],[data-ov-undo]");
  if(!t)return;
  if(t.dataset.open!=null){e.preventDefault();openDetail(t.dataset.open);return}
  if(t.dataset.q!=null){e.preventDefault();var q=t.dataset.q;commitRecentQ(q);$("#q").value=q;go("search",{q:q});return}
  if(t.dataset.go!=null){e.preventDefault();location.hash=t.dataset.go;return}
  if(t.dataset.nav!=null){e.preventDefault();var n=t.dataset.nav,cur=navFor(route);
-  var def={home:"#/home",term:"#/list/term",prod:"#/list/prod",algo:"#/list/algo",mri:"#/mri"}[n];
-  if(cur===n){if(route.params.d)closeViaBack();window.scrollTo({top:0,behavior:"smooth"});return}   /* 選択中のタブをもう一度押すと先頭へ */
-  location.hash=n==="home"?"#/home":(tabLast[n]||def);return}
+  if(cur===n&&route.path===n){if(route.params.d)closeViaBack();window.scrollTo({top:0,behavior:"smooth"});if(n==="search")$("#q").focus();return}   /* 選択中のタブをもう一度押すと先頭へ */
+  if(n==="search"){go("search",searchState.q?{q:searchState.q,c:searchState.c,m:searchState.m}:{});$("#searchrow").classList.remove("hidden");if(!searchState.q)$("#q").focus()}
+  else go(n,{});return}
+ if(t.dataset.tile!=null){e.preventDefault();location.hash=tabLast[t.dataset.tile.replace(/^#\//,"")]||t.dataset.tile;return}
  if(t.dataset.add!=null){e.preventDefault();openEditor(t.dataset.add,null);return}
  if(t.dataset.ovUndo!=null){e.preventDefault();undoOv(t.dataset.ovUndo);return}
  if(t.dataset.cat!=null){var p=Object.assign({},route.params);p.c=t.dataset.cat;if(p.c==="all")delete p.c;go("search",p,true);window.scrollTo(0,0);return}
