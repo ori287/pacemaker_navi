@@ -455,16 +455,17 @@ var TYPES={
 };
 var PRE2TYPE={t:"term",a:"algo",f:"feat",p:"prod",m:"mri"};
 var ORDER=["term","algo","feat","prod","mri"];
-var MAKER_ORDER=["Medtronic","Abbott","BIOTRONIK","Boston Scientific","MicroPort CRM"];
-var MAKER_CHIPS=[["Medtronic","Medtronic"],["Abbott","Abbott"],["BIOTRONIK","BIOTRONIK"],["Boston Scientific","Boston"],["MicroPort CRM","MicroPort"]];
-var VENDORS=[["mdt","Medtronic"],["abt","Abbott"],["bio","BIOTRONIK"],["bsx","Boston Scientific"],["mcp","MicroPort CRM"]];
-var LEGACY_MAKERS=["Pacesetter AB (Siemens)","Cardiac Pacemakers (CPI), Guidant","Vitatron","Sorin Group","ela medical","Intermedics","Medico","Societe Somedics","Cardiac Control Systems","Cordis","Telectronics"];
+/* メーカーの表示順：上位5社はアルファベット順で固定、それ以外（旧社など）はその下にアルファベット順 */
+var MAKER_ORDER=["Abbott","BIOTRONIK","Boston Scientific","Medtronic","MicroPort CRM"];
+var MAKER_CHIPS=[["Abbott","Abbott"],["BIOTRONIK","BIOTRONIK"],["Boston Scientific","Boston"],["Medtronic","Medtronic"],["MicroPort CRM","MicroPort"]];
+var VENDORS=[["abt","Abbott"],["bio","BIOTRONIK"],["bsx","Boston Scientific"],["mdt","Medtronic"],["mcp","MicroPort CRM"]];
 var CAT_ORDER=["PM","Leadless PM","ICD","S-ICD","EV-ICD","CRT-P","CRT-D","ICM","PMリード","ICDリード","LVリード","デリバリーシース","スリッター・ツール","プログラマ","遠隔モニタリング","送信機","ICM付属品"];
 var G_CAT_ORDER=["ペーシング","AV・タイミング","センシング","モード","レート応答","リード","デバイス構造","電池","不整脈・EP","心電図","薬剤","ICD","CRT・CSP","リードレス","植込み・手技","トラブル","MRI・EMI","フォロー","エビデンス"];
 var DEV_TOKENS=["PM","ICD","CRT","ICM","Leadless"];
 var KIND_LABEL={device:"本体",lead:"リード",gear:"関連機器"};
 
-function makerRank(m){var i=MAKER_ORDER.indexOf(m);if(i>=0)return i;var j=LEGACY_MAKERS.indexOf(m);return j>=0?100+j:900}
+function makerRank(m){var i=MAKER_ORDER.indexOf(m);return i>=0?i:100}
+function makerCmp(a,b){return makerRank(a)-makerRank(b)||String(a||"").localeCompare(String(b||""),"en",{sensitivity:"base"})}
 function catRank(c){var i=CAT_ORDER.indexOf(c);return i<0?99:i}
 function strip(s){return String(s==null?"":s).replace(/\*\*/g,"").replace(/`/g,"")}
 function leaves(v,out){ /* 文字列の葉をすべて集める（検索とデータ検証の両方で使う） */
@@ -480,7 +481,7 @@ function leaves(v,out){ /* 文字列の葉をすべて集める（検索とデ�
    マスター（data.json）は変更せず、表示時に「追加・編集・削除」の差分を重ねる。 */
 var OVK="cieds_overlay";
 var FEAT_CATS_BASE=["ペーシング管理","レート応答","CRT","ICD","リモート","MRI","機器","心房治療","CSP","Leadless","製品"];
-var EDIT_MAKERS=["General","Medtronic","Abbott","Boston Scientific","BIOTRONIK","MicroPort"];
+var EDIT_MAKERS=["General","Abbott","BIOTRONIK","Boston Scientific","Medtronic","MicroPort"];
 function normOv(o){o=o||{};return {addG:o.addG||[],addF:o.addF||[],editG:o.editG||{},editF:o.editF||{},delG:o.delG||[],delF:o.delF||[],ts:o.ts||0}}
 function readOv(){try{return normOv(JSON.parse(localStorage.getItem(OVK)||"null"))}catch(e){return normOv(null)}}
 var OV=readOv();
@@ -734,7 +735,9 @@ function detailAlgo(r){
  if(!isEmpty(x.pitfall)||!isEmpty(x.caution)){var t="";if(!isEmpty(x.pitfall))t+='<div class="subh">トラブル事例</div>'+prose(x.pitfall);if(!isEmpty(x.caution))t+='<div class="subh">注意点</div>'+prose(x.caution);tabs.push({k:"pit",label:"トラブル・注意",html:t})}
  used.push("equiv");
  if(!isEmpty(x.equiv)){
-  var rows=String(x.equiv).split("\n").filter(function(s){return s.trim()}).map(function(line){var m=line.match(/^([^:：]{2,40})[:：]\s*([\s\S]*)$/);
+  var eqLines=String(x.equiv).split("\n").filter(function(s){return s.trim()}).map(function(line,i){var m=line.match(/^([^:：]{2,40})[:：]\s*([\s\S]*)$/);return {line:line,i:i,mk:m?m[1].trim():null}});
+  var labeled=eqLines.filter(function(o){return o.mk}).sort(function(a,b){return makerCmp(a.mk,b.mk)||a.i-b.i}),rest=eqLines.filter(function(o){return !o.mk});
+  var rows=labeled.concat(rest).map(function(o){return o.line}).map(function(line){var m=line.match(/^([^:：]{2,40})[:：]\s*([\s\S]*)$/);
    if(m)return '<div><div class="vk">'+esc(m[1])+'</div><div class="vv'+(/^—/.test(m[2].trim())?" none":"")+'">'+inline(m[2])+'</div></div>';
    return '<div><div class="vk"></div><div class="vv">'+inline(line)+'</div></div>'});
   tabs.push({k:"eq",label:"他社比較",html:'<div class="vgrid">'+rows.join("")+'</div><p class="note" style="margin-top:10px">「—」は、このデータに相当機能が登録されていないことを示します。</p>'});
@@ -749,7 +752,7 @@ function localNotice(r,kind){
  var label=kind==="G"?"用語":"項目";
  if(r.ov.added)return '<div class="notice warn" style="margin-bottom:10px">'+ICON.warn+'<div><b>この端末で追加した'+label+'です。</b>公式データ（マスター）には含まれていません。<br><button class="linkish" data-ov-undo="'+kind+':add:'+esc(r.ov.addId)+'" style="min-height:0">この'+label+'を削除</button></div></div>';
  var m=r.ov.master,pairs=kind==="G"?[["用語",m.term],["略語",m.abbr],["英語",m.en],["カテゴリ",m.cat],["対象デバイス",m.device],["メーカー",m.maker],["説明",m.short]]
-  :[["機能名",m.fn],["英語/汎用名",m.en],["カテゴリ",m.cat],["Medtronic",m.mdt],["Abbott",m.abt],["BIOTRONIK",m.bio],["Boston Scientific",m.bsx],["MicroPort CRM",m.mcp],["備考",m.note]];
+  :[["機能名",m.fn],["英語/汎用名",m.en],["カテゴリ",m.cat],["Abbott",m.abt],["BIOTRONIK",m.bio],["Boston Scientific",m.bsx],["Medtronic",m.mdt],["MicroPort CRM",m.mcp],["備考",m.note]];
  return '<div class="notice warn" style="margin-bottom:10px">'+ICON.warn+'<div><b>この端末で編集されています。</b>表示は編集後の内容です。公式データ（マスター）の内容は下の「元の登録内容」で確認できます。<br><button class="linkish" data-ov-undo="'+kind+':edit:'+esc(r.ov.mkey)+'" style="min-height:0">編集を取り消して元に戻す</button></div></div>'+
   '<details class="other" style="margin:0 0 12px"><summary>元の登録内容（公式データ）</summary>'+kvRows(pairs)+'</details>';
 }
@@ -1007,21 +1010,21 @@ function renderList(type){
   var kd=P.kd||"",mk=P.mk||"",ct=P.ct||"",per=P.per||"";
   h+='<div class="seg" role="tablist" style="margin-top:8px">'+[["","すべて"],["device","本体"],["lead","リード"],["gear","関連機器"]].map(function(k){return '<button class="'+(kd===k[0]?"on":"")+'" data-pp="kd" data-pv="'+k[0]+'">'+k[1]+'</button>'}).join("")+'</div>';
   var scope=all.filter(function(r){return !kd||r.raw.kind===kd});
-  var mks=uniqArr(scope.map(function(r){return r.raw.maker})).sort(function(a,b){return makerRank(a)-makerRank(b)||String(a).localeCompare(b,"ja")});
+  var mks=uniqArr(scope.map(function(r){return r.raw.maker})).sort(function(a,b){return makerCmp(a,b)});
   h+=chipRow("メーカー","mk",mks,mk,function(m){return scope.filter(function(r){return r.raw.maker===m}).length});
   var scope2=scope.filter(function(r){return !mk||r.raw.maker===mk});
   var cats=uniqArr(scope2.map(function(r){return r.raw.cat})).sort(function(a,b){return catRank(a)-catRank(b)||String(a).localeCompare(b,"ja")});
   h+=chipRow("分類","ct",cats,ct,function(c){return scope2.filter(function(r){return r.raw.cat===c}).length});
   rows=scope2.filter(function(r){return (!ct||r.raw.cat===ct)&&(!per||!isEmpty(r.raw.period))});
   if(per)h+='<div class="notice info" style="margin-top:8px">'+ICON.info+'<div>販売期間が登録されている製品だけを表示しています。<button class="linkish" data-pp="per" data-pv="">解除</button></div></div>';
-  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.raw.maker).localeCompare(b.raw.maker,"ja")||catRank(a.raw.cat)-catRank(b.raw.cat)||String(a.title).localeCompare(b.title,"ja",{numeric:true})});
+  rows.sort(function(a,b){return makerCmp(a.raw.maker,b.raw.maker)||catRank(a.raw.cat)-catRank(b.raw.cat)||String(a.title).localeCompare(b.title,"ja",{numeric:true})});
  }else if(type==="algo"){
   var mk2=P.mk||"",ct2=P.ct||"";
   h+=chipRow("メーカー","mk",MAKER_ORDER,mk2,function(m){return all.filter(function(r){return r.raw.maker===m}).length});
   var sc=all.filter(function(r){return !mk2||r.raw.maker===mk2});
   h+=chipRow("分類","ct",uniqArr(sc.map(function(r){return r.raw.cat})),ct2,function(c){return sc.filter(function(r){return r.raw.cat===c}).length});
   rows=sc.filter(function(r){return !ct2||r.raw.cat===ct2});
-  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.title).localeCompare(b.title,"ja")});
+  rows.sort(function(a,b){return makerCmp(a.raw.maker,b.raw.maker)||String(a.title).localeCompare(b.title,"ja")});
  }else if(type==="term"){
   var md=P.md||"",dv=P.dv||"",ct3=P.ct||"",so=P.so||"reco";
   var savedT=saved.filter(function(x){return x.k.indexOf("t:")===0}).map(function(x){return x.k});
@@ -1038,7 +1041,7 @@ function renderList(type){
   if(!md){
    if(so==="term")rows.sort(function(a,b){return String(a.title).localeCompare(b.title,"ja")});
    else if(so==="cat")rows.sort(function(a,b){var ia=G_CAT_ORDER.indexOf(a.raw.cat),ib=G_CAT_ORDER.indexOf(b.raw.cat);return (ia<0?99:ia)-(ib<0?99:ib)||String(a.title).localeCompare(b.title,"ja")});
-   else if(so==="maker")rows.sort(function(a,b){return String(a.raw.maker||"~~").localeCompare(b.raw.maker||"~~","ja")||String(a.title).localeCompare(b.title,"ja")});
+   else if(so==="maker")rows.sort(function(a,b){return (a.raw.maker?0:1)-(b.raw.maker?0:1)||makerCmp(a.raw.maker,b.raw.maker)||String(a.title).localeCompare(b.title,"ja")});
   }
   h+='<div class="toolbar"><select id="tsort" aria-label="並び替え"'+(md?' disabled':'')+'>'+[["reco","おすすめ順"],["term","用語名順"],["cat","カテゴリ順"],["maker","メーカー順"]].map(function(o){return '<option value="'+o[0]+'"'+(so===o[0]?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select><button class="btn primary" data-add="term">＋ 用語を追加</button></div>';
   var nG=OV.addG.length+Object.keys(OV.editG).length+OV.delG.length;
@@ -1059,7 +1062,7 @@ function renderList(type){
   var sc5=all.filter(function(r){return !mk5||r.raw.maker===mk5});
   h+=chipRow("種別","ty",uniqArr(sc5.map(function(r){return r.raw.type})),ty,function(t){return sc5.filter(function(r){return r.raw.type===t}).length});
   rows=sc5.filter(function(r){return !ty||r.raw.type===ty});
-  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||a.idx-b.idx});
+  rows.sort(function(a,b){return makerCmp(a.raw.maker,b.raw.maker)||a.idx-b.idx});
  }
  var shown=rows;
  if(fq.trim()){var Q=prepQuery(fq);shown=rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx})}
@@ -1085,7 +1088,7 @@ function mriDevices(){
  DB.mri.forEach(function(g){(g.raw.devices||[]).forEach(function(d){var k=g.raw.maker+"\u0001"+g.raw.type+"\u0001"+d.model;if(seen[k])return;
   seen[k]={maker:g.raw.maker,type:g.raw.type,model:d.model,name:d.name||d.model,types:[g.raw.type]};out.push(seen[k])})});
  var typeOrder={};DB.mri.forEach(function(g){var k=g.raw.maker+"\u0001"+g.raw.type;if(typeOrder[k]==null)typeOrder[k]=g.idx});
- out.sort(function(a,b){return makerRank(a.maker)-makerRank(b.maker)||String(a.maker).localeCompare(b.maker,"ja")||(typeOrder[a.maker+"\u0001"+a.type]-typeOrder[b.maker+"\u0001"+b.type])||String(a.name).localeCompare(b.name,"ja",{numeric:true})});
+ out.sort(function(a,b){return makerCmp(a.maker,b.maker)||(typeOrder[a.maker+"\u0001"+a.type]-typeOrder[b.maker+"\u0001"+b.type])||String(a.name).localeCompare(b.name,"ja",{numeric:true})});
  return out;
 }
 function mriCands(){
@@ -1105,7 +1108,7 @@ function renderMri(){
   h+='<div class="chosen"><div class="cb"><b>'+esc(d?d.name:mriSel.dev)+'</b><span>'+esc(mriSel.devMaker)+(d?"　"+esc(d.type):"")+'</span></div><button class="linkish" data-mri-reset="1">変更</button></div>';
  }else{
   var makers=MAKER_ORDER.filter(function(m){return devs.some(function(d){return d.maker===m})});
-  devs.forEach(function(d){if(makers.indexOf(d.maker)<0)makers.push(d.maker)});
+  devs.forEach(function(d){if(makers.indexOf(d.maker)<0)makers.push(d.maker)});makers.sort(makerCmp);
   h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk?" on":"")+'" data-mri-mk="">すべて</button>'].concat(makers.map(function(m){var n=devs.filter(function(d){return d.maker===m}).length;return '<button class="chip'+(mk===m?" on":"")+'" data-mri-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
   var byMk=devs.filter(function(d){return !mk||d.maker===mk});
   var types=uniqArr(byMk.map(function(d){return d.type}));
@@ -1281,7 +1284,7 @@ function openEditor(type,rec){
  }else{
   var fc=FEAT_CATS_BASE.slice();DB.feat.forEach(function(r){if(r.raw.cat&&fc.indexOf(r.raw.cat)<0)fc.push(r.raw.cat)});if(cur.cat&&fc.indexOf(cur.cat)<0)fc.unshift(cur.cat);
   h+=fTxt("e_fn","機能名",cur.fn,true,false,"例：レートレスポンス（生理的センサ）")+fTxt("e_en","英語/汎用名",cur.en,false,false,"例：Rate response sensor")+fSel("e_cat","カテゴリ",fc,cur.cat||route.params.ct||fc[0],true)+
-   fTxt("e_mdt","Medtronic",cur.mdt)+fTxt("e_abt","Abbott",cur.abt)+fTxt("e_bsx","Boston Scientific",cur.bsx)+fTxt("e_bio","BIOTRONIK",cur.bio)+fTxt("e_mcp","MicroPort CRM",cur.mcp)+fTxt("e_note","備考",cur.note,false,true);
+   fTxt("e_abt","Abbott",cur.abt)+fTxt("e_bio","BIOTRONIK",cur.bio)+fTxt("e_bsx","Boston Scientific",cur.bsx)+fTxt("e_mdt","Medtronic",cur.mdt)+fTxt("e_mcp","MicroPort CRM",cur.mcp)+fTxt("e_note","備考",cur.note,false,true);
  }
  h+='<p class="note" style="margin:10px 0 0">変更はこの端末にだけ保存され、公式データ（data.json）は変わりません。従来の画面にも同じ変更が表示されます。</p>';
  $("#mTitle").textContent=rec?"編集":(type==="term"?"用語を追加":"機能を追加");
