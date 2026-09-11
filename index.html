@@ -210,6 +210,27 @@ ul.plist li:before{content:"";position:absolute;left:2px;top:16px;width:4px;heig
 .vgrid .vv.none{color:var(--ink3)}
 .subh{font-size:11.5px;font-weight:700;color:var(--teal-d);margin:14px 0 3px}
 .subh:first-child{margin-top:2px}
+ .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.modal[hidden]{display:none}
+.mscrim{position:absolute;inset:0;background:rgba(20,35,40,.45)}
+.mbox{position:relative;background:var(--surface);width:100%;max-width:640px;max-height:calc(100% - var(--sat) - 12px);display:flex;flex-direction:column;border-radius:16px 16px 0 0;box-shadow:0 -6px 30px rgba(20,35,40,.16)}
+.mhead{padding:14px 16px 6px}
+.mhead h3{margin:0;font-size:16px}
+.mbody{overflow:auto;-webkit-overflow-scrolling:touch;padding:0 16px 12px}
+.mbody textarea{width:100%;min-height:150px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:16px;line-height:1.6;font-family:inherit;resize:vertical}
+.mbody .req{color:var(--danger);font-weight:700}
+.mfoot{display:flex;gap:8px;align-items:center;padding:10px 16px calc(10px + var(--sab));border-top:1px solid var(--line2)}
+.mfoot .spacer{flex:1}
+.btn.danger{color:var(--danger)}
+.chkrow{display:flex;flex-wrap:wrap;gap:6px}
+.chkrow label{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--line);border-radius:16px;font-size:13px;font-weight:500;color:var(--ink);margin:0}
+.field .chkrow input[type=checkbox]{width:17px;height:17px;padding:0;border:0;border-radius:4px;margin:0;-webkit-appearance:checkbox;appearance:auto;accent-color:var(--teal);background:none}
+.toolbar{display:flex;gap:8px;align-items:center;margin:10px 0 2px}
+.toolbar select{flex:1;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:0 10px;font-size:13px;-webkit-appearance:none;appearance:none}
+.toolbar .btn{height:36px;font-size:13px;padding:0 12px}
+.loc{color:var(--warn);font-weight:650}
+.segtop{margin:6px 0 8px}
+@media (min-width:700px){.modal{align-items:center}.mbox{border-radius:16px}}
 .tech{margin:22px 0 0;font-size:11px;color:var(--ink3);word-break:break-all}
 details.other{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-md)}
 details.other summary{padding:9px 11px;font-size:12px;font-weight:650;color:var(--ink2);cursor:pointer;list-style:none}
@@ -274,12 +295,21 @@ details.other .kv{padding:0 11px}
 <nav class="nav" id="nav" aria-label="メイン">
  <div class="in">
   <button data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>ホーム</button>
-  <button data-nav="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>検索</button>
-  <button data-nav="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg>履歴</button>
-  <button data-nav="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4.2-6.5 4.2v-16a1 1 0 0 1 1-1z"/></svg>保存</button>
-  <button data-nav="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>メニュー</button>
+  <button data-nav="term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5A2.5 2.5 0 0 1 18 7v12.5H7.5A2.5 2.5 0 0 1 5 17z"/><path d="M5 17a2.5 2.5 0 0 1 2.5-2.5H18M9 8h5.5M9 11h4"/></svg>用語</button>
+  <button data-nav="prod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="11" height="10" rx="4.5"/><path d="M6 8V6.5A1.5 1.5 0 0 1 7.5 5h3A1.5 1.5 0 0 1 12 6.5V8"/><path d="M14 13h2c2.5 0 2.5-6 5-6"/></svg>製品</button>
+  <button data-nav="algo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13h4l1.4-7 2.2 13 1.9-9h1.2l1-2 1.2 5h6.1"/></svg>アルゴリズム</button>
+  <button data-nav="mri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M3.5 12H8M16 12h4.5"/></svg>MRI</button>
  </div>
 </nav>
+<div class="modal" id="modal" hidden>
+ <div class="mscrim" id="mscrim"></div>
+ <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="mhead"><h3 id="mTitle"></h3></div>
+  <div class="mbody" id="mBody"></div>
+  <div class="mfoot"><button class="btn ghost danger" id="mDel">削除</button><span class="spacer"></span><button class="btn ghost" id="mCancel">キャンセル</button><button class="btn primary" id="mSave">保存</button></div>
+ </div>
+</div>
+<input id="ovFile" type="file" accept="application/json,.json" hidden>
 <div class="scrim" id="scrim"></div>
 <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sTitle">
  <div class="grab" id="grab"><i></i></div>
@@ -389,6 +419,8 @@ var ICON={
  gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="11" height="17" rx="2"/><path d="M8 7h3M15 9h3a2 2 0 0 1 2 2v3"/></svg>',
  mri:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M3.5 12H8M16 12h4.5"/></svg>',
  more:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h3M4 12h3M4 18h3"/><circle cx="10.5" cy="6" r="1.5"/><circle cx="10.5" cy="12" r="1.5"/><circle cx="10.5" cy="18" r="1.5"/><path d="M14 6h6M14 12h6M14 18h4"/></svg>',
+ menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+ edit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>',
  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>',
  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>',
  close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
@@ -443,6 +475,27 @@ function leaves(v,out){ /* 文字列の葉をすべて集める（検索とデ�
  Object.keys(v).forEach(function(k){leaves(v[k],out)});return out;
 }
 
+/* ========== 用語・メーカー比較の端末内変更 ==========
+   従来の画面（classic.html）と同じ localStorage キー cieds_overlay・同じ形式を使う。
+   マスター（data.json）は変更せず、表示時に「追加・編集・削除」の差分を重ねる。 */
+var OVK="cieds_overlay";
+var FEAT_CATS_BASE=["ペーシング管理","レート応答","CRT","ICD","リモート","MRI","機器","心房治療","CSP","Leadless","製品"];
+var EDIT_MAKERS=["General","Medtronic","Abbott","Boston Scientific","BIOTRONIK","MicroPort"];
+function normOv(o){o=o||{};return {addG:o.addG||[],addF:o.addF||[],editG:o.editG||{},editF:o.editF||{},delG:o.delG||[],delF:o.delF||[],ts:o.ts||0}}
+function readOv(){try{return normOv(JSON.parse(localStorage.getItem(OVK)||"null"))}catch(e){return normOv(null)}}
+var OV=readOv();
+function saveOv(){OV.ts=Date.now();try{localStorage.setItem(OVK,JSON.stringify(OV));return true}catch(e){toast("この端末に保存できませんでした");return false}}
+function ovCount(){return OV.addG.length+Object.keys(OV.editG).length+OV.delG.length+OV.addF.length+Object.keys(OV.editF).length+OV.delF.length}
+function uid(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():"id"+Date.now()+Math.random().toString(16).slice(2)}
+function mergedList(kind){
+ var master=kind==="G"?((RAW.data&&RAW.data.gloss)||[]):((RAW.data&&RAW.data.feats)||[]);
+ var nameKey=kind==="G"?"term":"fn",del={},out=[];
+ OV["del"+kind].forEach(function(k){del[k]=1});
+ master.forEach(function(m,i){if(del[m[nameKey]])return;var ov=OV["edit"+kind][m[nameKey]];
+  out.push({raw:ov?Object.assign({},m,ov):m,meta:{master:m,mkey:m[nameKey],edited:!!ov,added:false},idx:i})});
+ OV["add"+kind].forEach(function(a,j){out.push({raw:a,meta:{master:null,addId:a.id,edited:false,added:true},idx:master.length+j})});
+ return out;
+}
 function makeRec(type,raw,idx){
  var r={type:type,raw:raw,idx:idx};
  if(type==="term"){r.id=raw.term;r.title=raw.term;r.al=[raw.abbr,raw.en];r.maker=raw.maker;r.makers=[raw.maker];
@@ -475,17 +528,18 @@ function makeRec(type,raw,idx){
 }
 function uniqArr(a){var s={},o=[];a.forEach(function(x){if(x&&!s[x]){s[x]=1;o.push(x)}});return o}
 
+function indexOverlaid(){
+ DB.term=mergedList("G").map(function(o){var r=makeRec("term",o.raw,o.idx);r.ov=o.meta;r.key=o.meta.added?"t:@"+o.meta.addId:"t:"+o.meta.mkey;return r});
+ DB.feat=mergedList("F").map(function(o){var r=makeRec("feat",o.raw,o.idx);r.ov=o.meta;r.key=o.meta.added?"f:@"+o.meta.addId:"f:"+o.meta.mkey;return r});
+ BYKEY={};ORDER.forEach(function(t){DB[t].forEach(function(r){BYKEY[r.key]=r})});
+ IDX.termByName={};DB.term.forEach(function(r){if(!IDX.termByName[r.raw.term])IDX.termByName[r.raw.term]=r});
+}
 function indexAll(){
- var d=RAW.data||{},a=RAW.algos||{},p=RAW.products||{},m=RAW.mri||{};
- DB.term=(d.gloss||[]).map(function(x,i){return makeRec("term",x,i)});
- DB.feat=(d.feats||[]).map(function(x,i){return makeRec("feat",x,i)});
+ var a=RAW.algos||{},p=RAW.products||{},m=RAW.mri||{};
  DB.algo=(a.items||[]).map(function(x,i){return makeRec("algo",x,i)});
  DB.prod=(p.items||[]).map(function(x,i){return makeRec("prod",x,i)});
  DB.mri=(m.items||[]).map(function(x,i){return makeRec("mri",x,i)});
- BYKEY={};
- ORDER.forEach(function(t){DB[t].forEach(function(r){BYKEY[r.key]=r})});
- /* 明示された参照だけを引く索引 */
- IDX.termByName={};DB.term.forEach(function(r){IDX.termByName[r.raw.term]=r});
+ indexOverlaid();
  IDX.algoById={};DB.algo.forEach(function(r){IDX.algoById[r.raw.id]=r});
  IDX.prodById={};DB.prod.forEach(function(r){IDX.prodById[r.raw.id]=r});
  IDX.mriById={};DB.mri.forEach(function(r){IDX.mriById[r.raw.id]=r});
@@ -493,6 +547,11 @@ function indexAll(){
  IDX.prodByMakerModel={};DB.prod.forEach(function(r){if(r.raw.model){var k=r.raw.maker+"\u0001"+r.raw.model;(IDX.prodByMakerModel[k]=IDX.prodByMakerModel[k]||[]).push(r)}});
  IDX.mriByLead={};DB.mri.forEach(function(r){["ra","rv","lv"].forEach(function(pos){(r.raw[pos]||[]).forEach(function(l){var k=r.raw.maker+"\u0001"+l.model;(IDX.mriByLead[k]=IDX.mriByLead[k]||[]);if(IDX.mriByLead[k].indexOf(r)<0)IDX.mriByLead[k].push(r)})})});
 }
+function refreshAfterOv(){
+ indexOverlaid();renderView();
+ if($("#sheet").classList.contains("on")&&route.params.d){if(BYKEY[route.params.d])openSheet(route.params.d,true);else closeViaBack()}
+}
+
 var IDX={};
 
 /* ---------- 検索（現行版の表記ゆれ辞書 SYN と概念マップ CONCEPT_MAP を引き継ぐ） ---------- */
@@ -565,7 +624,7 @@ function inline(s){
   if(IDX.mriById[t])return '<button class="xref" data-open="m:'+esc(t)+'">'+c+'</button>';
   return "<code>"+c+"</code>";
  });
- h=h.replace(/(用語)『([^』]+)』/g,function(m,a,name){var raw=name.replace(/&amp;/g,"&").replace(/&#39;/g,"'").replace(/&quot;/g,'"');return IDX.termByName[raw]?a+'『<button class="xref" data-open="t:'+esc(raw)+'">'+name+'</button>』':m});
+ h=h.replace(/(用語)『([^』]+)』/g,function(m,a,name){var raw=name.replace(/&amp;/g,"&").replace(/&#39;/g,"'").replace(/&quot;/g,'"');var tr=IDX.termByName[raw];return tr?a+'『<button class="xref" data-open="'+esc(tr.key)+'">'+name+'</button>』':m});
  return h;
 }
 function prose(s){
@@ -685,20 +744,30 @@ function detailAlgo(r){
  if(!isEmpty(x.pathway))tabs[0].html+=kvRows([["プログラマ操作",x.pathway]]);
  return {badge:"アルゴリズム",title:x.name,sub:['<span class="md">'+esc(x.maker)+'</span>',esc(x.cat),esc(x.device)],tabs:tabs,other:otherBlock(x,used)};
 }
+function localNotice(r,kind){
+ if(!r.ov||!(r.ov.added||r.ov.edited))return "";
+ var label=kind==="G"?"用語":"項目";
+ if(r.ov.added)return '<div class="notice warn" style="margin-bottom:10px">'+ICON.warn+'<div><b>この端末で追加した'+label+'です。</b>公式データ（マスター）には含まれていません。<br><button class="linkish" data-ov-undo="'+kind+':add:'+esc(r.ov.addId)+'" style="min-height:0">この'+label+'を削除</button></div></div>';
+ var m=r.ov.master,pairs=kind==="G"?[["用語",m.term],["略語",m.abbr],["英語",m.en],["カテゴリ",m.cat],["対象デバイス",m.device],["メーカー",m.maker],["説明",m.short]]
+  :[["機能名",m.fn],["英語/汎用名",m.en],["カテゴリ",m.cat],["Medtronic",m.mdt],["Abbott",m.abt],["BIOTRONIK",m.bio],["Boston Scientific",m.bsx],["MicroPort CRM",m.mcp],["備考",m.note]];
+ return '<div class="notice warn" style="margin-bottom:10px">'+ICON.warn+'<div><b>この端末で編集されています。</b>表示は編集後の内容です。公式データ（マスター）の内容は下の「元の登録内容」で確認できます。<br><button class="linkish" data-ov-undo="'+kind+':edit:'+esc(r.ov.mkey)+'" style="min-height:0">編集を取り消して元に戻す</button></div></div>'+
+  '<details class="other" style="margin:0 0 12px"><summary>元の登録内容（公式データ）</summary>'+kvRows(pairs)+'</details>';
+}
 function detailTerm(r){
- var x=r.raw,used=["term","abbr","en","cat","device","maker","short","tags"];
- var h=prose(x.short)+kvRows([["英語",x.en],["略語",x.abbr],["カテゴリ",x.cat],["対象デバイス",x.device],["メーカー",x.maker],["検索タグ",x.tags]]);
+ var x=r.raw,used=["term","abbr","en","cat","device","maker","short","tags","id"];
+ var h=localNotice(r,"G")+prose(x.short)+kvRows([["英語",x.en],["略語",x.abbr],["カテゴリ",x.cat],["対象デバイス",x.device],["メーカー",x.maker],["検索タグ",x.tags]]);
  var ct=(typeof CONCEPT_MAP!=="undefined")?conceptTargets(x.term).filter(function(n){return n!==x.term&&IDX.termByName[n]}):[];
- if(ct.length)h+='<div class="subh">関連する用語（アプリの概念辞書）</div><div class="rel">'+ct.map(function(n){return '<button data-open="t:'+esc(n)+'">'+esc(n)+'</button>'}).join("")+'</div>';
+ if(ct.length)h+='<div class="subh">関連する用語（アプリの概念辞書）</div><div class="rel">'+ct.map(function(n){return '<button data-open="'+esc(IDX.termByName[n].key)+'">'+esc(n)+'</button>'}).join("")+'</div>';
  h+='<div class="subh">横断検索</div><div class="rel"><button data-q="'+esc(x.abbr||x.term)+'">「'+esc(x.abbr||x.term)+'」で全体を検索</button></div>';
  return {badge:"用語",title:x.term,sub:[x.abbr?'<span class="md">'+esc(x.abbr)+'</span>':"",esc(x.cat),esc(x.device),x.maker&&x.maker!=="General"?esc(x.maker):""],tabs:[{k:"ov",label:"説明",html:h}],other:otherBlock(x,used)};
 }
 function detailFeat(r){
- var x=r.raw,used=["fn","en","cat","note"];
+ var x=r.raw,used=["fn","en","cat","note","id"];
  var rows=VENDORS.map(function(v){used.push(v[0]);var val=x[v[0]];var none=!val||val==="—";
   return '<div><div class="vk">'+esc(v[1])+'</div><div class="vv'+(none?" none":"")+'">'+(none?esc(val||"—"):inline(val)+'<div><button class="xref" style="font-size:13px;margin-top:2px" data-q="'+esc(strip(val).split(/[（(／/]/)[0].trim())+'">この名称で検索</button></div>')+'</div></div>'}).join("");
  var h='<div class="vgrid">'+rows+'</div>'+(x.note?'<div class="subh">備考</div>'+prose(x.note):"")+kvRows([["英語",x.en],["カテゴリ",x.cat]])+
   '<p class="note" style="margin-top:10px">「—」は、この一覧表に記載がないことを示します。</p>';
+ h=localNotice(r,"F")+h;
  return {badge:"メーカー比較",title:x.fn,sub:[esc(x.cat),esc(x.en)],tabs:[{k:"cmp",label:"5社比較",html:h}],other:otherBlock(x,used)};
 }
 function leadLink(maker,l){
@@ -745,7 +814,7 @@ function hl(title,q){
 function rowHTML(r,q){
  var badgeCls=r.type==="mri"&&r.raw.verify?" gray":"";
  return '<button class="row" data-open="'+esc(r.key)+'"><span class="ri">'+ICON[r.icon]+'</span><span class="rb"><span class="rt"><span class="rn">'+hl(r.title,q)+'</span><span class="badge'+badgeCls+'">'+esc(r.badge)+'</span></span>'+
-  '<span class="rm">'+r.meta.filter(Boolean).map(function(m){return "<span>"+m+"</span>"}).join("")+'</span>'+
+  '<span class="rm">'+(r.ov&&(r.ov.added||r.ov.edited)?'<span class="loc">'+(r.ov.added?"この端末で追加":"この端末で編集")+'</span>':'')+r.meta.filter(Boolean).map(function(m){return "<span>"+m+"</span>"}).join("")+'</span>'+
   (r.sum?'<span class="rs">'+esc(strip(r.sum))+'</span>':"")+'</span></button>';
 }
 /* 大量件数でも一括描画しない：40件ずつ追加 */
@@ -787,20 +856,34 @@ function onRoute(){
  if(prevKey!==nk){var ks=keepScroll&&prevKey&&prevKey.split("?")[0]===nk.split("?")[0];var y0=window.scrollY;renderView();lastViewKey=nk;var y=ks?y0:(scrollMem[nk]||0);requestAnimationFrame(function(){window.scrollTo(0,y)})}
  keepScroll=false;
  if(!route.params.d)pushedDetail=false;
+ var tb=navFor(route);if(tb&&tb!=="home")tabLast[tb]=viewKey(route);
  if(route.params.d)openSheet(route.params.d);else closeSheet(true);
 }
 
 /* ---------- 画面 ---------- */
 function setBar(opts){
- var bar=$("#bar");
- if(opts.home){bar.innerHTML='<div class="brand"><span class="mark" aria-hidden="true">'+ICON.mark+'</span><span class="brandtx"><b>Pacemaker Navi</b><small>Cardiac Device Quick Reference</small></span></div><span class="spacer"></span><span class="count-pill num">'+fmtN(totalCount())+'件</span>'}
- else{bar.innerHTML=(opts.back?'<button class="backbtn" id="backbtn" aria-label="戻る">'+ICON.back+'</button>':"")+'<span class="vtitle">'+esc(opts.title||"")+'</span><span class="spacer"></span>'+(opts.searchIcon?'<button class="iconbtn" data-go="#/search" aria-label="検索">'+ICON.search+'</button>':"")}
+ var bar=$("#bar"),right="";
+ if(!opts.home&&!opts.noSearchIcon)right+='<button class="iconbtn" data-go="#/search" aria-label="横断検索">'+ICON.search+'</button>';
+ if(!opts.noMenu)right+='<button class="iconbtn" data-go="#/menu" aria-label="メニュー（履歴・保存・設定）">'+ICON.menu+'</button>';
+ if(opts.home){bar.innerHTML='<div class="brand"><span class="mark" aria-hidden="true">'+ICON.mark+'</span><span class="brandtx"><b>Pacemaker Navi</b><small>Cardiac Device Quick Reference</small></span></div><span class="spacer"></span><span class="count-pill num">'+fmtN(totalCount())+'件</span>'+right}
+ else{bar.innerHTML=(opts.back?'<button class="backbtn" id="backbtn" aria-label="戻る">'+ICON.back+'</button>':"")+'<span class="vtitle">'+esc(opts.title||"")+'</span><span class="spacer"></span>'+right}
  $("#searchrow").classList.toggle("hidden",!opts.search);
  var b=$("#backbtn");if(b)b.onclick=function(){if(window.history.length>1)window.history.back();else go("home",{})};
 }
+
+function navFor(rt){
+ var p=rt.path.split("/");
+ if(p[0]==="home"||p[0]==="search"||p[0]==="more")return "home";
+ if(p[0]==="list"){return {term:"term",prod:"prod",algo:"algo",feat:"algo",mri:"mri"}[p[1]]||""}
+ if(p[0]==="mri")return "mri";
+ return "";
+}
+var tabLast={};
 function navOn(name){$$(".nav button").forEach(function(b){b.classList.toggle("on",b.dataset.nav===name);b.setAttribute("aria-current",b.dataset.nav===name?"page":"false")})}
+
 function show(id){$$(".view").forEach(function(v){v.classList.toggle("on",v.id==="v-"+id)})}
-function totalCount(){return DB.term.length+DB.feat.length+DB.algo.length+DB.prod.length+DB.mri.length}
+function masterCounts(){var d=RAW.data||{};return {term:(d.gloss||[]).length,feat:(d.feats||[]).length,algo:((RAW.algos||{}).items||[]).length,prod:((RAW.products||{}).items||[]).length,mri:((RAW.mri||{}).items||[]).length}}
+function totalCount(){var c=masterCounts();return c.term+c.feat+c.algo+c.prod+c.mri}
 
 function renderView(){
  if(!ready)return;
@@ -822,25 +905,28 @@ function renderHome(){
  var q=$("#q");if(q.value){q.value="";$("#qclear").classList.remove("on")}
  var nDev=DB.prod.filter(function(r){return r.raw.kind==="device"}).length,nLead=DB.prod.filter(function(r){return r.raw.kind==="lead"}).length,nGear=DB.prod.length-nDev-nLead;
  var tiles=[
-  ["#/list/prod","prod","製品・リード","型番・仕様・販売期間",DB.prod.length],
-  ["#/mri","mri","MRI","本体＋リードから条件を確認",DB.mri.length],
-  ["#/list/algo","algo","アルゴリズム","動作・設定・他社比較",DB.algo.length],
-  ["#/list/term","term","用語","デバイスの用語",DB.term.length],
-  ["#/list/feat","feat","メーカー比較","5社の相当機能を一覧",DB.feat.length],
+  ["#/list/prod","prod","製品・リード","型番・仕様・販売期間",masterCounts().prod],
+  ["#/mri","mri","MRI","本体＋リードから条件を確認",masterCounts().mri],
+  ["#/list/algo","algo","アルゴリズム","動作・設定・他社比較",masterCounts().algo],
+  ["#/list/term","term","用語","デバイスの用語",masterCounts().term],
+  ["#/list/feat","feat","メーカー比較","5社の相当機能を一覧",masterCounts().feat],
   ["#/more","more","年表・その他","過去製品・データ情報",""]
  ];
  var h=offlineNotice()+'<div class="lead"><h1>調べたい情報へ、最短で。</h1><p>デバイスの製品・メーカー機能・用語・MRI条件を横断検索します。</p></div>'+
   '<div class="tiles">'+tiles.map(function(t){return '<button class="tile" data-go="'+t[0]+'"><span class="ti">'+ICON[t[1]]+'</span><b>'+t[2]+'</b><span>'+t[3]+'</span>'+(t[4]!==""?'<i class="tn num" style="font-style:normal">'+fmtN(t[4])+'</i>':"")+'</button>'}).join("")+'</div>';
+ var sv=saved.slice(0,3).map(function(h){return BYKEY[h.k]}).filter(Boolean);
+ if(sv.length)h+='<h2 class="sec">保存した項目<button class="aside linkish" style="min-height:0" data-go="#/saved">すべて</button></h2><div class="list">'+sv.map(function(r){return rowHTML(r)}).join("")+'</div>';
  var rec=histList.slice(0,3).map(function(h){return BYKEY[h.k]}).filter(Boolean);
  if(rec.length)h+='<h2 class="sec">最近見た項目<button class="aside linkish" style="min-height:0" data-go="#/history">すべて</button></h2><div class="list">'+rec.map(function(r){return rowHTML(r)}).join("")+'</div>';
  var ex=recentQ.length?recentQ.slice(0,8):["MVP","3830","Azure","SmartCRT","アンダーセンシング","BIOMONITOR"];
  h+='<h2 class="sec">'+(recentQ.length?"最近の検索":"検索の例")+'</h2><div class="chips examples">'+ex.map(function(s){return '<button class="chip" data-q="'+esc(s)+'">'+esc(s)+'</button>'}).join("")+'</div>';
  h+='<h2 class="sec">収録データ<span class="aside">'+esc(dataDate())+'</span></h2><div class="stat num">'+
-  '<div><span>用語</span><span>'+fmtN(DB.term.length)+'</span></div>'+
+  '<div><span>用語</span><span>'+fmtN(masterCounts().term)+'</span></div>'+
   '<div><span>アルゴリズム</span><span>'+fmtN(DB.algo.length)+'</span></div>'+
-  '<div><span>メーカー比較</span><span>'+fmtN(DB.feat.length)+'</span></div>'+
+  '<div><span>メーカー比較</span><span>'+fmtN(masterCounts().feat)+'</span></div>'+
   '<div><span>製品・リード<small>本体 '+fmtN(nDev)+'・リード '+fmtN(nLead)+'・関連機器 '+fmtN(nGear)+'</small></span><span>'+fmtN(DB.prod.length)+'</span></div>'+
   '<div><span>MRI登録グループ</span><span>'+fmtN(DB.mri.length)+'</span></div></div>'+
+  (ovCount()?'<p class="note" style="margin:8px 2px 0">件数は公式データのものです。この端末での変更が '+ovCount()+' 件あります（<button class="linkish" data-go="#/menu?s=ov" style="min-height:0">一覧</button>）。</p>':'')+
   '<p class="note" style="margin:10px 2px 0">登録情報は参考です。診療・設定・MRI検査の判断は、最新の添付文書・メーカー資料等で確認してください。</p>';
  $("#v-home").innerHTML=h;
 }
@@ -854,7 +940,7 @@ function dataDate(){var ds=FILES.map(function(f){return RAW[f]&&RAW[f].updated})
 /* 検索画面：上部の入力欄を共用する（ホームで打ち始めると、そのまま検索画面に移る） */
 var searchState={q:"",c:"all",m:""};
 function renderSearch(){
- setBar({title:"検索",search:true});navOn("search");show("search");
+ setBar({title:"検索",back:true,search:true,noSearchIcon:true});navOn("home");show("search");
  var P=route.params;searchState.q=P.q||"";searchState.c=P.c||"all";searchState.m=P.m||"";
  var q=$("#q");if(q.value!==searchState.q&&document.activeElement!==q)q.value=searchState.q;
  $("#qclear").classList.toggle("on",!!q.value);
@@ -902,66 +988,93 @@ function drawSearch(){
 function commitRecentQ(q){q=String(q||"").trim();if(!q||q.length>60)return;recentQ=[q].concat(recentQ.filter(function(x){return x!==q})).slice(0,10);LS.set("recentq",recentQ)}
 
 /* ---------- 一覧（6つの入口） ---------- */
+function chipRow(label,key,list,cur,counts){
+ return (label?'<div class="flabel">'+esc(label)+'</div>':'')+'<div class="chips">'+['<button class="chip'+(!cur?" on":"")+'" data-pp="'+key+'" data-pv="">すべて</button>'].concat(list.map(function(v){var val=Array.isArray(v)?v[0]:v,lab=Array.isArray(v)?v[1]:v;var n=counts?counts(val):null;
+  return '<button class="chip'+(cur===val?" on":"")+(n===0?" zero":"")+'" data-pp="'+key+'" data-pv="'+esc(val)+'">'+esc(lab)+(n!=null?'<span class="n num">'+fmtN(n)+'</span>':'')+'</button>'})).join("")+'</div>';
+}
+var LIST_TITLE={term:"用語",prod:"製品・リード",algo:"アルゴリズム",feat:"アルゴリズム",mri:"MRI登録グループ"};
+var LIST_PH={term:"用語・略語・英語・タグで検索",prod:"製品名・型番で検索",algo:"機能名・一般名称で検索",feat:"機能名・各社の機能名で検索",mri:"グループ名・本体・リード型番で検索"};
 function renderList(type){
  if(!TYPES[type])type="term";
  var P=route.params;
- setBar({title:TYPES[type].plural,back:true,searchIcon:true,search:false});navOn("home");show("list");
- var el=$("#v-list");var all=DB[type].slice();var h="";var rows;
- var fq=P.fq||"";
+ setBar({title:LIST_TITLE[type],back:type==="mri",search:false});navOn(navFor(route));show("list");
+ var el=$("#v-list");var all=DB[type].slice();var h="";var rows;var fq=P.fq||"";
+ if(type==="algo"||type==="feat"){
+  h+='<div class="seg segtop" role="tablist"><button class="'+(type==="algo"?"on":"")+'" data-go="#/list/algo">メーカー別</button><button class="'+(type==="feat"?"on":"")+'" data-go="#/list/feat">メーカー比較</button></div>';
+ }
+ h+='<div class="field" style="margin-top:4px"><input id="fq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="'+esc(LIST_PH[type])+'" value="'+esc(fq)+'" aria-label="'+esc(LIST_PH[type])+'"></div>';
  if(type==="prod"){
   var kd=P.kd||"",mk=P.mk||"",ct=P.ct||"",per=P.per||"";
-  h+='<div class="seg" role="tablist">'+[["","すべて"],["device","本体"],["lead","リード"],["gear","関連機器"]].map(function(k){return '<button class="'+(kd===k[0]?"on":"")+'" data-p-kd="'+k[0]+'">'+k[1]+'</button>'}).join("")+'</div>';
+  h+='<div class="seg" role="tablist" style="margin-top:8px">'+[["","すべて"],["device","本体"],["lead","リード"],["gear","関連機器"]].map(function(k){return '<button class="'+(kd===k[0]?"on":"")+'" data-pp="kd" data-pv="'+k[0]+'">'+k[1]+'</button>'}).join("")+'</div>';
   var scope=all.filter(function(r){return !kd||r.raw.kind===kd});
   var mks=uniqArr(scope.map(function(r){return r.raw.maker})).sort(function(a,b){return makerRank(a)-makerRank(b)||String(a).localeCompare(b,"ja")});
-  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk?" on":"")+'" data-p-mk="">すべて</button>'].concat(mks.map(function(m){var n=scope.filter(function(r){return r.raw.maker===m}).length;return '<button class="chip'+(mk===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+=chipRow("メーカー","mk",mks,mk,function(m){return scope.filter(function(r){return r.raw.maker===m}).length});
   var scope2=scope.filter(function(r){return !mk||r.raw.maker===mk});
   var cats=uniqArr(scope2.map(function(r){return r.raw.cat})).sort(function(a,b){return catRank(a)-catRank(b)||String(a).localeCompare(b,"ja")});
-  h+='<div class="flabel">分類</div><div class="chips">'+['<button class="chip'+(!ct?" on":"")+'" data-p-ct="">すべて</button>'].concat(cats.map(function(c){var n=scope2.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+=chipRow("分類","ct",cats,ct,function(c){return scope2.filter(function(r){return r.raw.cat===c}).length});
   rows=scope2.filter(function(r){return (!ct||r.raw.cat===ct)&&(!per||!isEmpty(r.raw.period))});
-  if(per)h+='<div class="notice info" style="margin-top:8px">'+ICON.info+'<div>販売期間が登録されている製品だけを表示しています。<button class="linkish" data-p-per="">解除</button></div></div>';
+  if(per)h+='<div class="notice info" style="margin-top:8px">'+ICON.info+'<div>販売期間が登録されている製品だけを表示しています。<button class="linkish" data-pp="per" data-pv="">解除</button></div></div>';
   rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.raw.maker).localeCompare(b.raw.maker,"ja")||catRank(a.raw.cat)-catRank(b.raw.cat)||String(a.title).localeCompare(b.title,"ja",{numeric:true})});
  }else if(type==="algo"){
   var mk2=P.mk||"",ct2=P.ct||"";
-  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk2?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_ORDER.map(function(m){var n=all.filter(function(r){return r.raw.maker===m}).length;return '<button class="chip'+(mk2===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+=chipRow("メーカー","mk",MAKER_ORDER,mk2,function(m){return all.filter(function(r){return r.raw.maker===m}).length});
   var sc=all.filter(function(r){return !mk2||r.raw.maker===mk2});
-  var cats2=uniqArr(sc.map(function(r){return r.raw.cat}));
-  h+='<div class="flabel">分類</div><div class="chips">'+['<button class="chip'+(!ct2?" on":"")+'" data-p-ct="">すべて</button>'].concat(cats2.map(function(c){var n=sc.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct2===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+=chipRow("分類","ct",uniqArr(sc.map(function(r){return r.raw.cat})),ct2,function(c){return sc.filter(function(r){return r.raw.cat===c}).length});
   rows=sc.filter(function(r){return !ct2||r.raw.cat===ct2});
   rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||String(a.title).localeCompare(b.title,"ja")});
  }else if(type==="term"){
-  var dv=P.dv||"",ct3=P.ct||"";
-  h+='<div class="flabel">対象デバイス</div><div class="chips">'+['<button class="chip'+(!dv?" on":"")+'" data-p-dv="">すべて</button>'].concat(DEV_TOKENS.map(function(t){var n=all.filter(function(r){return devHas(r.raw.device,t)}).length;return '<button class="chip'+(dv===t?" on":"")+'" data-p-dv="'+t+'">'+t+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
-  var sc3=all.filter(function(r){return !dv||devHas(r.raw.device,dv)});
+  var md=P.md||"",dv=P.dv||"",ct3=P.ct||"",so=P.so||"reco";
+  var savedT=saved.filter(function(x){return x.k.indexOf("t:")===0}).map(function(x){return x.k});
+  var histT=histList.filter(function(x){return x.k.indexOf("t:")===0}).map(function(x){return x.k});
+  h+='<div class="chips" style="margin-top:8px">'+[["","すべて",all.length],["saved","保存",savedT.length],["recent","最近見た",histT.length]].map(function(m){return '<button class="chip'+(md===m[0]?" on":"")+'" data-pp="md" data-pv="'+m[0]+'">'+m[1]+'<span class="n num">'+fmtN(m[2])+'</span></button>'}).join("")+'</div>';
+  var base=all;
+  if(md==="saved"){var ss={};savedT.forEach(function(k,i){ss[k]=i+1});base=all.filter(function(r){return ss[r.key]}).sort(function(a,b){return ss[a.key]-ss[b.key]})}
+  if(md==="recent"){var hh={};histT.forEach(function(k,i){hh[k]=i+1});base=all.filter(function(r){return hh[r.key]}).sort(function(a,b){return hh[a.key]-hh[b.key]})}
+  h+=chipRow("対象デバイス","dv",DEV_TOKENS,dv,function(t){return base.filter(function(r){return devHas(r.raw.device,t)}).length});
+  var sc3=base.filter(function(r){return !dv||devHas(r.raw.device,dv)});
   var cs=uniqArr(sc3.map(function(r){return r.raw.cat}));var ord=G_CAT_ORDER.filter(function(c){return cs.indexOf(c)>=0});cs.forEach(function(c){if(ord.indexOf(c)<0)ord.push(c)});
-  h+='<div class="flabel">カテゴリ</div><div class="chips">'+['<button class="chip'+(!ct3?" on":"")+'" data-p-ct="">すべて</button>'].concat(ord.map(function(c){var n=sc3.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct3===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+=chipRow("カテゴリ","ct",ord,ct3,function(c){return sc3.filter(function(r){return r.raw.cat===c}).length});
   rows=sc3.filter(function(r){return !ct3||r.raw.cat===ct3});
+  if(!md){
+   if(so==="term")rows.sort(function(a,b){return String(a.title).localeCompare(b.title,"ja")});
+   else if(so==="cat")rows.sort(function(a,b){var ia=G_CAT_ORDER.indexOf(a.raw.cat),ib=G_CAT_ORDER.indexOf(b.raw.cat);return (ia<0?99:ia)-(ib<0?99:ib)||String(a.title).localeCompare(b.title,"ja")});
+   else if(so==="maker")rows.sort(function(a,b){return String(a.raw.maker||"~~").localeCompare(b.raw.maker||"~~","ja")||String(a.title).localeCompare(b.title,"ja")});
+  }
+  h+='<div class="toolbar"><select id="tsort" aria-label="並び替え"'+(md?' disabled':'')+'>'+[["reco","おすすめ順"],["term","用語名順"],["cat","カテゴリ順"],["maker","メーカー順"]].map(function(o){return '<option value="'+o[0]+'"'+(so===o[0]?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select><button class="btn primary" data-add="term">＋ 用語を追加</button></div>';
+  var nG=OV.addG.length+Object.keys(OV.editG).length+OV.delG.length;
+  if(nG)h+='<p class="note" style="margin:6px 2px 0">この端末で変更した用語が '+nG+' 件あります。<button class="linkish" data-go="#/menu?s=ov" style="min-height:0">変更の一覧</button></p>';
  }else if(type==="feat"){
   var ct4=P.ct||"",mk4=P.mk||"";
   var cs4=uniqArr(all.map(function(r){return r.raw.cat}));
-  h+='<div class="flabel">機能カテゴリ</div><div class="chips">'+['<button class="chip'+(!ct4?" on":"")+'" data-p-ct="">すべて</button>'].concat(cs4.map(function(c){var n=all.filter(function(r){return r.raw.cat===c}).length;return '<button class="chip'+(ct4===c?" on":"")+'" data-p-ct="'+esc(c)+'">'+esc(c)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
-  h+='<div class="flabel">記載のあるメーカー</div><div class="chips">'+['<button class="chip'+(!mk4?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_CHIPS.map(function(m){return '<button class="chip'+(mk4===m[0]?" on":"")+'" data-p-mk="'+esc(m[0])+'">'+esc(m[1])+'</button>'})).join("")+'</div>';
+  h+=chipRow("機能カテゴリ","ct",cs4,ct4,function(c){return all.filter(function(r){return r.raw.cat===c}).length});
+  h+=chipRow("記載のあるメーカー","mk",MAKER_CHIPS,mk4,null);
   rows=all.filter(function(r){return (!ct4||r.raw.cat===ct4)&&makerOk(r,mk4)});
+  h+='<div class="toolbar"><span class="spacer" style="flex:1"></span><button class="btn primary" data-add="feat">＋ 機能を追加</button></div>';
+  var nF=OV.addF.length+Object.keys(OV.editF).length+OV.delF.length;
+  if(nF)h+='<p class="note" style="margin:6px 2px 0">この端末で変更したメーカー比較が '+nF+' 件あります。<button class="linkish" data-go="#/menu?s=ov" style="min-height:0">変更の一覧</button></p>';
  }else if(type==="mri"){
   var mk5=P.mk||"",ty=P.ty||"";
-  h+='<div class="notice warn" style="margin-bottom:8px">'+ICON.warn+'<div>登録情報から候補を提示する参考情報です。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
-  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk5?" on":"")+'" data-p-mk="">すべて</button>'].concat(MAKER_ORDER.filter(function(m){return all.some(function(r){return r.raw.maker===m})}).map(function(m){return '<button class="chip'+(mk5===m?" on":"")+'" data-p-mk="'+esc(m)+'">'+esc(m)+'</button>'})).join("")+'</div>';
+  h+='<div class="notice warn" style="margin-top:8px">'+ICON.warn+'<div>登録情報から候補を提示する参考情報です。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
+  h+=chipRow("メーカー","mk",MAKER_ORDER.filter(function(m){return all.some(function(r){return r.raw.maker===m})}),mk5,function(m){return all.filter(function(r){return r.raw.maker===m}).length});
   var sc5=all.filter(function(r){return !mk5||r.raw.maker===mk5});
-  h+='<div class="flabel">種別</div><div class="chips">'+['<button class="chip'+(!ty?" on":"")+'" data-p-ty="">すべて</button>'].concat(uniqArr(sc5.map(function(r){return r.raw.type})).map(function(t){return '<button class="chip'+(ty===t?" on":"")+'" data-p-ty="'+esc(t)+'">'+esc(t)+'</button>'})).join("")+'</div>';
+  h+=chipRow("種別","ty",uniqArr(sc5.map(function(r){return r.raw.type})),ty,function(t){return sc5.filter(function(r){return r.raw.type===t}).length});
   rows=sc5.filter(function(r){return !ty||r.raw.type===ty});
+  rows.sort(function(a,b){return makerRank(a.raw.maker)-makerRank(b.raw.maker)||a.idx-b.idx});
  }
- h+='<div class="field" style="margin-top:12px"><input id="fq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="この一覧から絞り込む" value="'+esc(fq)+'" aria-label="この一覧から絞り込む"></div>';
  var shown=rows;
  if(fq.trim()){var Q=prepQuery(fq);shown=rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx})}
  h+='<p class="rescount num">'+fmtN(shown.length)+' 件'+(shown.length!==all.length?'（全 '+fmtN(all.length)+' 件）':"")+'</p><div id="lres"></div>';
  el.innerHTML=h;
- chunkList($("#lres"),shown,fq);
+ chunkList($("#lres"),shown,fq,type==="term"&&P.md==="saved"?{emptyTitle:"保存した用語はありません",emptyText:"用語の詳細画面の右上にある保存ボタンで追加できます。"}:type==="term"&&P.md==="recent"?{emptyTitle:"最近見た用語はありません",emptyText:"開いた用語がここに並びます。"}:null);
  var fi=$("#fq");var tm=null;
  fi.oninput=function(){clearTimeout(tm);tm=setTimeout(function(){var p=Object.assign({},route.params);if(fi.value)p.fq=fi.value;else delete p.fq;
-  try{window.history.replaceState(null,"",buildHash(route.path,p))}catch(e){}route=parseHash();lastViewKey=viewKey(route);
+  try{window.history.replaceState(null,"",buildHash(route.path,p))}catch(e){}route=parseHash();lastViewKey=viewKey(route);var tb=navFor(route);if(tb&&tb!=="home")tabLast[tb]=lastViewKey;
   var Q=fi.value.trim()?prepQuery(fi.value):null;var s2=Q?rows.map(function(r){return {r:r,s:score(r,Q)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return a.s-b.s||a.r.idx-b.r.idx}):rows;
   $(".rescount",el).textContent=fmtN(s2.length)+" 件"+(s2.length!==all.length?"（全 "+fmtN(all.length)+" 件）":"");chunkList($("#lres"),s2,fi.value)},120)};
- fi.onkeydown=function(e){if(e.key==="Enter"){fi.blur()}};
+ fi.onkeydown=function(e){if(e.key==="Enter"&&!e.isComposing){fi.blur()}};
+ var ts=$("#tsort");if(ts)ts.onchange=function(){var p=Object.assign({},route.params);if(ts.value==="reco")delete p.so;else p.so=ts.value;go(route.path,p,true)};
 }
+
 function devHas(dev,t){return String(dev||"").split(/[\/,]/).map(function(x){return x.trim()}).indexOf(t)>=0}
 
 /* ---------- MRI（本体＋リードから登録を探す） ---------- */
@@ -971,7 +1084,8 @@ function mriDevices(){
  var out=[],seen={};
  DB.mri.forEach(function(g){(g.raw.devices||[]).forEach(function(d){var k=g.raw.maker+"\u0001"+g.raw.type+"\u0001"+d.model;if(seen[k])return;
   seen[k]={maker:g.raw.maker,type:g.raw.type,model:d.model,name:d.name||d.model,types:[g.raw.type]};out.push(seen[k])})});
- out.sort(function(a,b){return makerRank(a.maker)-makerRank(b.maker)||String(a.name).localeCompare(b.name,"ja",{numeric:true})});
+ var typeOrder={};DB.mri.forEach(function(g){var k=g.raw.maker+"\u0001"+g.raw.type;if(typeOrder[k]==null)typeOrder[k]=g.idx});
+ out.sort(function(a,b){return makerRank(a.maker)-makerRank(b.maker)||String(a.maker).localeCompare(b.maker,"ja")||(typeOrder[a.maker+"\u0001"+a.type]-typeOrder[b.maker+"\u0001"+b.type])||String(a.name).localeCompare(b.name,"ja",{numeric:true})});
  return out;
 }
 function mriCands(){
@@ -979,16 +1093,24 @@ function mriCands(){
 }
 function leadIn(list,v){if(!v||v===NONE)return true;return (list||[]).some(function(l){return l.model===v})}
 function renderMri(){
- setBar({title:"MRI",back:true,searchIcon:true,search:false});navOn("home");show("mri");
+ setBar({title:"MRI",search:false});navOn("mri");show("mri");
  var P=route.params;mriSel.dev=P.dev||"";mriSel.devMaker=P.dm||"";mriSel.devType=P.dt||"";mriSel.ra=P.ra||"";mriSel.rv=P.rv||"";mriSel.lv=P.lv||"";
+ var mk=P.mk||"",ty=P.ty||"";
  var el=$("#v-mri");
  var h='<div class="notice warn">'+ICON.warn+'<div>登録情報から候補を提示する参考機能です。撮像可否を保証する判定ではありません。<b>最終判断は最新の添付文書・メーカー資料等を確認してください。</b></div></div>';
- h+='<div class="panel" style="margin-top:12px"><div class="step"><i>1</i><b>本体を選ぶ</b></div>';
+ h+='<div class="panel" style="margin-top:10px"><div class="step"><i>1</i><b>本体を選ぶ</b></div>';
+ var devs=mriDevices();
  if(mriSel.dev){
-  var d=mriDevices().filter(function(x){return x.model===mriSel.dev&&x.maker===mriSel.devMaker&&(!mriSel.devType||x.type===mriSel.devType)})[0];
-  h+='<div class="chosen"><div class="cb"><b>'+esc(d?d.name:mriSel.dev)+'</b><span>'+esc(mriSel.devMaker)+(d?"　"+esc(d.types.join(" / ")):"")+'</span></div><button class="linkish" data-mri-reset="1">変更</button></div>';
+  var d=devs.filter(function(x){return x.model===mriSel.dev&&x.maker===mriSel.devMaker&&(!mriSel.devType||x.type===mriSel.devType)})[0];
+  h+='<div class="chosen"><div class="cb"><b>'+esc(d?d.name:mriSel.dev)+'</b><span>'+esc(mriSel.devMaker)+(d?"　"+esc(d.type):"")+'</span></div><button class="linkish" data-mri-reset="1">変更</button></div>';
  }else{
-  h+='<div class="field"><input id="mdq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="本体名・型番（例：Advisa、Azure、Edora）" aria-label="本体名・型番"></div><div class="sugg" id="mdsugg"></div>';
+  var makers=MAKER_ORDER.filter(function(m){return devs.some(function(d){return d.maker===m})});
+  devs.forEach(function(d){if(makers.indexOf(d.maker)<0)makers.push(d.maker)});
+  h+='<div class="flabel">メーカー</div><div class="chips">'+['<button class="chip'+(!mk?" on":"")+'" data-mri-mk="">すべて</button>'].concat(makers.map(function(m){var n=devs.filter(function(d){return d.maker===m}).length;return '<button class="chip'+(mk===m?" on":"")+'" data-mri-mk="'+esc(m)+'">'+esc(m)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  var byMk=devs.filter(function(d){return !mk||d.maker===mk});
+  var types=uniqArr(byMk.map(function(d){return d.type}));
+  if(mk)h+='<div class="flabel">種別</div><div class="chips">'+['<button class="chip'+(!ty?" on":"")+'" data-mri-ty="">すべて</button>'].concat(types.map(function(t){var n=byMk.filter(function(d){return d.type===t}).length;return '<button class="chip'+(ty===t?" on":"")+'" data-mri-ty="'+esc(t)+'">'+esc(t)+'<span class="n num">'+n+'</span></button>'})).join("")+'</div>';
+  h+='<div class="field"><input id="mdq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="本体名・型番で絞り込む（例：Advisa、Azure、Edora）" aria-label="本体名・型番で絞り込む"></div><div class="sugg" id="mdsugg"></div>';
  }
  h+='</div>';
  if(mriSel.dev){
@@ -1019,13 +1141,26 @@ function renderMri(){
  h+='<h2 class="sec">登録グループから探す</h2><div class="list"><button class="row" data-go="#/list/mri"><span class="ri">'+ICON.mri+'</span><span class="rb"><span class="rn">MRI登録グループの一覧</span><span class="rs">'+fmtN(DB.mri.length)+' グループ（メーカー・種別で絞り込み）</span></span></button></div>';
  el.innerHTML=h;
  var mdq=$("#mdq");
- if(mdq){var devs=mriDevices();
-  var draw=function(){var v=nq(mdq.value);var list=v?devs.filter(function(d){return nq(d.name).indexOf(v)>=0||nq(d.model).indexOf(v)>=0||nq(d.maker).indexOf(v)>=0||nq(d.type).indexOf(v)>=0}):devs;
-   $("#mdsugg").innerHTML='<p class="rescount num" style="margin-top:4px">'+fmtN(list.length)+' 機種</p><div class="list" style="max-height:340px;overflow:auto">'+list.slice(0,80).map(function(d){return '<button class="row" data-mri-dev="'+esc(d.model)+'" data-mri-dm="'+esc(d.maker)+'" data-mri-dt="'+esc(d.type)+'"><span class="rb"><span class="rn">'+esc(d.name)+'</span><span class="rm"><span class="md">'+esc(d.maker)+'</span><span>'+esc(d.types.join(" / "))+'</span>'+(d.model!==d.name?'<span class="num">'+esc(d.model)+'</span>':"")+'</span></span></button>'}).join("")+(list.length>80?'<p class="note" style="padding:10px 14px;margin:0">先頭80機種を表示しています。名称や型番を入力して絞り込んでください。</p>':"")+'</div>'};
+ if(mdq){
+  var draw=function(){
+   var v=nq(mdq.value);
+   var list=devs.filter(function(d){return (!mk||d.maker===mk)&&(!ty||d.type===ty)&&(!v||nq(d.name).indexOf(v)>=0||nq(d.model).indexOf(v)>=0||nq(d.maker).indexOf(v)>=0||nq(d.type).indexOf(v)>=0)});
+   /* メーカー順 → 種別 → 名称 の順に、見出しを付けて並べる */
+   var out='<p class="rescount num" style="margin-top:4px">'+fmtN(list.length)+' 機種</p>',lastMk=null,lastTy=null,open=false;
+   list.forEach(function(d){
+    if(d.maker!==lastMk){if(open)out+='</div>';out+='<div class="ghead"><b>'+esc(d.maker)+'</b></div>';lastMk=d.maker;lastTy=null;open=false}
+    if(d.type!==lastTy){if(open)out+='</div>';out+='<div class="subh" style="margin:8px 2px 4px">'+esc(d.type)+'</div><div class="list">';lastTy=d.type;open=true}
+    out+='<button class="row" data-mri-dev="'+esc(d.model)+'" data-mri-dm="'+esc(d.maker)+'" data-mri-dt="'+esc(d.type)+'"><span class="rb"><span class="rn">'+esc(d.name)+'</span>'+(d.model!==d.name?'<span class="rm"><span class="num">'+esc(d.model)+'</span></span>':"")+'</span></button>';
+   });
+   if(open)out+='</div>';
+   if(!list.length)out+='<div class="empty"><b>該当する本体はありません</b>メーカー・種別の絞り込みや入力を変えてお試しください。</div>';
+   $("#mdsugg").innerHTML=out;
+  };
   mdq.oninput=draw;draw();
  }
  $$("select[data-lead]",el).forEach(function(s){s.onchange=function(){var p=Object.assign({},route.params);p[s.dataset.lead]=s.value;delete p.d;go("mri",p,true)}});
 }
+
 function leadSel(pos,label,list){
  var cur=mriSel[pos];
  return '<div class="field"><label for="ls-'+pos+'">'+label+'</label><select id="ls-'+pos+'" data-lead="'+pos+'"><option value="">選択してください</option>'+
@@ -1036,7 +1171,7 @@ function leadSel(pos,label,list){
 /* ---------- 履歴・保存 ---------- */
 function timeLabel(t){var d=new Date(t);var now=new Date();var same=d.toDateString()===now.toDateString();return same?("今日 "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")):((d.getMonth()+1)+"/"+d.getDate())}
 function renderHistory(){
- setBar({title:"履歴",search:false,searchIcon:true});navOn("history");show("history");
+ setBar({title:"履歴",back:true,search:false});navOn("");show("history");
  var rows=histList.map(function(h){return BYKEY[h.k]}).filter(Boolean);
  var el=$("#v-history");
  if(!rows.length){el.innerHTML='<div class="empty"><b>まだ履歴はありません</b>開いた用語・製品・アルゴリズム・MRI情報がここに並びます。</div>';return}
@@ -1045,7 +1180,7 @@ function renderHistory(){
  $("#clrh").onclick=function(){if(confirm("履歴を消去しますか？")){histList=[];LS.set("history",histList);renderHistory()}};
 }
 function renderSaved(){
- setBar({title:"保存",search:false,searchIcon:true});navOn("saved");show("saved");
+ setBar({title:"保存",back:true,search:false});navOn("");show("saved");
  var rows=saved.map(function(h){return BYKEY[h.k]}).filter(Boolean);
  var el=$("#v-saved");
  if(!rows.length){el.innerHTML='<div class="empty"><b>保存した項目はありません</b>詳細画面の右上にある保存ボタンで、この端末に保存できます。</div>';return}
@@ -1058,11 +1193,35 @@ function toggleSave(k){if(isSaved(k)){saved=saved.filter(function(s){return s.k!
 function addHistory(k){histList=[{k:k,t:Date.now()}].concat(histList.filter(function(h){return h.k!==k})).slice(0,100);LS.set("history",histList)}
 
 /* ---------- メニュー・その他 ---------- */
+function ovRows(){
+ var rows=[];
+ OV.addG.forEach(function(a){rows.push(["用語","追加",a.term,"G:add:"+a.id,"t:@"+a.id])});
+ Object.keys(OV.editG).forEach(function(k){var v=OV.editG[k];rows.push(["用語","編集",k+(v.term&&v.term!==k?" → "+v.term:""),"G:edit:"+k,"t:"+k])});
+ OV.delG.forEach(function(k){rows.push(["用語","削除",k,"G:del:"+k,null])});
+ OV.addF.forEach(function(a){rows.push(["メーカー比較","追加",a.fn,"F:add:"+a.id,"f:@"+a.id])});
+ Object.keys(OV.editF).forEach(function(k){var v=OV.editF[k];rows.push(["メーカー比較","編集",k+(v.fn&&v.fn!==k?" → "+v.fn:""),"F:edit:"+k,"f:"+k])});
+ OV.delF.forEach(function(k){rows.push(["メーカー比較","削除",k,"F:del:"+k,null])});
+ return rows;
+}
 function renderMenu(){
- setBar({title:"メニュー",search:false,searchIcon:true});navOn("menu");show("menu");
+ setBar({title:"メニュー",back:true,search:false,noMenu:true});navOn("");show("menu");
  var el=$("#v-menu");
+ var top='<div class="list" style="margin-top:8px">'+
+  '<button class="row" data-go="#/history"><span class="ri">'+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg>'+'</span><span class="rb"><span class="rn">履歴</span><span class="rs">最近見た項目 '+fmtN(histList.length)+' 件</span></span></button>'+
+  '<button class="row" data-go="#/saved"><span class="ri">'+ICON.bm+'</span><span class="rb"><span class="rn">保存</span><span class="rs">保存した項目 '+fmtN(saved.length)+' 件</span></span></button>'+
+  '<button class="row" data-go="#/search"><span class="ri">'+ICON.search+'</span><span class="rb"><span class="rn">横断検索</span><span class="rs">用語・アルゴリズム・メーカー比較・製品・MRIをまとめて検索</span></span></button>'+
+  '<button class="row" data-go="#/more"><span class="ri">'+ICON.more+'</span><span class="rb"><span class="rn">年表・その他</span><span class="rs">過去製品と、統合予定のデータベース</span></span></button></div>';
+ var or=ovRows();
+ var ovh='<h2 class="sec" id="sec-ov">用語・メーカー比較の変更（この端末）</h2>'+
+  (or.length?'<div class="list">'+or.map(function(x){return '<div class="row" style="cursor:default"><span class="rb"><span class="rn">'+(x[4]&&BYKEY[x[4]]?'<button class="xref" data-open="'+esc(x[4])+'">'+esc(x[2])+'</button>':esc(x[2]))+'</span><span class="rm"><span class="loc">'+esc(x[1])+'</span><span>'+esc(x[0])+'</span></span></span><button class="linkish" data-ov-undo="'+esc(x[3])+'">元に戻す</button></div>'}).join("")+'</div>'
+   :'<div class="panel note">この端末で追加・編集・削除した用語やメーカー比較はありません。用語の一覧の「＋ 用語を追加」や、詳細画面の編集ボタンから変更できます。</div>')+
+  '<div class="list" style="margin-top:8px">'+
+  '<button class="row" id="m-exp"><span class="rb"><span class="rn">変更を書き出す（JSON）</span><span class="rs">別の端末に移すときや、控えを残すときに使います</span></span></button>'+
+  '<button class="row" id="m-impov"><span class="rb"><span class="rn">変更を読み込む</span><span class="rs">書き出した JSON を選ぶと、この端末の変更がその内容に置き換わります</span></span></button>'+
+  (or.length?'<button class="row" id="m-rst"><span class="rb"><span class="rn" style="color:var(--danger)">変更をすべて元に戻す</span><span class="rs">この端末の追加・編集・削除をすべて取り消し、公式データの状態に戻します</span></span></button>':'')+'</div>'+
+  '<p class="note" style="margin:8px 2px 0">変更はこの端末にだけ保存され、公式データ（data.json）は変わりません。従来の画面と同じ保存場所を使うので、どちらの画面で変更しても両方に表示されます。</p>';
  var files=[["data","用語集・メーカー比較",function(d){return "用語 "+fmtN((d.gloss||[]).length)+"・一覧表 "+fmtN((d.feats||[]).length)+" 行"}],["algos","アルゴリズム",function(d){return fmtN((d.items||[]).length)+" 件"}],["products","製品・リード",function(d){return fmtN((d.items||[]).length)+" 件"}],["mri","MRI",function(d){return fmtN((d.items||[]).length)+" グループ"}]];
- var h='<h2 class="sec" style="margin-top:8px">データ情報</h2><div class="stat">'+files.map(function(f){var d=RAW[f[0]]||{};return '<div><span>'+f[1]+'<small>'+f[0]+'.json　v'+esc(d.v)+'　'+esc(d.updated||"")+'</small></span><span class="num">'+f[2](d)+'</span></div>'}).join("")+'</div>'+
+ var h=top+ovh+'<h2 class="sec">データ情報</h2><div class="stat">'+files.map(function(f){var d=RAW[f[0]]||{};return '<div><span>'+f[1]+'<small>'+f[0]+'.json　v'+esc(d.v)+'　'+esc(d.updated||"")+'</small></span><span class="num">'+f[2](d)+'</span></div>'}).join("")+'</div>'+
   '<p class="note" style="margin:8px 2px 0">この画面はデータを読むだけで、JSON の内容は変更しません。'+(EMBED?"このファイルにはデータが同梱されています。":"")+'</p>';
  var swOn=!!(navigator.serviceWorker&&navigator.serviceWorker.controller);
  h+='<h2 class="sec">オフライン</h2><div class="panel note">'+(EMBED?'このファイルはデータを同梱しているため、通信なしで表示できます。':
@@ -1076,8 +1235,7 @@ function renderMenu(){
   '<button class="row" id="m-cs"><span class="rb"><span class="rn">保存を消去</span><span class="rs">'+fmtN(saved.length)+' 件</span></span></button>'+
   '<button class="row" id="m-cq"><span class="rb"><span class="rn">最近の検索を消去</span><span class="rs">'+fmtN(recentQ.length)+' 件</span></span></button></div>';
  h+='<h2 class="sec">そのほか</h2><div class="list">'+
-  '<a class="row" href="classic.html" style="text-decoration:none;color:inherit"><span class="rb"><span class="rn">従来の画面を開く</span><span class="rs">用語の端末内編集・追加、共有、書き出し・読み込み、コネクタ図は従来の画面で使えます。</span></span></a>'+
-  '<button class="row" data-go="#/more"><span class="rb"><span class="rn">年表・過去製品</span><span class="rs">統合予定のデータベースと、現在のデータで見られる過去製品</span></span></button>'+
+  '<a class="row" href="classic.html" style="text-decoration:none;color:inherit"><span class="rb"><span class="rn">従来の画面を開く</span><span class="rs">以前の画面です。製品詳細のコネクタ図は従来の画面で見られます。</span></span></a>'+
   '<div class="row" style="cursor:default"><span class="rb"><span class="rn">ホーム画面に追加</span><span class="rs">iPhone：Safari の共有ボタン →「ホーム画面に追加」。Android：Chrome のメニュー →「アプリをインストール」または「ホーム画面に追加」。ホーム画面から開くと、アプリのように全画面で使えます。</span></span></div></div>'+
   '<p class="note" style="margin:14px 2px">Pacemaker Navi</p>';
  el.innerHTML=h;
@@ -1087,9 +1245,13 @@ function renderMenu(){
  $("#m-imp").onclick=function(){var old=[];try{old=JSON.parse(localStorage.getItem("cieds_fav")||"[]")||[]}catch(e){}
   var n=0;old.forEach(function(k){var m=String(k).match(/^([gf])\|(.*)$/);if(!m)return;var key=(m[1]==="g"?"t:":"f:")+m[2];if(BYKEY[key]&&!isSaved(key)){saved.push({k:key,t:Date.now()});n++}});
   LS.set("saved",saved);toast(n?n+" 件を保存に追加しました":"取り込める項目はありませんでした");renderMenu()};
+ $("#m-exp").onclick=function(){var b=new Blob([JSON.stringify(OV,null,2)],{type:"application/json"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="cieds-changes-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1500)};
+ $("#m-impov").onclick=function(){var f=$("#ovFile");f.value="";f.onchange=function(){var file=f.files&&f.files[0];if(!file)return;var rd=new FileReader();rd.onload=function(){try{var o=normOv(JSON.parse(rd.result));if(!confirm("この端末の変更を、選んだファイルの内容に置き換えます。よろしいですか？"))return;OV=o;if(saveOv()){refreshAfterOv();toast("変更を読み込みました")}}catch(e){alert("読み込めませんでした。書き出した JSON ファイルを選んでください。")}};rd.readAsText(file)};f.click()};
+ var rst=$("#m-rst");if(rst)rst.onclick=function(){if(!confirm("この端末の変更（追加・編集・削除）をすべて取り消し、公式データの状態に戻します。よろしいですか？"))return;OV=normOv(null);if(saveOv()){refreshAfterOv();toast("すべて元に戻しました")}};
+ if(route.params.s==="ov"){var so=$("#sec-ov");if(so)setTimeout(function(){so.scrollIntoView({block:"start"})},30)}
 }
 function renderMore(){
- setBar({title:"年表・その他",back:true,searchIcon:true,search:false});navOn("home");show("more");
+ setBar({title:"年表・その他",back:true,search:false});navOn("home");show("more");
  var per=DB.prod.filter(function(r){return !isEmpty(r.raw.period)}).length;
  var h='<h2 class="sec" style="margin-top:8px">国内発売年表</h2><div class="panel note">年表のデータはまだ登録されていません。登録後は、製品詳細の「関連」から前世代・後継機種とあわせて辿れるようにする予定です。</div>'+
   '<h2 class="sec">過去製品</h2><div class="list">'+
@@ -1099,11 +1261,83 @@ function renderMore(){
  $("#v-more").innerHTML=h;
 }
 
+/* ---------- 用語・メーカー比較の追加・編集 ---------- */
+var editing=null;   /* {type, rec|null} */
+function fTxt(id,label,v,req,ta,ph){return '<div class="field"><label for="'+id+'">'+esc(label)+(req?' <span class="req">*</span>':'')+'</label>'+(ta?'<textarea id="'+id+'" placeholder="'+esc(ph||"")+'">'+esc(v||"")+'</textarea>':'<input id="'+id+'" type="text" autocomplete="off" value="'+esc(v||"")+'" placeholder="'+esc(ph||"")+'">')+'</div>'}
+function fSel(id,label,opts,v,req){return '<div class="field"><label for="'+id+'">'+esc(label)+(req?' <span class="req">*</span>':'')+'</label><select id="'+id+'">'+opts.map(function(o){return '<option value="'+esc(o)+'"'+(o===(v||"")?" selected":"")+'>'+esc(o)+'</option>'}).join("")+'</select></div>'}
+function openEditor(type,rec){
+ editing={type:type,rec:rec||null};
+ var cur=rec?rec.raw:{};var h="";
+ if(type==="term"){
+  var cats=G_CAT_ORDER.slice();DB.term.forEach(function(r){if(r.raw.cat&&cats.indexOf(r.raw.cat)<0)cats.push(r.raw.cat)});if(cur.cat&&cats.indexOf(cur.cat)<0)cats.unshift(cur.cat);
+  var devSel=String(cur.device||"").split(/[\/,]/).map(function(x){return x.trim()}).filter(Boolean);
+  var devOpts=DEV_TOKENS.slice();devSel.forEach(function(t){if(devOpts.indexOf(t)<0)devOpts.push(t)});
+  var mk=EDIT_MAKERS.slice();if(cur.maker&&mk.indexOf(cur.maker)<0)mk.unshift(cur.maker);
+  var defCat=cur.cat||route.params.ct||cats[0];
+  h+=fTxt("e_term","用語",cur.term,true,false,"例：PVARP")+fTxt("e_abbr","略語",cur.abbr,false,false,"例：PVARP")+fTxt("e_en","英語名",cur.en,false,false,"例：Post-Ventricular Atrial Refractory Period")+
+   fSel("e_cat","カテゴリ",cats,defCat,true)+fSel("e_maker","メーカー",mk,cur.maker||"General")+
+   '<div class="field"><label>対象デバイス</label><div class="chkrow">'+devOpts.map(function(t){return '<label><input type="checkbox" name="e_device" value="'+esc(t)+'"'+(devSel.indexOf(t)>=0?" checked":"")+'>'+esc(t)+'</label>'}).join("")+'</div></div>'+
+   fTxt("e_short","説明",cur.short,true,true,"例：心室イベント後の心房不応期。逆行性P波の感知やPMTを防ぐ。");
+ }else{
+  var fc=FEAT_CATS_BASE.slice();DB.feat.forEach(function(r){if(r.raw.cat&&fc.indexOf(r.raw.cat)<0)fc.push(r.raw.cat)});if(cur.cat&&fc.indexOf(cur.cat)<0)fc.unshift(cur.cat);
+  h+=fTxt("e_fn","機能名",cur.fn,true,false,"例：レートレスポンス（生理的センサ）")+fTxt("e_en","英語/汎用名",cur.en,false,false,"例：Rate response sensor")+fSel("e_cat","カテゴリ",fc,cur.cat||route.params.ct||fc[0],true)+
+   fTxt("e_mdt","Medtronic",cur.mdt)+fTxt("e_abt","Abbott",cur.abt)+fTxt("e_bsx","Boston Scientific",cur.bsx)+fTxt("e_bio","BIOTRONIK",cur.bio)+fTxt("e_mcp","MicroPort CRM",cur.mcp)+fTxt("e_note","備考",cur.note,false,true);
+ }
+ h+='<p class="note" style="margin:10px 0 0">変更はこの端末にだけ保存され、公式データ（data.json）は変わりません。従来の画面にも同じ変更が表示されます。</p>';
+ $("#mTitle").textContent=rec?"編集":(type==="term"?"用語を追加":"機能を追加");
+ $("#mBody").innerHTML=h;$("#mDel").classList.toggle("hidden",!rec);
+ var sheetOpen=$("#sheet").classList.contains("on");if(!sheetOpen)lockScroll(true);
+ $("#modal").hidden=false;$("#mBody").scrollTop=0;
+}
+function closeEditor(){if($("#modal").hidden)return;$("#modal").hidden=true;editing=null;if(!$("#sheet").classList.contains("on"))lockScroll(false)}
+function ev(id){var el=$("#"+id);return el?el.value.trim():""}
+function saveEditor(){
+ if(!editing)return;var type=editing.type,rec=editing.rec,newKey=null;
+ if(type==="term"){
+  var v={term:ev("e_term"),abbr:ev("e_abbr"),en:ev("e_en"),cat:ev("e_cat"),device:$$('input[name=e_device]:checked').map(function(c){return c.value}).join(" / "),maker:ev("e_maker"),short:ev("e_short")};
+  if(!v.term||!v.cat||!v.short){alert("用語・カテゴリ・説明 は必須です。");return}
+  if(rec&&!rec.ov.added){OV.editG[rec.ov.mkey]=v}
+  else if(rec&&rec.ov.added){var it=OV.addG.filter(function(x){return x.id===rec.ov.addId})[0];if(it)Object.assign(it,v)}
+  else{v.id=uid();v.tags="";OV.addG.push(v);newKey="t:@"+v.id}
+ }else{
+  var f={fn:ev("e_fn"),en:ev("e_en"),cat:ev("e_cat"),mdt:ev("e_mdt"),abt:ev("e_abt"),bsx:ev("e_bsx"),bio:ev("e_bio"),mcp:ev("e_mcp"),note:ev("e_note")};
+  if(!f.fn||!f.cat){alert("機能名・カテゴリ は必須です。");return}
+  if(rec&&!rec.ov.added){OV.editF[rec.ov.mkey]=f}
+  else if(rec&&rec.ov.added){var it2=OV.addF.filter(function(x){return x.id===rec.ov.addId})[0];if(it2)Object.assign(it2,f)}
+  else{f.id=uid();OV.addF.push(f);newKey="f:@"+f.id}
+ }
+ if(!saveOv())return;
+ closeEditor();refreshAfterOv();toast("この端末に保存しました");
+ if(newKey)openDetail(newKey);
+}
+function deleteFromEditor(){
+ if(!editing||!editing.rec)return;var r=editing.rec,kind=r.type==="term"?"G":"F";
+ if(!confirm("削除しますか？（この端末の変更として保存されます。公式データは変わりません）"))return;
+ if(r.ov.added){OV["add"+kind]=OV["add"+kind].filter(function(x){return x.id!==r.ov.addId})}
+ else{if(OV["del"+kind].indexOf(r.ov.mkey)<0)OV["del"+kind].push(r.ov.mkey);delete OV["edit"+kind][r.ov.mkey]}
+ if(!saveOv())return;closeEditor();refreshAfterOv();toast("削除しました（この端末）");
+}
+function undoOv(spec){
+ var p=spec.split(":"),kind=p[0],what=p[1],key=p.slice(2).join(":");
+ var msg={add:"この端末で追加した項目を削除しますか？",edit:"この端末での編集を取り消して、公式データの内容に戻しますか？",del:"削除を取り消して、公式データの項目を表示に戻しますか？"}[what];
+ if(!confirm(msg))return;
+ if(what==="add")OV["add"+kind]=OV["add"+kind].filter(function(x){return x.id!==key});
+ if(what==="edit")delete OV["edit"+kind][key];
+ if(what==="del")OV["del"+kind]=OV["del"+kind].filter(function(x){return x!==key});
+ if(!saveOv())return;refreshAfterOv();toast("元に戻しました");
+}
+$("#mSave").addEventListener("click",saveEditor);
+$("#mCancel").addEventListener("click",closeEditor);
+$("#mscrim").addEventListener("click",closeEditor);
+$("#mDel").addEventListener("click",deleteFromEditor);
+/* 従来の画面（別のタブ）で変更されたら反映する */
+window.addEventListener("storage",function(e){if(e.key===OVK){OV=readOv();if(ready)refreshAfterOv()}});
+
 /* ---------- 詳細シート ---------- */
 var sheetKey=null,sheetTab=null;
 var pushedDetail=false;
 function openDetail(k){var p=Object.assign({},route.params);p.d=k;pushedDetail=true;go(route.path,p)}
-function openSheet(k){
+function openSheet(k,force){
  var r=BYKEY[k];
  if(!r){closeSheet(true);toast("項目が見つかりません");return}
  if(sheetKey!==k){sheetKey=k;sheetTab=null;addHistory(k)}
@@ -1112,7 +1346,7 @@ function openSheet(k){
  if(!tabs.length)tabs=[{k:"ov",label:"概要",html:'<p class="note">登録されている項目はありません。</p>'}];
  if(!sheetTab||!tabs.some(function(t){return t.k===sheetTab}))sheetTab=tabs[0].k;
  $("#shead").innerHTML='<div class="sh"><span class="badge'+(r.type==="mri"&&r.raw.verify?" gray":"")+'">'+esc(D.badge)+'</span><h2 id="sTitle">'+esc(D.title)+'</h2><div class="ss">'+D.sub.filter(Boolean).map(function(s){return "<span>"+s+"</span>"}).join("")+'</div></div>'+
-  '<div class="acts"><button id="sSave" class="'+(isSaved(k)?"saved":"")+'" aria-label="保存">'+(isSaved(k)?ICON.bmOn:ICON.bm)+'</button><button id="sLink" aria-label="リンクをコピー">'+ICON.link+'</button><button id="sClose" aria-label="閉じる">'+ICON.close+'</button></div>';
+  '<div class="acts">'+(r.type==="term"||r.type==="feat"?'<button id="sEdit" aria-label="編集">'+ICON.edit+'</button>':'')+'<button id="sSave" class="'+(isSaved(k)?"saved":"")+'" aria-label="保存">'+(isSaved(k)?ICON.bmOn:ICON.bm)+'</button><button id="sLink" aria-label="リンクをコピー">'+ICON.link+'</button><button id="sClose" aria-label="閉じる">'+ICON.close+'</button></div>';
  $("#stabs").innerHTML=tabs.length>1?tabs.map(function(t){return '<button role="tab" aria-selected="'+(t.k===sheetTab)+'" class="'+(t.k===sheetTab?"on":"")+'" data-tab="'+t.k+'">'+esc(t.label)+'</button>'}).join(""):"";
  $("#stabs").style.display=tabs.length>1?"":"none";
  var body=function(){var t=tabs.filter(function(t){return t.k===sheetTab})[0];var last=sheetTab===tabs[tabs.length-1].k;$("#sbody").innerHTML=t.html+(last?(D.other||"")+D.tech:"");$("#sbody").scrollTop=0};
@@ -1122,6 +1356,7 @@ function openSheet(k){
  $("#sSave").onclick=function(){toggleSave(k);var on=isSaved(k);this.classList.toggle("saved",on);this.innerHTML=on?ICON.bmOn:ICON.bm;if(route.path==="saved")renderSaved()};
  $("#sLink").onclick=function(){var url=location.href.split("#")[0]+buildHash("home",{d:k});if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(function(){toast("リンクをコピーしました")},function(){toast(url)})}else toast(url)};
  $("#sClose").onclick=closeViaBack;
+ var se=$("#sEdit");if(se)se.onclick=function(){openEditor(r.type,r)};
  if(!$("#sheet").classList.contains("on")){lockScroll(true);$("#sheet").classList.add("on");$("#scrim").classList.add("on")}
 }
 function closeViaBack(){if(route.params.d){var p=Object.assign({},route.params);delete p.d;
@@ -1147,24 +1382,29 @@ function lockScroll(on){
 
 /* ---------- 共通のクリック処理 ---------- */
 document.addEventListener("click",function(e){
- var t=e.target.closest("[data-open],[data-q],[data-go],[data-nav],[data-cat],[data-mk],[data-mk-clear],[data-p-kd],[data-p-mk],[data-p-ct],[data-p-dv],[data-p-ty],[data-p-per],[data-mri-dev],[data-mri-reset]");
+ var t=e.target.closest("[data-open],[data-q],[data-go],[data-nav],[data-cat],[data-mk],[data-mk-clear],[data-pp],[data-mri-dev],[data-mri-reset],[data-mri-mk],[data-mri-ty],[data-add],[data-ov-undo]");
  if(!t)return;
  if(t.dataset.open!=null){e.preventDefault();openDetail(t.dataset.open);return}
  if(t.dataset.q!=null){e.preventDefault();var q=t.dataset.q;commitRecentQ(q);$("#q").value=q;go("search",{q:q});return}
  if(t.dataset.go!=null){e.preventDefault();location.hash=t.dataset.go;return}
- if(t.dataset.nav!=null){e.preventDefault();var n=t.dataset.nav;
-  if(n==="search"){go("search",searchState.q?{q:searchState.q,c:searchState.c,m:searchState.m}:{});$("#searchrow").classList.remove("hidden");if(!searchState.q)$("#q").focus()}
-  else go(n,{});return}
+ if(t.dataset.nav!=null){e.preventDefault();var n=t.dataset.nav,cur=navFor(route);
+  var def={home:"#/home",term:"#/list/term",prod:"#/list/prod",algo:"#/list/algo",mri:"#/mri"}[n];
+  if(cur===n){if(route.params.d)closeViaBack();window.scrollTo({top:0,behavior:"smooth"});return}   /* 選択中のタブをもう一度押すと先頭へ */
+  location.hash=n==="home"?"#/home":(tabLast[n]||def);return}
+ if(t.dataset.add!=null){e.preventDefault();openEditor(t.dataset.add,null);return}
+ if(t.dataset.ovUndo!=null){e.preventDefault();undoOv(t.dataset.ovUndo);return}
  if(t.dataset.cat!=null){var p=Object.assign({},route.params);p.c=t.dataset.cat;if(p.c==="all")delete p.c;go("search",p,true);window.scrollTo(0,0);return}
  if(t.dataset.mk!=null){var p2=Object.assign({},route.params);if(t.dataset.mk)p2.m=t.dataset.mk;else delete p2.m;go("search",p2,true);return}
  if(t.dataset.mkClear!=null){var p3=Object.assign({},route.params);delete p3.m;go("search",p3,true);return}
- var keys=["kd","mk","ct","dv","ty","per"];
- for(var i=0;i<keys.length;i++){var dk="p"+keys[i].charAt(0).toUpperCase()+keys[i].slice(1);if(t.dataset[dk]!=null){var pp=Object.assign({},route.params);var v=t.dataset[dk];if(v)pp[keys[i]]=v;else delete pp[keys[i]];if(keys[i]==="kd"||keys[i]==="mk")delete pp.ct;go(route.path,pp,true);return}}
- if(t.dataset.mriDev!=null){go("mri",{dev:t.dataset.mriDev,dm:t.dataset.mriDm,dt:t.dataset.mriDt});return}
- if(t.dataset.mriReset!=null){go("mri",{});return}
+ if(t.dataset.pp!=null){var pp=Object.assign({},route.params),k=t.dataset.pp,v=t.dataset.pv;delete pp.d;if(v)pp[k]=v;else delete pp[k];
+  if(k==="kd"||k==="mk"||k==="md")delete pp.ct;if(k==="md")delete pp.dv;go(route.path,pp,true);return}
+ if(t.dataset.mriMk!=null){var pm={};if(t.dataset.mriMk)pm.mk=t.dataset.mriMk;go("mri",pm,true);return}
+ if(t.dataset.mriTy!=null){var pt={mk:route.params.mk};if(t.dataset.mriTy)pt.ty=t.dataset.mriTy;go("mri",pt,true);return}
+ if(t.dataset.mriDev!=null){go("mri",{dev:t.dataset.mriDev,dm:t.dataset.mriDm,dt:t.dataset.mriDt,mk:route.params.mk,ty:route.params.ty});return}
+ if(t.dataset.mriReset!=null){go("mri",{mk:route.params.mk,ty:route.params.ty});return}
 });
 $("#scrim").addEventListener("click",closeViaBack);
-document.addEventListener("keydown",function(e){if(e.key==="Escape"&&$("#sheet").classList.contains("on"))closeViaBack()});
+document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;if(!$("#modal").hidden){closeEditor();return}if($("#sheet").classList.contains("on"))closeViaBack()});
 
 /* ---------- 上部検索（入口） ---------- */
 (function(){
@@ -1178,7 +1418,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&$("#sheet")
    try{window.history.replaceState(null,"",buildHash("search",p))}catch(e){}
    route=parseHash();lastViewKey=viewKey(route);searchState.q=v;searchState.c=route.params.c||"all";searchState.m=route.params.m||"";drawSearch()},90);
  });
- q.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();commitRecentQ(q.value);q.blur()}});
+ q.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229){e.preventDefault();commitRecentQ(q.value);q.blur()}});
  q.addEventListener("blur",function(){if(q.value.trim().length>=2&&route.path==="search")commitRecentQ(q.value)});
  clr.addEventListener("click",function(){q.value="";clr.classList.remove("on");q.focus();if(route.path==="search"){var p=Object.assign({},route.params);delete p.q;go("search",p,true)}});
  /* 画面キーボードが実際に出ているときだけ下部ナビを隠す（iOS：visualViewport が縮む／Android：innerHeight が縮む） */
