@@ -1,6 +1,6 @@
 {
- "v": 52,
- "updated": "2026-09-06",
+ "v": 53,
+ "updated": "2026-09-10",
  "gloss": [
   {
    "term": "VVT",
@@ -3579,8 +3579,8 @@
    "cat": "不整脈・EP",
    "device": "ICM",
    "maker": "General",
-   "short": "原因が特定できない脳梗塞。背景に隠れた発作性心房細動を疑い、挿入型心電計(ICM)で長期モニタリングして検出する。心房細動が確認されないとDOACの適応にならない。",
-   "tags": "潜因性脳梗塞  Cryptogenic stroke cryptogenic 原因不明 脳梗塞 ICM"
+   "short": "原因が特定できない脳梗塞。背景に隠れた発作性心房細動を疑い、挿入型心電計(ICM)で長期モニタリングして検出する。心房細動が確認されないとDOACの適応にならない。資料 （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」） は、潜因性脳梗塞を「病因の可能性がある異常を有するが、その所見が一定の診断基準を満たさないもの」「検査が不十分であったもの」「十分な精査にもかかわらず原因が見つからないもの」に分け、3つ目を真の潜因性脳梗塞と推測している、と説明する。原因疾患の明らかでない脳梗塞で、頸部および脳の主幹動脈、細小動脈硬化性病変、ないし心臓などの異所からの塞栓症のいずれとも診断できない脳梗塞。脳梗塞全体の25%。潜因性脳梗塞の原因の多くは未検出の塞栓源疾患からの脳塞栓症と推測される、としている。脳卒中の分類の図では、虚血性脳卒中（脳梗塞）をラクナ梗塞25%・アテローム血栓性脳梗塞25%・心原性脳塞栓症20%・潜因性脳梗塞25%・その他の原因5%に分け、潜因性脳梗塞をさらに塞栓症（ESUS）と非塞栓症に分けている（出血性脳卒中は脳出血・くも膜下出血）。",
+   "tags": "潜因性脳梗塞  Cryptogenic stroke cryptogenic 原因不明 脳梗塞 ICM 脳卒中の分類 ラクナ梗塞 アテローム血栓性脳梗塞 心原性脳塞栓症 25% ESUS 非塞栓症"
   },
   {
    "term": "通常型心房粗動",
@@ -5189,8 +5189,8 @@
    "cat": "フォロー",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "2016年新設、2018年改定の診療報酬。月1回、最長11月を限度に算定。対面診療時以外の月に算定できる。",
-   "tags": "遠隔モニタリング加算 Remote monitoring reimbursement 診療報酬 加算 2016年 2018年 2020年 11月 指導管理料"
+   "short": "2016年新設、2018年改定の診療報酬。月1回、最長11月を限度に算定。対面診療時以外の月に算定できる。資料 （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」） の診療報酬の表（診療報酬改定についての厚生労働省通知〈平成30年4月1日〉）では、ペースメーカーの遠隔モニタリング加算は 320点×11、埋込型心電図記録計の欄は「-」。",
+   "tags": "遠隔モニタリング加算 Remote monitoring reimbursement 診療報酬 加算 2016年 2018年 2020年 11月 指導管理料 埋込型心電図記録計 320点"
   },
   {
    "term": "気胸",
@@ -6349,8 +6349,8 @@
    "cat": "フォロー",
    "device": "ICM",
    "maker": "General",
-   "short": "皮下に挿入する小型の長期心電図記録計。動悸・失神の原因検索、潜因性脳梗塞の原因精査、発作性心房細動の検出に用いる。最長数年間の連続モニタリングが可能で、不整脈を自動検出するほか、症状時に患者自身が記録できる。ホルターで捉えられない低頻度の発作に有用。",
-   "tags": "挿入型心電計（ICM） ICM ICM 挿入型心電計 ループレコーダー ICM ループレコーダー 皮下 3年 ESUS 遠隔モニタリング Reveal LINQ 自動保存 挿入型心電計（ICM）"
+   "short": "皮下に挿入する小型の長期心電図記録計。動悸・失神の原因検索、潜因性脳梗塞の原因精査、発作性心房細動の検出に用いる。最長数年間の連続モニタリングが可能で、不整脈を自動検出するほか、症状時に患者自身が記録できる。ホルターで捉えられない低頻度の発作に有用。資料 （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」） の国内市場推移の図（Sales number: BIOTRONIK Japan research Competitive intelligence）の値は、2009年 300・2010年 750・2011年 800・2012年 820・2013年 850・2014年 880・2015年 900・2016年 1,400・2017年 2,400・2018年 3,000・2019年 3,200・2020年 4,000。注記は、2009年に「Reveal DX launch in Sep by Asahi Kasei」、2010年に「Confirm launch in Sep by ABT」、2013年に「Reveal XT launch with MDT directly sales」（その上に「MDT canceled a contract with Asahi Kasei」）、2016年に「LINQ launch in Sep」（その上に「New indication with cryptogenic stroke」）、2020年に「BIOMONITOR III launch in Jan by BJ」。「Confirm rx launch in Jun by ABT」の矢印は2018年と2019年の間にあり、年を読み取れない。適応は用語『植込み型心電図記録計の適応』、保険は『機能区分（埋込型心電図記録計）』『植込型心電図検査（診療報酬）』を参照。",
+   "tags": "挿入型心電計（ICM） ICM ICM 挿入型心電計 ループレコーダー ICM ループレコーダー 皮下 3年 ESUS 遠隔モニタリング Reveal LINQ 自動保存 挿入型心電計（ICM） Reveal DX Reveal XT Confirm LINQ BIOMONITOR III 市場推移 2016年 cryptogenic stroke"
   },
   {
    "term": "MTR/UTR",
@@ -6444,13 +6444,13 @@
   },
   {
    "term": "BIOMONITOR IIIm",
-   "en": "BIOMONITOR",
+   "en": "BIOMONITOR IIIm",
    "abbr": "",
    "cat": "フォロー",
    "device": "ICM",
    "maker": "BIOTRONIK",
-   "short": "バイオトロニックの挿入型心電計。Home Monitoringによる毎日の自動遠隔送信に対応し、大きく明瞭なR波感知を特徴とする。国内で使用可能。毎日の自動送信に対応する。",
-   "tags": "BIOMONITOR  ICM 挿入型心電計 ループレコーダー BIOMONITOR"
+   "short": "**BIOTRONIK の植込型心電計（ICM）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**販売名：バイオモニター3（医療機器承認番号 30100BZX00153000。資料の表紙）。****2021年2月より販売開始。**サイズ（L×W×T）77.5×8.6×4.6mm、容量 1.9cc、重さ 4.0g、コーティング フラクタルコーティング（イリジウム）、MRI-Conditional 1.5T/3T FBS、Bluetooth 機能 No、遠隔モニタリング機能 Home Monitoring で、ここまでは BIOMONITOR III と同じ。**違いは予測寿命で、IIIm＝5.5年*、III＝4年***（* の注記の本文は資料にない）。構成品は本体・Remote Assistant III・Cardio Messenger Smart（別途、申込用紙の記入が必要）。自動で検出されるエピソードは Atrial Fibrillation／High ventricular rate／Bradycardia／Sudden rate drop／Asystole の5つで、ほかに患者起動の Patient trigger がある。プログラマは Renamic で、疾患別テンプレート ProgramConsult を持つ。",
+   "tags": "BIOMONITOR IIIm バイオモニター3 30100BZX00153000 ICM 植込型心電計 挿入型心電計 ループレコーダー 5.5年 2021年2月 Home Monitoring Remote Assistant III ProgramConsult BIOTRONIK"
   },
   {
    "term": "ステップダウンテスト",
@@ -6689,8 +6689,8 @@
    "cat": "不整脈・EP",
    "device": "ICM",
    "maker": "General",
-   "short": "ESUS。心原性が疑われるがAFが未確認の脳塞栓症。ICM植込みの適応。CRISTAL AF試験でICMによる高いAF検出率が示された。",
-   "tags": "塞栓源不明の脳塞栓症 ESUS Embolic stroke of undetermined source ESUS 塞栓源不明 心原性脳塞栓 心房細動検出 DOAC 塞栓源不明の脳塞栓症"
+   "short": "ESUS。心原性が疑われるがAFが未確認の脳塞栓症。ICM植込みの適応。CRISTAL AF試験でICMによる高いAF検出率が示された。資料 （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」） では、塞栓源不明の脳塞栓症（Embolic Stroke of Undetermined Source：ESUS）は潜因性脳梗塞の説明の中に挙げられ、脳卒中の分類の図では潜因性脳梗塞（虚血性脳卒中の25%）が塞栓症（ESUS）と非塞栓症に分けられている。",
+   "tags": "塞栓源不明の脳塞栓症 ESUS Embolic stroke of undetermined source ESUS 塞栓源不明 心原性脳塞栓 心房細動検出 DOAC 塞栓源不明の脳塞栓症 潜因性脳梗塞 脳卒中の分類"
   },
   {
    "term": "バッハマン束",
@@ -7197,10 +7197,10 @@
    "en": "CardioMessenger",
    "abbr": "",
    "cat": "リモート",
-   "device": "PM / ICD / CRT",
+   "device": "PM / ICD / CRT / ICM",
    "maker": "BIOTRONIK",
-   "short": "BIOTRONIKのリモートモニタリング送信機。Home Monitoringのデータを毎日自動送信する。",
-   "tags": "Manufacturer / BIOTRONIK / CardioMessenger Home Monitoring 送信機 遠隔"
+   "short": "BIOTRONIKのリモートモニタリング送信機。Home Monitoringのデータを毎日自動送信する。BIOMONITOR IIIm の構成品にも挙げられている（Cardio Messenger Smart。別途、申込用紙の記入が必要）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。",
+   "tags": "Manufacturer / BIOTRONIK / CardioMessenger Home Monitoring 送信機 遠隔 BIOMONITOR IIIm 申込用紙 ICM"
   },
   {
    "term": "MyCareLink Relay",
@@ -11919,8 +11919,8 @@
    "cat": "心房治療",
    "device": "PM / ICD / CRT",
    "maker": "General",
-   "short": "**早期の心房細動再発**。心房細動が停止した直後の脆弱な時期に再発する現象 （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料が引く報告（Circulation 2006;113(16):1933-1941）では、**5分以内の心房細動の開始が全エピソードの50%（305/612例）、全患者の69%（68/98例）で観察され、反復性心房細動は305回中225回で早期に開始し、225回中134回で日中に発生した。****「早期の心房細動再発の現象は、心房細動終了直後の心房の脆弱な状態で発生しやすい傾向にある」。****Amvia Sky では Post ModeSw rate／Post ModeSw duration によるオーバードライブペーシングで ERAF を予防する。**",
-   "tags": "ERAF Early recurrences of atrial fibrillation 早期心房細動再発 5分以内 50% 305/612 69% 68/98 225 134 Circulation 2006 Post ModeSw rate オーバードライブ BIOTRONIK"
+   "short": "**早期の心房細動再発**。心房細動が停止した直後の脆弱な時期に再発する現象 （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。資料が引く報告（Volume 113, Issue 16, 25 April 2006; Pages 1933-1941。誌名は資料に記載がない）では、**5分以内の心房細動の開始が全エピソードの50%（305/612例）、全患者の69%（68/98例）で観察され、反復性心房細動は305回中225回で早期に開始し、225回中134回で日中に発生した。****「早期の心房細動再発の現象は、心房細動終了直後の心房の脆弱な状態で発生しやすい傾向にある」。****Amvia Sky では Post ModeSw rate／Post ModeSw duration によるオーバードライブペーシングで ERAF を予防する。**",
+   "tags": "ERAF Early recurrences of atrial fibrillation 早期心房細動再発 5分以内 50% 305/612 69% 68/98 225 134 2006 Volume 113 Post ModeSw rate オーバードライブ BIOTRONIK"
   },
   {
    "term": "organized AF／true AF",
@@ -12191,6 +12191,286 @@
    "maker": "General",
    "short": "**精神的負荷に対する CLS の応答を評価するために資料が用いているテスト** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。文字が示す色名と実際の文字色を食い違わせた課題（資料の例は黄色地に赤字で「PURPLE」）で、被験者にストレスを与える。**結果のグラフでは MABP（平均動脈圧）と stimulation rate（ペーシングレート）が並行して動き、Rest → CWT1 → Rest → CWT2 → Rest の推移でレートが約80 → 100bpm 台まで上昇している**（Hubmann M., Erlangen, Germany, 1998）。**体動がないのにレートが上がるのが CLS の特徴で、加速度センサではこの反応は出ない。**",
    "tags": "Color-word test CWT ストループ 精神的負荷 メンタルストレス MABP stimulation rate 相関 Hubmann Erlangen 1998 体動なし レート上昇 CLS 加速度センサでは反応しない エビデンス BIOTRONIK"
+  },
+  {
+   "term": "BIOMONITOR III",
+   "en": "BIOMONITOR III",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOTRONIK の植込型心電計（ICM）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。BIOMONITOR IIIm の資料のスペック表で比較対象として示されている。**発売予定日 2020年1月**（市場推移の図にも「BIOMONITOR III launch in Jan by BJ」）。サイズ（L×W×T）77.5×8.6×4.6mm、容量 1.9cc、重さ 4.0g、コーティング フラクタルコーティング（イリジウム）、**予測寿命 4年***、MRI-Conditional 1.5T/3T FBS、Bluetooth 機能 No、遠隔モニタリング機能 Home Monitoring（* の注記の本文は資料にない）。スペック表の図には「BIOvector：77.5 mm long sensing vector」とある。**比較の BIOMONITOR II（日本未発売）は 88.4×15.2×6.2mm・5cc・10.1g・予測寿命4年・MRI-Conditional 1.5T/3T FBS・Bluetooth 機能 No・Home Monitoring。**資料の最終スライドは BIOMONITOR III の画像に「販売名：バイオモニター3／医療機器承認番号：30100BZX00153000」を添えている。プログラマ画面のタイトルバーと MRI の章は「BIOMONITOR III」と表記している。",
+   "tags": "BIOMONITOR III バイオモニター3 30100BZX00153000 ICM 植込型心電計 挿入型心電計 ループレコーダー 2020年1月 4年 77.5mm BIOvector BIOMONITOR II BioMonitor 2 日本未発売 BIOTRONIK"
+  },
+  {
+   "term": "SECG（皮下心電図）",
+   "en": "Subcutaneous electrocardiogram",
+   "abbr": "SECG",
+   "cat": "心電図",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**Subcutaneous electro cardio gram の略で、皮下心電図のこと** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。BIOMONITOR では、**SECG signal は P 波や T 波を視覚的に捉えるためのフィルタで、記録されたエピソードは SECG 上で評価することができる。**処理の流れは Reduce noise → Compress（128Hz sample rate）→ Store。不整脈イベントの識別には別経路の Sensing signal（画面では Filtered ECG／Sens.）が使われる。プログラマの Sensing タブで Display＝Normal／Inverted、Signal filter＝0.05・0.5Hz（画面例 0.5Hz）を設定する。Home Monitoring では検出エピソードの SECG と定期 SECG が送信され、定期 SECG と検出された不整脈が同日に伝送予定の場合は、検出された不整脈が優先される。",
+   "tags": "SECG 皮下心電図 Subcutaneous electrocardiogram Signal filter 0.05Hz 0.5Hz 128Hz Display Normal Inverted 定期SECG P波 T波 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Sensing filter（BIOMONITOR）",
+   "en": "Sensing filter",
+   "abbr": "",
+   "cat": "センシング",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の R 波センシング用のフィルタ設定** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。Sensing signal は不整脈イベントを識別するために R 波を確実にセンシングさせるためのフィルターで、**R 波センシングを捉えるために、ハイパスフィルターを変更することができる。**選択肢は 4.5・10・15・24Hz（画面例 10Hz）。ノミナルの記載は資料にない。資料は『不適切なセンシング』（BioMonitor II で検出された HVR イベント）の例で、Sensing filter の画面と SensingConsult の画面を「or」で並べている。",
+   "tags": "Sensing filter センシングフィルタ ハイパスフィルター 4.5Hz 10Hz 15Hz 24Hz Isolate QRS 不適切なセンシング BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "SensingConsult",
+   "en": "SensingConsult",
+   "abbr": "",
+   "cat": "センシング",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の設定可能なセンシング減衰（5パターン）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**Standard＝初期設定。ピーク値の62.5%から25%まで段階的に減衰する。**Sense after large PVCs＝SECG 上で、PVC の波高が高く、PVC 後の R 波をアンダーセンシングすることが予測される場合。Sense small PVCs＝SECG 上で、PVC の波高が低く、R 波の後の PVC をアンダーセンシングすることが予測される場合。Sense short intervals＝SECG 上で、2段脈などの短いインターバルのため、アンダーセンシングしてしまうことが予測される場合。T-wave suppression＝SECG 上で、T 波成分が大きく、オーバーセンシングしてしまうことが予測される場合。信号処理では Sensing Filter（Isolate QRS）→ Rectify の次に置かれ、ここで Vs がセンスされる。",
+   "tags": "SensingConsult センシング減衰 Standard 62.5% 25% Sense after large PVCs Sense small PVCs Sense short intervals T-wave suppression アンダーセンシング オーバーセンシング BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "ノイズウィンドウ（BIOMONITOR）",
+   "en": "Noise window",
+   "abbr": "",
+   "cat": "センシング",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR のノイズの検出に使う窓で、長さは 100ms** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。資料は DHP（図の例 180ms）とノイズウィンドウの関係で3つの場合を示している。a＝不応期内にすべて収まっているため、ノイズ検出なし。b＝不応期およびノイズウィンドウ終了後に検出しているため、ノイズ検出なし。**c＝不応期終了後のノイズウィンドウ内で検出レベルを超えた電位を感知したため「Vn」となり、前拍も「Vn」となる。**図の下にはそれぞれ「100ms内のイベント継続なし」「100ms内のイベント継続あり」「100ms内のイベント継続中」と添えられている。",
+   "tags": "ノイズウィンドウ Noise window 100ms Vn ノイズ検出 マーカ表示 アーチファクトの処理 DHP 180ms 不応期 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "DHP（BIOMONITOR）",
+   "en": "DHP",
+   "abbr": "DHP",
+   "cat": "センシング",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**検出を保留する時間（期間）で、不応期に該当する** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）（BIOMONITOR のノイズの検出とマーカ表示の図の注記）。図の例は DHP＝180ms。**略語の展開と設定範囲の記載は資料にない。**",
+   "tags": "DHP 検出保留 不応期 180ms ノイズウィンドウ BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Intelligent Memory Management",
+   "en": "Intelligent Memory Management",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR のエピソード保存の仕組み** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**「Buffer 1 と 2」のメモリ機能は自動検出エピソード記録に使用され、エピソード記録中に新しい不整脈イベントを検出した場合、それぞれ別のエピソードとして記録することが可能。「Buffer 3」は患者起動エピソード記録に使用される。****自動エピソード検出は、合計で56エピソード、60分の記録が可能。****患者起動エピソードの4つ、自動検出エピソードの15は上書きされないように保護される**（Atrial fibrillation・High ventricular rate・Bradycardia＝各3件：Oldest／Most recent／Longest、Sudden rate drop・Asystole＝各3件：Oldest／2×most recent、Patient trigger＝4件：4×most recent）。保存範囲は自動検出＝検出前30秒間＋検出後10秒間、患者起動＝アクティベーション起動時の7分前＋起動後30秒間。",
+   "tags": "Intelligent Memory Management エピソード保存 Buffer 1 Buffer 2 Buffer 3 上書き保護 56エピソード 60分 15 4 Oldest Most recent Longest 検出前30秒 検出後10秒 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "AF sensitivity（BIOMONITOR）",
+   "en": "AF sensitivity",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出パラメータの組み合わせ（Low／Medium／High／Individual）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。順に Detection/termination window size・Detection intervals・Number of detection windows・Termination intervals・Number of termination windows・RR variability limit・Confirmation time・AF detection enhancement として、**Low＝16/24・11・3・5・2・12・6・Standard／Medium＝8/16・5・2・1・2・12・6・Standard／High＝8/16・5・1・1・3・12・6・Standard。****Low/Medium/High で決定された Detection/termination size を変更すると表記が Individual になる**（例 24/32）。ProgramConsult では Syncope＝Low、Palpitations・AF monitoring＝Medium、Cryptogenic stroke＝High。ノミナルの明記は資料にない。",
+   "tags": "AF sensitivity Low Medium High Individual 心房細動検出 AF detection 8/16 16/24 24/32 ProgramConsult BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Detection/termination window size",
+   "en": "Detection/termination window size",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、1つのウィンドウに含める R-R 間隔の数（検出確認用／停止確認用）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。「8/16, 16/24, 24/32」の中から選択する。**「16/24」に設定されていると、検出確認には1つのウィンドウ内に16 R-R 間隔が含まれ、停止確認の場合には1つのウィンドウ内に24 R-R 間隔が含まれる。**",
+   "tags": "Detection/termination window size ウィンドウサイズ 8/16 16/24 24/32 R-R間隔 AF detection BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "RR variability limit",
+   "en": "RR variability limit",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、R-R 間隔の安定・不安定を分けるレンジ［%］** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。「6, 9, 12, 15, 18%」の中から選択する。**ウィンドウ内の R-R 間隔がレンジ内にあれば R-R 間隔が安定、レンジ外であれば R-R 間隔が不安定と判断する。**AF sensitivity の Low／Medium／High はいずれも 12。",
+   "tags": "RR variability limit R-R variability 6% 9% 12% 15% 18% 安定 不安定 AF detection BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Detection intervals／Termination intervals（BIOMONITOR）",
+   "en": "Detection intervals / Termination intervals",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、ウィンドウの判定に使う R-R 間隔の数** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**Detection intervals＝「5, 7, 9, 11, 13, 15, 17, 19, 21, 23」の中から選択。R-R variability limit により設定された範囲よりも大きく変化した R-R 間隔が、設定された検出数を満足するか確認する。****Termination intervals＝「1, 3, 5, 7」の中から選択。R-R variability limit により設定された範囲よりも大きく変化した R-R 間隔が、設定された検出数以下になっているかを確認する。**",
+   "tags": "Detection intervals Termination intervals 検出数 5 7 9 11 13 15 17 19 21 23 1 3 5 7 AF detection BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Number of detection windows／Number of termination windows",
+   "en": "Number of detection windows / Number of termination windows",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、判定したウィンドウが何個連続すれば先へ進むか** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。いずれも「1, 2, 3, 4」の中から選択する。**Number of detection windows＝Detection intervals を満たし、不安定と判断されたウィンドウが設定された数を連続して満足するか確認（観察フェーズ）する。****Number of termination windows＝Termination intervals を満たし、安定と判断されたウィンドウが設定された数を連続して満足するか確認する。**資料の図（＝2）では「安定」が2つ並んだところで「停止」となる。",
+   "tags": "Number of detection windows Number of termination windows 観察フェーズ 連続性の確認 停止 AF detection BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Confirmation time（BIOMONITOR）",
+   "en": "Confirmation time",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出の確認フェーズのタイマー** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。「1, 2, 3, 4, 5, 6, 10, 20, 30」の中から選択する（プログラマの項目名は「Confirmation time [min]」）。**Number of detection window により検出条件を満たすとスタートするタイマー（確認フェーズ）。タイマーによって頻拍継続が確認されるとエピソードの記録が開始される。**AF sensitivity の表では Low／Medium／High とも 6。資料は Cryptogenic stroke のテンプレートについて「Confirmation time は『1 ⇒ 2』に変更することを推奨」と注記しており、表の値とは一致しない（未確定）。",
+   "tags": "Confirmation time 確認フェーズ タイマー 1 2 3 4 5 6 10 20 30 min 頻拍継続 AF detection BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "AF detection enhancement",
+   "en": "AF detection enhancement",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、2段脈などの周期的な異所性のイベントを検出しない機能** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。資料は偽陽性の AF 検出が行われる理由のひとつとして期外収縮が連続して発生していることを挙げ、Bigeminy 2nd order [n,n+2]／3rd order [n,n+3]／4th order [n,n+4] のような周期性を持っている場合には AF 検出をキャンセルするとしている。**この機能は観察および確認フェーズ中の3分間のみ働く。**設定は Off／Standard／Aggressive。**「Standard」設定で AF 検出が偽陽性だった場合には「Aggressive」設定を検討する。ただし AF 検出感度は低下するため十分注意が必要。AF 検出がキャンセルされるとエピソードの保存は行われない。**「OFF」に設定するとこの検出強化機能は動作しない。",
+   "tags": "AF detection enhancement 検出強化 2段脈 Bigeminy 2nd order 3rd order 4th order 偽陽性 Off Standard Aggressive 3分間 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "AF with ectopy detection algorithm",
+   "en": "AF with ectopy detection algorithm",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の AF 検出で、Short-long イベントによる検出を抑制する機能** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。期外収縮に限らず、周期性を持たないばらついた R-R 間隔のイベントが発生した際、Short-long パターンの場合にはイベントとして検出しないように働く。**異所性イベントは short-long の組み合わせによって検出される。検出には平均間隔と平均間隔からの平均差を基に自動で計算される閾値（Ectopy detection interval thresholds）を使用するが、その閾値を確認することは出来ない。**",
+   "tags": "AF with ectopy detection algorithm Short-long 異所性イベント Ectopy detection interval thresholds 期外収縮 偽陽性 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "High ventricular rate（HVR・BIOMONITOR）",
+   "en": "High ventricular rate",
+   "abbr": "HVR",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の高心室レート検出** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。HVR limit と HVR counter の組み合わせで検出する。**検出時の HVR カウンタは増減カウンタのため、設定レートを上回れば「+1」、下回れば「−1」とカウントが進む。検出のタイミングは、カウントを満たした次の Vs 時。****停止の検出は増減カウントではなく、設定レートを下回る「5連続」の心拍が必要。**HVR counter の選択肢は 8・12・16・20・24・32・40（画面例 16）。「6つの検出エピソード」の表の HVR limit は 180bpm。Amvia Sky の Atrial ATP の HVR detection（→ 用語『HVR detection』）とは別の機能。",
+   "tags": "High ventricular rate HVR HVR limit HVR counter 増減カウンタ 5連続 180bpm 8 12 16 20 24 32 40 高心室レート BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Bradycardia detection（BIOMONITOR）",
+   "en": "Bradycardia detection",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の徐脈検出** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。Brady zone limit と Brady duration の組み合わせで検出する。**検出時の Bradycardia カウントは、設定された時間を超えていて、かつ設定された下限レートを下回る心拍が確認されると検出する。検出のタイミングは、遅延時間を満たした次の Vs 時。****停止の検出は、設定下限レートを上回る「10連続」の心拍が必要。**Brady duration の選択肢は 5・10・15・20・25・30秒（画面例 10）。「6つの検出エピソード」の表の Brady zone limit は 40bpm。",
+   "tags": "Bradycardia detection 徐脈 Brady zone limit Brady duration 10連続 40bpm 5 10 15 20 25 30 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Sudden rate drop（SRD・BIOMONITOR）",
+   "en": "Sudden rate drop",
+   "abbr": "SRD",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の急なレート下降の検出** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**SRD 検出は、洞調律時のレートが突然下降し、その下降幅が設定された範囲を超えており、かつ設定されている数を満たすと検出される。レートに関しては、設定されたウィンドウ内での平均をモニタしている。**SRD sensitivity＝Baseline intervals 256（Low）・64（Medium）・48（High）、Rate-drop intervals 32（Low）・16（Medium）・8（High）。SRD rate decrease（%）＝50。**SRD 検出後の duration time はないため、エピソードの終了条件は存在せず、トータル40秒で終了。**用語『SRD』（Boston Scientific の Sustained Rate Duration）とは別のもの。",
+   "tags": "Sudden rate drop SRD 急なレート下降 SRD sensitivity Baseline intervals Rate-drop intervals SRD rate decrease 50% 256 64 48 32 16 8 40秒 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Asystole detection（BIOMONITOR）",
+   "en": "Asystole detection",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の心停止検出** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**Asystole 検出は、設定された duration を超える RR 間隔で検出される。検出のタイミングは、遅延時間を満たした次の Vs 時。****Asystole 検出後には duration time がないため、エピソードの終了条件は存在せず、トータル40秒で終了。**Asystole duration の選択肢は 2・3・4・5・6・7・8・9・10秒（画面例 3）。Home Monitoring の章では Arrest、デイリーデータでは「心停止エピソード」と表記される。",
+   "tags": "Asystole detection 心停止 Asystole duration Arrest 2 3 4 5 6 7 8 9 10 秒 40秒 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Patient trigger（BIOMONITOR）",
+   "en": "Patient trigger",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の患者起動エピソード** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。症状を感じたときに、患者本人やその家族が Remote Assistant III を使って皮下心電図を記録させる。**記録は最大7分30秒（トリガキーを押す前7分＋押した後30秒）。**Buffer 3 のメモリで記録され、上書き保護は4件（4×most recent）。Home Monitoring では1件のエピソードにつき患者トリガ前とトリガ後で最大60秒（前約50秒・後約10秒）が送信され、1日最大6エピソードの送信優先順位は1番目。資料の診療報酬早見表は患者トリガを「310秒/件」としており、7分30秒とは一致しない（未確定）。",
+   "tags": "Patient trigger 患者トリガ 患者起動 Remote Assistant III 7分30秒 7分前 30秒 Buffer 3 60秒 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "Remote Assistant III",
+   "en": "Remote Assistant III",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の患者トリガ用の機器** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。使用目的は「ICM を植込みされている患者が何か症状を感じたときに、患者本人やその家族が、皮下心電図を BMIII に記録させるための機器」。**トリガキーを3秒以上押すと、短いビープ音がなり LED がオレンジからグリーンに変わる**（グリーンに点灯したらトリガーは完了しているので体から離しても大丈夫で、30秒程で消える）。**ボタン上の LED がオレンジのまま点滅している場合は起動できていないため、点滅が消えてからデバイスの位置を確認してやり直す。**バッテリ確認ライトは、ついていない＝充分なバッテリ容量／黄色に点滅＝約20回ほどしか使用できない／黄色に点灯＝バッテリが空。黄色に点滅・点灯している場合は病院に連絡して新しいものと交換する。電池寿命は約4年（使用頻度により変化する）。各部は信号伝送 LED／トリガキー／電池インジケーター LED。",
+   "tags": "Remote Assistant III リモートアシスタント 患者トリガ トリガキー 3秒 ビープ音 LED オレンジ グリーン 黄色 点滅 点灯 約20回 電池寿命 約4年 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "ProgramConsult",
+   "en": "ProgramConsult",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR のプログラマで、「4つの疾患」に対してワンボタンで推奨設定を行う疾患別テンプレート** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。Atrial fibrillation／High ventricular rate [bpm]／Bradycardia [bpm]／Sudden rate drop [%]／Asystole [s]／Patient trigger の順に、Syncope（失神）＝Low／160／35／50／3／ON、Palpitations（動悸）＝Medium／180／30／OFF／5／ON、AF monitoring（心房細動モニタリング）＝Medium／180／30／OFF／5／ON、Cryptogenic stroke（潜因性脳梗塞）＝High／180／30／OFF／5／ON（AF の Transmission は Detect. Only）。資料は「植込み適応に合わせたプログラムの推奨例です。プログラミングを行う際には、患者に最適な設定を医師に確認する」としている。",
+   "tags": "ProgramConsult Program sets 疾患別テンプレート Syncope Palpitations AF monitoring Cryptogenic stroke 失神 動悸 心房細動モニタリング 潜因性脳梗塞 Individual sets BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "FIT Onestep（BIOMONITOR の挿入ツール）",
+   "en": "FIT Onestep",
+   "abbr": "",
+   "cat": "植込み・手技",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR の植込み用ツール（One Step Injection）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。挿入ツール（FIT Onestep）201mm×24mm、切開ツール 130mm×13mm。挿入ツールにはリリースノブがある。**植込みツールを組み立てる必要はない。****推奨植込み部位は第3肋骨弓〜第6肋骨弓の範囲、正中線に対して約45度の範囲。**デバイスの向きは胸→頭・頭→胸の両方可。植込みポケット用の切開および植込み部位は、医師の選択、患者の解剖、快適性、美容的配慮に基づいて決定する。植込み手順は図（手順1〜8と、手順1・2・3・5-6の注意点の写真）で示され、文章での説明はない。資料が引く BIO|CONCEPT.BIOMONITOR III study では、挿入（切開から挿入ツールの抜去まで）は平均52秒（中央値39秒）。",
+   "tags": "FIT Onestep 挿入ツール 切開ツール One Step Injection 201mm 24mm 130mm 13mm リリースノブ 推奨植込み部位 第3肋骨弓 第6肋骨弓 45度 BIOMONITOR BIOTRONIK"
+  },
+  {
+   "term": "機能区分（埋込型心電図記録計）",
+   "en": "Functional category (Japanese reimbursement)",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**埋込型心電図記録計の保険償還価格の機能区分** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）（診療報酬改定についての厚生労働省通知〈2019年10月1日〉）。**標準型＝394,000円。**定義 ア：原因が特定できない失神を起こす患者に対して、診断を目的とし、皮下に植え込んで、使用するものであること／イ：心電図を持続的にモニターする機能を有していること／ウ：不整脈を検知した際又は患者が症状を自覚した際に、患者の心電図を記録できる機能を有していること／エ：患者の皮下に植え込んだ状態で、体外にある機械から遠隔操作（記録された心電図を抽出する等）できる機能を有していること。**特殊型＝451,000円。**定義 ア：原因が特定できない失神を起こす患者又は心房細動を検出するための潜因性脳梗塞患者に対して、診断を目的として、皮下に植え込んで、使用するものであること／イ〜エ：標準型と同じ／オ：植え込みに際し低侵襲な挿入のための専用の挿入、植え込みツールを付属していること／カ：心房細動の有無の判定を心電図波形の形態分析によって行うアルゴリズムを有していること。資料は BIOMONITOR IIIm がどちらの区分にあたるかを文章では明記していない。",
+   "tags": "機能区分 埋込型心電図記録計 植込型心電計 保険償還価格 標準型 特殊型 394000 451000 2019年10月 潜因性脳梗塞 ICM"
+  },
+  {
+   "term": "植込型心電図検査（診療報酬）",
+   "en": "Implantable ECG examination (reimbursement)",
+   "abbr": "",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**埋込型心電図記録計の診療報酬** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）（診療報酬改定についての厚生労働省通知〈平成30年4月1日〉）。**埋込型心電図記録計移植術＝1,260点、埋込型心電図記録計摘出術＝840点、植込型心電図検査＝90点。**植込型心電図検査の注：別に厚生労働大臣が定める施設基準を満たす保険医療機関において行われる場合に限り算定する／30分又はその端数を増すごとに算定する／解析に係る費用は、所定点数に含まれるものとする。同じ表でペースメーカーは移植術 9,520点・交換術 4,000点・心臓ペースメーカー指導管理料 360点・遠隔モニタリング加算 320点×11 で、埋込型心電図記録計の遠隔モニタリング加算の欄は「-」。**資料の早見表**：自動記録トリガ（40秒/件）・患者トリガ（310秒/件）として、0点＝記録されているエピソードが1件もない場合、90点＝1件以上のエピソードが記録されており合計の記録時間が30分未満の場合、180点＝1件以上のエピソードが記録されており合計の時間が30分以上の場合。**最大記録時間（60分）、最大記録件数（56＋4＝60件）を超えると上書き保護ルールに従って消えるエピソードがあり、HMSC に残っていたとしてもその記録時間を算定に加えることはできないため、算定できる上限は180点。**外来フォローアップ時にエピソード記録が0件であったとしても、その場でリモートアシスタントでトリガして記録を残せばエピソードが1件以上になるため90点を算定できる、としている。患者トリガの310秒/件は、Remote Assistant III の章の最大7分30秒とは一致しない（未確定）。",
+   "tags": "植込型心電図検査 埋込型心電図記録計 診療報酬 移植術 1260点 摘出術 840点 90点 180点 早見表 30分 施設基準 40秒 310秒 HMSC 平成30年 ICM"
+  },
+  {
+   "term": "BIO|CONCEPT.BIOMONITOR III study",
+   "en": "BIO|CONCEPT.BIOMONITOR III study",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOMONITOR III の挿入の成功と手技を評価した研究**（Lovibond S ほか。演題名は「The BIO|CONCEPT.BIOMONITOR III study: Insertion success and procedure assessment of a new miniaturized Implantable Cardiac Monitor」）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。2019年3〜5月にオーストラリア10施設で48例（平均64歳、女性48%）を登録。適応は失神28・AF モニタリング14・潜因性脳梗塞6で、1例は挿入前に脱落。**47例全例で挿入に成功した。**16人の術者が1〜5台ずつ挿入。**挿入（切開から挿入ツールの抜去まで）は平均52秒（中央値39秒）、手技時間（切開から創閉鎖まで）は平均4.1分（中央値3.5分）。**ツールと手技の評価は全項目で50%超が excellent。最初の HM メッセージは植込み当日34例・翌日9例・それ以降2例で受信され、送信の98%が成功。R 波は平均 0.70mV（中央値 0.60、IQR 0.48–0.84）、平均ノイズバーデン 0.9%。規則的な洞調律の39例で全心周期の89%に P 波が見えた（中央値100%、IQR 85–100%）。デバイスが検出した不整脈の心電図1739件（44例）から298件を選んで評価し、AF 52件（17.4%）・非AF 246件（82.6%）。非AF のうち明瞭な P 波は181件（73%）。",
+   "tags": "BIO|CONCEPT BIOMONITOR III study Lovibond 47例 52秒 39秒 4.1分 R波 0.70mV ノイズバーデン 0.9% P波 89% 98% オーストラリア ICM BIOTRONIK"
+  },
+  {
+   "term": "植込み型心電図記録計の適応",
+   "en": "Indications for insertable cardiac monitor",
+   "abbr": "",
+   "cat": "エビデンス",
+   "device": "ICM",
+   "maker": "General",
+   "short": "**植込み型心電図記録計（ICM）の適応** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**失神（失神の診断・治療ガイドライン 2012年改訂版）**：クラスI＝①ハイリスク所見ではないが、心原性以外の原因が否定的で、デバイスの電池寿命内に再発が予想される原因不明の再発性失神患者の初期段階での評価 ②ハイリスク所見を有するが包括的な評価でも失神原因を特定できず、あるいは特定の治療法を決定できなかった場合。クラスIIa＝頻回に再発あるいは外傷を伴う失神歴がある反射性（神経調節性）失神の疑いを含む患者で、徐脈に対するペースメーカ治療が考慮される場合。**不整脈非薬物治療ガイドライン（2018年改訂版）**：2011年版には記載がなかった「8．植込み型心臓モニター（ICM）」「表44 ICM 適応」が新たに追加された。表44では、原因不明の再発性失神の初期段階での評価／心原性を疑う高リスク所見を有するが原因や治療法を決められない場合／潜因性脳梗塞と診断された患者でホルター心電図を含む長時間心電図検査でも原因が特定されず、心房細動の検出を目的とする場合 が推奨クラスI（エビデンスレベルB・Minds 推奨グレードB・Minds エビデンス分類II）、反射性失神の疑いで徐脈に対するペースメーカ治療が考慮される場合 がIIa（C・C1・IVb）。**潜因性脳梗塞の適応範囲**：「原因が特定できない、失神又は動悸等の不整脈の症状を有する患者への使用、および心房細動を検出するための、潜因性脳梗塞患者への使用」。",
+   "tags": "植込み型心電図記録計の適応 ICM 適応 失神 ガイドライン 2012年 不整脈非薬物治療ガイドライン 2018年 表44 クラスI クラスIIa 潜因性脳梗塞 心房細動検出 反射性失神 神経調節性失神"
+  },
+  {
+   "term": "Home Monitoring（BIOMONITOR）",
+   "en": "BIOTRONIK Home Monitoring",
+   "abbr": "HM",
+   "cat": "フォロー",
+   "device": "ICM",
+   "maker": "BIOTRONIK",
+   "short": "**BIOTRONIK の遠隔モニタリング。BIOMONITOR での送信内容と伝送ルール** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。デイリーデータ（モニタリングインターバル24時間）はエピソード・カウンター／AF details／アクティビティ／センシングの各項目で、**設定された時間に送信ができなかった場合、ほかの植込みデバイスと同様に、60分ごとに追加で3回送信を試み、送信できなければ破棄して翌日新たに取得する。**ホルターエピソードはデイリーデータと併せて1日1回、最大6エピソード送信でき、優先順位は 患者トリガ→心停止→高心室→徐脈→SRD→AF（いずれも最新）。**デバイスと CM の間で60日間連続してデータ送信が行われなかった場合にはデバイスが CM への伝送を中止し、プログラマで確認しても表示は「ON」のまま。**同居家族等にすでに HM を使用している患者がいる場合は、混線を防ぐため BM も事前に特別な処置をする必要があり、準備ができるまで HM はオフに設定する。Time of transmission は「就寝中」に設定する（画面例 02:00）。定期 SECG と検出された不整脈が同日に伝送予定の場合は、検出された不整脈が優先される。",
+   "tags": "Home Monitoring HM BIOMONITOR デイリーデータ 24時間 60分ごと 3回 最大6エピソード 優先順位 60日間 伝送中止 同居家族 混線 Time of transmission 就寝中 定期SECG BIOTRONIK"
   }
  ],
  "feats": [

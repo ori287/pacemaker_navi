@@ -1,6 +1,6 @@
 {
- "v": 15,
- "updated": "2026-09-06",
+ "v": 16,
+ "updated": "2026-09-10",
  "note": "リードデータ一覧表（2018年版）を基礎とし、Boston Scientific 歴史的リファレンス・FDA 510(k)・各社公式情報で照合。製品名が確認できないものは型番を製品名として表示している。",
  "items": [
   {
@@ -27811,7 +27811,7 @@
    "cat": "プログラマ",
    "name": "Renamic（ICS 3000）",
    "en": "Renamic™",
-   "role": "デバイスと通信して設定変更・測定・記録の読み出しを行う。\n**［Parameters］→［Refractory period/Blanking］ダイアログ**では、心房・心室の不応期とブランキングをまとめて設定する。**Etrinsa 8 DR-T を読み出した画面例の項目と値**：Atrial refractory period＝AUTO／Auto PVARP＝ON／PVARP＝225ms／PVARP after PVC＝375ms／Wenckebach response＝130〜167bpm／Ventricular refractory period＝250ms／**Far-field protection after Vs＝100ms**／**Far-field protection after Vp＝150ms**／**Ven. blanking after Ap＝30ms**／PMT protection＝ON／VA criterion＝350ms。ダイアログ下部には Ap・Vp・PVC・As・Vs の並びに各不応期を色分けして重ねたタイミング図が表示される。画面右側のタブは Follow-up／Parameters／Tests／Holter／Statistics／Status／More／Preferences／End。**画面例でありノミナルとは限らない。世代差があるため、他機種の値として流用しないこと。**（追補48）"
+   "role": "デバイスと通信して設定変更・測定・記録の読み出しを行う。\n**［Parameters］→［Refractory period/Blanking］ダイアログ**では、心房・心室の不応期とブランキングをまとめて設定する。**Etrinsa 8 DR-T を読み出した画面例の項目と値**：Atrial refractory period＝AUTO／Auto PVARP＝ON／PVARP＝225ms／PVARP after PVC＝375ms／Wenckebach response＝130〜167bpm／Ventricular refractory period＝250ms／**Far-field protection after Vs＝100ms**／**Far-field protection after Vp＝150ms**／**Ven. blanking after Ap＝30ms**／PMT protection＝ON／VA criterion＝350ms。ダイアログ下部には Ap・Vp・PVC・As・Vs の並びに各不応期を色分けして重ねたタイミング図が表示される。画面右側のタブは Follow-up／Parameters／Tests／Holter／Statistics／Status／More／Preferences／End。**画面例でありノミナルとは限らない。世代差があるため、他機種の値として流用しないこと。**（追補48）\n**BIOMONITOR III の読み出し** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）：MRI 検査の前に「Renamic」プログラマを用いて BIOMONITOR III のインタロゲートを行い、必要に応じて本体に保存されているデータを「リナミック」プログラマ又は記録することができるメディアに保存する。BIOMONITOR の画面右側のボタンは Follow-up／Parameters／Tests／Holter／Statistics／Status／Support／More／Preferences／End、Parameters 画面のタブは Diagnostics/Home Monitoring／Sensing／Patient。疾患別テンプレート ProgramConsult は Parameters 画面下部の［Program sets］から開く。"
   },
   {
    "id": "GEAR-PRG-4",
@@ -27862,7 +27862,7 @@
    "cat": "遠隔モニタリング",
    "name": "Home Monitoring",
    "en": "BIOTRONIK Home Monitoring®",
-   "role": "毎日自動でデータを送信する方式が特徴。"
+   "role": "毎日自動でデータを送信する方式が特徴。\n**BIOMONITOR（植込型心電計）での送信内容と伝送ルール** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）：デイリーデータ（モニタリングインターバル24時間）と、検出されたホルターエピソード（1日1回・最大6エピソード）を送信する。設定された時間に送信できなかった場合は、ほかの植込みデバイスと同様に60分ごとに追加で3回送信を試み、送信できなければ破棄して翌日新たに取得する。**デバイスと CM の間で60日間連続してデータ送信が行われなかった場合にはデバイスが CM への伝送を中止し、プログラマで確認しても表示は「ON」のまま。**同居家族等にすでに HM を使用している患者がいる場合は、BM も事前に特別な処置が必要で、準備ができるまで HM はオフに設定する（→ アルゴリズム BIO-ICM-HOME-MONITORING）。"
   },
   {
    "id": "GEAR-RM-4",
@@ -27912,7 +27912,7 @@
    "cat": "送信機",
    "name": "Cardio Messenger smart",
    "en": "CardioMessenger Smart®",
-   "role": "携帯型の送信機がデバイスから毎日データを受け取り、サーバへ送信する。"
+   "role": "携帯型の送信機がデバイスから毎日データを受け取り、サーバへ送信する。\n**BIOMONITOR IIIm の構成品にも挙げられている（Cardio Messenger Smart。別途、申込用紙の記入が必要）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。"
   },
   {
    "id": "GEAR-TX-4",
@@ -28469,6 +28469,26 @@
    "alias": "ECGケーブル 3625／3626"
   },
   {
+   "id": "GEAR-ICM-1",
+   "kind": "gear",
+   "maker": "BIOTRONIK",
+   "dealer": "バイオトロニックジャパン(株)",
+   "cat": "ICM付属品",
+   "name": "Remote Assistant III",
+   "en": "Remote Assistant III",
+   "role": "**BIOMONITOR の患者トリガ用の機器** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。使用目的は「ICM を植込みされている患者が何か症状を感じたときに、患者本人やその家族が、皮下心電図を BMIII に記録させるための機器」。\n**記録時間**：トリガキーを押し、マニュアルで皮下心電図を取得すると最大で7分30秒（トリガキーを押す前7分＋押した後30秒）。\n**使用方法**：トリガキーを3秒以上押すと、短いビープ音がなり LED がオレンジからグリーンに変わる。グリーンに点灯したらトリガーは完了しているので体から離しても大丈夫で、30秒程で消える。ボタン上の LED がオレンジのまま点滅している場合は起動できていないため、点滅が消えてからデバイスの位置を確認してやり直す。\n**バッテリ確認ライト**：ついていない＝充分なバッテリ容量／黄色に点滅＝約20回ほどしか使用できない／黄色に点灯＝バッテリが空。黄色に点滅・点灯している場合は病院に連絡して新しいものと交換する。電池寿命は約4年（使用頻度により変化する）。\n各部＝信号伝送 LED／トリガキー／電池インジケーター LED。BIOMONITOR IIIm の構成品のひとつ（→ アルゴリズム BIO-ICM-PATIENT-TRIGGER）"
+  },
+  {
+   "id": "GEAR-ICM-2",
+   "kind": "gear",
+   "maker": "BIOTRONIK",
+   "dealer": "バイオトロニックジャパン(株)",
+   "cat": "ICM付属品",
+   "name": "FIT Onestep（挿入ツール）／切開ツール",
+   "en": "FIT Onestep",
+   "role": "**BIOMONITOR の植込み用ツール（One Step Injection）** （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**挿入ツール（FIT Onestep）201mm×24mm／切開ツール 130mm×13mm。**挿入ツールにはリリースノブがある。**植込みツールを組み立てる必要はない。**\n**推奨植込み部位**：第3肋骨弓〜第6肋骨弓の範囲、正中線に対して約45度の範囲。デバイスの向きは胸→頭・頭→胸の両方可。植込みポケット用の切開および植込み部位は、医師の選択、患者の解剖、快適性、美容的配慮に基づいて決定する。\n植込み手順は図（手順1〜8と、手順1・2・3・5-6の注意点の写真。手順3の写真には「Stopping point」の表示）で示され、文章での説明はない。\n資料が引く BIO|CONCEPT.BIOMONITOR III study では、挿入（切開から挿入ツールの抜去まで）は平均52秒（中央値39秒）、手技時間（切開から創閉鎖まで）は平均4.1分（中央値3.5分）"
+  },
+  {
    "id": "MCP-D-KORA250-DR",
    "kind": "device",
    "maker": "MicroPort CRM",
@@ -28779,6 +28799,92 @@
    "diag": "ホルター 25件（追補49・BIOTRONIK「Amvia Sky & Edora  BIOTRONIK Product Brady Parameter」）\n**心房抗頻拍ペーシング治療（Atrial ATP Therapy）を搭載**（追補50・追補51）。**資料の表題が対象機種を「Amvia Sky シリーズ DR-T／HF-T QP／HF-T BP」と明示している** （追補51・BIOTRONIK「Amvia Sky シリーズ DR-T/HF-T QP/HF-T BP “More Options for Device Management” Atrial ATP」）。\n**フローチャートは4段階**：①心房性頻脈の検出（**AT/AF detection［36 out of 48］**／Therapy delay＝治療待機時間、ノミナル OFF、設定範囲 OFF・1〜10min・15〜55min・1〜24h）→ ②Atrial ATP 治療前（**リズム安定性チェック**／**リード位置チェック**）→ ③Atrial ATP 治療（Burst/Ramp 治療／繰返しインターバル治療／リズム変化時繰返し治療）→ ④エピソード終了（**AT/AF termination［20 out of 24］**）。\n**治療パラメータの設定範囲**：Attempts＝OFF・1〜10／ATP type＝**Burst／Ramp の2択**／Number S1＝1〜15／Add S1＝OFF・ON／P-S1 interval [%]＝70, 75, 80, 85, 88, 90, 95／S1 decrement [ms]＝5〜40（5ms刻み）／Scan decrement [ms]＝OFF・5〜40（5ms刻み）／Backup stimulation＝70・90bpm／Mode＝OFF・VVI／Repetition interval [h]＝OFF・2・4・7・12・24・36／Repetition through rhythm change＝OFF・ON。**心房ATP出力は 6.0V／1.5ms 固定（設定変更不可）。**\n**安全側の作り込み**：**心房リード抵抗値を32秒毎に測定し1日平均を使用（13日平均の×1.5／×0.75 が上下限）。****ACC テスト成功後に ApVs 伝導時間を確認し、5拍中3拍が 81ms 以上なら enabled、80ms 以下なら Blocked。****直前の Position check は心房リード抵抗値 100〜2500Ω。****Stability check は「隣り合う P-P 間隔の差が 8 P-P 間隔中5 P-P 間隔で 40ms 以内なら安定」。****HVR detection（心室レートのみで評価）は治療直前なら Inhibit、治療後なら Blocked。**\n**作動制限**：Blocked（再プログラムが必要）＝AT/AF エピソード48時間以上持続／デイリーのリード留置位置チェック条件外／治療後30秒以内の HVR 検出。Inhibit（条件解消で自動再開）＝1,000アテンプト/30日到達／リズム安定性チェック不安定／直前のリード位置チェック不安定／ACC テスト不成功／≦200ms の心房インターバルが 8 P-P 中3 P-P 以上／治療前の HVR 検出。**送出可能な最小ペーシングインターバルは 160ms。**\n**電池への影響は −1.1%（10年 ⇒ 9年10か月）**（ATP 出力 6.0V／1.5ms、600 attempts＝9,000 stim./月 で作動した場合）。\n**治療成功の定義は「心房ATP送出後30秒以内に AT/AF エピソードが終了した場合」のみ**（30秒超の自然停止は Unsuccessful に分類）。\n**設定時は心房出力を 6.0V／1.5ms にしてクロストークの有無を事前確認し、必要に応じて “Ven. blanking after Ap” を変更すること。****植込み後1か月程度経過して心房リード固定が安定してから有効にすることが推奨されている。**\n**CRT-P の機能区分は Atrial ATP の有無ではなく極数で決まる**（QP＝Ⅲ型4極用 1,710,000円／BP＝Ⅲ型 1,640,000円）ため、デュアルチャンバⅤ型の「頻脈変動感知型抗上室性頻脈ペーシング治療機能」という定義は CRT-P には適用されない。\n**Closed Loop Stimulation（CLS）** （追補52・BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」）。**心筋の収縮成分をモニターしてレートに反映させる BIOTRONIK 独自のレートレスポンスで、特別な手技やデバイスを必要としない。****測定は RV tip to Can（unipolar）で心内インピーダンスを毎拍評価し、安静時のリファレンス波形と活動時の波形の差の面積が大きいほどペーシングレートを上昇させる（beat to beat）。****リファレンスは心室イベント後 50〜300ms に16発の微弱パルスで測定し、加速度センサが安静と判断したときに更新する。**\n**設定は4項目**：**Max. CLS rate**（目標とする最大センサーレート。画面例 120bpm）／**CLS response**（レート分布の自動調節。Medium／Very low〜Very high。ターゲットレート＝BR＋[（MCLR−BR）×係数]、係数 0.21／0.26／0.33／0.41／0.51）／**CLS resting rate control**（安静時のレート上限。+20ppm、Off・+10〜+50ppm、10ppm刻み）／**Vp required**（AV ディレイ延長の可否。No／Yes）。\n**資料は「CLS と Vp suppression を併用することはできません。心室ペーシングの抑制機能は “IRS plus” もしくは “Positive” を推奨しています」と注記している。****テレメトリ中は、レートの調節も AV ディレイを変化させるリファレンスの取得も行われない。****融合収縮対策として CLS fusion avoidance zone（40ms）が常に On で働き、最新16拍中10拍以上の Vs が zone 内にあるとリファレンス取得が中止され CLS は休止する。**\n**本機は DDD-CLS／DDI-CLS を持つ**（Amvia Sky では『DDI-CLS』が追加され『AOO』モードが廃止された。追補49）。",
    "mri_group": "BIO-CRTP3",
    "port_lv": "IS-1"
+  },
+  {
+   "id": "BIO-D-BIOMONITOR-IIIM",
+   "kind": "device",
+   "maker": "BIOTRONIK",
+   "dealer": "バイオトロニックジャパン(株)",
+   "cat": "ICM",
+   "name": "BIOMONITOR IIIm",
+   "model": "BIOMONITOR IIIm",
+   "size": "77.5×8.6×4.6mm（L×W×T）",
+   "mass": "4.0g",
+   "volume": "1.9cc",
+   "longevity": "5.5年",
+   "price": "",
+   "hoken": "資料は埋込型心電図記録計の機能区分を「標準型 394,000円／特殊型 451,000円」（診療報酬改定についての厚生労働省通知〈2019年10月1日〉）として定義とともに示しているが、本品がどちらの区分にあたるかは文章で明記していない（→ 用語『機能区分（埋込型心電図記録計）』）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "connector": "",
+   "mri": "MRI-Conditional 1.5T／3T FBS（資料のスペック表の表記。FBS の展開は資料にない）",
+   "eri_eos": "",
+   "backup": "",
+   "en": "BIOMONITOR IIIm",
+   "family": "BIOMONITOR",
+   "longevity_cond": "資料のスペック表の値は「5.5 年*」で、* の注記の本文は資料に記載がない（算出条件不明）。BIOMONITOR III は「4 年*」（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "rf": "Bluetooth 機能 No（資料のスペック表）",
+   "rm": "○（Home Monitoring）",
+   "nbg": "",
+   "jp_release": "2021年2月（販売開始。資料の注記「※2021年2月より『BIOMONITOR IIIm の販売開始』」）／販売名：バイオモニター3（医療機器承認番号 30100BZX00153000。資料の表紙）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "xray": "",
+   "screwdriver": "",
+   "battery_model": "",
+   "battery_cap": "",
+   "pace_bol": "",
+   "pace_eos": "",
+   "magnet_bol": "",
+   "magnet_eos": "",
+   "eos_behavior": "",
+   "mri_zone": "",
+   "mri_gantry": "円筒型ボア",
+   "mri_xray": "資料の MRI の章で「患者に植込まれている製品が、BIOMONITOR III であることを確認」する手順に「BIOMONITOR III の放射線識別」の図が添えられている（識別記号の読み方の説明はない）",
+   "mri_cond": "MRI 装置仕様 円筒型ボア／静磁場強度 3T または 1.5T／最大空間勾配磁場 条件なし／最大空間傾斜磁場スルーレート 一軸あたり 200T/m/s 以下／比吸収率 SAR（全身）4.0W/kg 以内・（頭部）3.2W/kg 以内／撮像時の体位 条件なし／局所送受信コイルを胸部に使用しないこと（局所受信コイルは使用可能）／MRI カードは発行されない。ICM 手帳にて撮像条件等を確認する （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**資料の撮像条件の章は BIOMONITOR III と表記している**（MRI タブ BIO-ICM1）",
+   "diag": "**自動検出5種類＋患者トリガ**：Atrial fibrillation（検出確認時・停止確認時）／High ventricular rate／Bradycardia／Sudden rate drop／Asystole／Patient trigger（Remote Assistant III）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）\n**保存**：自動検出＝検出前30秒＋検出後10秒、患者起動＝起動前7分＋起動後30秒。自動エピソード検出は合計56エピソード・60分。上書き保護は自動検出15件＋患者起動4件（Intelligent Memory Management）\n**センシング**：BIOvector（77.5 mm long sensing vector）。Sensing signal と SECG signal を別経路で処理し、SECG は 128Hz sample rate で保存\n**プログラマ**：Renamic。疾患別テンプレート ProgramConsult（Syncope／Palpitations／AF monitoring／Cryptogenic stroke）\n**遠隔**：Home Monitoring。デイリーデータ（24時間）＋検出エピソード最大6件/日\n詳細はアルゴリズムタブの BIOTRONIK・分類「ICM」の10エントリ",
+   "sensing": "Sensing filter 4.5・10・15・24Hz（画面例 10Hz）／SensingConsult 5パターン（初期設定 Standard）／SECG Signal filter 0.05・0.5Hz（画面例 0.5Hz）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "mri_group": "BIO-ICM1",
+   "alias": "バイオモニター3（販売名）"
+  },
+  {
+   "id": "BIO-D-BIOMONITOR-III",
+   "kind": "device",
+   "maker": "BIOTRONIK",
+   "dealer": "バイオトロニックジャパン(株)",
+   "cat": "ICM",
+   "name": "BIOMONITOR III",
+   "model": "BIOMONITOR III",
+   "size": "77.5×8.6×4.6mm（L×W×T）",
+   "mass": "4.0g",
+   "volume": "1.9cc",
+   "longevity": "4年",
+   "price": "",
+   "hoken": "資料は埋込型心電図記録計の機能区分を「標準型 394,000円／特殊型 451,000円」（診療報酬改定についての厚生労働省通知〈2019年10月1日〉）として定義とともに示しているが、本品がどちらの区分にあたるかは文章で明記していない（→ 用語『機能区分（埋込型心電図記録計）』）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "connector": "",
+   "mri": "MRI-Conditional 1.5T／3T FBS（資料のスペック表の表記。FBS の展開は資料にない）",
+   "eri_eos": "",
+   "backup": "",
+   "en": "BIOMONITOR III",
+   "family": "BIOMONITOR",
+   "longevity_cond": "資料のスペック表の値は「4 年*」で、* の注記の本文は資料に記載がない（算出条件不明）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "rf": "Bluetooth 機能 No（資料のスペック表）",
+   "rm": "○（Home Monitoring）",
+   "nbg": "",
+   "jp_release": "2020年1月（資料のスペック表の「発売予定日」。市場推移の図にも「BIOMONITOR III launch in Jan by BJ」）／資料の最終スライドは BIOMONITOR III の画像に「販売名：バイオモニター3／医療機器承認番号：30100BZX00153000」を添えている（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "xray": "",
+   "screwdriver": "",
+   "battery_model": "",
+   "battery_cap": "",
+   "pace_bol": "",
+   "pace_eos": "",
+   "magnet_bol": "",
+   "magnet_eos": "",
+   "eos_behavior": "",
+   "mri_zone": "",
+   "mri_gantry": "円筒型ボア",
+   "mri_xray": "資料の MRI の章で「患者に植込まれている製品が、BIOMONITOR III であることを確認」する手順に「BIOMONITOR III の放射線識別」の図が添えられている（識別記号の読み方の説明はない）",
+   "mri_cond": "MRI 装置仕様 円筒型ボア／静磁場強度 3T または 1.5T／最大空間勾配磁場 条件なし／最大空間傾斜磁場スルーレート 一軸あたり 200T/m/s 以下／比吸収率 SAR（全身）4.0W/kg 以内・（頭部）3.2W/kg 以内／撮像時の体位 条件なし／局所送受信コイルを胸部に使用しないこと（局所受信コイルは使用可能）／MRI カードは発行されない。ICM 手帳にて撮像条件等を確認する （追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）。**資料の撮像条件の章は BIOMONITOR III と表記している**（MRI タブ BIO-ICM1）",
+   "diag": "**自動検出5種類＋患者トリガ**：Atrial fibrillation（検出確認時・停止確認時）／High ventricular rate／Bradycardia／Sudden rate drop／Asystole／Patient trigger（Remote Assistant III）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）\n**保存**：自動検出＝検出前30秒＋検出後10秒、患者起動＝起動前7分＋起動後30秒。自動エピソード検出は合計56エピソード・60分。上書き保護は自動検出15件＋患者起動4件（Intelligent Memory Management）\n**センシング**：BIOvector（77.5 mm long sensing vector）。Sensing signal と SECG signal を別経路で処理し、SECG は 128Hz sample rate で保存\n**プログラマ**：Renamic。疾患別テンプレート ProgramConsult（Syncope／Palpitations／AF monitoring／Cryptogenic stroke）\n**遠隔**：Home Monitoring。デイリーデータ（24時間）＋検出エピソード最大6件/日\n詳細はアルゴリズムタブの BIOTRONIK・分類「ICM」の10エントリ",
+   "sensing": "Sensing filter 4.5・10・15・24Hz（画面例 10Hz）／SensingConsult 5パターン（初期設定 Standard）／SECG Signal filter 0.05・0.5Hz（画面例 0.5Hz）（追補53・BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」）",
+   "mri_group": "BIO-ICM1",
+   "alias": "バイオモニター3（販売名）"
   }
  ]
 }
