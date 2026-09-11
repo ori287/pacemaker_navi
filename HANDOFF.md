@@ -1,4 +1,24 @@
-# Pacemaker Navi 引き継ぎ（2026-09-06 更新・追補52-4時点）
+# Pacemaker Navi 引き継ぎ（2026-09-10 更新・追補53時点）
+
+> **メーカーの表示順（2026-09-11）**：新しい画面のメーカー順を **Abbott → BIOTRONIK → Boston Scientific → Medtronic → MicroPort CRM（上位5社は固定）→ それ以外（旧社など）はアルファベット順** に変更（`MAKER_ORDER`／`makerCmp`）。絞り込みチップ、一覧の並び、MRI、メーカー比較の5社の行、編集フォームの欄の順すべて。アルゴリズムの「他社比較」は、メーカー名の付いた行だけをこの順に並べ替えて表示し、メーカー名のない補足行は元の順のまま最後に置く（データの文章は変更しない）。従来の画面（classic.html）は元のまま。
+> 表示確認テストは、他社比較だけ行単位で照合する方式に変更した（行の順番を変えて表示するため）。
+> **読みでの検索・入力候補・拡大の停止・アイコン（2026-09-11）**：英語の製品名・機能名をカタカナ・ひらがなでも引けるようにした（例：アジュール／あじゅーる＝Azure、オートキャプチャー＝AutoCapture）。**英単語 → 読み の辞書 `readings.json`（1,398語）を index.html に埋め込み**（検索専用。データの内容は変えない）。大文字の略語は1文字ずつの読み（MRI＝エムアールアイ）。ひらがな／カタカナ、長音、小さい文字の違いは区別しない。名前の読みでの一致を、別名・型番などの読みでの一致より上位に出す。
+> **データに新しい英単語が増えたら、読みの辞書に追加する**（`PNV2.missingReadings()` で読みのない語を一覧できる。辞書の元は `readings_1〜5.txt`、組み立ては `build2.py`）。
+> 文字を打つと候補（最大8件）が入力欄の下に出る（ホーム・検索・各一覧・MRI の本体）。ホームでは候補のみを出し、Enter または「検索結果をすべて見る」で検索画面へ。
+> 画面の拡大を止め（viewport と touch-action、iOS の gesture イベント）、スクロールの端での揺れを止めた（overscroll-behavior）。入力欄・選択欄の文字はすべて 16px 以上（iOS の自動拡大を防ぐため）。メーカー比較の「＋ 機能を追加」を削除（詳細画面からの編集は残す）。
+> **アプリのアイコンをユーザー提供の画像に変更**（icon.png＝iPhone 用 180×180、角の黒い部分を背景色で埋めたもの／icon-192・512＝角を透明にしたもの／icon-maskable-512＝背景を広げて絵柄を安全域に収めたもの）。
+> **下部タブ（2026-09-11 確定）**：**下部タブは「ホーム｜検索｜履歴｜保存｜メニュー」で固定（ユーザー指定の仕様）。**一度「ホーム｜用語｜製品｜アルゴリズム｜MRI」に変えたが、依頼の読み違いだったため元に戻した。用語・製品・アルゴリズム・メーカー比較・MRI・年表へはホームの6つの入口から入り、入口から入り直すと前回の絞り込みを引き継ぐ。各画面の左上に戻るボタン。右上のアイコンは置かない。
+> **用語・メーカー比較の追加・編集・削除（2026-09-11）**：従来の画面と同じ localStorage キー `cieds_overlay`・同じ形式を使う（どちらの画面で変更しても両方に表示。別タブの変更も storage イベントで反映）。公式データ（data.json）は変えない。編集済みの項目は「この端末で編集」と表示し、詳細画面で「元の登録内容（公式データ）」を確認・取り消しできる。メニューに変更の一覧・元に戻す・書き出し・読み込み・すべて元に戻す。用語一覧：すべて／保存／最近見た、対象デバイス、カテゴリ、並び替え、＋ 用語を追加。アルゴリズム：メーカー別｜メーカー比較の切り替え。MRI：メーカー → 種別 → 本体の順に絞り込み。件数表示は公式データの件数。
+> **v2 への切り替え＋PWA 化（2026-09-11）**：`github_upload/` の7ファイルでリポジトリを更新する。`index.html`＝新しい画面（v2・オフライン対応）、`classic.html`＝切り替え前の `index.html`（バイト単位で同一）、`sw.js`＝Service Worker、`manifest.webmanifest`＋`icon-192/512/maskable-512.png`＝ホーム画面追加用。既存の `icon.png` はそのまま使う（iPhone のホーム画面アイコン）。
+> **オフラインの方針**：通信できるときは毎回最新を読み（ネットワーク優先、4秒で打ち切り）、読めないときだけ端末の保存分を表示し、ホームに「オフライン表示中（取得日時）」を出す。保存データは元の JSON とバイト単位で同一であることを確認済み。
+> **`sw.js` の `VERSION` は、保存するファイルの一覧を変えたときだけ上げる**（JSON や index.html の更新だけなら変更不要。ネットワーク優先なので自動で新しい版が保存される）。
+> 切り替え後、方針8・12（`F_FALLBACK`／`G_FALLBACK` の同期）は `classic.html` に対して行う。v2 の辞書（`SYN`・`CONCEPT_MAP`）は `classic.html` から複写したもの。リポジトリの `v2.html` は切り替え後に削除してよい。
+> **UI 試作 v2（2026-09-10）**：新しい UI を **`v2.html`（別ファイル）** として作成した。`index.html` と JSON 4ファイルは変更していない（SHA-256 一致を確認）。
+> `v2.html` はリポジトリのルートに置くと同じ JSON を読んで動く（`https://ori287.github.io/pacemaker_navi/v2.html`）。JSON 同梱の単体版 `Pacemaker_Navi_v2_preview.html` もある。
+> 全2,526件・38,999項目が詳細画面に表示されること（欠損0）、MRI 判定が現行版と一致すること（677通り・不一致0）を機械確認済み。詳細は `UI_V2_REPORT.md`。
+> **v2 は `index.html` から `SYN` と `CONCEPT_MAP` をビルド時に複写している。辞書を変えたら v2 も作り直す。**v2 の端末内保存は `pn2_` で始まるキーだけを使う（`cieds_*` には書かない）。
+> **このときは JSON を一切変えない方針だったので、notes.json には追記していない。**次にデータを更新するときに、notes に「UI 試作 v2」の記録を1エントリ足す。
+> **v2 では、データを変えたら確認すること**：新しいフィールドを足した場合、詳細画面の「そのほかの登録項目」に自動で出るので表示漏れはないが、しかるべきタブに載せるには `v2.src.html` の対応表（`PROD_LABEL` など）への追加が要る。
 
 ## ▼ 次のトークで最初に読むところ
 
@@ -9,8 +29,24 @@
 （`CAT_ORDER` と `F_FALLBACK` は変更なし。**製品用 `CAT_ORDER` には「CRT-P」が既に入っているので、追補49の CRT-P 登録でも HTML 改修は不要だった**）。
 **手元の `index.html` が追補40より古いと、スリッター2件が分類の末尾に出る。**
 **JSON は何個渡しても会話容量を食わない。`.md` は全文が載るのでこのファイルだけにする。**
+**追補53で `index.html` を更新した**（製品用 `CAT_ORDER` の末尾に「ICM付属品」を追加／`G_FALLBACK` の5語を同期。478,305 → 482,498バイト）。**手元の `index.html` が追補53より古いと、ICM付属品2件が分類の末尾に五十音順で出る。**
 
-**直前のトークで終わったこと**：BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」（日本語・スキャンPDF・22スライド）を反映した（追補52）。
+**直前のトークで終わったこと（追補53）**：BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」（日本語・スキャンPDF・76スライド）を反映した。**4タブすべてを更新した。手書きは一切採用していない。**
+**アルゴリズム 204 → 214件、用語集 1219 → 1247語、製品 939 → 943件（本体 42 → 44・関連機器 27 → 29）、MRI 56 → 57グループ（verify 19 → 20）。**
+**ICM のアルゴリズムはこれまで全社で0件だった。**資料の見出しごとに BIOTRONIK の10件を起こした（分類 `cat`＝「ICM」、`device`＝「ICM」）：
+`BIO-ICM-AF-DETECTION`（AF sensitivity Low/Medium/High のプリセット表、Window size 8/16・16/24・24/32、RR variability limit 6〜18%、Detection intervals 5〜23、Number of detection windows 1〜4、Confirmation time 1〜30min、Termination intervals 1・3・5・7、Number of termination windows 1〜4、**AF detection enhancement（観察・確認フェーズ中の3分間のみ。キャンセルされるとエピソードは保存されない）と AF with ectopy detection algorithm（閾値は確認できない）を同じエントリに収めた**）／
+`BIO-ICM-HIGH-VENTRICULAR-RATE`（**増減カウンタ**・停止は5連続・HVR counter 8〜40）／`BIO-ICM-BRADYCARDIA`（Brady duration 5〜30s・停止は10連続）／`BIO-ICM-SUDDEN-RATE-DROP`（Baseline 256/64/48・Rate-drop 32/16/8・50%・**終了条件なしでトータル40秒**）／`BIO-ICM-ASYSTOLE`（2〜10s・トータル40秒）／
+`BIO-ICM-PATIENT-TRIGGER`（Remote Assistant III・前7分＋後30秒）／`BIO-ICM-SENSING`（Sensing filter 4.5/10/15/24Hz・SensingConsult 5パターン〈Standard＝ピーク値の62.5%→25%〉・SECG Signal filter 0.05/0.5Hz・ノイズウィンドウ 100ms と Vn）／
+`BIO-ICM-INTELLIGENT-MEMORY-MANAGEMENT`（3バッファ・56エピソード60分・上書き保護15＋4）／`BIO-ICM-PROGRAMCONSULT`（Syncope／Palpitations／AF monitoring／Cryptogenic stroke の全値）／`BIO-ICM-HOME-MONITORING`（最大6件/日の優先順位・**60日間送信がないと伝送中止なのに表示は ON のまま**・定期SECG）。
+**製品**：`BIO-D-BIOMONITOR-IIIM`（5.5年*・2021年2月販売開始・販売名バイオモニター3／30100BZX00153000）と `BIO-D-BIOMONITOR-III`（4年*・2020年1月）を分類「ICM」で登録。**償還価格は空欄**（標準型 394,000円／特殊型 451,000円のどちらか資料が明記していない）。
+関連機器に `GEAR-ICM-1` Remote Assistant III・`GEAR-ICM-2` FIT Onestep／切開ツールを新分類「ICM付属品」で追加し、`GEAR-TX-3`／`GEAR-RM-3`／`GEAR-PRG-3` に加筆。
+**MRI**：`BIO-ICM1`（1.5T／3T・円筒型ボア・スルーレート 一軸200T/m/s以下・SAR 全身4.0／頭部3.2W/kg・胸部に局所送受信コイル不可・MRIカードは発行されずICM手帳で確認）。**撮像条件の章は BIOMONITOR III 表記なので verify を付けた。**
+**用語集**：新規28語（末尾に追加）、`BIOMONITOR IIIm` を全面書き直し（旧記載の「大きく明瞭なR波感知」は資料になく削除）、ほか6語に加筆。
+**あわせて指示を受けて ERAF の誌名「Circulation」を削除した**（用語 `ERAF`・`BIO-POST-MODESW-RATE`。誌名は私の同定で資料の記載ではなかった）。**§6 の古い3行（HAR limit の換算・Far-field protection の理由・Scan decrement の類推）も、アプリ側が追補52-3で直っていることに合わせて整理した。**
+**追補52-4 の数値例7箇所は、本資料のどれにも該当しなかった**（引き続き保留）。
+**未確定13件は notes 追補53 と §6 に記録した。**とくに **Confirmation time（表は6、Cryptogenic stroke の注記は「1 ⇒ 2」）**、**HVR counter（図は4、画面の選択肢は8〜40）**、**患者トリガ（7分30秒 対 早見表の310秒/件）**、**Palpitations テンプレート（表と HM 画面例で Transmission が違う）**の4つは資料内の食い違い。
+
+**その前（追補52）に終わったこと**：BIOTRONIK「Biotronik Product Brady  Closed Loop Stimulation」（日本語・スキャンPDF・22スライド）を反映した（追補52）。
 **アルゴリズム 204 → 209件、用語集 1199 → 1219語、製品は 939件のまま3件を加筆。MRI は変更なし。**
 **`BIO-CLOSED-LOOP-STIMULATION` を全面的に書き直した**（追補49時点は2行の説明に加速度センサの設定が同居しているだけだった）。
 **循環制御の閉鎖ループ**（循環中枢 →〔クロノトロピー→洞結節→心拍数〕と〔イノトロピー→心筋→収縮力〕→ 心拍出量 → 平均動脈圧 → 圧受容器 → 循環中枢）、
@@ -189,6 +225,9 @@ CLS を使うと Vp suppression が使えなくなる → **それでも心室�
     **メーカー資料由来ではなく一般的な臨床の目安であり、特定機種の仕様として書いてはいないので残してある。**削るなら指示がほしい
 14. **公称バッテリー容量の食い違い**（AR 174mAh／VR 241mAh 対 AR 0.213Ah／VR 243mAh）。**両論併記にしてある。**添付文書で確定する
 15. ~~**`ABT-BRIDGE-PACING` を新規エントリにするかの判断**~~ → **2026-09-06（追補51-3）に指示を受けて追加済み。**
+16. **BIOMONITOR の未確定を添付文書・医師用マニュアルで確定する**（追補53で新出）。IIIm の MRI 撮像条件が III と同一か（`BIO-ICM1` の verify を外せるか）／各トリガのノミナル／HVR limit・Brady zone limit・SRD rate decrease の範囲／予測寿命の「*」の条件／保険の機能区分（標準型か特殊型か）
+17. **`feats` 14行目「償還価格・保険区分（PM DR）」が古い**（追補53で気づいた）。BIOTRONIK が 730,000円のままで、追補49の資料（2023年7月〜）では Ⅴ型 751,000円・Ⅳ型 593,000円。**直すなら `F_FALLBACK` の同期が要る（方針8）。指示待ち**
+18. **`BIO-STABILITY-CHECK` に推測に見える文が4つ残っている**（追補53で気づいた。notes 追補53 に原文を記録）。**Atrial ATP の資料で原文を確かめてから削るか判断する**。追補52-4 の走査語（「と読める」等）に引っかからない言い回し（「〜ためのもので」「最も多いのが」「設計思想」）だったので、次の全件走査ではこの種の語も対象に入れる
 
 **踏んではいけない地雷**：方針9（`pathway` は当面埋めない）、
 **方針11（件数を勝手に増やさない）は追補51-2で撤回済み。増やしてよい。**
@@ -199,6 +238,8 @@ CLS を使うと Vp suppression が使えなくなる → **それでも心室�
 **BIOTRONIK は世代差（E1／E2／E3／Via）が非常に多い。**Repetitive/Scan の拍数、モードスイッチ中の AV delay、Sense compensation、
 Far-field protection の刻み、MRI AutoDetect の検知条件、Auto gain の判定などが世代で違う。**Amvia Sky の値を E シリーズにそのまま当てない（追補49）。**
 **温度センサのレートレスポンスは追補42で見送り確定。蒸し返さない。**
+**BIOMONITOR の HVR（高心室レートの記録トリガ）と Amvia Sky の Atrial ATP の HVR detection（`BIO-HVR-DETECTION`）は別機能。****BIOMONITOR の SRD（Sudden rate drop）と用語『SRD』（Boston の Sustained Rate Duration）も別物（追補53）。**
+**BIOMONITOR の資料の略記 CM／BM／HMSC は展開が書かれていない。「CM＝Cardio Messenger」などと書き換えない（追補53）。**
 **Amvia Sky の Atrial ATP では Blocked と Inhibit を混同しない（追補51）。**
 **推測を書かない（方針13）。**資料にないことは「資料に記載がない」と書くにとどめる。換算・計算例・他社からの類推・切り分け手順の自作をしない。
 **Amvia シリーズにも CLS はある（追補49・52-2）。**追補52の資料が E シリーズを対象機種に挙げているのは、その世代を例に説明しているためで、Amvia Sky に CLS がないという意味ではない。
@@ -222,12 +263,12 @@ GitHub Pages で公開しているCIEDリファレンス。**リポジトリ `or
 
 | ファイル | 規模 | 中身 |
 |---|---|---|
-| `index.html` | 467KB | 単一ファイルのアプリ本体。CSS・JSすべて内包（追補43〜49・**52**で `G_FALLBACK` を修正）。**追補51のリポジトリ改名では変更不要だった** |
-| `products.json` | 721KB | 939件（リード870・本体**42**・関連機器27）（v15） |
-| `data.json` | 769KB | 用語集**1219語**＋一覧表65行（v52） |
-| `algos.json` | 609KB | アルゴリズム**204件**（v38） |
-| `mri.json` | 250KB | MRI組合せ56グループ（verify 19）（v12） |
-| `notes.json` | 705KB | 作業記録**111エントリ**。**毎回追記すること**。アプリからは読まれない |
+| `index.html` | 471KB | 単一ファイルのアプリ本体。CSS・JSすべて内包（追補43〜49・52・**53**で `G_FALLBACK` を修正。**追補53で製品用 `CAT_ORDER` に「ICM付属品」を追加**）。**追補51のリポジトリ改名では変更不要だった** |
+| `products.json` | 735KB | **943件**（リード870・本体**44**・関連機器**29**）（v16） |
+| `data.json` | 809KB | 用語集**1247語**＋一覧表65行（v53） |
+| `algos.json` | 658KB | アルゴリズム**214件**（v39） |
+| `mri.json` | 252KB | MRI組合せ**57グループ（verify 20）**（v13） |
+| `notes.json` | 722KB | 作業記録**112エントリ**。**毎回追記すること**。アプリからは読まれない |
 
 ---
 
@@ -584,7 +625,8 @@ AF Suppression は「心房治療」なのでペーシング管理16件には含
    → **Medtronic Azure MRIシリーズ 添付文書（23000BZX00027000）**で解決する見込み
 5. **BIOTRONIK 旧世代 9グループ**（`mri.json` の verify）。PMDA未公開。
    バイオトロニックジャパン TEL 03-3473-7485 への照会が正規ルート
-6. **CRT-P と ICM の製品登録**。アムヴィア Sky HF-T（承認 30500BZX00069000）から始めるとよい
+6. **CRT-P と ICM の製品登録**。アムヴィア Sky HF-T（承認 30500BZX00069000）から始めるとよい。
+   **ICM は追補53で BIOMONITOR III／IIIm の2件を登録した**（BIOTRONIK のみ。Medtronic・Abbott・Boston の ICM 本体は未登録。Abbott は MRI タブにのみ `ABT-ICM` がある）
 7. **日本光電扱いのAbbott OEM 8機種**（ニュアンス／ゼネックス／ゼナス／ニュートリノ／
    ニュートリノNxT／ハートマインダー＋／クアドラ＋エクセリス／クアドラ リリーブ）
 8. リードのMRI対応（42／868件）。各社の添付文書のリード一覧から拾える
@@ -680,7 +722,7 @@ Max Charge 3回/年、100％pace〜0％pace）。Ellipse™ は 39／36J。**本
 | **リードレスの抜去成功率** | 追補42の資料①に「植込みから9年間を通して88％以上」と「植込みから最長7年間において80％を超える」の両方があり、資料②は「最長9年間で88％以上」。**いずれも AVEIR ではなく前位機種 Nanostim のデータ**（Reddy VY ほか、APHRS 2022）。**製品タブには収載していない** |
 | ~~**MINERVA 試験の参考設定表と Amvia Sky の画面が対応しない**~~ **→ 追補51でほぼ解消**（残るのは「どの機種の試験か」だけ）。**追補51で Amvia Sky の ATP type が Burst／Ramp の2択と確定したため、Burst+ を含む Rx2 は Amvia Sky では設定できず、この表が Amvia Sky の設定そのものではないことが裏づけられた。**以下は追補50時点の記録 | 追補50の資料は「参考）MINERVA試験で使用された設定」として **Rx1／Rx2／Rx3 の3本**の表（Therapy Type＝Ramp／Burst+／Ramp、Initial #1 Pulses＝13、A-S1 Interval＝91%／84%／81%、S1-S2 interval＝Rx2のみ81%、S2-S3 interval＝Rx2のみ20ms、Interval Decrement＝Rx2のみ10ms、# Sequences＝10、Rhythm Change＝On、Time Interval＝Every 7hr）を併記している。**しかし Amvia Sky のプログラマ画面は［1st ATP］［2nd ATP］の2本で、項目名も Attempts／ATP type／Number S1／Add S1／P-S1 interval[%]／S1 decrement／Scan decrement と違い、値も揃わない**（A-S1 Interval 91%/84%/81% 対 P-S1 interval 90%/80%、Time Interval Every 7hr 対 Repetition interval 2h）。**どの機種で行われた試験かも資料に記載がない。Amvia Sky の設定そのものではないと読むのが妥当と判断し、用語集「MINERVA試験（参考設定）」にその旨を明記したうえで表の値は資料どおり収載した。未確定** |
 | **ATP type のノミナル**（追補50で新出・**追補51で選択肢は確定**） | **選択肢は Burst／Ramp の2択と確定した**（追補51・「心房ATP治療の種類は Burst/Ramp」）。**MINERVA 参考表の `Burst+` は Amvia Sky の選択肢に無いことも確定した。****残るのはノミナルだけ。**画面例は 1st・2nd とも Ramp。資料が引く EP Europace 2006 は「ATCL≧240ms の AT エピソードでは Burst+ よりも Ramp の有効性が高く、Ramp の高い有効性は最初の6回のシーケンスで明らかになった」としており Ramp がノミナルである傍証にはなるが、**明記がないので断定はしていない。未確定** |
-| **AT/AF detection Rate と HVR detection の設定範囲**（追補50で新出・**追補51でほぼ解消**） | **追補51で Attempts（OFF,1〜10）／ATP type（Burst,Ramp）／Number S1（1〜15）／Add S1（OFF,ON）／P-S1 interval（70,75,80,85,88,90,95%）／S1 decrement（5〜40ms）／Scan decrement（OFF,5〜40ms）／Backup stimulation（70,90bpm）／Mode（OFF,VVI）／Repetition interval（OFF,2,4,7,12,24,36h）／Therapy delay（OFF・1〜10min・15〜55min・1〜24h）はすべて判明した。****残るのは AT/AF detection Rate と HVR detection Rate・Detection counter の範囲とノミナルだけ。**AT/AF 側は画面の「HAR limit」に 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm/ms を切り替えられる。**ms と読むと 250〜100bpm の10bpm刻みに一致するが、資料に範囲の明記はないので対応づけは読みにとどめた。未確定** |
+| **AT/AF detection Rate と HVR detection の設定範囲**（追補50で新出・**追補51でほぼ解消**） | **追補51で Attempts（OFF,1〜10）／ATP type（Burst,Ramp）／Number S1（1〜15）／Add S1（OFF,ON）／P-S1 interval（70,75,80,85,88,90,95%）／S1 decrement（5〜40ms）／Scan decrement（OFF,5〜40ms）／Backup stimulation（70,90bpm）／Mode（OFF,VVI）／Repetition interval（OFF,2,4,7,12,24,36h）／Therapy delay（OFF・1〜10min・15〜55min・1〜24h）はすべて判明した。****残るのは AT/AF detection Rate と HVR detection Rate・Detection counter の範囲とノミナルだけ。**AT/AF 側は画面の「HAR limit」に 240／250／261／273／286／300／316／333／353／375／400／429／462／500／545／600 が並び bpm/ms を切り替えられる。**資料に単位・範囲の明記はない。**（当初ここに書いていた ms→bpm の対応づけは方針13①の換算にあたるため、追補53で削除した。アプリ側は追補52-3で削除済み）**未確定** |
 | ~~**「治療待機時間」と Therapy delay の関係**~~ **→ 追補51で解消** | **追補51のフローチャートは、01「心房性頻脈の検出」の中に「AT/AF detection［36 out of 48］」と「Therapy delay（治療待機時間）」を並べて置いている。**したがって循環図で「心房頻脈治療終了 → 心房頻脈検出」の矢印に添えられていた「治療待機時間」は **Therapy delay の訳語**であり、Repetition interval や別の内部タイマーではないと確定した |
 | **Auto gain（Amvia Sky）の②と③の割り当て**（追補49で新出） | 資料の表は「①最大センサーレートの90%に達する時間が24時間で累積30分を超える → **−1**」「②最大センサーレートの90%に達する時間が7日間で累積60分に到達しない → **±0**」「③『①、②』のどちらにも該当しない → **+1**」と読める。**しかし同じ資料の E シリーズ版は「①24時間で合計90秒を超える → −1」「②24時間で合計90秒に満たない → ±0」「③7日間連続して最大センサーレートに達しない → +1」で、「まったく到達しない → +1（ゲインを上げる）」という向きになっている。**Amvia Sky 版をそのまま読むと「到達不足のときに上げず、中間のときに上げる」という不自然な形になる。**②と③が入れ替わっている可能性があるが断定できないので、資料の表記どおりに収載した。未確定** |
 | **Amvia Sky DR-T の償還価格**（追補49で新出） | 既存データは **730,000円**（出典不明）、追補49の資料は **751,000円**（デュアルチャンバⅤ型）。**メーカー資料を優先して 751,000円 に置き換え、`hoken` に旧値も併記した。**既存値の出典が追えていないため一行残す |
@@ -695,23 +737,47 @@ Max Charge 3回/年、100％pace〜0％pace）。Ellipse™ は 39／36J。**本
 | **BURDEN II の棒グラフと Ikeda らの表の一部**（追補52で新出） | **BURDEN II は表（AT episode を認めた患者の割合）が明瞭に読めるが、下段の棒グラフの数値は判読できない。**Ikeda らも群のサイズ・%AP・AF/AT burden は読めたが、**%VP の各群の値と下段の棒グラフの数値が判読できない。**読めた範囲のみ収載した。**さらに Ikeda らの誌名・巻号・年が資料に印字されていない。未確定** |
 | **ブリッジペーシングが設定項目かどうか**（追補51-3で新出） | 追補47の資料に**設定画面・On/Off・設定範囲の記載がない。**自動的に働くものとみられるが、**「設定変更不可」という明記もない。未確定** |
 | **ブリッジペーシングの「ほぼ現在のレート間隔」の定義**（追補51-3で新出） | 「ほぼ」が何を指すのか（直前の1拍か、平均か、許容幅があるのか）が書かれていない。**未確定** |
-| **Far-field protection の after Vp が after Vs より 50ms 長い理由**（追補51-3で新出） | 心室ペーシング後のほうがファーフィールド電位が大きく出やすいためと読んだが、**資料に理由の明記はない。読みにとどめて `params` に書いた** |
+| ~~**Far-field protection の after Vp が after Vs より 50ms 長い理由**~~ **→ 追補52-3で `params` から削除済み（追補53で行を整理）** | **資料に理由の記載はない。**当初書いた「読み」は方針13により追補52-3でアプリから削除した。理由を書くのは資料が来てから |
 | **Stability check の判定値が固定かプログラム可能か**（追補51-2で新出） | 8 P-P 中5 P-P・40ms・200ms・80ms のいずれも、**資料に設定画面が現れず「設定変更不可」という明記もない。**固定とみられるが断定できない。医師用マニュアルで確定する。**未確定** |
 | **リード位置チェックの判定値が固定かプログラム可能か**（追補51-2で新出） | 32秒毎・13日間・×1.5／×0.75・81ms/80ms・100〜2500Ω のいずれも設定項目として現れない。**Stability check と同じ理由で未確定** |
 | **Post ModeSw rate の「+」の基準**（追補51-2で新出） | 「+10bpm」がベーシックレートに対する加算であることは資料の説明（MS 終了後のベーシックレートを上昇させる）から読めるが、**センサ指示レートが基本レートを上回っているときにどちらへ加算されるのかが書かれていない。未確定** |
 | **Change of basic rate の刻みの単位**（追補51-2で新出） | 追補49の転記は「+5〜+30ppm、5拍刻み」だが、**追補51で Post ModeSw rate 側が「5bpm刻み」と確認できたことを踏まえると、Change of basic rate 側も本来は「5ppm刻み」の誤記である可能性がある。**追補51の資料には Change of basic rate の刻みの記載がないため訂正はしていない。**未確定** |
 | **「確認時間：30s／90s」が設定値か固定値か**（追補51で新出） | Atrial Therapy Sequence 図で 1st Atrial ATP モジュールの後に「確認時間：30s」、2nd Atrial ATP モジュールの後に「確認時間：90s」と書かれているが、**設定項目としては［1st and 2nd ATP］画面に現れない。****治療成功の定義が「30秒以内」であることと 1st ATP 後の30秒は一致するが、2nd ATP 後がなぜ90秒なのかの説明がない。未確定** |
-| **Scan decrement の作動の向き**（追補51で新出） | 設定範囲（OFF, 5〜40ms）は判明したが、**資料に Scan の動作そのものの説明が一切ない。**用語集には「S1 decrement がシーケンス内、Scan decrement がシーケンス間」と書いたが、**これは他社の Scan ATP の一般的な作りからの類推であって本資料の記載ではない。**医師用マニュアルで確定する。**未確定** |
+| **Scan decrement の作動の向き**（追補51で新出） | 設定範囲（OFF, 5〜40ms）は判明したが、**資料に Scan の動作そのものの説明が一切ない。**当初用語集に書いた他社からの類推は**追補52-3で削除し、用語集は「作動の説明は資料になく設定範囲のみ」としてある。**医師用マニュアルで確定する。**未確定** |
 | **Repetition interval の起点の定義**（追補51で新出） | 図は起点を「最後の Atrial ATP therapy もしくは最後に抑制された治療」と書くが、**「抑制された治療」に Blocked も含むのか Inhibit のみなのかが読み取れない。**Blocked は再プログラムまで再開しないので Inhibit のみと読むのが自然だが、明記はない。**未確定** |
 | **48時間ルールの起点**（追補51で新出） | Blocked の条件「AT/AF エピソードが48時間以上持続したとき」の48時間が、**エピソード検出時からなのか最初の治療からなのかが書かれていない。未確定** |
 | **「600 attempts/月」の位置づけ**（追補51で新出） | バッテリー試算（−1.1%）の前提として置かれているが、**これが標準的な作動量の想定なのか、上限（1,000アテンプト/30日）に対する例示なのかが書かれていない。**1,000/30日より少ないので「多めの想定」と読んだが、資料に根拠の記載はない。**未確定** |
-| **ERAF の引用文献の誌名**（追補51で新出） | スライド下部は「Volume 113, Issue 16, 25 April 2006; Pages 1933-1941」とだけあり、**誌名が資料本文に出ていない。**巻号・年・ページから **Circulation** と同定して用語集に記載した。**誌名は同定であって資料の記載ではない** |
+| ~~**ERAF の引用文献の誌名**~~ **→ 追補53で解消（指示により誌名を削除）** | スライド下部は「Volume 113, Issue 16, 25 April 2006; Pages 1933-1941」とだけあり、**誌名が資料本文に出ていない。**追補51で私が同定して書いた「Circulation」を、**指示を受けて用語 `ERAF`・`BIO-POST-MODESW-RATE` から削除し、資料どおりの巻号・ページと「誌名は資料に記載がない」に置き換えた** |
 | **Ramp vs Burst+ の試験の対象機種**（追補51で新出） | EP Europace 2006;8(7):465-473 の紹介スライドは「DDDRP device」とあるだけで機種が書かれていない。**Burst+ が Amvia Sky に無い以上 BIOTRONIK 機ではない可能性が高いが、本文からは断定できない。**用語集では機種を書かず所見のみを記載した。**未確定** |
+| **BIOMONITOR：Confirmation time の値**（追補53で新出） | AF sensitivity の表は Low／Medium／High とも **6**。Cryptogenic stroke テンプレートの注記は「Confirmation time は『**1 ⇒ 2**』に変更することを推奨」で、テンプレートの値が 1 であることになる。**テンプレートだけ別の値なのか、どちらかの誤記なのか資料にない。未確定** |
+| **BIOMONITOR：HVR counter の図の値**（追補53で新出） | 検出ルールの図は HVR counter＝**4**。プログラマ画面の選択肢は **8・12・16・20・24・32・40** で 4 がない。**未確定** |
+| **BIOMONITOR：患者トリガの記録時間**（追補53で新出） | Remote Assistant III の章は**最大7分30秒（前7分＋後30秒）**、診療報酬早見表は「患者トリガ（**310秒/件**）」。**未確定** |
+| **BIOMONITOR：Palpitations テンプレートの Transmission**（追補53で新出） | ProgramConsult の表は AF の Transmission **ON**／Patient trigger **ON**。Home Monitoring の章の画面例（Palpitations に設定した場合）は AF **Detect. only**／Patient trigger **OFF**。**未確定** |
+| **BIOMONITOR：ノミナルと設定範囲**（追補53で新出） | 「6つの検出エピソード」の表（AF Medium／HVR 180／Brady 40／SRD 50／Asystole 3／Patient trigger ON）がノミナルかどうか明記がない。Sensing filter（画面例 10Hz）・Signal filter（画面例 0.5Hz）も同じ。**HVR limit／Brady zone limit／SRD rate decrease／DHP の設定範囲は資料にない。未確定** |
+| **BIOMONITOR IIIm の MRI 撮像条件**（追補53で新出） | スペック表は IIIm・III とも「MRI-Conditional 1.5T/3T FBS」。**撮像条件と手順の章は BIOMONITOR III 表記**で、IIIm が同一と明記した記載はない。**`BIO-ICM1` は verify 付き。添付文書で確定する。FBS の展開も資料にない** |
+| **BIOMONITOR の保険区分と予測寿命の「*」**（追補53で新出） | 資料は機能区分（標準型 394,000円／特殊型 451,000円）の定義を示すが、**本品がどちらかを文章で明記していない**（製品の `price` は空欄）。予測寿命 IIIm 5.5年*・III 4年* の **\* の注記本文が資料にない**。**未確定** |
+| **ICM 診療報酬早見表の階段の境界**（追補53で新出） | どのセルが 90点／180点かの境目はスキャンで判読しにくく**転記していない**（計算による補完もしていない。方針13）。3つの規則文（0点／90点＝30分未満／180点＝30分以上）と注記だけを収載 |
+| **ICM 市場推移の図の「Confirm rx launch in Jun by ABT」**（追補53で新出） | 矢印が2018年と2019年の間にあり、**年を読み取れない**。用語 `植込型心電計` にそのまま記載 |
+| **BIOMONITOR の Resting rate period**（追補53で新出） | 画面に Start resting period 02:00／Resting period duration 4h が並ぶが、**何に使う項目か資料に説明がない。未確定** |
 | **LSP202V の世代** | `mri.json` は LSP112V と LSP202V の両方を「Aveir VR」として登録している。**LSP202V が第2世代の心室用（VR2）かは追補42・44の資料でも判明せず。**ただし追補44の資料①のプログラマ画面（［LP 植込み／交換］）には「既存心室：LSP202V／VVI／50 min-1／2.5V／0.4ms、電池電圧3.0V」と表示されており、**DR システムの心室側デバイスとして使われることは確認できた。**世代は**未確定** |
 
 ---
 
 ## 7. 直近でやったこと
+
+### 2026-09-10（追補53）
+
+**BIOTRONIK「BIOMONITOR IIIm ～製品トレーニング資料～」（76スライド）を反映。4タブすべてを更新。手書きは不採用。**
+
+- **アルゴリズム 204 → 214件**（`algos.json` v39）。**ICM のアルゴリズムを初めて起こした**（BIOTRONIK 10件、分類「ICM」）。資料の見出し（AF detection／HVR／Bradycardia／SRD／Asystole／Patient trigger／Sensing／Intelligent Memory Management／ProgramConsult／Home Monitoring）ごとに1件。
+  **AF detection enhancement と AF with ectopy detection は `BIO-ICM-AF-DETECTION` に、ノイズの検出は `BIO-ICM-SENSING` に収めた**（追補52-2 の CLS と同じ考え方）
+- **用語集 1219 → 1247語**（`data.json` v53）。新規28語は**末尾に追加**（`G_FALLBACK` の先頭698語の並びを崩さない）。**見出しは資料にある語だけで作った**。`BIOMONITOR IIIm` を全面書き直し、6語に加筆
+- **製品 939 → 943件**（`products.json` v16）。本体2件（分類 ICM）、関連機器2件（新分類「ICM付属品」）、既存の BIOTRONIK 関連機器3件に加筆。**償還価格は区分が明記されていないため空欄**
+- **MRI 56 → 57グループ**（`mri.json` v13）。`BIO-ICM1`（verify 付き）
+- **`index.html`**：製品用 `CAT_ORDER` に「ICM付属品」を追加、`G_FALLBACK` の5語を同期（698語のまま、食い違い0件、script の構文チェック済み）。`feats` は変更なし
+- **指示により ERAF の誌名「Circulation」を削除**（`ERAF`・`BIO-POST-MODESW-RATE`）。**§6 の古い3行を整理**
+- **追補52-4 の数値例7箇所は本資料に該当なし**
+- **気づいたが未着手**：`feats` 14行目の償還価格が古い（BIO 730,000円のまま）／`BIO-STABILITY-CHECK` に推測に見える文が4つ（§0 の次にやること17・18）
 
 ### 2026-09-06（追補52-4）
 
